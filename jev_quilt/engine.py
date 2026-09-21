@@ -134,6 +134,10 @@ class Engine:
                 payload["surprise"] = str(s)
                 if cell.surprise_floor is not None and s > cell.surprise_floor:
                     payload["alarmed"] = "true"
+            # ensembles name the reading they trusted — selection is auditable
+            reading = getattr(cell.predictor, "last_choice", None)
+            if reading:
+                payload["reading"] = str(reading)
             try:
                 cell.predictor.update(decision.value)
             except Exception:
