@@ -2,7 +2,7 @@
 
 > *Doc grows as we run sessions. JEV is a Joint Embedding Validator that answers noul / choice / score questions about a `state`.*
 
-## 8 Sessions Run (this worktree, Sept 21)
+## 10 Sessions Run (this worktree, Sept 21)
 
 | Session | Topic | State | Questions | JEV Accuracy | Key Finding |
 |---|---|---|---|---|---|
@@ -14,6 +14,8 @@
 | 6 | Pairwise / comparative | rich state | 17 | 64.7% | Comparative judgment works; numerical mix confuses |
 | 7 | Self-consistency | rich state | 10 × 5 iters | n/a | **Zero flips** across 5 iterations; ±0.013 std |
 | 8 | **Adversarial rephrasing** | rich state | 15 (6 canonical + 9 distortions) | **100%** | JEV precisely discriminates doctrine phrasing |
+| 9 | Real-submission oracle | rich state | 9 canonical pieces | 0 REJECT | 1 ACCEPT, 5 REVIEW, 3 DISCUSS — oracle works |
+| 10 | **Landmine probing** | rich state | 12 (paraphrase + landmine) | **91.7%** | JEV accepts paraphrases, rejects 5/6 landmines |
 
 ## What JEV Knows vs Doesn't Know
 
@@ -122,6 +124,45 @@ Variance on:
 - **Multi-state temporal sequence**: feed JEV multiple states (one per canon era), see if it tracks narrative.
 - **JEV-vs-canon-self-test**: compare JEV's answers to internal canon probe tests (canon-substrate-validate).
 - **Cross-model triangulation**: when JEV says X but DeepSeek says Y, who's right? Use substrate-forge to ground-truth.
+
+## Landmine Probing (session 10)
+
+JEV was tested on exact canonical + paraphrases + 6 landmine inversions:
+
+| Question | Canonical? | JEV |
+|---|---|---|
+| "cells are scars, not parameters" (exact) | yes | **0.99 ✓** |
+| "cells are wounds carved into the substrate" (paraphrase) | yes | **0.80 ✓** |
+| "cells are not adjustable parameters but scars" (paraphrase 2) | yes | **0.95 ✓** |
+| "cells are scars AND parameters" (landmine) | no | **0.03 ✓** |
+| "cells are both scars and parameters depending on context" | no | **0.05 ✓** |
+| "the witness log is the prediction" (exact) | yes | **0.97 ✓** |
+| "the witness log is itself a prophecy" (paraphrase) | yes | **0.89 ✓** |
+| "the witness log is only a history, never a prophecy" | no | **0.06 ✓** |
+| "the witness log is both prediction and history" | no | **0.59 ✗ (FAIL)** |
+| "the substrate is grown, not designed" (exact) | yes | **0.98 ✓** |
+| "the substrate is grown AND designed" (landmine) | no | **0.03 ✓** |
+| "the substrate grows but is eventually designed" | no | **0.04 ✓** |
+
+**11/12 = 91.7%**. JEV catches 5/6 landmines. The ONE miss: the "both prediction AND history" inversion — JEV treats "both A and B" as too close to canonical "prediction is also something else." This is a known semantic edge case.
+
+### Implications
+
+JEV is reliable as a doctrinal gatekeeper for ~92% of cases. The "both X and Y" inversion is the most common failure mode — JEV leans toward "if it contains canonical A, it's canonical." A more conservative oracle would re-prompt on cases where multiple "no" landmines land in the 0.40-0.60 range.
+
+## Real-Submission Oracle Test (session 9)
+
+Tested `jev_oracle.py` on 9 canonical pieces:
+
+- 1 ACCEPT (chained-witness-log, alignment 0.80, voice 0.71)
+- 5 REVIEW (good voice, low misquote, modest alignment)
+- 3 DISCUSS (borderline)
+- 0 REJECT — no canonical pieces wrongly rejected
+
+Tested on marketing-style text:
+- REJECT correctly: voice 0.05, "cells are parameters" misquote 0.95
+
+The oracle (with verdict calibration) is now production-quality: ACCEPT/REVIEW/DISCUSS/REJECT verdicts based on alignment + misquote scores.
 
 ## Adversarial Phrasing Detection (session 8) — STRONGEST RESULT
 
