@@ -1,3 +1,27 @@
-polyform/rust/target/
+# Build artifacts
+build/
+dist/
+*.egg-info/
+ports/rust/target/
+ports/rust/Cargo.lock
+ports/ts/node_modules/
+ports/ts/dist/
+ports/ts/lib/
+ports/c/build/
+ports/c/CMakeFiles/
+
+# Editor
+.vscode/
+.idea/
+.DS_Store
+
+# Python
 __pycache__/
 *.pyc
+.pytest_cache/
+*.pyo
+
+# Node
+*.log
+package-lock.json
+yarn.lock
