@@ -1,0 +1,24 @@
+{
+  "session": 30,
+  "iso": "2026-09-21T20:40:53Z",
+  "piece": "wr25-curated-jepa-predictor",
+  "sections_probed": 1,
+  "mean_p": 1.0,
+  "cadence": "PerfectAuthentic",
+  "verdict": "ACCEPT",
+  "section_results": [
+    {
+      "section_idx": 0,
+      "section_size": 2856,
+      "yes": 7,
+      "mean_p": 1.0,
+      "mode": "whole-piece"
+    }
+  ],
+  "dream_pool_entry": {
+    "piece": "wr25-curated-jepa-predictor",
+    "p": 1.0,
+    "cadence": "PerfectAuthentic",
+    "success": true
+  }
+}
