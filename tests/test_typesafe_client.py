@@ -44,4 +44,4 @@ def test_offline_battery_smoke(tmp_path):
     import json
     r = json.loads(out.read_text())
     assert r["mode"] == "offline" and r["book_verify"] is True
-    assert r["questions"] == 9  # 3 domains × 3|2 questions
+    assert r["questions"] == 8  # 3+2+3 questions across the three domains
