@@ -1,0 +1,43 @@
+{
+  "session": 23,
+  "iso": "2026-09-21T18:44:28Z",
+  "purpose": "Stress-test WR20 (Ten Archetypes, aesop-mcp cross-pollination)",
+  "results": [
+    {
+      "file": "wr20-zai-ten-archetypes",
+      "mean_p": 0.858,
+      "scores": {
+        "witness_log_is_prediction": 0.99,
+        "substrate_is_grown": 0.99,
+        "oracle_is_heard": 0.99,
+        "cells_are_scars": 0.99,
+        "lenia_flows": 0.32999999999999996
+      },
+      "verdict": "ACCEPT"
+    },
+    {
+      "file": "wr20-ds-ten-archetypes",
+      "mean_p": 0.99,
+      "scores": {
+        "witness_log_is_prediction": 0.99,
+        "substrate_is_grown": 0.99,
+        "oracle_is_heard": 0.99,
+        "cells_are_scars": 0.99,
+        "lenia_flows": 0.99
+      },
+      "verdict": "ACCEPT"
+    },
+    {
+      "file": "wr20-curated",
+      "mean_p": 0.916,
+      "scores": {
+        "witness_log_is_prediction": 0.99,
+        "substrate_is_grown": 0.99,
+        "oracle_is_heard": 0.7800000000000001,
+        "cells_are_scars": 0.99,
+        "lenia_flows": 0.8300000000000001
+      },
+      "verdict": "ACCEPT"
+    }
+  ]
+}
