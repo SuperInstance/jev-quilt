@@ -56,7 +56,27 @@ Backends resolve `auto → q16` (deterministic, always available) → `openjev-l
 
 ## Status
 
-v0 design + reference kernel skeleton (`jev_quilt/`: cells, hooks, bookkeeper, backends) with tests. Not yet: plugin binaries, the boat, fractal dialogue engine, network entanglement transport. The queue names the lanes.
+v0.3 — reference kernel (`jev_quilt/`: cells, hooks, bookkeeper, delta engine,
+argmax Choice) with **43 Python tests green**; polyformal substrate
+(`polyform/rust/`) with **7 Rust tests green on the metal** (cargo, rustc 1.95).
+Docs: LANDSCAPE (research), SUBSTRATE (the algebra below), POLYFORMAL (five
+laws × five tongues), under-the-quilt.zh (the concept, in Chinese), PRODUCTS
+(genre → product map). Demos: `examples/fleet_pudding.py` (real lane decision,
+dogfood-recorded), `examples/dialogue_spine.py` (measured spine_share).
+
+Not yet: plugin binaries, the boat, network entanglement transport, the
+sheaf-gossip bridge (filed in PRODUCTS.md as a one-evening build).
+
+## Polyformal substrate
+
+- `polyform/rust/` — the below, on metal: exact `Q16{n,d}` (coprime
+  invariant), `Cell{coord:(i64,i64)}` with no float constructor (law 1 at
+  compile time), fnv1a-chained `Bookkeeper` with replay-verify, overflow =
+  `None` (refusal, never a wrap).
+- `polyform/mercury/bookkeeper.m` — law 4 as logic (`chain_valid/2` semidet:
+  a false log has no proof). UNVERIFIED (no mmc on node) — labeled.
+- `polyform/haskell/Cell.hs` — phantom-typed `'Lattice` vs `'Proj`;
+  `toFloatBetrayal` is the only escape to Float. UNVERIFIED (no ghc).
 
 ## License
 

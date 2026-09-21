@@ -1,0 +1,7 @@
+[package]
+name = "jev-quilt-substrate"
+version = "0.1.0"
+edition = "2021"
+description = "Below the quilt: exact rational identity, integer-lattice cells, hash-chained receipts. No floats anywhere identity lives."
+
+[dependencies]
