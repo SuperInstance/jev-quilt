@@ -1,10 +1,12 @@
 """Integration test: real TypeSafe API end-to-end. Requires TYPESAFEAI_KEY env."""
 import os
 import sys
-sys.path.insert(0, "/workspace/repos/jev-quilt")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent.parent))
 
 from jev_quilt.typesafe_client import TypeSafeBackend
 
+pytestmark = pytest.mark.skipif(not os.environ.get("TYPESAFEAI_KEY"),
+                                reason="live API: TYPESAFEAI_KEY not set")
 backend = TypeSafeBackend()
 
 def test_api_available():

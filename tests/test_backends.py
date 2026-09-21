@@ -1,5 +1,6 @@
+import pytest
 import sys
-sys.path.insert(0, "/workspace/repos/jev-quilt")
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent.parent))
 
 import os
 

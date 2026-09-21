@@ -46,6 +46,10 @@ class TypeSafeBackend:
 
     def decide_batch(self, state, questions: list[dict], model: str = "jev-latest") -> tuple[list[BackendDecision], dict]:
         """One parallel pass, N questions. Returns (decisions, meta)."""
+        if not isinstance(questions, list) or not questions:
+            raise ValueError("questions must be a non-empty list of question dicts")
+        if any(not isinstance(qq, dict) or not qq.get("question") for qq in questions):
+            raise ValueError("every question dict needs a 'question' field")
         if not self.key:
             raise RuntimeError("typesafe-api: no API key (JEV_API_KEY/TYPESAFE_API_KEY/TYPESAFEAI_KEY)")
 
