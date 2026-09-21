@@ -1,6 +1,10 @@
+import pytest
+import sys
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent.parent))
+
 import os
 
-import pytest
+
 
 from jev_quilt.backends import resolve_backend, Q16Backend, BackendDecision
 from jev_quilt.q16 import Q16

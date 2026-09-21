@@ -1,0 +1,8 @@
+[package]
+name = "jev-quilt"
+version = "0.1.0"
+edition = "2021"
+description = "JEV receipts + floors, exact-rational — Rust port of the jev-quilt contract (JEV-SPEC.md)"
+license = "MIT"
+
+[dependencies]

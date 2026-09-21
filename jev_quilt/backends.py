@@ -46,6 +46,35 @@ class Q16Backend:
                 acc = acc + t
             return BackendDecision(kind="q16", value=acc, confidence=1.0,
                                    receipt_note="q16.sum")
+        if rule == "identity":
+            # sense cell: the graded value IS the state (or payload["value"]).
+            # This is the predictor's natural partner — a cell whose value
+            # can be felt before it is booked.
+            v = payload.get("value")
+            if isinstance(v, Q16):
+                return BackendDecision(kind="value", value=v, confidence=1.0,
+                                       receipt_note="q16.identity")
+            if isinstance(state, Q16):
+                return BackendDecision(kind="value", value=state, confidence=1.0,
+                                       receipt_note="q16.identity")
+            raise ValueError("q16 identity: state/payload value must be Q16")
+        if rule == "argmax":
+            # Choice primitive, deterministic mode: exact integer weights,
+            # argmax pick, full distribution returned for calibration.
+            options = payload["options"]  # {name: int weight}
+            if not options:
+                raise ValueError("q16 argmax: empty options")
+            total = sum(options.values())
+            if total <= 0:
+                raise ValueError("q16 argmax: weights must sum positive")
+            best = max(options, key=lambda k: options[k])
+            return BackendDecision(
+                kind="choice",
+                value=best,
+                probabilities={k: options[k] / total for k in options},
+                confidence=1.0,
+                receipt_note=f"q16.argmax({best})",
+            )
         raise ValueError(f"q16 backend: unknown rule {rule!r}")
 
 
@@ -80,9 +109,15 @@ class _OpenJevStub:
 
 
 class _TypeSafeStub:
+    """Backwards-compat: v0 named this _TypeSafeStub, but it now delegates to
+    the real client. New code should import TypeSafeBackend from typesafe_client."""
     name = "typesafe-api"
 
+    def __init__(self):
+        from .typesafe_client import TypeSafeBackend
+        self._real = TypeSafeBackend()
+
     def decide(self, payload, state):
-        if not os.environ.get("TYPESAFE_API_KEY"):
-            raise RuntimeError("typesafe-api backend: TYPESAFE_API_KEY not set")
-        raise RuntimeError("typesafe-api backend not wired in v0")
+        if not self._real.available():
+            raise RuntimeError("typesafe-api backend: no API key (JEV_API_KEY/TYPESAFE_API_KEY/TYPESAFEAI_KEY)")
+        return self._real.decide(payload, state)
