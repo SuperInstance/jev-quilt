@@ -28,7 +28,8 @@ def test_unhooked_cell_silent():
 def test_deadband_silences_small_delta():
     eng = Engine()
     eng.register(_cell("src"))
-    eng.register(_cell("dst", input_hooks=[Hook("src", floor=Q16(1, 100))]))
+    eng.register(_cell("dst", input_hooks=[Hook("src", floor=Q16(1, 100))],
+                       decision={"rule": "threshold", "value": (7, 10), "threshold": (1, 2)}))
     res = eng.emit("src", {"mag": Q16(5, 1000)})  # 0.005 < 0.01
     assert res[0].reason == "silent_deadband"
     res2 = eng.emit("src", {"mag": Q16(3, 100)})  # 0.03 >= 0.01
