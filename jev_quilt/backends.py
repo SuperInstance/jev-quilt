@@ -80,9 +80,15 @@ class _OpenJevStub:
 
 
 class _TypeSafeStub:
+    """Backwards-compat: v0 named this _TypeSafeStub, but it now delegates to
+    the real client. New code should import TypeSafeBackend from typesafe_client."""
     name = "typesafe-api"
 
+    def __init__(self):
+        from .typesafe_client import TypeSafeBackend
+        self._real = TypeSafeBackend()
+
     def decide(self, payload, state):
-        if not os.environ.get("TYPESAFE_API_KEY"):
-            raise RuntimeError("typesafe-api backend: TYPESAFE_API_KEY not set")
-        raise RuntimeError("typesafe-api backend not wired in v0")
+        if not self._real.available():
+            raise RuntimeError("typesafe-api backend: no API key (JEV_API_KEY/TYPESAFE_API_KEY/TYPESAFEAI_KEY)")
+        return self._real.decide(payload, state)

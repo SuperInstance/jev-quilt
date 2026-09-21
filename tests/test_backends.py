@@ -1,6 +1,9 @@
+import sys
+sys.path.insert(0, "/workspace/repos/jev-quilt")
+
 import os
 
-import pytest
+
 
 from jev_quilt.backends import resolve_backend, Q16Backend, BackendDecision
 from jev_quilt.q16 import Q16

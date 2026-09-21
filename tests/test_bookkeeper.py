@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(0, "/workspace/repos/jev-quilt")
+
 from jev_quilt.bookkeeper import Bookkeeper
 
 
