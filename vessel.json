@@ -1,0 +1,66 @@
+{
+  "name": "jev-quilt",
+  "displayName": "JEV-Quilt",
+  "version": "0.0.1",
+  "type": "cocapn-vessel",
+  "description": "Joint Embedding Validator + cellular substrate library. Python/TypeScript/Rust.",
+  "icon": "🧬",
+  "color": "#8b5cf6",
+  "category": "research",
+  "capabilities": [
+    "models",
+    "horizons",
+    "canon-oracle"
+  ],
+  "secrets": {
+    "TYPESAFEAI_KEY": {
+      "required": false,
+      "hint": "JEV oracle API key (https://api.typesafe.ai)"
+    },
+    "ZAI_TOKEN": {
+      "required": false,
+      "hint": "Z.AI GLM-4.5 API token (https://api.z.ai)"
+    },
+    "DEEPINFRA_TOKEN": {
+      "required": false,
+      "hint": "DeepInfra API token (multi-provider LLM)"
+    },
+    "KIMI_TOKEN": {
+      "required": false,
+      "hint": "Kimi/Moonshot API token"
+    }
+  },
+  "endpoints": {
+    "health": "/health",
+    "canon_oracle": "/v1/systemone"
+  },
+  "deployment": {
+    "platform": "pypi+npm+crates.io",
+    "minPlan": "free"
+  },
+  "fleet_canary": {
+    "string": "café Δ 日本語",
+    "fnv1a_64": "0x024a555471370b18d",
+    "pinned_in": ["src/jev_quilt/__init__.py", "ports/rust/src/lib.rs", "src/index.ts"]
+  },
+  "bedrock_canon": [
+    "substrate_is_grown",
+    "oracle_is_heard",
+    "cells_are_scars",
+    "witness_log_is_prediction",
+    "lenia_flows",
+    "cosine_similarity formula",
+    "Box-Muller formula",
+    "FNV-1a canary 0xcbf29ce484222325",
+    "substrate_self_pred"
+  ],
+  "tests": {
+    "python": 29,
+    "rust": 4,
+    "typescript": 0
+  },
+  "local": {
+    "supported": true,
+    "languages": ["python", "rust", "typescript"]
+  }
+}
