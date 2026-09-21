@@ -96,6 +96,10 @@ pub fn fnv1a(data: &str) -> u64 {
 }
 
 /// One booked state change. The chain is a VALUE: verify() recomputes it.
+/// `payload` is the capped readable residue ported from the Python
+/// bookkeeper (law: "tracing is following, not guessing"): the projection
+/// keeps the full record; the receipt keeps the first 200 chars so a
+/// replay can be AUDITED without it.
 #[derive(Clone, PartialEq, Eq, Debug)]
 pub struct Receipt {
     pub tick: u64,
@@ -103,6 +107,7 @@ pub struct Receipt {
     pub kind_hash: u64,
     pub payload_hash: u64,
     pub chain: u64,
+    pub payload: String,
 }
 
 pub struct Bookkeeper {
@@ -117,14 +122,43 @@ impl Bookkeeper {
         Bookkeeper { cell: cell.to_string(), tick: 0, prev: 0, log: Vec::new() }
     }
 
+    /// Book without residue — identical to every chain this crate has
+    /// ever produced (the empty-payload hash formula is unchanged).
     pub fn book(&mut self, decision_kind: &str, state_fingerprint: u64) -> Receipt {
+        self.book_with_payload(decision_kind, state_fingerprint, "")
+    }
+
+    /// Book with a readable residue. The residue is capped at 200 chars
+    /// (the Python bookkeeper's cap, mirrored) and, when non-empty,
+    /// payload_hash IS fnv1a(residue) — exactly the Python rule
+    /// (payload_hash = sha256(residue)) — so verify() can re-derive it
+    /// from the retained payload. An empty residue keeps the historical
+    /// composite formula; back-compat is a pinned test, not a hope.
+    pub fn book_with_payload(
+        &mut self,
+        decision_kind: &str,
+        state_fingerprint: u64,
+        payload: &str,
+    ) -> Receipt {
         self.tick += 1;
         let kind_hash = fnv1a(decision_kind);
-        let payload_hash = fnv1a(&format!(
-            "{}:{}:{:016x}:{:016x}", self.cell, self.tick, kind_hash, state_fingerprint
-        ));
+        let residue: String = payload.chars().take(200).collect();
+        let payload_hash = if residue.is_empty() {
+            fnv1a(&format!(
+                "{}:{}:{:016x}:{:016x}", self.cell, self.tick, kind_hash, state_fingerprint
+            ))
+        } else {
+            fnv1a(&residue)
+        };
         let chain = fnv1a(&format!("{:016x}:{:016x}", self.prev, payload_hash));
-        let r = Receipt { tick: self.tick, prev_hash: self.prev, kind_hash, payload_hash, chain };
+        let r = Receipt {
+            tick: self.tick,
+            prev_hash: self.prev,
+            kind_hash,
+            payload_hash,
+            chain,
+            payload: residue,
+        };
         self.log.push(r.clone());
         self.prev = chain;
         r
@@ -139,6 +173,12 @@ impl Bookkeeper {
             // retain the fingerprint — the chain binds it, and the original
             // fingerprint lives in the projection. So verify re-derives the
             // CHAIN (and tick discipline); payload integrity is transitive.
+            // Exception: a non-empty retained residue hashes ITSELF
+            // (fnv1a(residue), the Python rule), so verify re-derives that
+            // too — tampering with the residue is caught here.
+            if !r.payload.is_empty() && fnv1a(&r.payload) != r.payload_hash {
+                return false;
+            }
             let expect_chain = fnv1a(&format!("{:016x}:{:016x}", prev, r.payload_hash));
             if r.tick != (i + 1) as u64 || r.prev_hash != prev || r.chain != expect_chain {
                 return false;
@@ -201,6 +241,51 @@ mod tests {
         let mut forged = bk;
         forged.log[0].payload_hash ^= 0xdead_beef; // tamper
         assert!(!forged.verify());
+    }
+
+    #[test]
+    fn empty_payload_hash_formula_is_backward_compatible() {
+        // same inputs as the pre-residue book(): same payload_hash, so old
+        // chains still replay. Pin it with the historical formula inline.
+        let mut bk = Bookkeeper::new("legacy.cell");
+        let r = bk.book("decided", 42);
+        let kind_hash = fnv1a("decided");
+        let expect = fnv1a(&format!("legacy.cell:1:{:016x}:{:016x}", kind_hash, 42));
+        assert_eq!(r.payload_hash, expect);
+        assert!(r.payload.is_empty());
+        assert!(bk.verify());
+    }
+
+    #[test]
+    fn residue_is_capped_at_200_chars_and_retained() {
+        let mut bk = Bookkeeper::new("audit.cell");
+        let long = "x".repeat(300);
+        let r = bk.book_with_payload("decided", 7, &long);
+        assert_eq!(r.payload.chars().count(), 200); // Python cap, mirrored
+        assert!(r.payload.ends_with('x'));
+        assert_eq!(r.payload_hash, fnv1a(&r.payload)); // Python rule: hash OF the residue
+        assert!(bk.verify());
+    }
+
+    #[test]
+    fn payload_hash_binds_residue_tamper_caught() {
+        let mut bk = Bookkeeper::new("audit.cell");
+        bk.book_with_payload("decided", 7, "{\"value\": \"1/2\"}");
+        let mut forged = bk;
+        // tamper with the READABLE part — the hash over it must disagree
+        forged.log[0].payload.push_str(" — injected");
+        assert!(!forged.verify());
+    }
+
+    #[test]
+    fn mixed_empty_and_residue_chains_replay() {
+        let mut bk = Bookkeeper::new("mixed.cell");
+        bk.book("decided", 1);
+        bk.book_with_payload("rejected", 2, "reason=fuel");
+        bk.book("decided", 3);
+        assert!(bk.verify());
+        assert_eq!(bk.wake_state().0, 3);
+        assert_eq!(bk.log[1].payload, "reason=fuel");
     }
 
     #[test]

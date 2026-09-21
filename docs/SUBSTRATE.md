@@ -67,6 +67,13 @@ compresses. Hashing is fnv1a (integrity, not security) — the same
 algorithm as the fleet's rate limiter and hermit's WAL, so the whole
 fleet shares one notion of "chained."
 
+Since the predictor/flywheel wave, a receipt may also carry its **capped
+readable residue** (first 200 chars, same cap as the Python bookkeeper):
+hashing is still over the receipt alone — for a non-empty residue,
+`payload_hash = fnv1a(residue)`, so `verify` re-derives it from the
+retained text and a tampered residue breaks replay. Tracing is
+following, not guessing.
+
 ## 6. The sheaf observation (the one fancy sentence)
 
 Each cell's view of the fabric is a **local section**. The bookkeeper's
