@@ -2,7 +2,7 @@
 
 > *Doc grows as we run sessions. JEV is a Joint Embedding Validator that answers noul / choice / score questions about a `state`.*
 
-## 14 Sessions Run (this worktree, Sept 21)
+## 15 Sessions Run (this worktree, Sept 21)
 
 | Session | Topic | State | Questions | JEV Accuracy | Key Finding |
 |---|---|---|---|---|---|
@@ -20,6 +20,7 @@
 | 12 | Comparative ranking | rich state | 3 pairs | works | "algebra-of-eleven" beats "alignment-kills" 0.92 |
 | 13 | **Temporal narrative** | per-era | 10 (3 eras) | **100%** | JEV tracks 5→11 opcodes, 13 ports across era snapshots |
 | 14 | **Threshold profiling** | rich state | 10 × 10 iters | n/a | 100 decisions: gap from 0.5 is 0.342-0.486, std ≤ 0.013 |
+| 15 | **Batching efficiency** | rich state | 1-80 × 2 iters | n/a | 1q=448ms, 80q=435ms = 5ms/q. Always batch. |
 
 ## What JEV Knows vs Doesn't Know
 
