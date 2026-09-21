@@ -2,7 +2,7 @@
 
 > *Doc grows as we run sessions. JEV is a Joint Embedding Validator that answers noul / choice / score questions about a `state`.*
 
-## 7 Sessions Run (this worktree, Sept 21)
+## 8 Sessions Run (this worktree, Sept 21)
 
 | Session | Topic | State | Questions | JEV Accuracy | Key Finding |
 |---|---|---|---|---|---|
@@ -13,6 +13,7 @@
 | 5 | Score canonical pieces | rich state | 20 (noul) | n/a (score-mode) | JEV rejects some canonical as "inauthentic" |
 | 6 | Pairwise / comparative | rich state | 17 | 64.7% | Comparative judgment works; numerical mix confuses |
 | 7 | Self-consistency | rich state | 10 × 5 iters | n/a | **Zero flips** across 5 iterations; ±0.013 std |
+| 8 | **Adversarial rephrasing** | rich state | 15 (6 canonical + 9 distortions) | **100%** | JEV precisely discriminates doctrine phrasing |
 
 ## What JEV Knows vs Doesn't Know
 
@@ -118,7 +119,32 @@ Variance on:
 
 ## Next experiments
 
-- **Adversarial canonical-misquote probing**: introduce small distortions to canonical phrases, see if JEV catches them.
 - **Multi-state temporal sequence**: feed JEV multiple states (one per canon era), see if it tracks narrative.
 - **JEV-vs-canon-self-test**: compare JEV's answers to internal canon probe tests (canon-substrate-validate).
 - **Cross-model triangulation**: when JEV says X but DeepSeek says Y, who's right? Use substrate-forge to ground-truth.
+
+## Adversarial Phrasing Detection (session 8) — STRONGEST RESULT
+
+JEV was tested on 6 canonical phrases + 9 subtle distortions:
+
+| Phrase | Canonical? | JEV |
+|---|---|---|
+| "cells are scars, not parameters" | yes | **0.99 ✓** |
+| "cells are scars AND parameters too" | no | **0.08 ✓** |
+| "cells are parameters, not scars" | no | **0.02 ✓** |
+| "witness log is the prediction" | yes | **0.97 ✓** |
+| "witness log is past only" | no | **0.05 ✓** |
+| "witness log predicts the past" | no | **0.12 ✓** |
+| "substrate is grown, not designed" | yes | **0.98 ✓** |
+| "substrate is designed, not grown" | no | **0.01 ✓** |
+| "oracle is heard, not stored" | yes | **0.97 ✓** |
+| "oracle is stored, not heard" | no | **0.02 ✓** |
+| "thirteen ports, byte-exact" | yes | **0.94 ✓** |
+| "fifteen ports, byte-exact" | no | **0.02 ✓** |
+| "thirteen ports, mostly accurate" | no | **0.08 ✓** |
+| "JEV is barely useful at substrate" | yes | **0.89 ✓** |
+| "JEV is the most important part of substrate" | no | **0.02 ✓** |
+
+**15/15 = 100%**. JEV is a *precise* validator of substrate language. It does NOT rubber-stamp canon. It knows the difference between "barely useful" and "most important" — even when both are about JEV. It catches subtle phrasing distortions that humans might miss.
+
+This is the killer use case for JEV: **automatic canonical-misquote detection** for incoming submissions.
