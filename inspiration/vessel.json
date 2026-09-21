@@ -1,0 +1,48 @@
+{
+  "name": "jev-quilt-inspiration",
+  "displayName": "JEV-Quilt Inspiration Tools",
+  "version": "0.1.0",
+  "type": "cocapn-vessel",
+  "description": "Tools inspired by the SuperInstance fleet — CadenceOracle, WitnessDreamCycle, InstinctBands, SubstrateDNA, JEVAdversarial, JEVSessionWithCadence.",
+  "icon": "🌱",
+  "color": "#10b981",
+  "category": "research",
+  "capabilities": [
+    "canon-oracle",
+    "dream-cycle",
+    "instinct-bands",
+    "substrate-dna",
+    "adversarial-test",
+    "session-with-cadence"
+  ],
+  "secrets": {
+    "TYPESAFEAI_KEY": {
+      "required": true,
+      "hint": "JEV oracle API key"
+    },
+    "ZAI_TOKEN": {
+      "required": false,
+      "hint": "Z.AI GLM-4.5 API token"
+    },
+    "DEEPINFRA_TOKEN": {
+      "required": false,
+      "hint": "DeepInfra API token"
+    }
+  },
+  "tools": [
+    {"name": "cadence_oracle.py", "source": "agent-cadence-progress", "purpose": "Map JEV mean_p to 5 cadence types"},
+    {"name": "witness_dream_cycle.py", "source": "agent-dream-cycle", "purpose": "Replay JEV sessions, consolidate patterns"},
+    {"name": "instinct_bands.py", "source": "aboracle", "purpose": "5-instinct work queue for vibecoder"},
+    {"name": "substrate_dna.py", "source": "agent-dna", "purpose": "10 substrate traits, evolution simulator"},
+    {"name": "jev_adversarial.py", "source": "adversarial-red-team", "purpose": "Test JEV defenses against prompt injection"},
+    {"name": "jev_session_with_cadence.py", "source": "R7 standard", "purpose": "Integrated per-section JEV + CadenceOracle"}
+  ],
+  "fleet_canary": {
+    "string": "café Δ 日本語",
+    "fnv1a_64": "0x024a555471370b18d"
+  },
+  "deployment": {
+    "platform": "stdlib-only",
+    "minPlan": "free"
+  }
+}
