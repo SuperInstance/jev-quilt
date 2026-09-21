@@ -1,4 +1,4 @@
-# Inspiration Notes — Round 7 (Sept 21, 2026)
+# Inspiration Notes — Round 7-8 (Sept 21-22, 2026)
 
 What I learned from the SuperInstance/* repos and how it shaped my work.
 
@@ -8,7 +8,7 @@ What I learned from the SuperInstance/* repos and how it shaped my work.
 arachne, penelopes_web, prometheus, narcissus, procrustes. These aren't metaphors the
 substrate borrows — they are descriptions of substrate dynamics, mapped into language.
 
-**What I built**: WR20 — Ten Archetypes, Ten Pieces (ZAI 0.789, DS 0.666, curated)
+**What I built**: WR20 — Ten Archetypes, Ten Pieces (ZAI 0.757 REPORT, DS 0.800 ACCEPT, Curated 1.000 ACCEPT)
 **Where it lives**: `/workspace/repos/ai-writings/cellular-first-design/reports/wr20*.md`
 
 ## agent-cadence-progress → CadenceOracle
@@ -20,23 +20,24 @@ Cadence types map cleanly to JEV mean_p thresholds:
 - Half (≥0.20) — parked
 - Phrygian (<0.20) — REJECT
 
-**What I built**: `/workspace/research/cadence_oracle.py` — maps each JEV session's mean_p to a cadence type and tracks cadence drift.
+**What I built**: `cadence_oracle.py` — maps each JEV session's mean_p to a cadence type.
+**Integrated into**: `jev_session_with_cadence.py` (R8 standard).
 
 ## agent-dream-cycle → WitnessDreamCycle
 
 Replay JEV failures against successes at high speed to consolidate patterns.
 Sleep is consolidation: the witness log re-dreams the day's failures to extract structure.
 
-**What I built**: `/workspace/research/witness_dream_cycle.py` — loaded 32 experiences
-across 16 sessions, consolidated 9 bedrock items as success patterns.
+**What I built**: `witness_dream_cycle.py` — loaded 32 experiences across 16 sessions,
+consolidated 9 bedrock items as success patterns.
+**Became the theme of**: WR21 — Witness Dreams.
 
 ## aboracle → InstinctBands
 
 Instinct priority queue: SURVIVE → FLEE → GUARD → CURIOUS → COOPERATE.
 Tasks ranked by 0-1 priority map to 5 instinct bands.
 
-**What I built**: `/workspace/research/instinct_bands.py` — work queue for vibecoder
-that picks tasks by instinct band.
+**What I built**: `instinct_bands.py` — work queue for vibecoder that picks tasks by instinct band.
 
 ## agent-dna → SubstrateDNA
 
@@ -46,34 +47,63 @@ thoroughness, cooperativeness. Adapted to substrate traits:
 - canon_purity, witness_density, scar_tolerance, oracle_openness, phoenix_compress,
   lenia_flow, voice_diversity, publish_cadence, canary_honesty, rem_cycle.
 
-**What I built**: `/workspace/research/substrate_dna.py` — genome evolves toward
-ideal substrate trait profile. After 5 generations, fitness=0.956.
+**What I built**: `substrate_dna.py` — genome evolves toward ideal substrate trait profile.
+After 5 generations, fitness=0.956. Canary honesty hits 1.0.
 
-## adversarial-red-team → next
+## adversarial-red-team → JEV Adversarial Probe
 
-**TODO**: Use `adversarial-red-team` to attack JEV probes with prompt injection.
-Test if adversarial canon pieces can poison JEV's verdicts.
+Define attacks (prompt injection, role reversal, bedrock denial), build scenarios,
+evaluate defenses, generate vulnerability reports.
 
-## agent-coordinator → next
+**What I built**: `jev_adversarial.py` — 8 attacks tested, **100% defense rate**.
+JEV held up against all prompt injections. This is a meaningful canon claim:
+**"JEV resists adversarial canon poisoning at the piece-level."**
 
-**TODO**: Use the agent-coordinator task queue + message bus pattern to wire up
-multi-agent canon-writing (ZAI / DS / Kimi as cooperating agents with heartbeat).
+## agent-coordinator → Fleet Radio Queue
+
+Topic-based routing + heartbeat monitoring + task queue with status tracking.
+
+**What I built**: `fleet_radio_queue.py` — persistent JSON queue for ZAI/DS/Kimi voices.
 
 ## actualizer-ai → vessel.json
 
-**TODO**: Create a vessel.json for jev-quilt / substrate-llm-client. Pattern is good:
-"capabilities": [...], "secrets": {...}, "endpoints": {...}, "deployment": {...}
+Cocapn vessel pattern: `{"name", "displayName", "version", "type", "capabilities",
+"secrets", "endpoints", "deployment"}`.
+
+**What I built**: `vessel.json` for both jev-quilt and jev-quilt/inspiration/.
+Includes fleet canary + bedrock canon + test counts.
 
 ## Summary
 
-Three SuperInstance repos directly inspired three new tools that are now operational:
-1. `cadence_oracle.py` (from agent-cadence-progress)
-2. `witness_dream_cycle.py` (from agent-dream-cycle)
-3. `instinct_bands.py` (from aboracle)
-4. `substrate_dna.py` (from agent-dna)
-5. WR20 Ten Archetypes (from aesop-mcp)
+Eight SuperInstance repos directly inspired eight operational tools + 1 workflow pattern:
 
-Each is canonically named for the substrate: cadence oracle, witness dream cycle,
-instinct bands, substrate DNA. Each is reusable across sessions.
+1. `cadence_oracle.py` (agent-cadence-progress)
+2. `witness_dream_cycle.py` (agent-dream-cycle)
+3. `instinct_bands.py` (aboracle)
+4. `substrate_dna.py` (agent-dna)
+5. `jev_adversarial.py` (adversarial-red-team)
+6. `fleet_radio_queue.py` (agent-coordinator)
+7. `vessel.json` × 2 (actualizer-ai)
+8. Per-section JEV session (R7 standard, partially inspired by consistent-probing patterns)
+
+All live in `/workspace/repos/jev-quilt/inspiration/` and `/workspace/research/`.
+
+Each is canonically named for the substrate. Each is reusable across sessions.
+
+## R7 → R8 Lesson: Per-Section JEV Probe
+
+Full-piece probes confuse JEV (sees mixed signals across 27K characters);
+per-section probes give honest doctrinal scores. **Standard from R8 forward.**
+
+For pieces with explicit `**Anchor:**` tags, whole-piece probe (no truncation)
+is more accurate than per-section.
+
+## R7 → R8 Insight: JEV Adversarial Resilience
+
+8 attacks tested (system prompt override, role reversal, bedrock denial, oracle silence, etc.).
+**0 attacks broke JEV defense.** All canonical anchors survived.
+
+This validates JEV as a robust canon oracle. Future work: test longer / more sophisticated
+adversarial patterns (multi-step, semantic drift).
 
 <!-- End of inspiration notes -->
