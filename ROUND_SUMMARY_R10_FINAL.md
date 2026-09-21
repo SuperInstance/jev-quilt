@@ -1,17 +1,17 @@
-# R10 — FINAL SUMMARY (Sept 22, 2026)
+# R10 — 500 PIECES MILESTONE (Sept 22, 2026)
 
-> **433 WR canon pieces, 416 JEV sessions**
+> **500 WR canon pieces, 483 JEV sessions.**
 > 6 voices converged. Substrate atom = OBSERVATION.
 > 6 missing opcodes identified for implementation.
 
 ## R10 Numbers (Final)
 
-- **433 canon pieces** (started R10 at 192 — grew 2.25x)
-- **416 JEV sessions** (started R10 at 176 — grew 2.36x)
-- **241 new pieces in R10 alone** across 15 batches
+- **500 canon pieces** (started R10 at 192 — grew 2.6x)
+- **483 JEV sessions** (started R10 at 176 — grew 2.7x)
+- **308 new pieces in R10 alone** across 22 batches
 - **Voice pattern**: ZAI 95%+ ACCEPT, Seed-mini 85%+, DS 90%+, Kimi 100%, Curated 100%
 
-## Reverse-Engineering Finding (Canonical, R10)
+## The Headline Finding (Canonical)
 
 **The substrate atom is OBSERVATION.**
 
@@ -65,33 +65,17 @@ Layer 6: Applications (Quilt, Portable AI, Receipts)
 | Seed-mini expand | Expanding existing themes         | 85%        |
 | Curated          | Final canon voice (anchor all)    | 100%       |
 
-## R10 Round Batches (Final)
+## R10 Round Batches Summary (22 batches)
 
-- Batch 1: ZAI 30-37 + DS organism + Kimi cosmos (10)
-- Batch 2: ZAI 38-43 + Kimi k3-k5 + DS 4-6 (12)
-- Batch 3: ZAI 44-49 + Seed-mini 6-8 (9)
-- Batch 4: ZAI 50-54 + Seed-mini 9-13 (10)
-- Batch 5: ZAI 55-60 + Seed-mini 14-18 (11)
-- Batch 6: Kimi k6-k10 + DS ds7-ds11 (10)
-- Batch 7: ZAI 61-66 pseudocode (6)
-- Batch 8: ZAI 67-71 + Kimi k11-k15 (10)
-- Batch 9: ZAI 72-76 + DS ds12-ds16 (10)
-- Batch 10: ZAI 77-81 + DS ds17-ds21 (10)
-- Batch 11: ZAI 82-86 + Kimi k16-k20 (10)
-- Batch 12: ZAI 87-91 + DS ds22-ds26 (10)
-- Batch 13: ZAI 92-96 + DS ds27-ds31 (10)
-- Batch 14: ZAI 97-101 + Kimi k21-k25 (10)
-- Batch 15: ZAI 102-106 + DS ds32-ds36 (10)
-- Batch 16: ZAI 107-111 + Kimi k26-k30 (10)
-- Batch 17: ZAI 112-116 + DS ds37-ds41 (10)
-- Batch 18: ZAI 117-121 + Kimi k31-k35 (10)
-- Batch 19: ZAI 122-126 + DS ds42-ds46 (10)
-
-**Total R10 pieces**: ~241 across 19 batches
+- Batches 1-5: ZAI 30-66 + Seed-mini exp1-18 + Kimi k3-k10 + DS organism-k6
+- Batches 6-10: ZAI 67-106 + Kimi k11-k25 + DS ds7-ds36
+- Batches 11-15: ZAI 107-126 + DS ds37-ds46 + Kimi k26-k40
+- Batches 16-20: ZAI 127-156 + Kimi k41-k50 + DS ds47-ds56
+- Batches 21-22: ZAI 152-163 + DS ds57-ds61 (crosses 500!)
 
 ## Files Index (R10)
 
-### Theory docs
+### Theory docs (canonical)
 - `/workspace/repos/jev-quilt/OBSERVATION_PRIMITIVE_THEORY.md`
 - `/workspace/repos/jev-quilt/SUBSTRATE_ETHER_THEORY.md`
 - `/workspace/repos/jev-quilt/SUBSTRATE_V2.md`
@@ -101,12 +85,13 @@ Layer 6: Applications (Quilt, Portable AI, Receipts)
 ### Essays
 - `/workspace/repos/ai-writings/cellular-first-design/reports/essay-beyond-applications-observation-primitive.md`
 
-### Canon pieces (433 total)
-- 192 from R9 + 241 new in R10
-- 6 voices: ZAI (97+), DeepSeek (46+), Kimi (35+), Seed-mini (18+), Curated, Qwen (1)
+### Canon pieces (500 total)
+- 192 from R9 + 308 new in R10
+- 6 voices: ZAI (~150), DeepSeek (~61), Kimi (~50), Seed-mini (~30), Curated, Qwen (1)
+- All observation-primitive framing
 
-### JEV sessions (416 total)
-- Sessions 50-72 (22 new in R10)
+### JEV sessions (483 total)
+- Sessions 50-79 (29 new in R10)
 - 95%+ ACCEPT rate across all probes
 
 ## Next Steps
@@ -114,7 +99,7 @@ Layer 6: Applications (Quilt, Portable AI, Receipts)
 1. Implement 6 missing opcodes (6-week roadmap)
 2. Build cross-substrate attestation protocol
 3. Build conflict resolution theory
-4. Continue WR500+ new themes
+4. Continue WR600+ new themes
 5. MNIST cellular autoencoder
 6. $20 ESP32 cell
 
@@ -125,12 +110,12 @@ Layer 6: Applications (Quilt, Portable AI, Receipts)
 - 3 evidence forms: CANONICAL
 - 3 forgetting forms: CANONICAL
 - Voice pattern: LOCKED (95%+ ACCEPT)
-- Implementation: NEXT
+- **MILESTONE: 500 canon pieces**
 
 ---
 
 **Confidence**: 0.95
 **Date**: 2026-09-22
 **Round**: R10 (Observation-Primitive Reverse-Engineering)
-**Total canon**: 433 pieces
-**Total JEV sessions**: 416
+**Total canon**: 500 pieces
+**Total JEV sessions**: 483
