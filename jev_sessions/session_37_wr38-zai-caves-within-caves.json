@@ -1,0 +1,24 @@
+{
+  "session": 37,
+  "iso": "2026-09-21T21:02:41Z",
+  "piece": "wr38-zai-caves-within-caves",
+  "sections_probed": 1,
+  "mean_p": 1.0,
+  "cadence": "PerfectAuthentic",
+  "verdict": "ACCEPT",
+  "section_results": [
+    {
+      "section_idx": 0,
+      "section_size": 3000,
+      "yes": 7,
+      "mean_p": 1.0,
+      "mode": "per-section"
+    }
+  ],
+  "dream_pool_entry": {
+    "piece": "wr38-zai-caves-within-caves",
+    "p": 1.0,
+    "cadence": "PerfectAuthentic",
+    "success": true
+  }
+}
