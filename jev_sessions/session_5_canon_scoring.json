@@ -1,0 +1,231 @@
+{
+  "timestamp": 1790000253.911699,
+  "iso": "2026-09-21T14:17:33Z",
+  "state": {
+    "fleet_radio_seed": "xochitl",
+    "canonical_substrate": {
+      "voice": "Fleet Radio \u2014 technical-poetic naval transmission",
+      "doctrines": [
+        "Cells are scars, not parameters.",
+        "The witness log is the prediction.",
+        "The substrate is grown, not designed.",
+        "The oracle is heard, not stored.",
+        "Lenia flows where Conway stands still.",
+        "The canary hash 0xcbf29ce484222325 is the offset basis of all things.",
+        "Thirteen ports, byte-exact.",
+        "JEV says JEV is barely useful at substrate."
+      ],
+      "negative_examples": [
+        "Corporate marketing prose",
+        "Generic LLM chatbot-style apologies",
+        "Academic jargon without substrate metaphors"
+      ]
+    }
+  },
+  "probes": [
+    {
+      "name": "voice_algebra-of-eleven",
+      "kind": "noul"
+    },
+    {
+      "name": "doctrine_algebra-of-eleven",
+      "kind": "noul"
+    },
+    {
+      "name": "voice_alignment-kills",
+      "kind": "noul"
+    },
+    {
+      "name": "doctrine_alignment-kills",
+      "kind": "noul"
+    },
+    {
+      "name": "voice_bell-state-tarot",
+      "kind": "noul"
+    },
+    {
+      "name": "doctrine_bell-state-tarot",
+      "kind": "noul"
+    },
+    {
+      "name": "voice_chained-witness-log",
+      "kind": "noul"
+    },
+    {
+      "name": "doctrine_chained-witness-log",
+      "kind": "noul"
+    },
+    {
+      "name": "voice_checkers-engine",
+      "kind": "noul"
+    },
+    {
+      "name": "doctrine_checkers-engine",
+      "kind": "noul"
+    },
+    {
+      "name": "voice_constellation-seed",
+      "kind": "noul"
+    },
+    {
+      "name": "doctrine_constellation-seed",
+      "kind": "noul"
+    },
+    {
+      "name": "voice_cosine-sentence",
+      "kind": "noul"
+    },
+    {
+      "name": "doctrine_cosine-sentence",
+      "kind": "noul"
+    },
+    {
+      "name": "voice_dice",
+      "kind": "noul"
+    },
+    {
+      "name": "doctrine_dice",
+      "kind": "noul"
+    },
+    {
+      "name": "voice_dna-of-the-substrate",
+      "kind": "noul"
+    },
+    {
+      "name": "doctrine_dna-of-the-substrate",
+      "kind": "noul"
+    },
+    {
+      "name": "voice_frequency-drift",
+      "kind": "noul"
+    },
+    {
+      "name": "doctrine_frequency-drift",
+      "kind": "noul"
+    }
+  ],
+  "decisions": [
+    {
+      "kind": "noul",
+      "value": "0.56",
+      "confidence": 0.56,
+      "name": "voice_algebra-of-eleven"
+    },
+    {
+      "kind": "noul",
+      "value": "0.71",
+      "confidence": 0.71,
+      "name": "doctrine_algebra-of-eleven"
+    },
+    {
+      "kind": "noul",
+      "value": "0.25",
+      "confidence": 0.25,
+      "name": "voice_alignment-kills"
+    },
+    {
+      "kind": "noul",
+      "value": "0.18",
+      "confidence": 0.18,
+      "name": "doctrine_alignment-kills"
+    },
+    {
+      "kind": "noul",
+      "value": "0.53",
+      "confidence": 0.53,
+      "name": "voice_bell-state-tarot"
+    },
+    {
+      "kind": "noul",
+      "value": "0.52",
+      "confidence": 0.52,
+      "name": "doctrine_bell-state-tarot"
+    },
+    {
+      "kind": "noul",
+      "value": "0.5",
+      "confidence": 0.5,
+      "name": "voice_chained-witness-log"
+    },
+    {
+      "kind": "noul",
+      "value": "0.73",
+      "confidence": 0.73,
+      "name": "doctrine_chained-witness-log"
+    },
+    {
+      "kind": "noul",
+      "value": "0.5",
+      "confidence": 0.5,
+      "name": "voice_checkers-engine"
+    },
+    {
+      "kind": "noul",
+      "value": "0.42",
+      "confidence": 0.42,
+      "name": "doctrine_checkers-engine"
+    },
+    {
+      "kind": "noul",
+      "value": "0.44",
+      "confidence": 0.44,
+      "name": "voice_constellation-seed"
+    },
+    {
+      "kind": "noul",
+      "value": "0.41",
+      "confidence": 0.41,
+      "name": "doctrine_constellation-seed"
+    },
+    {
+      "kind": "noul",
+      "value": "0.23",
+      "confidence": 0.23,
+      "name": "voice_cosine-sentence"
+    },
+    {
+      "kind": "noul",
+      "value": "0.28",
+      "confidence": 0.28,
+      "name": "doctrine_cosine-sentence"
+    },
+    {
+      "kind": "noul",
+      "value": "0.46",
+      "confidence": 0.46,
+      "name": "voice_dice"
+    },
+    {
+      "kind": "noul",
+      "value": "0.54",
+      "confidence": 0.54,
+      "name": "doctrine_dice"
+    },
+    {
+      "kind": "noul",
+      "value": "0.51",
+      "confidence": 0.51,
+      "name": "voice_dna-of-the-substrate"
+    },
+    {
+      "kind": "noul",
+      "value": "0.33",
+      "confidence": 0.33,
+      "name": "doctrine_dna-of-the-substrate"
+    },
+    {
+      "kind": "noul",
+      "value": "0.58",
+      "confidence": 0.58,
+      "name": "voice_frequency-drift"
+    },
+    {
+      "kind": "noul",
+      "value": "0.69",
+      "confidence": 0.69,
+      "name": "doctrine_frequency-drift"
+    }
+  ],
+  "voice_mean": 0.45599999999999996,
+  "doctrine_mean": 0.48099999999999987
+}

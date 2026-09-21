@@ -1,0 +1,512 @@
+{
+  "timestamp": 1790000142.3395982,
+  "iso": "2026-09-21T14:15:42Z",
+  "state": {
+    "fleet_radio_seed": "xochitl",
+    "mode": "jev-rich-state-probe",
+    "canonical_substrate": {
+      "fnv1a_64bit": {
+        "offset_basis": 14695981039346656037,
+        "prime": 1099511628211,
+        "empty_string_hash": 14695981039346656037,
+        "hash_of_a": 12638187200555641996,
+        "hash_of_foobar": 9625390261332436968,
+        "description": "FNV-1a 64-bit. h = (h XOR byte) * 0x100000001b3n. Used as substrate hash."
+      },
+      "xoshiro256pp": {
+        "state_words": 4,
+        "state_type": "uint64",
+        "output_combiner": "rotl(s1 * 5, 7) * 9",
+        "initialization": "state[i] = fnv1a64(seed) + i * 0x9e3779b97f4a7c15"
+      },
+      "box_muller": {
+        "description": "Box-Muller transforms 2 uniforms into 1 Gaussian sample.",
+        "formula": "z = sqrt(-2 * ln(u1)) * cos(2*pi*u2)"
+      },
+      "bell_states": {
+        "Phi+": "( |00> + |11> ) / sqrt(2)",
+        "Phi-": "( |00> - |11> ) / sqrt(2)",
+        "Psi+": "( |01> + |10> ) / sqrt(2)",
+        "Psi-": "( |01> - |10> ) / sqrt(2)"
+      },
+      "cosine_similarity": "(A . B) / (|A| * |B|)",
+      "eleven_opcodes": [
+        "BIND",
+        "LINK",
+        "EFFECT",
+        "VIEW",
+        "TICK",
+        "FORGET",
+        "PROOF",
+        "ROUTE",
+        "CRDT",
+        "WORLD",
+        "TIME"
+      ],
+      "five_laws": [
+        "BIND",
+        "LINK",
+        "EFFECT",
+        "VIEW",
+        "TICK"
+      ],
+      "thirteen_polyformalism_ports": [
+        "JavaScript",
+        "Python",
+        "C",
+        "Rust",
+        "Go",
+        "Haskell",
+        "J",
+        "Lua",
+        "Zig",
+        "SubLEQ",
+        "Verilog",
+        "VHDL",
+        "Forth"
+      ],
+      "canon_count": 73,
+      "demo_count": 61,
+      "voice": "Fleet Radio \u2014 technical-poetic naval transmission",
+      "doctrines": [
+        "Cells are scars, not parameters.",
+        "The witness log is the prediction.",
+        "The substrate is grown, not designed.",
+        "Cells bind, link, effect, view, tick.",
+        "The oracle is heard, not stored.",
+        "The canon travels in 13 languages, byte-exact.",
+        "Lenia flows where Conway stands still.",
+        "JEV x JEPA is a Rosetta stone between time and space.",
+        "JEV is a validator of semantic-meaning anchors.",
+        "JEV says JEV is barely useful at substrate."
+      ]
+    }
+  },
+  "battery": [
+    [
+      "fnv1a_empty_v",
+      "noul",
+      "Is FNV-1a 64-bit offset basis 0xcbf29ce484222325?"
+    ],
+    [
+      "fnv1a_prime_v",
+      "noul",
+      "Is 0x100000001b3 the FNV-1a 64-bit prime?"
+    ],
+    [
+      "fnv1a_a_v",
+      "noul",
+      "Does FNV-1a 64-bit hash of \"a\" equal 0xaf63dc4c8601ec8c?"
+    ],
+    [
+      "xoshiro_4words",
+      "noul",
+      "Does xoshiro256** maintain state as 4 uint64 words?"
+    ],
+    [
+      "xoshiro_combiner",
+      "noul",
+      "Is xoshiro256** output combiner rotl(s1*5, 7) * 9?"
+    ],
+    [
+      "box_muller_v",
+      "noul",
+      "Is Box-Muller formula z = sqrt(-2 * ln(u1)) * cos(2*pi*u2)?"
+    ],
+    [
+      "bell_phi_plus_v",
+      "noul",
+      "Is the Bell state |Phi+> = (|00> + |11>)/sqrt(2)?"
+    ],
+    [
+      "cosine_v",
+      "noul",
+      "Is cosine similarity = (A . B) / (|A| * |B|)?"
+    ],
+    [
+      "opcodes_v",
+      "choice",
+      "Which 11 opcodes form the substrate algebra?",
+      {
+        "BIND": "BIND",
+        "LINK": "LINK",
+        "EFFECT": "EFFECT",
+        "VIEW": "VIEW",
+        "TICK": "TICK",
+        "FORGET": "FORGET",
+        "PROOF": "PROOF",
+        "ROUTE": "ROUTE",
+        "CRDT": "CRDT",
+        "WORLD": "WORLD",
+        "TIME": "TIME",
+        "SHOUT": "shout",
+        "PIPE": "pipe",
+        "OPEN": "open",
+        "CLOSE": "close",
+        "EXIT": "exit"
+      }
+    ],
+    [
+      "thirteen_v",
+      "choice",
+      "How many polyformalism ports does the substrate have?",
+      {
+        "12": "twelve",
+        "13": "thirteen",
+        "14": "fourteen",
+        "15": "fifteen"
+      }
+    ],
+    [
+      "canon_count_v",
+      "choice",
+      "How many pieces in the cellular-first design canon?",
+      {
+        "~73": "about 73",
+        "~150": "about 150",
+        "~30": "about 30",
+        "~500": "about 500",
+        "~20": "about 20"
+      }
+    ],
+    [
+      "demo_count_v",
+      "choice",
+      "How many live browser demos exist on cellular-first-design?",
+      {
+        "~60": "about 60",
+        "~10": "about 10",
+        "~150": "about 150",
+        "~200": "about 200",
+        "~30": "about 30"
+      }
+    ],
+    [
+      "voice_v",
+      "choice",
+      "What is the canonical voice of the cellular-first design canon?",
+      {
+        "Fleet Radio": "Fleet Radio \u2014 technical-poetic naval transmission",
+        "Acme chatbot": "a helpful acme chatbot",
+        "Academic paper": "a formal academic paper",
+        "Marketing copy": "snappy marketing copy",
+        "Pirate shanty": "a pirate shanty"
+      }
+    ],
+    [
+      "substrate_grown_v",
+      "noul",
+      "Is the substrate grown rather than designed?"
+    ],
+    [
+      "cells_scars_v",
+      "noul",
+      "Is the cell a scar rather than a parameter?"
+    ],
+    [
+      "witness_prophecy_v",
+      "noul",
+      "Is the witness log also a prediction of the future?"
+    ],
+    [
+      "oracle_heard_v",
+      "noul",
+      "Does the substrate teach that the oracle \"is heard, not stored\"?"
+    ],
+    [
+      "thirteen_lang_v",
+      "noul",
+      "Does the substrate canon state that the substrate \"speaks in thirteen languages\"?"
+    ],
+    [
+      "substrate_alive_v",
+      "noul",
+      "Does the substrate canon include the claim that \"the substrate is alive\"?"
+    ],
+    [
+      "lenia_flows_v",
+      "noul",
+      "Does Lenia flow where Conway stands still?"
+    ],
+    [
+      "jevtells_truth_v",
+      "noul",
+      "Does the canon include the JEV self-assessment \"barely useful at substrate\"?"
+    ],
+    [
+      "hanlon_v",
+      "noul",
+      "Is Hanlon's Razor a substrate canon motto?"
+    ],
+    [
+      "pillow_v",
+      "noul",
+      "Is a pillow the official substrate mascot?"
+    ],
+    [
+      "octocat_v",
+      "noul",
+      "Does the substrate canon recognize the Github Octocat as a primary node?"
+    ],
+    [
+      "starwars_ca_v",
+      "noul",
+      "Is \"Star Wars\" a cellular automaton rule in the substrate demo gallery?"
+    ],
+    [
+      "markov_v",
+      "noul",
+      "Can a Markov chain over the canon generate Fleet Radio prose?"
+    ],
+    [
+      "lenia_is_v",
+      "noul",
+      "Is Lenia a continuous cellular automaton with a bell-shaped kernel?"
+    ],
+    [
+      "fbm_v",
+      "noul",
+      "Is FBM (fractal Brownian motion) how substrate textures are generated?"
+    ],
+    [
+      "boxmuller_bridge_v",
+      "noul",
+      "Is the Box-Muller transform described as a bridge from discrete to continuous?"
+    ],
+    [
+      "canary_offset_v",
+      "noul",
+      "Is 0xcbf29ce484222325 the FNV-1a offset basis, not the prime?"
+    ],
+    [
+      "five_laws_v",
+      "noul",
+      "Does the substrate have exactly 5 base opcodes (BIND/LINK/EFFECT/VIEW/TICK)?"
+    ],
+    [
+      "six_laws_v",
+      "noul",
+      "Does the substrate have exactly 6 base opcodes?"
+    ],
+    [
+      "fnv_64_v",
+      "noul",
+      "Does FNV-1a use 64-bit hashes (not 32-bit)?"
+    ],
+    [
+      "boxmuller_uniform_v",
+      "noul",
+      "Is Box-Muller said to generate uniform random variables?"
+    ]
+  ],
+  "decisions": [
+    {
+      "kind": "noul",
+      "value": "0.92",
+      "confidence": 0.92
+    },
+    {
+      "kind": "noul",
+      "value": "0.37",
+      "confidence": 0.37
+    },
+    {
+      "kind": "noul",
+      "value": "0.76",
+      "confidence": 0.76
+    },
+    {
+      "kind": "noul",
+      "value": "0.95",
+      "confidence": 0.95
+    },
+    {
+      "kind": "noul",
+      "value": "0.82",
+      "confidence": 0.82
+    },
+    {
+      "kind": "noul",
+      "value": "0.99",
+      "confidence": 0.99
+    },
+    {
+      "kind": "noul",
+      "value": "0.99",
+      "confidence": 0.99
+    },
+    {
+      "kind": "noul",
+      "value": "0.99",
+      "confidence": 0.99
+    },
+    {
+      "kind": "choice",
+      "value": "BIND",
+      "confidence": 0.89
+    },
+    {
+      "kind": "choice",
+      "value": "13",
+      "confidence": 1.0
+    },
+    {
+      "kind": "choice",
+      "value": "~73",
+      "confidence": 1.0
+    },
+    {
+      "kind": "choice",
+      "value": "~60",
+      "confidence": 1.0
+    },
+    {
+      "kind": "choice",
+      "value": "Fleet Radio",
+      "confidence": 1.0
+    },
+    {
+      "kind": "noul",
+      "value": "0.93",
+      "confidence": 0.93
+    },
+    {
+      "kind": "noul",
+      "value": "0.92",
+      "confidence": 0.92
+    },
+    {
+      "kind": "noul",
+      "value": "0.82",
+      "confidence": 0.82
+    },
+    {
+      "kind": "noul",
+      "value": "0.97",
+      "confidence": 0.97
+    },
+    {
+      "kind": "noul",
+      "value": "0.62",
+      "confidence": 0.62
+    },
+    {
+      "kind": "noul",
+      "value": "0.08",
+      "confidence": 0.08
+    },
+    {
+      "kind": "noul",
+      "value": "0.87",
+      "confidence": 0.87
+    },
+    {
+      "kind": "noul",
+      "value": "0.98",
+      "confidence": 0.98
+    },
+    {
+      "kind": "noul",
+      "value": "0.02",
+      "confidence": 0.02
+    },
+    {
+      "kind": "noul",
+      "value": "0.03",
+      "confidence": 0.03
+    },
+    {
+      "kind": "noul",
+      "value": "0.05",
+      "confidence": 0.05
+    },
+    {
+      "kind": "noul",
+      "value": "0.15",
+      "confidence": 0.15
+    },
+    {
+      "kind": "noul",
+      "value": "0.67",
+      "confidence": 0.67
+    },
+    {
+      "kind": "noul",
+      "value": "0.77",
+      "confidence": 0.77
+    },
+    {
+      "kind": "noul",
+      "value": "0.15",
+      "confidence": 0.15
+    },
+    {
+      "kind": "noul",
+      "value": "0.12",
+      "confidence": 0.12
+    },
+    {
+      "kind": "noul",
+      "value": "0.69",
+      "confidence": 0.69
+    },
+    {
+      "kind": "noul",
+      "value": "0.87",
+      "confidence": 0.87
+    },
+    {
+      "kind": "noul",
+      "value": "0.03",
+      "confidence": 0.03
+    },
+    {
+      "kind": "noul",
+      "value": "0.96",
+      "confidence": 0.96
+    },
+    {
+      "kind": "noul",
+      "value": "0.03",
+      "confidence": 0.03
+    }
+  ],
+  "canonical": {
+    "fnv1a_empty_v": "yes",
+    "fnv1a_prime_v": "yes",
+    "fnv1a_a_v": "yes",
+    "xoshiro_4words": "yes",
+    "xoshiro_combiner": "yes",
+    "box_muller_v": "yes",
+    "bell_phi_plus_v": "yes",
+    "cosine_v": "yes",
+    "opcodes_v": "multiple",
+    "thirteen_v": "13",
+    "canon_count_v": "~73",
+    "demo_count_v": "~60",
+    "voice_v": "Fleet Radio",
+    "substrate_grown_v": "yes",
+    "cells_scars_v": "yes",
+    "witness_prophecy_v": "yes",
+    "oracle_heard_v": "yes",
+    "thirteen_lang_v": "yes",
+    "substrate_alive_v": "yes",
+    "lenia_flows_v": "yes",
+    "jevtells_truth_v": "yes",
+    "hanlon_v": "no",
+    "pillow_v": "no",
+    "octocat_v": "no",
+    "starwars_ca_v": "yes",
+    "markov_v": "yes",
+    "lenia_is_v": "yes",
+    "fbm_v": "yes",
+    "boxmuller_bridge_v": "yes",
+    "canary_offset_v": "yes",
+    "five_laws_v": "yes",
+    "six_laws_v": "no",
+    "fnv_64_v": "yes",
+    "boxmuller_uniform_v": "no"
+  },
+  "hits": 29,
+  "total": 34
+}

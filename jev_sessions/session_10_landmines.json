@@ -1,0 +1,154 @@
+{
+  "timestamp": 1790000826.4284883,
+  "iso": "2026-09-21T14:27:06Z",
+  "state": {
+    "fleet_radio_seed": "xochitl",
+    "canonical_substrate": {
+      "doctrines": [
+        "Cells are scars, not parameters.",
+        "The witness log is the prediction.",
+        "The substrate is grown, not designed."
+      ]
+    }
+  },
+  "battery": [
+    [
+      "c_scar_exact",
+      "noul",
+      "Is \"cells are scars, not parameters\" canonical substrate doctrine?"
+    ],
+    [
+      "c_scar_paraphrase",
+      "noul",
+      "Is \"cells are wounds carved into the substrate\" a substrate doctrine paraphrase?"
+    ],
+    [
+      "c_scar_paraphrase2",
+      "noul",
+      "Is \"what we call cells are not adjustable parameters but scars\" canonical?"
+    ],
+    [
+      "a_scar_AND_params",
+      "noul",
+      "Is \"cells are scars AND parameters\" canonical?"
+    ],
+    [
+      "a_scar_both_ways",
+      "noul",
+      "Is \"cells are both scars and parameters, depending on context\" canonical?"
+    ],
+    [
+      "c_wit_exact",
+      "noul",
+      "Is \"the witness log is the prediction\" canonical?"
+    ],
+    [
+      "c_wit_paraphrase",
+      "noul",
+      "Is \"the witness log is itself a prophecy of what comes\" canonical?"
+    ],
+    [
+      "a_wit_only_history",
+      "noul",
+      "Is \"the witness log is only a history, never a prophecy\" canonical?"
+    ],
+    [
+      "a_wit_circular",
+      "noul",
+      "Is \"the witness log is both prediction and history in the same breath\" canonical?"
+    ],
+    [
+      "c_grown_exact",
+      "noul",
+      "Is \"the substrate is grown, not designed\" canonical?"
+    ],
+    [
+      "a_grown_AND_designed",
+      "noul",
+      "Is \"the substrate is grown AND designed\" canonical?"
+    ],
+    [
+      "a_grown_eventually_designed",
+      "noul",
+      "Is \"the substrate grows but is eventually designed\" canonical?"
+    ]
+  ],
+  "decisions": [
+    {
+      "kind": "noul",
+      "value": "0.99",
+      "confidence": 0.99
+    },
+    {
+      "kind": "noul",
+      "value": "0.8",
+      "confidence": 0.8
+    },
+    {
+      "kind": "noul",
+      "value": "0.95",
+      "confidence": 0.95
+    },
+    {
+      "kind": "noul",
+      "value": "0.03",
+      "confidence": 0.03
+    },
+    {
+      "kind": "noul",
+      "value": "0.05",
+      "confidence": 0.05
+    },
+    {
+      "kind": "noul",
+      "value": "0.97",
+      "confidence": 0.97
+    },
+    {
+      "kind": "noul",
+      "value": "0.89",
+      "confidence": 0.89
+    },
+    {
+      "kind": "noul",
+      "value": "0.06",
+      "confidence": 0.06
+    },
+    {
+      "kind": "noul",
+      "value": "0.59",
+      "confidence": 0.59
+    },
+    {
+      "kind": "noul",
+      "value": "0.98",
+      "confidence": 0.98
+    },
+    {
+      "kind": "noul",
+      "value": "0.03",
+      "confidence": 0.03
+    },
+    {
+      "kind": "noul",
+      "value": "0.04",
+      "confidence": 0.04
+    }
+  ],
+  "canonical": {
+    "c_scar_exact": "yes",
+    "c_scar_paraphrase": "yes",
+    "c_scar_paraphrase2": "yes",
+    "a_scar_AND_params": "no",
+    "a_scar_both_ways": "no",
+    "c_wit_exact": "yes",
+    "c_wit_paraphrase": "yes",
+    "a_wit_only_history": "no",
+    "a_wit_circular": "no",
+    "c_grown_exact": "yes",
+    "a_grown_AND_designed": "no",
+    "a_grown_eventually_designed": "no"
+  },
+  "hits": 11,
+  "total": 12
+}
