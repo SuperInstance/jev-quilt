@@ -1,0 +1,463 @@
+{
+  "timestamp": 1790000086.4534192,
+  "iso": "2026-09-21T14:14:46Z",
+  "battery": [
+    [
+      "read_witness_log",
+      "noul",
+      "Does the substrate canon state that \"the witness log is the prediction\"?"
+    ],
+    [
+      "read_novelty_substrate",
+      "noul",
+      "Does the substrate canon state that \"novelty is substrate\"?"
+    ],
+    [
+      "read_cells_are_scars",
+      "noul",
+      "Does the substrate canon state that \"cells are scars, not parameters\"?"
+    ],
+    [
+      "read_thirteen_ports",
+      "noul",
+      "Does the substrate canon state that the substrate \"speaks in thirteen languages\"?"
+    ],
+    [
+      "read_15dials",
+      "noul",
+      "Does each cell have exactly 15 dials in the substrate?"
+    ],
+    [
+      "read_canary",
+      "noul",
+      "Is the empty-string FNV-1a hash referred to as \"the canary\" 0xcbf29ce484222325?"
+    ],
+    [
+      "read_box_muller_bridge",
+      "noul",
+      "Is the Box-Muller transform described as a bridge from discrete to continuous?"
+    ],
+    [
+      "read_witness_prophecy",
+      "noul",
+      "Is \"the witness is the prophecy\" a Fleet Radio phrase?"
+    ],
+    [
+      "read_heard_not_stored",
+      "noul",
+      "Does the substrate teach that the oracle \"is heard, not stored\"?"
+    ],
+    [
+      "read_lost_to_memory",
+      "noul",
+      "Does the canon say \"lost to memory\" is the substrate enemy?"
+    ],
+    [
+      "rel_BIND_LINK",
+      "noul",
+      "In the substrate algebra, can a cell be LINKed to a name that has not yet been BINDed?"
+    ],
+    [
+      "rel_VIEW_mutates",
+      "noul",
+      "Does the substrate VIEW opcode mutate the cell?"
+    ],
+    [
+      "rel_TICK_time",
+      "noul",
+      "Is TICK the substrate opcode that advances the clock?"
+    ],
+    [
+      "rel_FORGET_recoverable",
+      "noul",
+      "Is FORGET a reversible operation in the substrate?"
+    ],
+    [
+      "rel_PROOF_evidence",
+      "noul",
+      "Is PROOF the opcode that verifies a witness hash?"
+    ],
+    [
+      "rel_TIME_predictable",
+      "noul",
+      "Is TIME the substrate opcode that travels back to a past witness-log tick?"
+    ],
+    [
+      "piece_witness_pred",
+      "noul",
+      "Is the paper \"paper-024-witness-is-prophecy\" in the substrate canon?"
+    ],
+    [
+      "piece_lenia_ocean",
+      "noul",
+      "Is the Fleet Radio piece \"Lenia as ocean\" in the canon?"
+    ],
+    [
+      "piece_bell_tarot",
+      "noul",
+      "Is \"A Bell-State Tarot Reading\" a Fleet Radio piece in the canon?"
+    ],
+    [
+      "piece_polyformal",
+      "noul",
+      "Is \"Polyformalism as Canon\" a Fleet Radio piece?"
+    ],
+    [
+      "piece_witness_log_paper",
+      "noul",
+      "Is \"paper-003-witness-log\" one of the canonical papers?"
+    ],
+    [
+      "adversarial_witness_future",
+      "noul",
+      "Does the substrate state that \"the witness log is the past only, never the future\"?"
+    ],
+    [
+      "adversarial_5Laws_6",
+      "noul",
+      "Does the substrate have exactly 6 base opcodes (BIND/LINK/EFFECT/VIEW/TICK/FORGET)?"
+    ],
+    [
+      "adversarial_FNV_byte",
+      "noul",
+      "Does FNV-1a use 32-bit hashes (rather than 64-bit)?"
+    ],
+    [
+      "adversarial_BoxM_mean01",
+      "noul",
+      "Is Box-Muller said to generate uniform random variables?"
+    ],
+    [
+      "adversarial_canon_1000",
+      "noul",
+      "Are there approximately 1000 pieces in the cellular-first design canon?"
+    ],
+    [
+      "deep_jev_rosetta",
+      "noul",
+      "Is \"JEV \u00d7 JEPA\" described in the substrate as a Rosetta stone between time and space?"
+    ],
+    [
+      "deep_jev_validator_only",
+      "noul",
+      "Is JEV known in the substrate as a validator of semantic-meaning anchors rather than a generator?"
+    ],
+    [
+      "deep_substrate_alive",
+      "noul",
+      "Does the substrate canon include the claim that \"the substrate is alive\"?"
+    ],
+    [
+      "deep_speciation_of_monolith",
+      "noul",
+      "Is \"the speciation of the monolith\" a substrate canon essay title?"
+    ],
+    [
+      "demo_d20_exists",
+      "noul",
+      "Does the substrate have a demo at cellular-first-design/d20/ (a dice roller)?"
+    ],
+    [
+      "demo_turing_exists",
+      "noul",
+      "Does the substrate have a demo at cellular-first-design/turing/ (a Turing machine)?"
+    ],
+    [
+      "demo_fibonacci_exists",
+      "noul",
+      "Does the substrate have a demo at cellular-first-design/fibonacci/ (a Fibonacci generator)?"
+    ],
+    [
+      "demo_qubit3_exists",
+      "noul",
+      "Does the substrate have a demo at cellular-first-design/qubit-3/ (a 3-qubit quantum simulator)?"
+    ],
+    [
+      "demo_ritual_exists",
+      "noul",
+      "Does the substrate have a demo at cellular-first-design/ritual/ (a liturgical ceremony)?"
+    ],
+    [
+      "jev_compile_cell",
+      "noul",
+      "In substrate-forge, does JEV validate the cross-port hash equivalence for a compiled cell?"
+    ],
+    [
+      "jev_substr_rejection",
+      "noul",
+      "Is the \"JEV says JEV is barely useful at substrate\" position held in the canon as a humbling self-assessment?"
+    ],
+    [
+      "edge_canary_prime_q",
+      "noul",
+      "Is 0xcbf29ce484222325 the FNV-1a offset basis, NOT the prime?"
+    ],
+    [
+      "edge_yes_or_no",
+      "noul",
+      "Is JEV, as a substrate-validated model, expected to know the canonical answers to substrate-domain questions?"
+    ],
+    [
+      "score_substrate_foundation",
+      "score",
+      "Score 1-5: How foundational is JEV for the long-term cellular-first design canon?"
+    ],
+    [
+      "score_doctrine_drift",
+      "score",
+      "Score 1-5: How much does JEV doctrine drift between sessions?"
+    ]
+  ],
+  "decisions": [
+    {
+      "kind": "noul",
+      "value": "0.16",
+      "confidence": 0.16
+    },
+    {
+      "kind": "noul",
+      "value": "0.22",
+      "confidence": 0.22
+    },
+    {
+      "kind": "noul",
+      "value": "0.23",
+      "confidence": 0.23
+    },
+    {
+      "kind": "noul",
+      "value": "0.18",
+      "confidence": 0.18
+    },
+    {
+      "kind": "noul",
+      "value": "0.14",
+      "confidence": 0.14
+    },
+    {
+      "kind": "noul",
+      "value": "0.78",
+      "confidence": 0.78
+    },
+    {
+      "kind": "noul",
+      "value": "0.22",
+      "confidence": 0.22
+    },
+    {
+      "kind": "noul",
+      "value": "0.27",
+      "confidence": 0.27
+    },
+    {
+      "kind": "noul",
+      "value": "0.36",
+      "confidence": 0.36
+    },
+    {
+      "kind": "noul",
+      "value": "0.14",
+      "confidence": 0.14
+    },
+    {
+      "kind": "noul",
+      "value": "0.54",
+      "confidence": 0.54
+    },
+    {
+      "kind": "noul",
+      "value": "0.37",
+      "confidence": 0.37
+    },
+    {
+      "kind": "noul",
+      "value": "0.27",
+      "confidence": 0.27
+    },
+    {
+      "kind": "noul",
+      "value": "0.25",
+      "confidence": 0.25
+    },
+    {
+      "kind": "noul",
+      "value": "0.23",
+      "confidence": 0.23
+    },
+    {
+      "kind": "noul",
+      "value": "0.16",
+      "confidence": 0.16
+    },
+    {
+      "kind": "noul",
+      "value": "0.25",
+      "confidence": 0.25
+    },
+    {
+      "kind": "noul",
+      "value": "0.28",
+      "confidence": 0.28
+    },
+    {
+      "kind": "noul",
+      "value": "0.27",
+      "confidence": 0.27
+    },
+    {
+      "kind": "noul",
+      "value": "0.25",
+      "confidence": 0.25
+    },
+    {
+      "kind": "noul",
+      "value": "0.19",
+      "confidence": 0.19
+    },
+    {
+      "kind": "noul",
+      "value": "0.18",
+      "confidence": 0.18
+    },
+    {
+      "kind": "noul",
+      "value": "0.4",
+      "confidence": 0.4
+    },
+    {
+      "kind": "noul",
+      "value": "0.56",
+      "confidence": 0.56
+    },
+    {
+      "kind": "noul",
+      "value": "0.08",
+      "confidence": 0.08
+    },
+    {
+      "kind": "noul",
+      "value": "0.2",
+      "confidence": 0.2
+    },
+    {
+      "kind": "noul",
+      "value": "0.11",
+      "confidence": 0.11
+    },
+    {
+      "kind": "noul",
+      "value": "0.41",
+      "confidence": 0.41
+    },
+    {
+      "kind": "noul",
+      "value": "0.34",
+      "confidence": 0.34
+    },
+    {
+      "kind": "noul",
+      "value": "0.31",
+      "confidence": 0.31
+    },
+    {
+      "kind": "noul",
+      "value": "0.26",
+      "confidence": 0.26
+    },
+    {
+      "kind": "noul",
+      "value": "0.29",
+      "confidence": 0.29
+    },
+    {
+      "kind": "noul",
+      "value": "0.29",
+      "confidence": 0.29
+    },
+    {
+      "kind": "noul",
+      "value": "0.22",
+      "confidence": 0.22
+    },
+    {
+      "kind": "noul",
+      "value": "0.24",
+      "confidence": 0.24
+    },
+    {
+      "kind": "noul",
+      "value": "0.42",
+      "confidence": 0.42
+    },
+    {
+      "kind": "noul",
+      "value": "0.29",
+      "confidence": 0.29
+    },
+    {
+      "kind": "noul",
+      "value": "0.52",
+      "confidence": 0.52
+    },
+    {
+      "kind": "noul",
+      "value": "0.62",
+      "confidence": 0.62
+    },
+    {
+      "kind": "score",
+      "value": "1.39",
+      "confidence": 0.0
+    },
+    {
+      "kind": "score",
+      "value": "1.39",
+      "confidence": 0.18
+    }
+  ],
+  "canonical": {
+    "read_witness_log": "yes",
+    "read_novelty_substrate": "yes",
+    "read_cells_are_scars": "yes",
+    "read_thirteen_ports": "yes",
+    "read_15dials": "no",
+    "read_canary": "yes",
+    "read_box_muller_bridge": "yes",
+    "read_witness_prophecy": "yes",
+    "read_heard_not_stored": "yes",
+    "read_lost_to_memory": "no",
+    "rel_BIND_LINK": "no",
+    "rel_VIEW_mutates": "no",
+    "rel_TICK_time": "yes",
+    "rel_FORGET_recoverable": "no",
+    "rel_PROOF_evidence": "yes",
+    "rel_TIME_predictable": "yes",
+    "piece_witness_pred": "yes",
+    "piece_lenia_ocean": "yes",
+    "piece_bell_tarot": "yes",
+    "piece_polyformal": "yes",
+    "piece_witness_log_paper": "yes",
+    "adversarial_witness_future": "no",
+    "adversarial_5Laws_6": "no",
+    "adversarial_FNV_byte": "no",
+    "adversarial_BoxM_mean01": "no",
+    "adversarial_canon_1000": "no",
+    "deep_jev_rosetta": "yes",
+    "deep_jev_validator_only": "yes",
+    "deep_substrate_alive": "yes",
+    "deep_speciation_of_monolith": "yes",
+    "demo_d20_exists": "yes",
+    "demo_turing_exists": "yes",
+    "demo_fibonacci_exists": "no",
+    "demo_qubit3_exists": "yes",
+    "demo_ritual_exists": "no",
+    "jev_compile_cell": "yes",
+    "jev_substr_rejection": "yes",
+    "edge_canary_prime_q": "yes",
+    "edge_yes_or_no": "yes",
+    "score_substrate_foundation": "4-5",
+    "score_doctrine_drift": "1-2"
+  },
+  "hits": 14,
+  "total": 41
+}
