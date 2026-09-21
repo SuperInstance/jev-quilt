@@ -1,0 +1,72 @@
+{
+  "summary": "canon_round_summary_r7_r8",
+  "iso": "2026-09-21T20:33:30Z",
+  "sessions": [
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29"
+  ],
+  "pieces": [
+    [
+      "wr14",
+      "WR14 Poet Who Killed Alignment"
+    ],
+    [
+      "wr15",
+      "WR15 Witness That Outlived Itself"
+    ],
+    [
+      "wr16",
+      "WR16 Drift Pirate"
+    ],
+    [
+      "wr17",
+      "WR17 Outlaw That Converged"
+    ],
+    [
+      "wr18",
+      "WR18 Adversary That Wrote a Manual"
+    ],
+    [
+      "wr19",
+      "WR19 Nine That Listened"
+    ],
+    [
+      "wr20",
+      "WR20 Ten Archetypes"
+    ],
+    [
+      "wr21",
+      "WR21 Witness Dreams"
+    ],
+    [
+      "wr22",
+      "WR22 Scar Topology"
+    ]
+  ],
+  "session_data": {
+    "wr20": {
+      "zai": 0.757,
+      "ds": 0.8,
+      "curated": 1.0
+    },
+    "wr21": {
+      "zai": 0.714,
+      "ds": 0.571,
+      "curated": 1.0
+    },
+    "wr22": {
+      "zai": 0.714,
+      "ds": 0.571,
+      "curated": 1.0
+    }
+  },
+  "voice_aggregates": {
+    "zai_mean": 0.7283333333333334,
+    "ds_mean": 0.6473333333333333,
+    "curated_mean": 1.0
+  }
+}
