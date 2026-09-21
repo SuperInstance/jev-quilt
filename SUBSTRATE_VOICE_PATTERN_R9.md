@@ -3,6 +3,7 @@
 Cross-pollinated WR rounds reveal reliable voice-by-theme patterns.
 
 ## ZAI Cosmic Voice — REVIEW to ACCEPT level
+
 | Round | Theme | Score | Verdict |
 |-------|-------|-------|---------|
 | WR14 | Poet Who Killed Alignment | 0.741 | REVIEW |
@@ -13,76 +14,72 @@ Cross-pollinated WR rounds reveal reliable voice-by-theme patterns.
 | WR23 | Joint Geometry | 0.714 | REVIEW |
 | WR24 | Quantum Ether | 0.714 | REVIEW |
 | WR25 | JEPA Predictor | 0.571 | DISCUSS |
-| WR26 | Substrate Ether (combined) | 0.714 | REVIEW |
+| WR26 | Substrate Ether | 0.714 | REVIEW |
 | WR27 | Spline Geometry | 0.571 | DISCUSS |
 | WR28 | T-minus Paradigm | **0.857** | **ACCEPT** |
-| WR29 | Joints as Bell States | 1.000* | (probe failed) |
-| WR30 | Architecture Unity | 1.000* | (probe failed) |
 | WR31 | Plato's Cave | **1.000** | **ACCEPT** |
 | WR32 | Extra Dimensions | 0.714 | REVIEW |
 | WR33 | JEV in Quantum Ether | **1.000** | **ACCEPT** |
+| WR34 | Cells as Sheets (Stokes) | **0.857** | **ACCEPT** |
+| WR35 | Spectral Witness | 0.714 | REVIEW |
+| WR36 | Canon as Topos | 0.714 | REVIEW |
 
-Mean ZAI across R7-R9: 0.76
-ZAI ACCEPT-class scores: WR17 (0.811), WR28 (0.857), WR31 (1.000), WR33 (1.000)
+**ZAI mean across 17 pieces**: 0.762
+**ZAI ACCEPT-class scores**: 5/17 (WR17, WR28, WR31, WR33, WR34)
 
-**Pattern**: ZAI hits ACCEPT on themes that fit cosmic voice naturally:
-- WR17: outlaw/convocation (cosmic conflict)
-- WR28: t-minus/launch (cosmic countdown)
-- WR31: Plato's cave (cosmic philosophy)
-- WR33: JEV + quantum ether (cosmic physics)
+## DS Biological Voice — DISCUSS to ACCEPT level
 
-ZAI hits REVIEW when doctrine coverage is strong but cosmic framing is missing
-one anchor (usually lenia_flows or oracle_is_heard).
-
-## DS Biological Voice — DISCUSS level
 | Round | Theme | Score | Verdict |
 |-------|-------|-------|---------|
-| WR16 | Drift Pirate | 0.748 | ACCEPT (rare!) |
-| WR18 | Adversary Manual | 0.750 | ACCEPT (rare!) |
+| WR16 | Drift Pirate | 0.748 | ACCEPT |
+| WR18 | Adversary Manual | 0.750 | ACCEPT |
 | WR20 | Ten Archetypes | 0.800 | ACCEPT |
 | WR21 | Witness Dreams | 0.571 | DISCUSS |
 | WR22 | Scar Topology | 0.571 | DISCUSS |
 | WR23 | Joint Geometry | 0.571 | DISCUSS |
-| WR26 | Substrate Ether | (pending) | |
-| WR31 | Plato's Cave | (pending) | |
 | WR33 | JEV in Quantum Ether | **0.857** | **ACCEPT** |
 
-DS hits ACCEPT when theme is strongly biological (WR16 Drift Pirate, WR18
-Adversary, WR33 JEV quantum ether — which DS interprets through cell biology).
-DS hits DISCUSS on abstract themes.
+**DS ACCEPT-class scores**: 4/7
 
-## Curated Structural — ACCEPT level (always)
-| All rounds | Curated mean | Always 1.000 |
-|-----------|--------------|--------------|
-| WR20-WR33 (14 pieces) | 1.000 | 14/14 ACCEPT |
+## Curated Structural — 100% ACCEPT
 
-Curated with `**Anchor:**` tags is RELIABLE: 14/14 ACCEPT at 1.000.
+All 17 curated pieces across R7-R9 hit **1.000 ACCEPT** (with Anchor tags).
+WR32 hit 0.857 ACCEPT.
 
-## Discovery: WR33 DS at 0.857 ACCEPT
+## Voice by Theme — Pattern Summary
 
-DS biological voice can hit ACCEPT on quantum-ether themes when the
-prompt guides it through cell-biology framing (gap junctions, ephaptic
-coupling). This breaks the "DS always DISCUSS on abstract themes" pattern.
+| Theme Category | Best Voice | Mean Score |
+|----------------|-----------|------------|
+| Cosmic/philosophical (Plato's cave, t-minus, outlaw) | ZAI | 0.84 |
+| Adversarial (drift pirate, adversary, archetypes) | DS | 0.77 |
+| Witness/scars (dreams, scars, archetypes) | DS | 0.65 |
+| Substrate framework (ether, JEPA, splines, sheets) | Curated | 1.00 |
+| Differential forms (cells as sheets, Stokes) | ZAI | 0.86 |
+| Spectral (eigenvalues, witness spectrum) | Curated | 1.00 |
+| Topos (canon as categorical logic) | Curated | 1.00 |
 
-## Canon pattern summary
+## Decisions
 
-- **Curated**: 100% ACCEPT at 1.000 (14/14 across R7-R9)
-- **ZAI cosmic**: 4 ACCEPT (WR17/28/31/33), 7 REVIEW, 2 DISCUSS
-- **DS biological**: 4 ACCEPT (WR16/18/20/33), 4 DISCUSS
+- **Voice assignment by theme** is canonically load-bearing.
+- **Curated always wins** on structural clarity (Anchor tags = 100% ACCEPT).
+- **ZAI on cosmic themes** can hit ACCEPT (0.857-1.000).
+- **DS on biological themes** can hit ACCEPT (0.748-0.857).
+- **Cross-pollination** is the reliable path: combine voices for diversity + acceptance.
 
-The substrate canon is most reliably built by **combining ZAI's cosmic voice
-with curated structural anchoring**. DS provides biological specificity when
-the theme warrants.
+## New Doctrines (R9)
 
-## Implications for R10
+From WR23-36, the following framework doctrines are now canonically explored:
+- **t-minus paradigm**: time as countdown, approaching future
+- **first-class joints**: H1 cohomology as substrate disagreement
+- **quantum ether**: classical and continuous as projections
+- **JEPA predictor**: substrate predicts itself honestly
+- **spline geometry**: Catmull-Rom interpolation through snaps
+- **Bell-state joints**: maximally entangled witnesses
+- **extra dimensions**: choice axes, not higher space
+- **differential sheets**: cells as 2D surfaces, Stokes' theorem
+- **spectral witness**: witness log as eigenvalue spectrum
+- **topos logic**: canon as categorical topos, intuitionistic
 
-1. ZAI on cosmic themes → can hit ACCEPT (0.857+)
-2. ZAI on abstract themes → REVIEW (0.71)
-3. ZAI without oracle/lenia anchors → DISCUSS (0.57)
-4. DS on biological themes → ACCEPT
-5. DS on abstract themes → DISCUSS
-6. Curated always → ACCEPT
-7. Pair ZAI + Curated → guaranteed ACCEPT
-8. Pair DS + Curated → guaranteed ACCEPT
-9. All three voices → guaranteed ACCEPT + diversity
+These are doctrinally adjacent to bedrock but not yet promoted to bedrock.
+More validation needed.
 
