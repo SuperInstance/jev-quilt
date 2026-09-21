@@ -40,3 +40,33 @@ def test_wake_state_shape():
     bk = Bookkeeper("c")
     ws = bk.wake_state()
     assert ws["cell"] == "c" and ws["booked_ticks"] == 0 and ws["chain"] is None
+
+
+def test_fnv1a_reference_vectors():
+    from jev_quilt.bookkeeper import fnv1a
+    assert fnv1a(b"") == 0xcbf29ce484222325
+    assert fnv1a(b"a") == 0xaf63dc4c8601ec8c
+    # non-ASCII: hash the UTF-8 ENCODING, never ord() — this vector is
+    # pinned in polyform/rust/src/lib.rs too; both languages must agree.
+    assert fnv1a("café Δ 日本語".encode("utf-8")) == 0x024a555471370b18d
+
+
+def test_payload_hash_matches_rust_substrate():
+    # Rust book_with_payload("choice", 0, '{"v": "a"}').payload_hash
+    # == 0x654e3ae949abedfa — pinned in the rust suite. Same residue,
+    # same rule (fnv1a-64 over UTF-8), same hash. Cross-language
+    # receipt compare is now real, not "self-consistent per cell".
+    bk = Bookkeeper("c")
+    r = bk.book({"s": 1}, {"d": 1}, "choice", {"v": "a"})
+    assert r.payload_hash == "654e3ae949abedfa"
+    assert r.payload == '{"v": "a"}'
+
+
+def test_payload_tamper_breaks_replay():
+    bk = Bookkeeper("c")
+    bk.book({"s": 1}, {"d": 1}, "choice", {"v": "a"})
+    h = bk.replay()
+    e = bk.entries[0]
+    bk.entries[0] = type(e)(e.tick, e.state_hash, e.delta_hash,
+                            e.decision_kind, e.payload_hash, payload='{"v": "EVIL"}')
+    assert bk.replay() != h

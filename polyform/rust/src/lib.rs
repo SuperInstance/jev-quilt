@@ -130,10 +130,14 @@ impl Bookkeeper {
 
     /// Book with a readable residue. The residue is capped at 200 chars
     /// (the Python bookkeeper's cap, mirrored) and, when non-empty,
-    /// payload_hash IS fnv1a(residue) — exactly the Python rule
-    /// (payload_hash = sha256(residue)) — so verify() can re-derive it
-    /// from the retained payload. An empty residue keeps the historical
-    /// composite formula; back-compat is a pinned test, not a hope.
+    /// payload_hash IS fnv1a(residue) over UTF-8 bytes — now literally
+    /// the Python rule too (Python payload_hash went sha256 → fnv1a-64
+    /// on this branch; the SUBSTRATE doc's claim became true) — so
+    /// verify() re-derives it from the retained payload and a
+    /// cross-language receipt compare of the same residue agrees,
+    /// non-ASCII included (pinned vector on both sides). An empty
+    /// residue keeps the historical composite formula; back-compat is
+    /// a pinned test, not a hope.
     pub fn book_with_payload(
         &mut self,
         decision_kind: &str,
@@ -293,5 +297,24 @@ mod tests {
         // reference: Python jev_quilt.q16.fnv1a("") == 0xcbf29ce484222325
         assert_eq!(fnv1a(""), 0xcbf2_9ce4_8422_2325);
         assert_eq!(fnv1a("a"), 0xaf63_dc4c_8601_ec8c);
+    }
+
+    #[test]
+    fn fnv1a_nonascii_vector_pinned_cross_language() {
+        // Pinned against Python:
+        //   fnv1a("café Δ 日本語".encode("utf-8")) == 0x024a555471370b18d
+        // Rust &str is UTF-8 bytes by construction; Python must hash the
+        // ENCODING, never ord(). Same residue, same payload_hash.
+        assert_eq!(fnv1a("café Δ 日本語"), 0x024a_5554_7137_0b18d);
+    }
+
+    #[test]
+    fn payload_hash_agrees_with_python_bookkeeper() {
+        // Python: Bookkeeper.book(..., {"v": "a"}) → residue '{"v": "a"}'
+        // → payload_hash == fnv1a of that UTF-8 string (pinned hex below).
+        let mut bk = Bookkeeper::new("c");
+        let r = bk.book_with_payload("choice", 0, "{\"v\": \"a\"}");
+        assert_eq!(r.payload_hash, 0x654e_3ae9_49ab_edfa);
+        assert!(bk.verify());
     }
 }

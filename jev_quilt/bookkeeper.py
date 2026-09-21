@@ -11,6 +11,19 @@ import json
 import time
 
 
+def fnv1a(data: bytes) -> int:
+    """fnv1a-64 over raw BYTES — the same algorithm the fleet's rate
+    limiter, the hermit WAL, and the Rust substrate use. Hashing the
+    UTF-8 encoding (never str iteration / ord()) keeps payload_hash
+    identical across languages: a Rust receipt and a Python receipt for
+    the same residue must agree, non-ASCII included."""
+    h = 0xcbf29ce484222325
+    for b in data:
+        h ^= b
+        h = (h * 0x100000001b3) % (1 << 64)
+    return h
+
+
 @dataclass(frozen=True)
 class Receipt:
     tick: int
@@ -21,7 +34,14 @@ class Receipt:
     payload: str = ""   # capped readable residue (see Bookkeeper.book)
 
     def sha(self) -> str:
-        raw = f"{self.tick}|{self.state_hash}|{self.delta_hash}|{self.decision_kind}|{self.payload_hash}"
+        # The chain binds the residue TEXT, not merely its hash field:
+        # a residue-carrying receipt re-derives payload_hash from the
+        # retained payload, so editing payload alone breaks replay
+        # (same rule as the Rust substrate's verify). Empty payload keeps
+        # the stored hash — the historical formula, back-compat pinned.
+        payload_hash = (f"{fnv1a(self.payload.encode('utf-8')):016x}"
+                        if self.payload else self.payload_hash)
+        raw = f"{self.tick}|{self.state_hash}|{self.delta_hash}|{self.decision_kind}|{payload_hash}"
         return hashlib.sha256(raw.encode()).hexdigest()
 
 
@@ -42,7 +62,10 @@ class Bookkeeper:
             state_hash=hashlib.sha256(json.dumps(state, sort_keys=True, default=str).encode()).hexdigest(),
             delta_hash=hashlib.sha256(json.dumps(delta, sort_keys=True, default=str).encode()).hexdigest(),
             decision_kind=decision_kind,
-            payload_hash=hashlib.sha256(residue.encode()).hexdigest(),
+            # payload_hash = fnv1a-64 over the residue's UTF-8 bytes —
+            # the SAME rule as the Rust substrate (polyform/rust), so
+            # cross-language receipt compare works, non-ASCII included.
+            payload_hash=f"{fnv1a(residue.encode('utf-8')):016x}",
             payload=residue,
         )
         self.entries.append(r)
