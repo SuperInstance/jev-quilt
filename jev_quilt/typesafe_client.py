@@ -48,8 +48,9 @@ class TypeSafeBackend:
         """One parallel pass, N questions. Returns (decisions, meta)."""
         if not isinstance(questions, list) or not questions:
             raise ValueError("questions must be a non-empty list of question dicts")
-        if any(not isinstance(qq, dict) or not qq.get("question") for qq in questions):
-            raise ValueError("every question dict needs a 'question' field")
+        if any(not isinstance(qq, dict) or not (qq.get("question") or qq.get("instructions"))
+                for qq in questions):
+            raise ValueError("every question dict needs a 'question' (or 'instructions') field")
         if not self.key:
             raise RuntimeError("typesafe-api: no API key (JEV_API_KEY/TYPESAFE_API_KEY/TYPESAFEAI_KEY)")
 
