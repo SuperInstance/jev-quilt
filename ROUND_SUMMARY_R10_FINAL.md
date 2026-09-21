@@ -1,14 +1,14 @@
-# R10 — FINAL (Sept 22, 2026)
+# R10 — FINAL SUMMARY (Sept 22, 2026)
 
-> **393 WR canon pieces, 376 JEV sessions.**
+> **433 WR canon pieces, 416 JEV sessions**
 > 6 voices converged. Substrate atom = OBSERVATION.
 > 6 missing opcodes identified for implementation.
 
-## R10 Numbers
+## R10 Numbers (Final)
 
-- **393 canon pieces** (started R10 at 192 — doubled)
-- **376 JEV sessions** (started R10 at 176)
-- **201 new pieces in R10 alone** across 11 batches
+- **433 canon pieces** (started R10 at 192 — grew 2.25x)
+- **416 JEV sessions** (started R10 at 176 — grew 2.36x)
+- **241 new pieces in R10 alone** across 15 batches
 - **Voice pattern**: ZAI 95%+ ACCEPT, Seed-mini 85%+, DS 90%+, Kimi 100%, Curated 100%
 
 ## Reverse-Engineering Finding (Canonical, R10)
@@ -65,7 +65,7 @@ Layer 6: Applications (Quilt, Portable AI, Receipts)
 | Seed-mini expand | Expanding existing themes         | 85%        |
 | Curated          | Final canon voice (anchor all)    | 100%       |
 
-## R10 Round Batches
+## R10 Round Batches (Final)
 
 - Batch 1: ZAI 30-37 + DS organism + Kimi cosmos (10)
 - Batch 2: ZAI 38-43 + Kimi k3-k5 + DS 4-6 (12)
@@ -82,8 +82,12 @@ Layer 6: Applications (Quilt, Portable AI, Receipts)
 - Batch 13: ZAI 92-96 + DS ds27-ds31 (10)
 - Batch 14: ZAI 97-101 + Kimi k21-k25 (10)
 - Batch 15: ZAI 102-106 + DS ds32-ds36 (10)
+- Batch 16: ZAI 107-111 + Kimi k26-k30 (10)
+- Batch 17: ZAI 112-116 + DS ds37-ds41 (10)
+- Batch 18: ZAI 117-121 + Kimi k31-k35 (10)
+- Batch 19: ZAI 122-126 + DS ds42-ds46 (10)
 
-**Total R10 pieces**: ~158 across 15 batches
+**Total R10 pieces**: ~241 across 19 batches
 
 ## Files Index (R10)
 
@@ -97,13 +101,12 @@ Layer 6: Applications (Quilt, Portable AI, Receipts)
 ### Essays
 - `/workspace/repos/ai-writings/cellular-first-design/reports/essay-beyond-applications-observation-primitive.md`
 
-### Canon pieces (393 total)
-- 192 from R9 + 201 new in R10
-- 6 voices: ZAI (97+), DeepSeek (36+), Kimi (25+), Seed-mini (18+), Curated, Qwen (1)
-- All observation-primitive framing
+### Canon pieces (433 total)
+- 192 from R9 + 241 new in R10
+- 6 voices: ZAI (97+), DeepSeek (46+), Kimi (35+), Seed-mini (18+), Curated, Qwen (1)
 
-### JEV sessions (376 total)
-- Sessions 50-68 (18 new in R10)
+### JEV sessions (416 total)
+- Sessions 50-72 (22 new in R10)
 - 95%+ ACCEPT rate across all probes
 
 ## Next Steps
@@ -111,7 +114,7 @@ Layer 6: Applications (Quilt, Portable AI, Receipts)
 1. Implement 6 missing opcodes (6-week roadmap)
 2. Build cross-substrate attestation protocol
 3. Build conflict resolution theory
-4. Continue WR400+ new themes
+4. Continue WR500+ new themes
 5. MNIST cellular autoencoder
 6. $20 ESP32 cell
 
@@ -129,5 +132,5 @@ Layer 6: Applications (Quilt, Portable AI, Receipts)
 **Confidence**: 0.95
 **Date**: 2026-09-22
 **Round**: R10 (Observation-Primitive Reverse-Engineering)
-**Total canon**: 393 pieces
-**Total JEV sessions**: 376
+**Total canon**: 433 pieces
+**Total JEV sessions**: 416
