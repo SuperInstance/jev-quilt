@@ -17,6 +17,7 @@ from .witness_rng import WitnessRng, seed_from_state, seed_from_book
 from .opposites import opposite, is_canonical, TABLE as OPPOSITES
 from .engine import Engine, WakeResult
 from .tap import TapGate, ProposalGate, kl_divergence
+from .fold import FoldedLedger, Checkpoint, mmr_root
 
 __all__ = [
     "Cell", "Hook", "Projection", "DEADBAND",
@@ -30,6 +31,7 @@ __all__ = [
     "opposite", "is_canonical", "OPPOSITES",
     "Engine", "WakeResult",
     "TapGate", "ProposalGate", "kl_divergence",
+    "FoldedLedger", "Checkpoint", "mmr_root",
 ]
 
 __version__ = "0.0.5"
