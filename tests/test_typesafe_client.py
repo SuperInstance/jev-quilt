@@ -1,6 +1,9 @@
+import sys
+sys.path.insert(0, "/workspace/repos/jev-quilt")
+
 import os
 
-import pytest
+
 
 from jev_quilt.typesafe_client import TypeSafeBackend
 

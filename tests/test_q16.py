@@ -1,4 +1,7 @@
-import pytest
+import sys
+sys.path.insert(0, "/workspace/repos/jev-quilt")
+
+
 
 from jev_quilt.q16 import Q16, commensurate, SCALE
 
