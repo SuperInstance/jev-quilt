@@ -79,9 +79,11 @@ class TapGate:
 
 # The monadic proposal-gate: System 1 proposes, System 2 disposes.
 # An invariant is a named exact-rational predicate over the proposed
-# identity. Violations are booked as refusals — the titanium records
-# every crash of probability into Law 1.
-Invariant = Callable[[Q16], bool]
+# identity AND its choice context: fn(q16, ctx) where ctx carries the
+# winning choice name and the full distribution (so gates can enforce
+# calibration, not just bounds). Violations are booked as refusals —
+# the titanium records every crash of probability into Law 1.
+Invariant = Callable[[Q16, dict], bool]
 
 
 @dataclass
@@ -112,9 +114,10 @@ class ProposalGate:
                                   "got": type(q16_identity).__name__})
             return False, "identity_floats", r
         top = max(choice_dist.items(), key=lambda kv: kv[1].to_float())[0]
+        ctx = {"choice": top, "dist": choice_dist}
         for name, fn in self.invariants:
             try:
-                ok = bool(fn(q16_identity))
+                ok = bool(fn(q16_identity, ctx))
             except Exception as exc:  # an invariant that throws refuses
                 ok = False
                 name = f"{name}!{type(exc).__name__}"

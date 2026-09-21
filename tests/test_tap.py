@@ -65,7 +65,7 @@ def test_tap_throttles_after_burst():
 def test_proposal_accepts_and_books_transition():
     keeper = Bookkeeper("g")
     gate = ProposalGate(keeper).add_invariant(
-        "nonnegative", lambda q: q.num >= 0)
+        "nonnegative", lambda q, ctx: q.num >= 0)
     ok, reason, r = gate.propose({}, {}, dist(a=(9, 10), b=(1, 10)), Q(3, 2))
     assert ok and r.decision_kind == "transition"
 
@@ -73,7 +73,7 @@ def test_proposal_accepts_and_books_transition():
 def test_proposal_refuses_invariant_and_books():
     keeper = Bookkeeper("g")
     gate = ProposalGate(keeper).add_invariant(
-        "under_2", lambda q: q < Q(2, 1))
+        "under_2", lambda q, ctx: q < Q(2, 1))
     ok, reason, r = gate.propose({}, {}, dist(a=(1, 1)), Q(5, 1))
     assert not ok and reason == "under_2" and r.decision_kind == "refusal"
 
@@ -81,7 +81,7 @@ def test_proposal_refuses_invariant_and_books():
 def test_law1_identity_never_floats():
     """A float coordinate is refused BEFORE any invariant runs."""
     keeper = Bookkeeper("g")
-    gate = ProposalGate(keeper).add_invariant("always", lambda q: True)
+    gate = ProposalGate(keeper).add_invariant("always", lambda q, ctx: True)
     ok, reason, r = gate.propose({}, {}, dist(a=(1, 1)), 3.14)
     assert not ok and reason == "identity_floats" and r.decision_kind == "refusal"
 
@@ -89,7 +89,7 @@ def test_law1_identity_never_floats():
 def test_throwing_invariant_refuses_not_crashes():
     keeper = Bookkeeper("g")
     gate = ProposalGate(keeper).add_invariant(
-        "boom", lambda q: 1 / 0)
+        "boom", lambda q, ctx: 1 / 0)
     ok, reason, _ = gate.propose({}, {}, dist(a=(1, 1)), Q(1, 1))
     assert not ok and "boom!" in reason
 
@@ -97,7 +97,7 @@ def test_throwing_invariant_refuses_not_crashes():
 def test_refusal_and_transition_replay_together():
     keeper = Bookkeeper("g")
     gate = (ProposalGate(keeper)
-            .add_invariant("under_4", lambda q: q < Q(4, 1)))
+            .add_invariant("under_4", lambda q, ctx: q < Q(4, 1)))
     gate.propose({}, {}, dist(a=(1, 1)), Q(2, 1))   # accept
     gate.propose({}, {}, dist(a=(1, 1)), Q(9, 1))   # refuse
     gate.propose({}, {}, dist(a=(1, 1)), 0.5)       # law 1 refuse
