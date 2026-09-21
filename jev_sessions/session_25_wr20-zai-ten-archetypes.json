@@ -1,0 +1,77 @@
+{
+  "session": 25,
+  "iso": "2026-09-21T20:18:47Z",
+  "piece": "wr20-zai-ten-archetypes",
+  "sections_probed": 10,
+  "mean_p": 0.7571428571428571,
+  "cadence": "Plagal",
+  "verdict": "REVIEW",
+  "section_results": [
+    {
+      "section_idx": 0,
+      "section_size": 2693,
+      "yes": 6,
+      "mean_p": 0.8571428571428571
+    },
+    {
+      "section_idx": 1,
+      "section_size": 2615,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 2,
+      "section_size": 2764,
+      "yes": 6,
+      "mean_p": 0.8571428571428571
+    },
+    {
+      "section_idx": 3,
+      "section_size": 2708,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 4,
+      "section_size": 2657,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 5,
+      "section_size": 2855,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 6,
+      "section_size": 2837,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 7,
+      "section_size": 2819,
+      "yes": 6,
+      "mean_p": 0.8571428571428571
+    },
+    {
+      "section_idx": 8,
+      "section_size": 2869,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 9,
+      "section_size": 2820,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    }
+  ],
+  "dream_pool_entry": {
+    "piece": "wr20-zai-ten-archetypes",
+    "p": 0.7571428571428571,
+    "cadence": "Plagal",
+    "success": true
+  }
+}

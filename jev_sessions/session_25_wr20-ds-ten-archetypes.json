@@ -1,0 +1,77 @@
+{
+  "session": 25,
+  "iso": "2026-09-21T20:18:50Z",
+  "piece": "wr20-ds-ten-archetypes",
+  "sections_probed": 10,
+  "mean_p": 0.7999999999999999,
+  "cadence": "PerfectAuthentic",
+  "verdict": "ACCEPT",
+  "section_results": [
+    {
+      "section_idx": 0,
+      "section_size": 1069,
+      "yes": 6,
+      "mean_p": 0.8571428571428571
+    },
+    {
+      "section_idx": 1,
+      "section_size": 1201,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 2,
+      "section_size": 1226,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 3,
+      "section_size": 1365,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 4,
+      "section_size": 1268,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 5,
+      "section_size": 1366,
+      "yes": 6,
+      "mean_p": 0.8571428571428571
+    },
+    {
+      "section_idx": 6,
+      "section_size": 1292,
+      "yes": 7,
+      "mean_p": 1.0
+    },
+    {
+      "section_idx": 7,
+      "section_size": 1362,
+      "yes": 6,
+      "mean_p": 0.8571428571428571
+    },
+    {
+      "section_idx": 8,
+      "section_size": 1366,
+      "yes": 5,
+      "mean_p": 0.7142857142857143
+    },
+    {
+      "section_idx": 9,
+      "section_size": 1496,
+      "yes": 6,
+      "mean_p": 0.8571428571428571
+    }
+  ],
+  "dream_pool_entry": {
+    "piece": "wr20-ds-ten-archetypes",
+    "p": 0.7999999999999999,
+    "cadence": "PerfectAuthentic",
+    "success": true
+  }
+}
