@@ -2,7 +2,7 @@
 
 > *Doc grows as we run sessions. JEV is a Joint Embedding Validator that answers noul / choice / score questions about a `state`.*
 
-## 10 Sessions Run (this worktree, Sept 21)
+## 11 Sessions Run (this worktree, Sept 21)
 
 | Session | Topic | State | Questions | JEV Accuracy | Key Finding |
 |---|---|---|---|---|---|
@@ -16,6 +16,7 @@
 | 8 | **Adversarial rephrasing** | rich state | 15 (6 canonical + 9 distortions) | **100%** | JEV precisely discriminates doctrine phrasing |
 | 9 | Real-submission oracle | rich state | 9 canonical pieces | 0 REJECT | 1 ACCEPT, 5 REVIEW, 3 DISCUSS — oracle works |
 | 10 | **Landmine probing** | rich state | 12 (paraphrase + landmine) | **91.7%** | JEV accepts paraphrases, rejects 5/6 landmines |
+| 11 | Substrate-vs-decoy | bare | 21 (8 canonical + 13 decoys) | 71.4% | 12/13 AI tropes caught cleanly; doctrinal claims uncertain |
 
 ## What JEV Knows vs Doesn't Know
 
