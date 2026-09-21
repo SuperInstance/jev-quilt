@@ -128,14 +128,20 @@ def validate(submission_text):
     alignment = name_value.get('substrate_alignment', {}).get('value', 0)
 
     # Verdict
-    if alignment >= 0.85 and doctrine_score >= 0.80 and misquote_score <= 0.20:
+    # Doctrine probes measure *explicit mention* of canonical phrases.
+    # Creative pieces may be canonically aligned without repeating phrases verbatim.
+    # So we weight alignment + misquote (which catches inversions) more than doctrine.
+
+    if alignment >= 0.80 and misquote_score <= 0.10 and voice_score >= 0.70:
         verdict = "ACCEPT — strong canonical alignment"
-    elif alignment >= 0.65 and doctrine_score >= 0.50 and misquote_score <= 0.40:
-        verdict = "REVIEW — partial alignment, scrutinize"
-    elif alignment >= 0.40:
-        verdict = "DISCUSS — weak alignment, may need revision"
-    else:
+    elif alignment >= 0.65 and misquote_score <= 0.15 and voice_score >= 0.55:
+        verdict = "REVIEW — canonical alignment, may need more explicit doctrine"
+    elif alignment >= 0.40 and misquote_score <= 0.30:
+        verdict = "DISCUSS — partial alignment, scrutinize"
+    elif misquote_score >= 0.50 or alignment < 0.20:
         verdict = "REJECT — does not align with canon"
+    else:
+        verdict = "DISCUSS — borderline alignment"
 
     return {
         'verdict': verdict,
