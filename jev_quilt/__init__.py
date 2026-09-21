@@ -16,6 +16,7 @@ from .imagine import WorldModel, imagine_choice, imagine_score
 from .witness_rng import WitnessRng, seed_from_state, seed_from_book
 from .opposites import opposite, is_canonical, TABLE as OPPOSITES
 from .engine import Engine, WakeResult
+from .tap import TapGate, ProposalGate, kl_divergence
 
 __all__ = [
     "Cell", "Hook", "Projection", "DEADBAND",
@@ -28,6 +29,7 @@ __all__ = [
     "WitnessRng", "seed_from_state", "seed_from_book",
     "opposite", "is_canonical", "OPPOSITES",
     "Engine", "WakeResult",
+    "TapGate", "ProposalGate", "kl_divergence",
 ]
 
 __version__ = "0.0.5"
