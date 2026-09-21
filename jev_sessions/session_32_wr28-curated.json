@@ -1,0 +1,24 @@
+{
+  "session": 32,
+  "iso": "2026-09-21T20:45:37Z",
+  "piece": "wr28-curated",
+  "sections_probed": 1,
+  "mean_p": 1.0,
+  "cadence": "PerfectAuthentic",
+  "verdict": "ACCEPT",
+  "section_results": [
+    {
+      "section_idx": 0,
+      "section_size": 2212,
+      "yes": 7,
+      "mean_p": 1.0,
+      "mode": "whole-piece"
+    }
+  ],
+  "dream_pool_entry": {
+    "piece": "wr28-curated",
+    "p": 1.0,
+    "cadence": "PerfectAuthentic",
+    "success": true
+  }
+}
