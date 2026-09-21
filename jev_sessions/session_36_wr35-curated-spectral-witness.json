@@ -1,0 +1,24 @@
+{
+  "session": 36,
+  "iso": "2026-09-21T21:00:13Z",
+  "piece": "wr35-curated-spectral-witness",
+  "sections_probed": 1,
+  "mean_p": 1.0,
+  "cadence": "PerfectAuthentic",
+  "verdict": "ACCEPT",
+  "section_results": [
+    {
+      "section_idx": 0,
+      "section_size": 2326,
+      "yes": 7,
+      "mean_p": 1.0,
+      "mode": "whole-piece"
+    }
+  ],
+  "dream_pool_entry": {
+    "piece": "wr35-curated-spectral-witness",
+    "p": 1.0,
+    "cadence": "PerfectAuthentic",
+    "success": true
+  }
+}
