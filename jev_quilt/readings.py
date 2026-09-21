@@ -82,6 +82,43 @@ class DriftReading:
         self._last = outcome
 
 
+class TendencyReading:
+    """Categorical tendency: exact integer counts over a symbol alphabet,
+    predicts the modal class. Spring from substrate-videogame-ml's
+    OpponentAI ("learns player tendency, plays opposite; confidence grows
+    with observations") — the counts ARE the confidence, exact."""
+
+    def __init__(self):
+        self.counts: dict[str, int] = {}
+        self._last: Optional[str] = None
+
+    def predict(self) -> Optional[Q16]:
+        return None   # categorical reader: not a q16 predictor
+
+    def predict_symbol(self) -> Optional[str]:
+        if not self.counts:
+            return None
+        best = max(self.counts.values())
+        return sorted(s for s, c in self.counts.items() if c == best)[0]
+
+    def update_symbol(self, outcome: str) -> None:
+        self.counts[outcome] = self.counts.get(outcome, 0) + 1
+
+    @property
+    def total(self) -> int:
+        return sum(self.counts.values())
+
+    def confidence(self) -> Q16:
+        """Modal share, exact."""
+        if not self.counts:
+            return Q16(0, 1)
+        best = max(self.counts.values())
+        return Q16(best, self.total)
+
+    def update(self, outcome: Q16) -> None:
+        raise TypeError("TendencyReading is categorical — use update_symbol")
+
+
 class ReadingEnsemble:
     """JEV managing its JEPA readings. Each reading earns an integer
     weight = MAXC - min(alarms, MAXC); ties break alphabetically for

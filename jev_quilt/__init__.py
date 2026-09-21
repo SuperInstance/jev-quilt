@@ -11,8 +11,10 @@ from .backends import resolve_backend, Q16Backend, BackendDecision
 from .q16 import Q16
 from .predictor import MeanPredictor, surprise, alarm
 from .readings import (ConstReading, NgramReading, DriftReading,
-                       ReadingEnsemble)
+                       TendencyReading, ReadingEnsemble)
 from .imagine import WorldModel, imagine_choice, imagine_score
+from .witness_rng import WitnessRng, seed_from_state, seed_from_book
+from .opposites import opposite, is_canonical, TABLE as OPPOSITES
 from .engine import Engine, WakeResult
 
 __all__ = [
@@ -20,9 +22,12 @@ __all__ = [
     "Bookkeeper", "Receipt",
     "resolve_backend", "Q16Backend", "BackendDecision",
     "Q16", "MeanPredictor", "surprise", "alarm",
-    "ConstReading", "NgramReading", "DriftReading", "ReadingEnsemble",
+    "ConstReading", "NgramReading", "DriftReading", "TendencyReading",
+    "ReadingEnsemble",
     "WorldModel", "imagine_choice", "imagine_score",
+    "WitnessRng", "seed_from_state", "seed_from_book",
+    "opposite", "is_canonical", "OPPOSITES",
     "Engine", "WakeResult",
 ]
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
