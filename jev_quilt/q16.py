@@ -69,6 +69,10 @@ class Q16:
     def __repr__(self):
         return f"Q16({self.num}/{self.den})"
 
+    def __str__(self):
+        # ledger residue form: "1/10", "3" — what a receipt should read like
+        return f"{self.num}/{self.den}" if self.den != 1 else f"{self.num}"
+
 
 def commensurate(a: Q16, b: Q16) -> bool:
     """The comb predicate: a/b's reduced denominator divides 10⁶.

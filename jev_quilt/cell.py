@@ -43,6 +43,8 @@ class Cell:
     backend: str = "auto"           # auto | q16 | openjev-local | typesafe-api
     outputs: list = field(default_factory=list)
     bookkeeper: bool = True
+    predictor: Optional[Any] = None       # feeling under the ledger (predictor.py)
+    surprise_floor: Optional[Any] = None  # Q16; None = record surprise, never alarm
 
     def __post_init__(self):
         if not (isinstance(self.coord, tuple) and len(self.coord) == 2

@@ -15,6 +15,7 @@ from .backends import resolve_backend, BackendDecision
 from .bookkeeper import Bookkeeper
 from .cell import Cell, Hook, DEADBAND
 from .q16 import Q16
+from .predictor import surprise
 
 
 class _NullBookkeeper:
@@ -102,6 +103,16 @@ class Engine:
         book = self.books[cell.name]
         catchup = book.wake_state()  # law 4: the book is caught up first
         backend = self._backend_for(cell)
+        # the feeling precedes the act: pre-commit the prediction so the
+        # receipt binds feeling and fact in one hash (JEPA's slot — v0 is
+        # the exact MeanPredictor; a world-model plugs in behind the same
+        # two methods).
+        pred = None
+        if cell.predictor is not None:
+            try:
+                pred = cell.predictor.predict()
+            except Exception:
+                pred = None
         try:
             decision = backend.decide(cell.decision or {}, state)
         except Exception as e:
@@ -111,7 +122,23 @@ class Engine:
             r = WakeResult(cell.name, True, "refused", None, [])
             self.log.append(r)
             return r
-        book.book(state, delta, decision.kind, {"value": str(decision.value)})
+        payload = {"value": str(decision.value)}
+        # graded surprise, exact, replayable — and the intuition updates.
+        # Doctrine: learning is unconditional, feeling is not. The elephant
+        # updates on every measurable outcome; it only COMMITS a prediction
+        # (and thus can only be alarmed) once warmed.
+        if cell.predictor is not None and isinstance(decision.value, Q16):
+            if pred is not None:
+                s = surprise(decision.value, pred)
+                payload["predicted"] = str(pred)
+                payload["surprise"] = str(s)
+                if cell.surprise_floor is not None and s > cell.surprise_floor:
+                    payload["alarmed"] = "true"
+            try:
+                cell.predictor.update(decision.value)
+            except Exception:
+                pass
+        book.book(state, delta, decision.kind, payload)
         if not cell.viability_floor(decision):
             book.book(state, delta, "rejected", {"confidence": decision.confidence})
             r = WakeResult(cell.name, True, "rejected", decision, [])

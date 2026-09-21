@@ -46,6 +46,18 @@ class Q16Backend:
                 acc = acc + t
             return BackendDecision(kind="q16", value=acc, confidence=1.0,
                                    receipt_note="q16.sum")
+        if rule == "identity":
+            # sense cell: the graded value IS the state (or payload["value"]).
+            # This is the predictor's natural partner — a cell whose value
+            # can be felt before it is booked.
+            v = payload.get("value")
+            if isinstance(v, Q16):
+                return BackendDecision(kind="value", value=v, confidence=1.0,
+                                       receipt_note="q16.identity")
+            if isinstance(state, Q16):
+                return BackendDecision(kind="value", value=state, confidence=1.0,
+                                       receipt_note="q16.identity")
+            raise ValueError("q16 identity: state/payload value must be Q16")
         if rule == "argmax":
             # Choice primitive, deterministic mode: exact integer weights,
             # argmax pick, full distribution returned for calibration.

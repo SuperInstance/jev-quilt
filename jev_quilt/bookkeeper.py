@@ -18,6 +18,7 @@ class Receipt:
     delta_hash: str
     decision_kind: str
     payload_hash: str
+    payload: str = ""   # capped readable residue (see Bookkeeper.book)
 
     def sha(self) -> str:
         raw = f"{self.tick}|{self.state_hash}|{self.delta_hash}|{self.decision_kind}|{self.payload_hash}"
@@ -32,12 +33,17 @@ class Bookkeeper:
 
     def book(self, state, delta, decision_kind: str, payload) -> Receipt:
         self._tick += 1
+        # readable residue: the projection keeps the full record; the
+        # receipt keeps a capped, hashed copy so replay can be AUDITED
+        # without the projection (tracing is following, not guessing).
+        residue = json.dumps(payload, sort_keys=True, default=str)[:200]
         r = Receipt(
             tick=self._tick,
             state_hash=hashlib.sha256(json.dumps(state, sort_keys=True, default=str).encode()).hexdigest(),
             delta_hash=hashlib.sha256(json.dumps(delta, sort_keys=True, default=str).encode()).hexdigest(),
             decision_kind=decision_kind,
-            payload_hash=hashlib.sha256(json.dumps(payload, sort_keys=True, default=str).encode()).hexdigest(),
+            payload_hash=hashlib.sha256(residue.encode()).hexdigest(),
+            payload=residue,
         )
         self.entries.append(r)
         return r
