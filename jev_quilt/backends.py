@@ -46,6 +46,23 @@ class Q16Backend:
                 acc = acc + t
             return BackendDecision(kind="q16", value=acc, confidence=1.0,
                                    receipt_note="q16.sum")
+        if rule == "argmax":
+            # Choice primitive, deterministic mode: exact integer weights,
+            # argmax pick, full distribution returned for calibration.
+            options = payload["options"]  # {name: int weight}
+            if not options:
+                raise ValueError("q16 argmax: empty options")
+            total = sum(options.values())
+            if total <= 0:
+                raise ValueError("q16 argmax: weights must sum positive")
+            best = max(options, key=lambda k: options[k])
+            return BackendDecision(
+                kind="choice",
+                value=best,
+                probabilities={k: options[k] / total for k in options},
+                confidence=1.0,
+                receipt_note=f"q16.argmax({best})",
+            )
         raise ValueError(f"q16 backend: unknown rule {rule!r}")
 
 

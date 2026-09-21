@@ -80,13 +80,23 @@ class Engine:
             hooks = [h for h in cell.input_hooks if h.source == source]
             if not hooks:
                 continue
-            if not any(self._passes_floor(h, delta) for h in hooks):
+            if not any(self._passes_floor(h, delta) and self._hook_cares(h, state)
+                       for h in hooks):
                 r = WakeResult(name, False, "silent_deadband")
                 self.log.append(r)
                 results.append(r)
                 continue
             results.append(self._wake(cell, delta, state))
         return results
+
+    @staticmethod
+    def _hook_cares(hook: Hook, state: Any) -> bool:
+        if hook.when is None:
+            return True
+        try:
+            return bool(hook.when(state))
+        except Exception:
+            return True  # a broken predicate must not silence the fabric
 
     def _wake(self, cell: Cell, delta: Any, state: Any) -> WakeResult:
         book = self.books[cell.name]

@@ -19,6 +19,11 @@ class Hook:
     source: str                    # registry name of the source cell
     on: str = "delta"              # "delta" | "value" (value reserved; default delta)
     floor: Any = DEADBAND          # DEADBAND token or a Q16 magnitude
+    when: Optional[Callable[[Any], bool]] = None
+    # predicate on the emitted state: wake only if the state says this
+    # hook cares. This is the "touch shallow" gate — hooks eat deltas,
+    # but they also DECLINE deltas whose shape isn't theirs.
+    # (frozen dataclass holds the callable by reference; fine for v0.)
 
 
 @dataclass(frozen=True)
