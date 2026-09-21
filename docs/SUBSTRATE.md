@@ -74,6 +74,16 @@ hashing is still over the receipt alone — for a non-empty residue,
 retained text and a tampered residue breaks replay. Tracing is
 following, not guessing.
 
+Python uses the same rule as of `crosslang-fnv1a-utf8` (previously
+`payload_hash = sha256(residue)`, so the doc's claim predated the
+fact): fnv1a-64 over the residue's **UTF-8 bytes** on both sides, with
+the non-ASCII vector `"café Δ 日本語" → 0x024a555471370b18d` pinned in
+both suites. Same residue, same payload_hash — cross-language receipt
+compare is real. Python's chain also now binds the residue text
+(`Receipt.sha()` re-derives the hash from `payload`), matching Rust
+`verify` semantics; empty payload keeps the stored hash, back-compat
+pinned.
+
 ## 6. The sheaf observation (the one fancy sentence)
 
 Each cell's view of the fabric is a **local section**. The bookkeeper's
