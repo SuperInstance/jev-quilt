@@ -112,6 +112,52 @@ ability-transfer fuel governance doc. Do not re-derive; differ.
 
 ---
 
+## 4. Write-path provenance triptych (2026-09-22 edge-watch) — the memory-write receipts lane is heating up
+
+Three results landed this week on the exact axis RECEIPTS-V2 and the
+memory-poisoning positioning essay (arXiv 2605.08442) occupy:
+persistent-memory attacks that ride a *write* into the store and execute
+*later*, at retrieval. Recorded together because their joint message is
+a scheduling signal, not three separate diffs.
+
+**The triptych.**
+
+1. **MemGhost (arXiv 2607.05189)** — poisoned long-term memory leaks
+   chain-of-thought: 87.5% of protected reasoning recovered from a
+   compromised LTM write. Proves the write path is the attack surface;
+   retrieval-time defenses see the payload too late.
+2. **Forensic trajectory signatures (arXiv 2606.30566)** — agent
+   trajectories are attributable at AUC 0.9904 from behavior alone.
+   Proves *detection after the fact* is nearly solved — attribution is
+   commoditizing.
+3. **Memory-poisoning-axis harness (csoai; CVE-2026-24301 "CoSnitch")**
+   — signed receipts + deterministic predicates as the evaluation
+   fixture for memory-poisoning defenses. This is the receipts lane
+   being *framed by someone else* — with signatures and predicates, but
+   (per the scan) without namespacing or hash-chained write lineage.
+
+**What this narrows for us.** Our unclaimed defense candidate —
+namespaced, hash-chained *memory-write receipts* (every write books a
+namespaced receipt; replay re-derives; a poisoned write is a chain
+break at the write, not a detection problem at the read) — now has a
+citation obligation AND a preemption clock. The harness in item 3 is
+shaping the evaluation vocabulary; if we ship after it hardens, we are
+a variation instead of a position.
+
+**What it does NOT touch.** The FNV-1a chain design, the cross-language
+café pin, and the RECEIPTS-V2 signature envelope (verify-only,
+cross-node scope). The triptych attacks *what gets written*; the chain
+attacks *whether the ledger of writes is honest*. Complementary, and
+that complementarity is exactly the one-argument close: a WAL row that
+is simultaneously replay source, signed record, and meter receipt.
+
+**Cite on:** RECEIPTS-V2 "why now" section, candor WAL REVOKE caller
+lane (authority-without-erasure; candor main currently has no REVOKE —
+verified 2026-09-22 by grep), memory-poisoning positioning essay.
+Do not re-derive; differ, and differ soon.
+
+---
+
 ## Standing rule (from this scan)
 
 When an external result lands adjacent to a fleet claim, the first

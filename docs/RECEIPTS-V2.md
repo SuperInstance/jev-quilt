@@ -73,3 +73,11 @@ Rules:
 Corroboration arrived (agent-receipts) and the cross-language floor is proven
 (three suites, one vector) — the design can be written honestly. The build waits
 for a real two-node dispute; until then the FNV-1a chain is the right cost.
+
+*Update (2026-09-22):* the write-path provenance triptych (POSITIONING.md §4 —
+MemGhost 2607.05189, forensic signatures 2606.30566, csoai harness w/
+CVE-2026-24301) puts a preemption clock on the *namespaced* part of this
+doc: the receipts lane is being framed externally, and the one component
+nobody else ships — hash-chained namespaced write-lineage — is the piece
+to land before the vocabulary commoditizes. Citation obligation recorded;
+no design change.
