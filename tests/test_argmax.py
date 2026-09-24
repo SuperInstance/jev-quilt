@@ -1,4 +1,3 @@
-import pytest
 
 from jev_quilt.backends import Q16Backend
 

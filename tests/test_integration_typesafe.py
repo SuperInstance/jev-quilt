@@ -1,18 +1,20 @@
+import unittest
 """Integration test: real TypeSafe API end-to-end. Requires TYPESAFEAI_KEY env."""
 import os
-import pytest
 import sys
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent.parent))
 
 from jev_quilt.typesafe_client import TypeSafeBackend
 
-pytestmark = pytest.mark.skipif(not os.environ.get("TYPESAFEAI_KEY"),
-                                reason="live API: TYPESAFEAI_KEY not set")
+SKIP_IF_NO_KEY = not os.environ.get("TYPESAFEAI_KEY")
+
 backend = TypeSafeBackend()
 
+@unittest.skipIf(SKIP_IF_NO_KEY, "live API: TYPESAFEAI_KEY not set")
 def test_api_available():
     assert backend.available(), "TYPESAFEAI_KEY not set"
 
+@unittest.skipIf(SKIP_IF_NO_KEY, "live API: TYPESAFEAI_KEY not set")
 def test_choice_returns_valid():
     if not backend.available():
         return
@@ -29,6 +31,7 @@ def test_choice_returns_valid():
     assert ds[0].confidence is not None
     assert meta["latency_ms"] < 1000
 
+@unittest.skipIf(SKIP_IF_NO_KEY, "live API: TYPESAFEAI_KEY not set")
 def test_noul_returns_probability():
     if not backend.available():
         return
@@ -41,6 +44,7 @@ def test_noul_returns_probability():
     assert ds[0].kind == "noul"
     assert 0.0 <= ds[0].value <= 1.0
 
+@unittest.skipIf(SKIP_IF_NO_KEY, "live API: TYPESAFEAI_KEY not set")
 def test_batch_returns_n_decisions():
     if not backend.available():
         return

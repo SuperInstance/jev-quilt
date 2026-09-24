@@ -1,4 +1,3 @@
-import pytest
 
 from jev_quilt import Q16, MeanPredictor, surprise, alarm
 from jev_quilt.predictor import Predictor

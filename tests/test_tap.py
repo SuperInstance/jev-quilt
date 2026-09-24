@@ -1,7 +1,6 @@
 """tests/test_tap.py — the tap doctrine: KL-gates + the monadic proposal-gate."""
 import math
 
-import pytest
 
 from jev_quilt import Bookkeeper, Q16
 from jev_quilt.tap import TapGate, ProposalGate, kl_divergence

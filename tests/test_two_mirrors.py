@@ -1,4 +1,3 @@
-import pytest
 
 from jev_quilt import (Q16, WorldModel, imagine_choice, imagine_score)
 from jev_quilt.readings import (ConstReading, NgramReading, DriftReading,

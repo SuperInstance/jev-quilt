@@ -6,7 +6,6 @@ sea you never turn to look at. The calibrated floor tightens in the calm, so the
 small real thing still clears it — without crying wolf on the ordinary chop.
 Everything stays exact ℚ so it runs the same on deck as on a datacenter.
 """
-import pytest
 
 from jev_quilt import Q16, surprise, alarm
 from jev_quilt.calibrate import CalibratedFloor, alarm_calibrated
