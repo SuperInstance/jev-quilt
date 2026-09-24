@@ -1,0 +1,23 @@
+{
+  "round": 61,
+  "ts": "2026-09-24T16:44:41Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q21_memory_sandbox",
+    "q13_chain_dialing",
+    "q07_eleven_opcodes",
+    "q20_wolffs_law",
+    "q11_canon_gate_is_chord"
+  ],
+  "verdicts": {
+    "q21_memory_sandbox": 0.29,
+    "q13_chain_dialing": 0.6,
+    "q07_eleven_opcodes": 0.95,
+    "q20_wolffs_law": 0.56,
+    "q11_canon_gate_is_chord": 0.6
+  },
+  "usage": {
+    "input_tokens": 1413,
+    "output_tokens": 117
+  }
+}

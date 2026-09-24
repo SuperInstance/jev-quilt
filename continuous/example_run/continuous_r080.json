@@ -1,0 +1,23 @@
+{
+  "round": 80,
+  "ts": "2026-09-24T16:44:45Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q01_cells_are_scars",
+    "q07_eleven_opcodes",
+    "q03_substrate_is_grown",
+    "q15_twentyfour_ports"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.26,
+    "q01_cells_are_scars": 0.97,
+    "q07_eleven_opcodes": 0.95,
+    "q03_substrate_is_grown": 0.97,
+    "q15_twentyfour_ports": 0.2
+  },
+  "usage": {
+    "input_tokens": 1394,
+    "output_tokens": 117
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 38,
+  "ts": "2026-09-24T16:44:36Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q16_canonicity_score",
+    "q08_polyformalism_12_ports",
+    "q06_three_views",
+    "q11_canon_gate_is_chord"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q16_canonicity_score": 0.23,
+    "q08_polyformalism_12_ports": 0.87,
+    "q06_three_views": 0.23,
+    "q11_canon_gate_is_chord": 0.57
+  },
+  "usage": {
+    "input_tokens": 1423,
+    "output_tokens": 120
+  }
+}

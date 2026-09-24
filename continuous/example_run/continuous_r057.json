@@ -1,0 +1,23 @@
+{
+  "round": 57,
+  "ts": "2026-09-24T16:44:40Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q18_address_is_data",
+    "q11_canon_gate_is_chord",
+    "q14_canon_equals_speculation",
+    "q13_chain_dialing"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.97,
+    "q18_address_is_data": 0.57,
+    "q11_canon_gate_is_chord": 0.58,
+    "q14_canon_equals_speculation": 0.07,
+    "q13_chain_dialing": 0.61
+  },
+  "usage": {
+    "input_tokens": 1380,
+    "output_tokens": 118
+  }
+}

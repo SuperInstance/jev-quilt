@@ -1,0 +1,23 @@
+{
+  "round": 2,
+  "ts": "2026-09-24T16:44:27Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q09_signal_chain",
+    "q22_provenance_conflict",
+    "q01_cells_are_scars",
+    "q04_oracle_is_heard",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q09_signal_chain": 0.6,
+    "q22_provenance_conflict": 0.34,
+    "q01_cells_are_scars": 0.97,
+    "q04_oracle_is_heard": 0.96,
+    "q16_canonicity_score": 0.23
+  },
+  "usage": {
+    "input_tokens": 1389,
+    "output_tokens": 114
+  }
+}

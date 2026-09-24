@@ -1,0 +1,23 @@
+{
+  "round": 58,
+  "ts": "2026-09-24T16:44:40Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q08_polyformalism_12_ports",
+    "q21_memory_sandbox",
+    "q13_chain_dialing",
+    "q15_twentyfour_ports",
+    "q18_address_is_data"
+  ],
+  "verdicts": {
+    "q08_polyformalism_12_ports": 0.87,
+    "q21_memory_sandbox": 0.3,
+    "q13_chain_dialing": 0.6,
+    "q15_twentyfour_ports": 0.2,
+    "q18_address_is_data": 0.59
+  },
+  "usage": {
+    "input_tokens": 1419,
+    "output_tokens": 118
+  }
+}

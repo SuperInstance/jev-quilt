@@ -1,0 +1,23 @@
+{
+  "round": 79,
+  "ts": "2026-09-24T16:44:44Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q04_oracle_is_heard",
+    "q19_pressure_cascade",
+    "q17_canary_honesty",
+    "q07_eleven_opcodes",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q04_oracle_is_heard": 0.96,
+    "q19_pressure_cascade": 0.25,
+    "q17_canary_honesty": 0.74,
+    "q07_eleven_opcodes": 0.95,
+    "q09_signal_chain": 0.6
+  },
+  "usage": {
+    "input_tokens": 1430,
+    "output_tokens": 114
+  }
+}

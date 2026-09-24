@@ -1,0 +1,23 @@
+{
+  "round": 45,
+  "ts": "2026-09-24T16:44:37Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q07_eleven_opcodes",
+    "q09_signal_chain",
+    "q11_canon_gate_is_chord",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.19,
+    "q07_eleven_opcodes": 0.94,
+    "q09_signal_chain": 0.61,
+    "q11_canon_gate_is_chord": 0.6,
+    "q10_quorum_meshing": 0.86
+  },
+  "usage": {
+    "input_tokens": 1425,
+    "output_tokens": 115
+  }
+}

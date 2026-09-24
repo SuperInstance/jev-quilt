@@ -1,0 +1,23 @@
+{
+  "round": 39,
+  "ts": "2026-09-24T16:44:36Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q17_canary_honesty",
+    "q09_signal_chain",
+    "q22_provenance_conflict",
+    "q21_memory_sandbox",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q17_canary_honesty": 0.78,
+    "q09_signal_chain": 0.61,
+    "q22_provenance_conflict": 0.33,
+    "q21_memory_sandbox": 0.28,
+    "q10_quorum_meshing": 0.87
+  },
+  "usage": {
+    "input_tokens": 1419,
+    "output_tokens": 114
+  }
+}

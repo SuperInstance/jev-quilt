@@ -1,0 +1,23 @@
+{
+  "round": 49,
+  "ts": "2026-09-24T16:44:38Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q22_provenance_conflict",
+    "q03_substrate_is_grown",
+    "q14_canon_equals_speculation",
+    "q10_quorum_meshing",
+    "q17_canary_honesty"
+  ],
+  "verdicts": {
+    "q22_provenance_conflict": 0.34,
+    "q03_substrate_is_grown": 0.97,
+    "q14_canon_equals_speculation": 0.06,
+    "q10_quorum_meshing": 0.86,
+    "q17_canary_honesty": 0.77
+  },
+  "usage": {
+    "input_tokens": 1388,
+    "output_tokens": 121
+  }
+}

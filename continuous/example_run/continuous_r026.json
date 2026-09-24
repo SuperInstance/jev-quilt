@@ -1,0 +1,23 @@
+{
+  "round": 26,
+  "ts": "2026-09-24T16:44:33Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q14_canon_equals_speculation",
+    "q15_twentyfour_ports",
+    "q08_polyformalism_12_ports",
+    "q05_lenia_flows",
+    "q06_three_views"
+  ],
+  "verdicts": {
+    "q14_canon_equals_speculation": 0.07,
+    "q15_twentyfour_ports": 0.2,
+    "q08_polyformalism_12_ports": 0.89,
+    "q05_lenia_flows": 0.96,
+    "q06_three_views": 0.22
+  },
+  "usage": {
+    "input_tokens": 1401,
+    "output_tokens": 120
+  }
+}

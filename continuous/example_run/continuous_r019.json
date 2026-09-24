@@ -1,0 +1,23 @@
+{
+  "round": 19,
+  "ts": "2026-09-24T16:44:31Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q21_memory_sandbox",
+    "q13_chain_dialing",
+    "q11_canon_gate_is_chord",
+    "q10_quorum_meshing",
+    "q03_substrate_is_grown"
+  ],
+  "verdicts": {
+    "q21_memory_sandbox": 0.27,
+    "q13_chain_dialing": 0.61,
+    "q11_canon_gate_is_chord": 0.59,
+    "q10_quorum_meshing": 0.86,
+    "q03_substrate_is_grown": 0.97
+  },
+  "usage": {
+    "input_tokens": 1394,
+    "output_tokens": 118
+  }
+}

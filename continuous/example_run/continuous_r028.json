@@ -1,0 +1,23 @@
+{
+  "round": 28,
+  "ts": "2026-09-24T16:44:33Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q06_three_views",
+    "q04_oracle_is_heard",
+    "q13_chain_dialing",
+    "q10_quorum_meshing",
+    "q14_canon_equals_speculation"
+  ],
+  "verdicts": {
+    "q06_three_views": 0.22,
+    "q04_oracle_is_heard": 0.96,
+    "q13_chain_dialing": 0.58,
+    "q10_quorum_meshing": 0.86,
+    "q14_canon_equals_speculation": 0.06
+  },
+  "usage": {
+    "input_tokens": 1387,
+    "output_tokens": 116
+  }
+}

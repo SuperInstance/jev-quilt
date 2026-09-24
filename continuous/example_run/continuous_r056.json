@@ -1,0 +1,23 @@
+{
+  "round": 56,
+  "ts": "2026-09-24T16:44:39Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q06_three_views",
+    "q05_lenia_flows",
+    "q03_substrate_is_grown",
+    "q21_memory_sandbox",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q06_three_views": 0.23,
+    "q05_lenia_flows": 0.96,
+    "q03_substrate_is_grown": 0.97,
+    "q21_memory_sandbox": 0.29,
+    "q10_quorum_meshing": 0.86
+  },
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 114
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 77,
+  "ts": "2026-09-24T16:44:44Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q08_polyformalism_12_ports",
+    "q19_pressure_cascade",
+    "q15_twentyfour_ports",
+    "q12_witness_note_opcode",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q08_polyformalism_12_ports": 0.86,
+    "q19_pressure_cascade": 0.25,
+    "q15_twentyfour_ports": 0.19,
+    "q12_witness_note_opcode": 0.55,
+    "q09_signal_chain": 0.63
+  },
+  "usage": {
+    "input_tokens": 1425,
+    "output_tokens": 118
+  }
+}

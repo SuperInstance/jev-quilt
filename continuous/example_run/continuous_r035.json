@@ -1,0 +1,23 @@
+{
+  "round": 35,
+  "ts": "2026-09-24T16:44:35Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q22_provenance_conflict",
+    "q05_lenia_flows",
+    "q14_canon_equals_speculation",
+    "q06_three_views",
+    "q18_address_is_data"
+  ],
+  "verdicts": {
+    "q22_provenance_conflict": 0.33,
+    "q05_lenia_flows": 0.96,
+    "q14_canon_equals_speculation": 0.06,
+    "q06_three_views": 0.23,
+    "q18_address_is_data": 0.58
+  },
+  "usage": {
+    "input_tokens": 1381,
+    "output_tokens": 115
+  }
+}

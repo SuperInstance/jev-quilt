@@ -1,0 +1,23 @@
+{
+  "round": 22,
+  "ts": "2026-09-24T16:44:32Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q05_lenia_flows",
+    "q08_polyformalism_12_ports",
+    "q15_twentyfour_ports",
+    "q06_three_views",
+    "q17_canary_honesty"
+  ],
+  "verdicts": {
+    "q05_lenia_flows": 0.96,
+    "q08_polyformalism_12_ports": 0.87,
+    "q15_twentyfour_ports": 0.18,
+    "q06_three_views": 0.21,
+    "q17_canary_honesty": 0.71
+  },
+  "usage": {
+    "input_tokens": 1437,
+    "output_tokens": 118
+  }
+}

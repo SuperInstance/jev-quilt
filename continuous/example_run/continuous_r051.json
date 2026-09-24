@@ -1,0 +1,23 @@
+{
+  "round": 51,
+  "ts": "2026-09-24T16:44:38Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q21_memory_sandbox",
+    "q04_oracle_is_heard",
+    "q22_provenance_conflict",
+    "q15_twentyfour_ports"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.27,
+    "q21_memory_sandbox": 0.28,
+    "q04_oracle_is_heard": 0.96,
+    "q22_provenance_conflict": 0.35,
+    "q15_twentyfour_ports": 0.18
+  },
+  "usage": {
+    "input_tokens": 1372,
+    "output_tokens": 117
+  }
+}

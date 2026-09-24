@@ -1,0 +1,23 @@
+{
+  "round": 74,
+  "ts": "2026-09-24T16:44:43Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q06_three_views",
+    "q07_eleven_opcodes",
+    "q21_memory_sandbox",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.19,
+    "q06_three_views": 0.22,
+    "q07_eleven_opcodes": 0.94,
+    "q21_memory_sandbox": 0.27,
+    "q16_canonicity_score": 0.22
+  },
+  "usage": {
+    "input_tokens": 1419,
+    "output_tokens": 113
+  }
+}

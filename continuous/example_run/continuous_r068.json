@@ -1,0 +1,23 @@
+{
+  "round": 68,
+  "ts": "2026-09-24T16:44:42Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q11_canon_gate_is_chord",
+    "q10_quorum_meshing",
+    "q09_signal_chain",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.25,
+    "q11_canon_gate_is_chord": 0.61,
+    "q10_quorum_meshing": 0.86,
+    "q09_signal_chain": 0.63,
+    "q05_lenia_flows": 0.96
+  },
+  "usage": {
+    "input_tokens": 1401,
+    "output_tokens": 114
+  }
+}
