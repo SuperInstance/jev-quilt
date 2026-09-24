@@ -1,6 +1,6 @@
+import unittest
 """tests/test_tap.py — the tap doctrine: KL-gates + the monadic proposal-gate."""
 import math
-
 
 from jev_quilt import Bookkeeper, Q16
 from jev_quilt.tap import TapGate, ProposalGate, kl_divergence
@@ -12,9 +12,15 @@ def dist(**kw):
     return {k: Q(*v) for k, v in kw.items()}
 
 
-def test_kl_identical_is_zero():
-    p = dist(a=(1, 2), b=(1, 2))
-    assert kl_divergence(p, dict(p)) == 0.0
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_kl_identical_is_zero(self):
+        p = dist(a=(1, 2), b=(1, 2))
+        assert kl_divergence(p, dict(p)) == 0.0
+
+
 
 
 def test_kl_asymmetric():

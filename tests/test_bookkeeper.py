@@ -1,15 +1,22 @@
+import unittest
 import sys
 sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent.parent))
 
 from jev_quilt.bookkeeper import Bookkeeper
 
 
-def test_book_ticks_increase():
-    bk = Bookkeeper("c")
-    r1 = bk.book({"s": 1}, {"d": 1}, "choice", {"v": "a"})
-    r2 = bk.book({"s": 2}, {"d": 2}, "choice", {"v": "b"})
-    assert (r1.tick, r2.tick) == (1, 2)
-    assert bk.verify()
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_book_ticks_increase(self):
+        bk = Bookkeeper("c")
+        r1 = bk.book({"s": 1}, {"d": 1}, "choice", {"v": "a"})
+        r2 = bk.book({"s": 2}, {"d": 2}, "choice", {"v": "b"})
+        assert (r1.tick, r2.tick) == (1, 2)
+        assert bk.verify()
+
+
 
 
 def test_replay_deterministic():

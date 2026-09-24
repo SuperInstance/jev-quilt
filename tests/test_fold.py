@@ -1,3 +1,4 @@
+import unittest
 """tests/test_fold.py — homomorphic WAL folding: Replay ≡ Live."""
 from jev_quilt import Bookkeeper, Q16 as Q
 from jev_quilt.tap import ProposalGate
@@ -12,9 +13,15 @@ def book(n, kinds=("transition", "refusal", "transition")):
     return k
 
 
-def test_root_empty_and_single():
-    assert mmr_root([]) != mmr_root([b"x"])
-    assert mmr_root([b"a", b"a"]) == mmr_root([b"a", b"a"])  # deterministic
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_root_empty_and_single(self):
+        assert mmr_root([]) != mmr_root([b"x"])
+        assert mmr_root([b"a", b"a"]) == mmr_root([b"a", b"a"])  # deterministic
+
+
 
 
 def test_fold_captures_prefix():

@@ -1,57 +1,61 @@
-
 from jev_quilt import (Q16, WorldModel, imagine_choice, imagine_score)
 from jev_quilt.readings import (ConstReading, NgramReading, DriftReading,
                                 ReadingEnsemble)
 
 
-def test_ngram_locks_exactly_on_periodic_signal():
-    r = NgramReading(k=2)
-    r.update(Q16(1, 10)); r.update(Q16(9, 10))
-    # period-2 world: after seeing [a, b], the next value is a — exact lock
-    assert r.predict() == Q16(1, 10)
-    r.update(Q16(1, 10))
-    assert r.predict() == Q16(9, 10)
+import unittest
 
 
-def test_drift_tracks_a_ramp_exactly():
-    r = DriftReading(k=4)
-    for v in (1, 2, 3, 4, 5):           # ramp of +1/10 each beat
-        r.update(Q16(v, 10))
-    pred = r.predict()
-    assert pred is not None
-    # last=0.5, mean increment over [0.1,0.1,0.1,0.1] window = 0.1 -> 0.6
-    assert pred == Q16(6, 10)
+class TestConverted(unittest.TestCase):
+    def test_ngram_locks_exactly_on_periodic_signal(self):
+        r = NgramReading(k=2)
+        r.update(Q16(1, 10)); r.update(Q16(9, 10))
+        # period-2 world: after seeing [a, b], the next value is a — exact lock
+        assert r.predict() == Q16(1, 10)
+        r.update(Q16(1, 10))
+        assert r.predict() == Q16(9, 10)
 
 
-def test_ensemble_prefers_periodic_reader_over_mean():
-    ens = ReadingEnsemble({"mean": __import__("jev_quilt").MeanPredictor(k=4),
-                           "period": NgramReading(k=3)})
-    floor = Q16(15, 100)
-    sig = [Q16(1, 10), Q16(5, 10), Q16(9, 10)] * 6   # period-3 world
-    for v in sig:
-        pred = ens.predict()
-        # surprise vs committed prediction, exact
-        if pred is not None:
-            from jev_quilt import surprise
-            s = surprise(v, pred)
-            if s > floor:
-                pass  # engine does the booking; here we drive updates
-        ens.update(v)
-    assert ens.alarms["period"] == 0      # period reader never surprised
-    assert ens.alarms["mean"] >= 3        # mean reader lost on periodic world
-    # weights now favor period; next prediction comes from it
-    ens.predict()
-    assert ens.last_choice == "period"
+    def test_drift_tracks_a_ramp_exactly(self):
+        r = DriftReading(k=4)
+        for v in (1, 2, 3, 4, 5):           # ramp of +1/10 each beat
+            r.update(Q16(v, 10))
+        pred = r.predict()
+        assert pred is not None
+        # last=0.5, mean increment over [0.1,0.1,0.1,0.1] window = 0.1 -> 0.6
+        assert pred == Q16(6, 10)
 
 
-def test_ensemble_names_mean_when_world_is_constant():
-    ens = ReadingEnsemble({"mean": __import__("jev_quilt").MeanPredictor(k=4),
-                           "period": NgramReading(k=2)})
-    for _ in range(8):
-        ens.update(Q16(3, 10))
-    ens.predict()
-    # both would do fine; tie breaks alphabetically -> 'mean'
-    assert ens.last_choice == "mean"
+    def test_ensemble_prefers_periodic_reader_over_mean(self):
+        ens = ReadingEnsemble({"mean": __import__("jev_quilt").MeanPredictor(k=4),
+                               "period": NgramReading(k=3)})
+        floor = Q16(15, 100)
+        sig = [Q16(1, 10), Q16(5, 10), Q16(9, 10)] * 6   # period-3 world
+        for v in sig:
+            pred = ens.predict()
+            # surprise vs committed prediction, exact
+            if pred is not None:
+                from jev_quilt import surprise
+                s = surprise(v, pred)
+                if s > floor:
+                    pass  # engine does the booking; here we drive updates
+            ens.update(v)
+        assert ens.alarms["period"] == 0      # period reader never surprised
+        assert ens.alarms["mean"] >= 3        # mean reader lost on periodic world
+        # weights now favor period; next prediction comes from it
+        ens.predict()
+        assert ens.last_choice == "period"
+
+
+    def test_ensemble_names_mean_when_world_is_constant(self):
+        ens = ReadingEnsemble({"mean": __import__("jev_quilt").MeanPredictor(k=4),
+                               "period": NgramReading(k=2)})
+        for _ in range(8):
+            ens.update(Q16(3, 10))
+        ens.predict()
+        # both would do fine; tie breaks alphabetically -> 'mean'
+        assert ens.last_choice == "mean"
+
 
 
 # ---- imagination: JEPA rolling futures, JEV signing the surface ----
@@ -108,5 +112,6 @@ def test_imagine_score_and_noul_honesty():
 
 def test_imagine_budget_refuses():
     w = _gridworld()
-    with pytest.raises(ValueError, match="budget"):
+    with self.assertRaises(ValueError) as _cm:
+        self.assertIn("budget", str(_cm.exception))
         imagine_choice(w, Q16(0, 1), ["right"] * 5000, horizon=1)

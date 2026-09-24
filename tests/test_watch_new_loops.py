@@ -1,3 +1,4 @@
+import unittest
 """Pin the watch reading on jeviter + deck_sim (examples/watch_new_loops.py)."""
 
 import sys
@@ -9,11 +10,17 @@ from examples.watch_new_loops import run_watch
 from jev_quilt.jepa_slot import scan
 
 
-def test_all_books_verify():
-    books = run_watch()
-    assert set(books) == {"world", "jeviter.static", "jeviter.periodic",
-                          "deck.vision", "deck.scale"}
-    assert all(b.verify() for b in books.values())
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_all_books_verify(self):
+        books = run_watch()
+        assert set(books) == {"world", "jeviter.static", "jeviter.periodic",
+                              "deck.vision", "deck.scale"}
+        assert all(b.verify() for b in books.values())
+
+
 
 
 def test_periodic_world_names_candidate():

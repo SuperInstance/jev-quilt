@@ -1,3 +1,4 @@
+import unittest
 from jev_quilt.cell import Cell, Hook, Projection, DEADBAND
 from jev_quilt.engine import Engine, WakeResult
 from jev_quilt.q16 import Q16
@@ -7,15 +8,54 @@ def _cell(name, **kw):
     return Cell(name=name, coord=(0, 0), **kw)
 
 
-def test_emit_wakes_hooked_cell():
-    eng = Engine()
-    eng.register(_cell("src"))
-    eng.register(_cell("dst", input_hooks=[Hook("src")],
-                       decision={"rule": "threshold", "value": (7, 10), "threshold": (1, 2)}))
-    res = eng.emit("src", Q16(1, 10))
-    woke = [r for r in res if r.cell == "dst"]
-    assert len(woke) == 1 and woke[0].reason == "decided"
-    assert woke[0].decision.value is True
+
+
+class TestConverted(unittest.TestCase):
+
+
+    def _monkeypatch(self):
+        class _MP:
+            def __init__(self, tc):
+                self.tc = tc
+                self._saved = {}
+            def setattr(self, obj, name, value):
+                import sys
+                if hasattr(obj, name):
+                    self._saved.setdefault(('attr', id(obj), name), getattr(obj, name))
+                setattr(obj, name, value)
+            def delenv(self, name, raising=True):
+                import os
+                self._saved.setdefault(('env', name), os.environ.get(name))
+                if name in os.environ:
+                    del os.environ[name]
+            def setenv(self, name, value):
+                import os
+                self._saved.setdefault(('env', name), os.environ.get(name))
+                os.environ[name] = value
+            def undo(self):
+                import os
+                for (kind, *rest), value in self._saved.items():
+                    if kind == 'env':
+                        if value is None:
+                            os.environ.pop(rest[0], None)
+                        else:
+                            os.environ[rest[0]] = value
+                    elif kind == 'attr':
+                        setattr(rest[0], rest[1], value)
+        m = _MP(self)
+        self.addCleanup(m.undo)
+        return m
+    def test_emit_wakes_hooked_cell(self):
+        eng = Engine()
+        eng.register(_cell("src"))
+        eng.register(_cell("dst", input_hooks=[Hook("src")],
+                           decision={"rule": "threshold", "value": (7, 10), "threshold": (1, 2)}))
+        res = eng.emit("src", Q16(1, 10))
+        woke = [r for r in res if r.cell == "dst"]
+        assert len(woke) == 1 and woke[0].reason == "decided"
+        assert woke[0].decision.value is True
+
+
 
 
 def test_unhooked_cell_silent():
