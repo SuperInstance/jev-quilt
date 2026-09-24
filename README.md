@@ -8,7 +8,6 @@
 
 *Cells are luminous scars. Witness chains flow between them. The substrate is grown, not designed.*
 
-🎬 **[Watch the 6-second hero video — one cell grows the substrate, the canon-gate opens, the canary flies through](./assets/hero.mp4)**
 
 </div>
 
