@@ -1,3 +1,4 @@
+import unittest
 from jev_quilt import (Q16, WitnessRng, seed_from_state, seed_from_book,
                        opposite, is_canonical, TendencyReading)
 from jev_quilt.cell import Cell, Hook
@@ -16,12 +17,18 @@ def _book(n=5):
     return eng.books["a"]
 
 
-def test_seed_from_book_replay_identical():
-    b1, b2 = _book(7), _book(7)
-    assert seed_from_book(b1) == seed_from_book(b2)
-    r1 = [WitnessRng(seed_from_book(b1)).next_q16() for _ in range(6)]
-    r2 = [WitnessRng(seed_from_book(b2)).next_q16() for _ in range(6)]
-    assert r1 == r2
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_seed_from_book_replay_identical(self):
+        b1, b2 = _book(7), _book(7)
+        assert seed_from_book(b1) == seed_from_book(b2)
+        r1 = [WitnessRng(seed_from_book(b1)).next_q16() for _ in range(6)]
+        r2 = [WitnessRng(seed_from_book(b2)).next_q16() for _ in range(6)]
+        assert r1 == r2
+
+
 
 
 def test_seed_diverges_with_history():

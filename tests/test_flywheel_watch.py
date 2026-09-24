@@ -1,3 +1,4 @@
+import unittest
 """Pins for the first flywheel watch reading.
 
 The honest negative must STAY honest: if a future edit to the flywheel
@@ -14,9 +15,15 @@ from examples.flywheel_watch import run_flywheel, DOMAINS
 from jev_quilt.jepa_slot import scan
 
 
-def test_flywheel_books_all_verify():
-    books = run_flywheel(ticks=40)
-    assert all(b.verify() for b in books.values())
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_flywheel_books_all_verify(self):
+        books = run_flywheel(ticks=40)
+        assert all(b.verify() for b in books.values())
+
+
 
 
 def test_flywheel_watch_honest_negative():

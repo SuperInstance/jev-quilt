@@ -1,3 +1,4 @@
+import unittest
 """tests/test_jeviter.py — JEV as a new type of iterator."""
 from jev_quilt import Q16 as Q
 from jev_quilt.jeviter import simulate
@@ -6,12 +7,18 @@ CALM = {"a": Q(1, 2), "b": Q(1, 2)}
 SHIFT = {"a": Q(9, 10), "b": Q(1, 10)}
 
 
-def test_static_stream_yields_nothing():
-    events, keeper = simulate([dict(CALM) for _ in range(50)])
-    assert events == []
-    assert len(keeper.entries) == 51          # 50 silences + 1 exhaustion
-    assert keeper.entries[-1].decision_kind == "exhausted"
-    assert keeper.replay()
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_static_stream_yields_nothing(self):
+        events, keeper = simulate([dict(CALM) for _ in range(50)])
+        assert events == []
+        assert len(keeper.entries) == 51          # 50 silences + 1 exhaustion
+        assert keeper.entries[-1].decision_kind == "exhausted"
+        assert keeper.replay()
+
+
 
 
 def test_shift_yields_exactly_once():

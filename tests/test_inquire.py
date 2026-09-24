@@ -1,3 +1,4 @@
+import unittest
 import json
 
 from jev_quilt import Cell, Hook, Q16, Engine, MeanPredictor, Bookkeeper
@@ -14,17 +15,23 @@ def _fabric():
     return eng
 
 
-def test_prediction_precommitted_in_receipt():
-    eng = _fabric()
-    eng.cells["sense.a"].decision = {"rule": "identity", "value": Q16(8, 10)}
-    eng.emit("src", {"mag": Q16(1)}, state={"t": 1})
-    for _ in range(4):  # warm the window
-        eng.emit("src", {"mag": Q16(1)}, state={"t": 2})
-    eng.cells["sense.a"].decision = {"rule": "identity", "value": Q16(9, 10)}
-    eng.emit("src", {"mag": Q16(1)}, state={"t": 9})
-    r = json.loads(eng.books["sense.a"].entries[-1].payload)
-    assert "predicted" in r and "surprise" in r
-    assert r["surprise"] == "1/10"  # 0.9 - 0.8, exact
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_prediction_precommitted_in_receipt(self):
+        eng = _fabric()
+        eng.cells["sense.a"].decision = {"rule": "identity", "value": Q16(8, 10)}
+        eng.emit("src", {"mag": Q16(1)}, state={"t": 1})
+        for _ in range(4):  # warm the window
+            eng.emit("src", {"mag": Q16(1)}, state={"t": 2})
+        eng.cells["sense.a"].decision = {"rule": "identity", "value": Q16(9, 10)}
+        eng.emit("src", {"mag": Q16(1)}, state={"t": 9})
+        r = json.loads(eng.books["sense.a"].entries[-1].payload)
+        assert "predicted" in r and "surprise" in r
+        assert r["surprise"] == "1/10"  # 0.9 - 0.8, exact
+
+
 
 
 def test_alarm_flagged_when_surprise_above_floor():

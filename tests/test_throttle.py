@@ -1,3 +1,4 @@
+import unittest
 """tests/test_throttle.py — the homeostatic circuit breaker."""
 from jev_quilt import Bookkeeper
 from jev_quilt.throttle import HomeostaticThrottle
@@ -7,12 +8,18 @@ def make_fn():
     return lambda text: f"done:{text[:12]}"
 
 
-def test_flood_of_identical_is_shed():
-    t = HomeostaticThrottle(make_fn())
-    results = [t("same request") for _ in range(100)]
-    escalations = [r for r in results if r is not None]
-    assert len(escalations) <= 3, "identical flood must self-shed"
-    assert t.shed + t.escalated == 100
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_flood_of_identical_is_shed(self):
+        t = HomeostaticThrottle(make_fn())
+        results = [t("same request") for _ in range(100)]
+        escalations = [r for r in results if r is not None]
+        assert len(escalations) <= 3, "identical flood must self-shed"
+        assert t.shed + t.escalated == 100
+
+
 
 
 def test_novel_traffic_escalates_then_ratchet_absorbs():

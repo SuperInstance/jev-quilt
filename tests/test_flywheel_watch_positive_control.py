@@ -1,3 +1,4 @@
+import unittest
 """Pins for the positive control: the watch must FIRE on this harness
 when a mean-unrepresentable world is present, and must keep its honest
 negative on the real domains at the same time."""
@@ -14,14 +15,20 @@ from examples.flywheel_watch import run_flywheel
 from jev_quilt.jepa_slot import scan
 
 
-def test_grafted_periodic_cell_is_named():
-    books = run_with_synthetic(SYNTH_TICKS)
-    candidates, problems = scan(books, min_wakes=10)
-    assert problems == []
-    assert [c.cell for c in candidates] == [SYNTH]
-    c = candidates[0]
-    assert 2 * c.alarms >= c.wakes  # majority bar, exact integer compare
-    assert books[SYNTH].verify()
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_grafted_periodic_cell_is_named(self):
+        books = run_with_synthetic(SYNTH_TICKS)
+        candidates, problems = scan(books, min_wakes=10)
+        assert problems == []
+        assert [c.cell for c in candidates] == [SYNTH]
+        c = candidates[0]
+        assert 2 * c.alarms >= c.wakes  # majority bar, exact integer compare
+        assert books[SYNTH].verify()
+
+
 
 
 def test_real_domains_stay_negative_alongside():

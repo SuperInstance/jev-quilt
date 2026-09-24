@@ -1,3 +1,4 @@
+import unittest
 """JEPA slot watch: the alarm ledger must NAME the predictor-class hole,
 and must honestly stay silent when the predictor class is right."""
 
@@ -30,15 +31,21 @@ def _constant(t):
     return Q16(3, 10)
 
 
-def test_periodic_world_surfaces_slot():
-    books = _run(_periodic)
-    candidates, problems = scan(books)
-    assert problems == []
-    assert [c.cell for c in candidates] == ["sense.x"]
-    c = candidates[0]
-    assert 2 * c.alarms >= c.wakes          # majority bar, exact
-    assert c.alarm_share >= __import__("fractions").Fraction(1, 2)
-    assert books["sense.x"].verify()
+
+
+class TestConverted(unittest.TestCase):
+
+    def test_periodic_world_surfaces_slot(self):
+        books = _run(_periodic)
+        candidates, problems = scan(books)
+        assert problems == []
+        assert [c.cell for c in candidates] == ["sense.x"]
+        c = candidates[0]
+        assert 2 * c.alarms >= c.wakes          # majority bar, exact
+        assert c.alarm_share >= __import__("fractions").Fraction(1, 2)
+        assert books["sense.x"].verify()
+
+
 
 
 def test_constant_world_is_honest_negative():
