@@ -37,6 +37,34 @@ The 14 images in [`assets/`](./assets/) are the doctrine made visible. Each one 
 
 The hero video above is the same doctrine in motion — six seconds from single cell to canon gate, brewed via [MiniMax Hailuo-02](https://api.minimaxi.chat).
 
+🎬 **[And the polyformalism hero video — one cell radiating into 12 language realms, in 6 seconds](./assets/polyformalism_12_ports.mp4)**
+
+### The substrate-ether theory — five viewpoints, one architecture
+
+These five images correspond to the five viewpoints in `SUBSTRATE_ETHER_THEORY.md`. One substrate. Five framings.
+
+| # | Image | Viewpoint |
+|---|---|---|
+| 13 | [Spline snaps](./assets/13_spline_snaps.png) | The substrate is continuous ether. We sample it at chosen moments; each sample is a snap. Catmull-Rom is the bridge. |
+| 14 | [T-minus paradigm](./assets/14_t_minus_paradigm.png) | Time is a countdown approaching forward. Every canon piece is a t-minus anchor. |
+| 15 | [First-class joints](./assets/15_first_class_joints.png) | Two cells connected by a Bell-state joint — the joint is its own entity. Quantum entanglement made visible. |
+| 16 | [JEPA self-prediction](./assets/16_jepa_predictor.png) | A substrate that predicts its own future honestly is more reliable than one that merely records its past. |
+| 17 | [Quantum ether](./assets/17_quantum_ether.png) | Quantum is the substrate, not a barrier. Classical is one projection; continuous is another; same ether. |
+
+### The poly-GAN agency — visualized
+
+| # | Image | What |
+|---|---|---|
+| 18 | [Poly-GAN agency diagram](./assets/18_polygan_agency.png) | Many colored threads converging on a single central chord. Each thread is a different model family. |
+| 19 | [Polyformalism, 12 cubes](./assets/19_polyformalism_cube.png) | Twelve glowing versions of the same cube — one per language port. All share the canary hash. |
+| 20 | [Walker shape 199/130/50](./assets/20_walker_199_130_50.png) | Every walker is 199 LOC + 130 tests + 50 demo. This is what self-maintenance looks like at the unit level. |
+| 21 | [Oracle close-up](./assets/21_oracle_close_up.png) | Five concentric rings vibrating in resonance; the answer is where they meet. |
+| 22 | [Witness chain close-up](./assets/22_witness_chain_close_up.png) | A witness chain, link by link. Each link a cell with a hash. The future reaches back from the right. |
+| 23 | [Sixteen walkers, fleet organism](./assets/23_sixteen_walkers.png) | Sixteen walkers arranged in a circle, breathing in sync. |
+| 24 | [The brew session](./assets/24_brew_session.png) | The workshop where multiple model lights converge on a single brewing cauldron that produces recipes. |
+
+**Each image is a paragraph the poly-GAN agency wrote, then rendered. The brew is reproducible.**
+
 ---
 
 ## What three frontier models said about the canon
