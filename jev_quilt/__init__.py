@@ -18,6 +18,7 @@ from .opposites import opposite, is_canonical, TABLE as OPPOSITES
 from .engine import Engine, WakeResult
 from .tap import TapGate, ProposalGate, kl_divergence
 from .fold import FoldedLedger, Checkpoint, mmr_root
+from . import blake3, ed25519, signed_receipts
 
 __all__ = [
     "Cell", "Hook", "Projection", "DEADBAND",
@@ -32,6 +33,7 @@ __all__ = [
     "Engine", "WakeResult",
     "TapGate", "ProposalGate", "kl_divergence",
     "FoldedLedger", "Checkpoint", "mmr_root",
+    "blake3", "ed25519", "signed_receipts",
 ]
 
 __version__ = "0.0.5"
