@@ -34,9 +34,6 @@ The 14 images in [`assets/`](./assets/) are the doctrine made visible. Each one 
 | 11 | [The oracle's chord](./assets/11_oracle_chord.png) | Five rings vibrating in resonance; the answer is where they agree. |
 | 12 | [Walker walks walker](./assets/12_walker_walks_walker.png) | The pattern recurses. Each new walker breeds the next. |
 
-The hero video above is the same doctrine in motion — six seconds from single cell to canon gate, brewed via [MiniMax Hailuo-02](https://api.minimaxi.chat).
-
-🎬 **[And the polyformalism hero video — one cell radiating into 12 language realms, in 6 seconds](./assets/polyformalism_12_ports.mp4)**
 
 ### The substrate-ether theory — five viewpoints, one architecture
 
