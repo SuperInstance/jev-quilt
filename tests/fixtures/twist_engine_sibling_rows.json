@@ -1,0 +1,42 @@
+{
+ "provenance": {
+  "source_repo": "SuperInstance/twist-engine",
+  "source_commit": "23047cb7471fa6177a7b0fa7b2fed77e681179f1",
+  "source_file": "jev-receipts.mjs",
+  "generated": "2026-09-24 by the receipts-v2 lane: jev-receipts.mjs ReceiptChain + JevCell executed fresh under node v22.22.2, cell 'sibling.demo' window=3 floor=0.5, values [0.10,0.11,0.12,0.13,0.90,0.14]; chain.verify() returned true at generation time",
+  "why_real": "family cross-repo contract doctrine: fixtures must be REAL sibling rows, produced by the sibling's shipped code, never retyped by hand"
+ },
+ "entries": [
+  {
+   "hash": "0x770f9540cdbd9b4c",
+   "parent": "0000000000000000000000000000000000000000000000000000000000000000",
+   "body": "{\"kind\":\"jev.reading\",\"payload\":{\"cell\":\"sibling.demo\",\"t\":0,\"value\":0.1,\"alarmed\":false}}"
+  },
+  {
+   "hash": "0xc189f75ed630985f",
+   "parent": "0x770f9540cdbd9b4c",
+   "body": "{\"kind\":\"jev.reading\",\"payload\":{\"cell\":\"sibling.demo\",\"t\":1,\"value\":0.11,\"alarmed\":false}}"
+  },
+  {
+   "hash": "0x62434ddf75d99177",
+   "parent": "0xc189f75ed630985f",
+   "body": "{\"kind\":\"jev.reading\",\"payload\":{\"cell\":\"sibling.demo\",\"t\":2,\"value\":0.12,\"alarmed\":false}}"
+  },
+  {
+   "hash": "0x810d3d04c4ba685a",
+   "parent": "0x62434ddf75d99177",
+   "body": "{\"kind\":\"jev.reading\",\"payload\":{\"cell\":\"sibling.demo\",\"t\":3,\"value\":0.13,\"alarmed\":false}}"
+  },
+  {
+   "hash": "0x4f5257c7f8bc9207",
+   "parent": "0x810d3d04c4ba685a",
+   "body": "{\"kind\":\"jev.alarm\",\"payload\":{\"cell\":\"sibling.demo\",\"t\":4,\"value\":0.9,\"alarmed\":true}}"
+  },
+  {
+   "hash": "0x448ad54a4ace788b",
+   "parent": "0x4f5257c7f8bc9207",
+   "body": "{\"kind\":\"jev.reading\",\"payload\":{\"cell\":\"sibling.demo\",\"t\":5,\"value\":0.14,\"alarmed\":false}}"
+  }
+ ],
+ "chain_tip": "0x448ad54a4ace788b"
+}
