@@ -9,6 +9,8 @@ where type is lowercase: "noul" | "choice" | "score".
 - score: instructions + criteria list (ordered rubric levels)
 
 Response: {model, answers:{name:{type, value/noul/score, confidence, probabilities}}}
+A noul answer's `confidence` is the model's confidence; the client falls
+back to the noul probability only when the API omits `confidence`.
 
 Env: JEV_API_KEY or TYPESAFE_API_KEY or TYPESAFEAI_KEY;
 JEV_BASE_URL or TYPESAFE_BASE_URL (default https://api.typesafe.ai).
@@ -93,9 +95,13 @@ class TypeSafeBackend:
         for name, ans in payload.get("answers", {}).items():
             kind = ans.get("type", "")
             if kind == "noul":
+                value = ans.get("noul", ans.get("value"))
+                confidence = ans.get("confidence")
+                if confidence is None:
+                    confidence = value
                 decisions.append(BackendDecision(
-                    kind="noul", value=ans.get("noul"),
-                    confidence=ans.get("noul"),
+                    kind="noul", value=value,
+                    confidence=confidence,
                     receipt_note=f"typesafe.latency_ms={latency_ms:.1f}"))
             elif kind == "choice":
                 decisions.append(BackendDecision(
