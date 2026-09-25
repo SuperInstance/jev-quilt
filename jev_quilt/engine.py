@@ -33,7 +33,7 @@ DEFAULT_DEADBAND = Q16(0)  # DEADBAND token → no filtering unless the hook say
 class WakeResult:
     cell: str
     woke: bool
-    reason: str                          # "decided" | "silent_deadband" | "rejected" | "no_hook"
+    reason: str                          # "decided" | "silent_deadband" | "rejected" | "refused" | "no_hook"
     decision: Optional[BackendDecision] = None
     projections_fired: list = field(default_factory=list)
 
