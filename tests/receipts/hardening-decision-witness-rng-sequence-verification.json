@@ -1,0 +1,48 @@
+{
+  "candidates": [
+    {
+      "cell": "cand-a",
+      "coord": [
+        0,
+        0
+      ],
+      "design": "same seed -> same sequence; membership + refusal paths",
+      "name": "fixed-seed-replay"
+    },
+    {
+      "cell": "cand-b",
+      "coord": [
+        1,
+        0
+      ],
+      "design": "re-implement sha256 carves in the test to predict sequences",
+      "name": "carve-stream-emulation"
+    }
+  ],
+  "chain_tip": "d2603c1a08d91b67c6a8a2c438d4e1c251b5c0015b12e3e205f26c4e96e7c6de",
+  "decision": "witness-rng-sequence-verification",
+  "envelope": {
+    "chain_head": "5c1b7cf605097244",
+    "receipt": {
+      "decision_kind": "choice",
+      "delta_hash": "ea8c447de69a7cbd866dd690aed5d062baef42afb69611629ed6e9e4b915d66a",
+      "payload": "{\"why\": \"carve emulation duplicates the implementation under test \\u2014 an impl bug would be echoed by the 'oracle'. Replay asserts the promised invariant (determinism) without mirroring code.\", \"win",
+      "payload_hash": "a377946d20ff5fab",
+      "state_hash": "f9ee69993f5de6badf2cb1c9b61926dc01d50e97fcfb844f531bf13be688d98e",
+      "tick": 3
+    },
+    "signature": "2fa8a9e93400180e3bf08000c678d0a7b296383c9a4b5a826bf6cbb3be05856519c748478db841b46e6e842d6b3d436bca7a256c42ad018df5fdde450bdfc90b",
+    "signer": "hardening-a.k1"
+  },
+  "note": "verify-only receipt: the Ed25519 seed is never serialized",
+  "signer": "hardening-a.k1",
+  "signer_pubkey": "5f1f278ae9eb28d14b5818960d51c568b7dd07ca9bbcd84daccd3dfccf581f27",
+  "tiebreak": "rationale (substrate-witnessed)",
+  "verification": {
+    "ok": true,
+    "reasons": [],
+    "signer": "hardening-a.k1"
+  },
+  "why": "carve emulation duplicates the implementation under test \u2014 an impl bug would be echoed by the 'oracle'. Replay asserts the promised invariant (determinism) without mirroring code.",
+  "winner": "fixed-seed-replay"
+}

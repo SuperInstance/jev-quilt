@@ -30,8 +30,10 @@ def seed_from_state(state: dict) -> int:
 
 
 def seed_from_book(book: Bookkeeper, tail: int = 0) -> int:
-    """Seed from the tail of a receipt chain: tail=0 is the empty book
-    (pre-first-decision reproducibility), tail=n hashes receipts[-n:]."""
+    """Seed from the tail of a receipt chain: tail=0 (default) seals
+    the chain TIP (last receipt's sha) of a non-empty book, and reduces
+    to the pre-first-decision constant for an empty book; tail=n seals
+    receipts[-n:] as a '|'-joined window of shas."""
     if tail and book.entries:
         window = book.entries[-tail:]
         raw = "|".join(e.sha() for e in window).encode()
