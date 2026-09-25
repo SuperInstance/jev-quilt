@@ -27,6 +27,9 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
 
+      # NO '|| true' here: install failures must fail the job. The previous
+      # '|| true' masked the missing jev_quilt/polyformalism.py — the unittest
+      # step passed while the canary import was broken (fixed in PR #21 / #20).
       - name: install (no deps)
         run: |
           python -m pip install --upgrade pip
@@ -42,12 +45,17 @@ jobs:
           echo "---"
           echo "✅ jev-quilt production tests passed (stdlib unittest, no pytest)"
 
+      # Depends on jev_quilt/polyformalism.py (lands with PR #21 / #20).
+      # NOTE: the previous version of this step interpolated an undefined
+      # 'python_version' name in the f-string — a NameError AFTER the assert,
+      # i.e. the step could never go green. Fixed.
       - name: canary check
         run: |
           python -c "
           from jev_quilt.polyformalism import fleet_canary
           c = fleet_canary()
           assert c == '0x024a555471370b18d', f'canary mismatch: {c}'
+          print(f'✓ fleet canary {c} verified')
           print(f'✓ fleet canary {c} verified on Python ${{ matrix.python-version }}')
           "
 

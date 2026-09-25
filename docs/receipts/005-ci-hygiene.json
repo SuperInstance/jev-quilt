@@ -1,0 +1,9 @@
+{
+  "decision": "ci-hygiene-r5",
+  "findings": [
+    {"bug": "pip install -e . --no-deps || true", "effect": "install failures (including the missing jev_quilt/polyformalism.py) silently masked; unittest step green while canary import broken", "fix": "removed || true"},
+    {"bug": "canary step f-string interpolated undefined 'python_version'", "effect": "NameError after assert — step could never go green even with the module present", "fix": "dropped the interpolation"}
+  ],
+  "stack_order": "merge PR #21 or #20 (creates jev_quilt/polyformalism.py) BEFORE this PR, else the canary job stays red",
+  "verified": ["yaml parses (python3 -c yaml.safe_load)", "unittest discover 81 pass/3 skip from source on this branch"]
+}
