@@ -8,12 +8,12 @@ a call that genuinely surprises the window ESCALATES to the wrapped
 function. A flood of identical requests costs nothing — novelty-
 degenerate traffic self-sheds. Compute flows to the unexpected.
 
-Law-abiding throughout: fingerprints are exact Q16 bucket counts
-(fnv1a over the input, K fixed buckets — Law 1, never a float
-identity); every shed and every escalation books a receipt (a silence
-you cannot audit is indistinguishable from an outage); the window is
-the boundary belief, so the threshold tracks the traffic's own
-shape instead of a fixed line an adversary can find.
+Law-abiding throughout: fingerprints are exact Q16 histograms over
+character classes (vowels/consonants/digits/separators/other — Law 1,
+never a float identity); every shed and every escalation books a
+receipt (a silence you cannot audit is indistinguishable from an
+outage); the window is the boundary belief, so the threshold tracks
+the traffic's own shape instead of a fixed line an adversary can find.
 
 Live API runs need JEV_API_KEY/TYPESAFEAI_KEY — without it, the
 throttle still books and sheds; only `fn` execution is gated.
@@ -21,20 +21,17 @@ throttle still books and sheds; only `fn` execution is gated.
 
 from __future__ import annotations
 
-import hashlib
-
 from .bookkeeper import Bookkeeper
 from .jeviter import JevIterator
 from .q16 import Q16
 from .tap import TapGate
 
 
-def _fingerprint_buckets(text: str, k: int = 8) -> dict:
-    """Word-level hash histogram — a text IS a distribution over its
-    words (LSH-style), not one bucket. Novel vocabulary shifts the
-    whole shape; paraphrases of routine words stay near the boundary.
-    Counts are exact Q16 rationals; normalization is reciprocal
-    multiplication (Law 1 — never float division)."""
+def _fingerprint_buckets(text: str) -> dict:
+    """Character-class histogram — a text IS a distribution over its
+    character classes. Counts are exact Q16 rationals; normalization is
+    reciprocal multiplication (Law 1 — never float division). Case is
+    folded; digits and other bytes get their own buckets."""
     VOWELS = set("aeiou")
     counts = {"vowels": 0, "cons": 0, "digits": 0, "sep": 0, "other": 0}
     for ch in (text.lower() or "\x00"):
