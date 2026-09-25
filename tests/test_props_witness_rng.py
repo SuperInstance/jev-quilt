@@ -267,10 +267,12 @@ class TestWitnessRngProperties(unittest.TestCase):
     def test_seed_from_state_mixed_keys(self): self._check(prop_seed_from_state_mixed_key_types)
     def test_seed_from_book_tail_n(self): self._check(prop_seed_from_book_tail_n_replay)
 
+    @unittest.expectedFailure  # VIOLATION pinned; see tests/receipts/005-r2-properties.json
     def test_seed_from_book_tail0_empty_book(self):
-        # FAIL-first: asserts the DOCUMENTED behavior; fails on main.
-        # Marked expectedFailure in the follow-up commit
-        # (see tests/receipts/005-r2-properties.json).
+        # Docstring: 'tail=0 is the empty book (pre-first-decision
+        # reproducibility)'. Main hashes the LAST receipt instead, so
+        # tail=0 tracks the newest decision — the opposite of the claim.
+        # Asserts the DOCUMENTED behavior; will unexpected-success if fixed.
         self._check(prop_seed_from_book_tail0_is_empty_book)
 
 

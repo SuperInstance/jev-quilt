@@ -1,0 +1,161 @@
+{
+  "round": "R2",
+  "branch": "hard/r2-properties",
+  "baseline": "main @ ef09d49 — 81 passed / 3 skipped (python3 -m unittest discover -s tests -q)",
+  "runner": {
+    "file": "tests/property_runner.py",
+    "iterations_per_property": 200,
+    "master_seed": "jev-quilt-r2-properties-v1",
+    "determinism": "per-property seed = random.Random(sha512(f'{master_seed}:{qualified_name}')); stable across processes and PYTHONHASHSEED",
+    "stdlib_only": true,
+    "network": false
+  },
+  "properties_pinned": {
+    "cell": [
+      "prop_coord_accepts_integer_pairs (Law 1: 'identity never floats (coord is integer (k, s))')",
+      "prop_coord_rejects_non_integer_identity (floats / wrong arity / list -> TypeError)",
+      "prop_backend_allowlist (auto|q16|openjev-local|typesafe-api; junk -> ValueError)",
+      "prop_viability_floor_confidence_rule ('confidence > 0 is viable')",
+      "prop_hook_projection_frozen_and_roundtrip (idempotent construction; asdict round-trip)",
+      "prop_frozen_dataclass_rejects_mutation (FrozenInstanceError)",
+      "prop_ledger_version_counter_monotonic (Bookkeeper ticks 1..N; verify(); wake_state)",
+      "prop_replay_is_deterministic (Law 4: 'replay is the referee')"
+    ],
+    "fold": [
+      "prop_mmr_deterministic",
+      "prop_mmr_empty_is_documented_constant (empty tree == sha256('mmr:empty'))",
+      "prop_mmr_append_order_matters ('append-order matters')",
+      "prop_fold_verify_roundtrip_on_honest_book ('Replay ≡ Live')",
+      "prop_fold_of_empty_prefix_is_identity_checkpoint (empty-input behavior)",
+      "prop_verify_rejects_tampered_folded_prefix ('Divergence = tamper')",
+      "prop_verify_requires_matching_fold (no-folds and both mismatch directions -> False)",
+      "prop_verify_tail_detects_tampered_sliver [EXPECTED FAILURE — violation]",
+      "prop_fold_recompute_is_idempotent"
+    ],
+    "q16": [
+      "prop_add_sub_inverse_exact ((a+b)-b == a exactly; exact-rational codec, no epsilon)",
+      "prop_mul_div_inverse_exact ((a*b)/b == a, b!=0)",
+      "prop_add_mul_commutative",
+      "prop_add_mul_associative",
+      "prop_additive_and_multiplicative_identity",
+      "prop_negation_involution (Q16(-n,d) twice == identity; no __neg__ dunder — see gaps)",
+      "prop_constructor_normalization (gcd-reduced, den>0, equal-rationals hash equal, dict round-trip)",
+      "prop_from_float_roundtrip ('never silently rounds identity')",
+      "prop_from_float_rejects_off_lattice (1/3, n+1/3 -> ValueError)",
+      "prop_zero_denominator_raises",
+      "prop_comparison_matches_fraction_oracle (metamorphic: </<=/==/>=/> vs fractions.Fraction)",
+      "prop_arithmetic_matches_fraction_oracle (metamorphic: +,-,* vs Fraction)",
+      "prop_commensurate_docstring_cases ('TRUE ... common decimal lattice; FALSE is a ternary ghost')"
+    ],
+    "witness_rng": [
+      "prop_next_q16_bounded_dyadic ('in [0, 1), exact dyadic' — pinned post-normalization: den | 2^16)",
+      "prop_replay_identical_chains ('replay-identical ... same seed, same rolls' — cold construction)",
+      "prop_pick_totality (non-empty -> member; empty -> ValueError)",
+      "prop_below_totality_extremes (below(0) always False; below(1) always True)",
+      "prop_weighted_totality_and_zero_weights (zero-weight keys never picked; empty -> ValueError)",
+      "prop_weighted_deterministic_ties ('ties resolve by lowest carve, exact' — deterministic half pinned)",
+      "prop_seed_from_state_key_order_stable ('Stable under key order.' — VERIFIED, incl. nested)",
+      "prop_seed_from_state_mixed_key_types (int+str keys -> TypeError; edge pinned, see contradictions)",
+      "prop_seed_from_book_tail_n_replay ('tail=n hashes receipts[-n:]' — honest half)",
+      "prop_seed_from_book_tail0_is_empty_book [EXPECTED FAILURE — violation]"
+    ],
+    "predictor": [
+      "prop_predict_none_until_warmed ('None = not warmed yet')",
+      "prop_convergence_to_constant_exact (constant regime -> exact convergence, k in small family + k=1024 single pass)",
+      "prop_running_mean_matches_fraction_oracle ('Fully closed in ℚ' — metamorphic vs Fraction)",
+      "prop_exact_k_family_enforced ('refuses otherwise')",
+      "prop_window_slides_after_k (last-k-only semantics vs oracle)",
+      "prop_surprise_is_exact_absolute_difference ('Exact graded difference'; non-negative; symmetric; self==0)",
+      "prop_alarm_iff_surprise_exceeds_floor ('surprise > floor' — equality boundary False)",
+      "prop_predictor_protocol_shape (structural: predict/update callables)"
+    ]
+  },
+  "iterations": 200,
+  "violations_found": [
+    {
+      "id": "R2-V1",
+      "module": "jev_quilt/fold.py",
+      "symbol": "FoldedLedger.verify_tail",
+      "docstring_claim": "The sliver after the fold must continue the chain honestly",
+      "actual_behavior": "With any non-empty sliver the function returns `mmr_root(combined) != b''`, and mmr_root() never returns empty bytes — the check is vacuously True. A sliver receipt replaced with a forged delta_hash still passes.",
+      "property": "tests/test_props_fold.py::prop_verify_tail_detects_tampered_sliver",
+      "status": "expectedFailure (pinned; will unexpected-success if fixed)",
+      "repro": {
+        "master_seed": "jev-quilt-r2-properties-v1",
+        "property_seed_string": "jev-quilt-r2-properties-v1:prop_verify_tail_detects_tampered_sliver",
+        "first_counterexample": {"tampered_sliver_idx": 21, "upto": 17, "verify_tail": true, "iteration": 0}
+      }
+    },
+    {
+      "id": "R2-V2",
+      "module": "jev_quilt/witness_rng.py",
+      "symbol": "seed_from_book",
+      "docstring_claim": "tail=0 is the empty book (pre-first-decision reproducibility)",
+      "actual_behavior": "tail=0 with a non-empty book falls to the else-branch and hashes book.entries[-1].sha() — the seed tracks the NEWEST decision, the opposite of 'pre-first-decision reproducibility'. seed_from_book(any_book, 0) != seed_from_book(empty_book, 0).",
+      "property": "tests/test_props_witness_rng.py::prop_seed_from_book_tail0_is_empty_book",
+      "status": "expectedFailure (pinned; will unexpected-success if fixed)",
+      "repro": {
+        "master_seed": "jev-quilt-r2-properties-v1",
+        "property_seed_string": "jev-quilt-r2-properties-v1:prop_seed_from_book_tail0_is_empty_book",
+        "first_counterexample": {"nonempty_tail0": 11312707242467150399, "empty_tail0": 17110270224426534401, "iteration": 0}
+      }
+    }
+  ],
+  "docstring_contradictions": [
+    {
+      "id": "R2-V1",
+      "kind": "violation (xfail)",
+      "summary": "fold.verify_tail docstring promises honest-continuation checking; implementation is vacuous for any non-empty sliver."
+    },
+    {
+      "id": "R2-V2",
+      "kind": "violation (xfail)",
+      "summary": "witness_rng.seed_from_book tail=0 contradicts 'empty book' claim; hashes last receipt instead."
+    },
+    {
+      "id": "R2-D3",
+      "kind": "behavior pinned, SUSPECT",
+      "module": "jev_quilt/q16.py",
+      "docstring_claim": "Identity is (num:int64, den:int64)",
+      "actual_behavior": "Constructor accepts arbitrarily large integers (Q16(2**70, 1) constructs). No int64 bound is enforced.",
+      "pinned_in": "tests/test_props_q16.py::prop_constructor_normalization comment + general-rational generators (3 and 7 denominators construct fine)"
+    },
+    {
+      "id": "R2-D4",
+      "kind": "behavior pinned, SUSPECT",
+      "module": "jev_quilt/q16.py",
+      "docstring_claim": "SCALE = 10**6 — denominators divide 10^6 exactly (dyadic × 5-adic)",
+      "actual_behavior": "Only from_float() enforces the lattice; the constructor freely accepts Q16(1, 3). The exact-rational arithmetic properties all hold anyway (module is exact ℚ), so this is a docstring-scope overclaim, not a math bug.",
+      "pinned_in": "tests/test_props_q16.py::_rq generator + module docstring comment"
+    },
+    {
+      "id": "R2-D5",
+      "kind": "clarified, behavior pinned",
+      "module": "jev_quilt/witness_rng.py",
+      "docstring_claim": "next_q16() returns Q16(h, 2^16) — in [0, 1), exact dyadic",
+      "actual_behavior": "Written form Q16(h, 2^16) is normalized by the Q16 constructor; when h is even the reduced denominator is a smaller power of two (e.g. Q16(9100, 65536) -> 2275/16384). Invariants pinned as: value in [0,1) and den dividing 2^16."
+    },
+    {
+      "id": "R2-D6",
+      "kind": "edge pinned, SUSPECT-adjacent",
+      "module": "jev_quilt/witness_rng.py",
+      "docstring_claim": "seed_from_state: 'One seed from any engine state.' (+ 'Stable under key order.')",
+      "actual_behavior": "Key-order stability holds via json.dumps(sort_keys=True) for same-type keys, including nested dicts. Mixed int/str keys raise TypeError ('<' not supported) — 'any engine state' is broader than what works."
+    }
+  ],
+  "xfail_reasons": {
+    "test_verify_tail_detects_tampered_sliver": "R2-V1: fold.verify_tail sliver check vacuous on main (docstring violation; code intentionally NOT fixed per round rules)",
+    "test_seed_from_book_tail0_empty_book": "R2-V2: seed_from_book tail=0 hashes last receipt on non-empty books (docstring violation; code intentionally NOT fixed per round rules)"
+  },
+  "gaps_noted_no_docstring_claim": [
+    "q16.Q16 defines no __neg__ dunder; negation involution property pins the explicit Q16(-n, d) construction instead.",
+    "cell.Cell carries no version counter of its own; ledger-version monotonicity is pinned via Bookkeeper (the counter behind cell.bookkeeper=True)."
+  ],
+  "test_counts": {
+    "baseline_main": "81 passed / 3 skipped",
+    "new_test_methods": 48,
+    "new_passing": 46,
+    "new_expected_failures": 2,
+    "xfail_semantics": "expectedFailure -> reported 'expected failure'; if the code is later fixed these surface as 'unexpected success' and fail the suite"
+  }
+}

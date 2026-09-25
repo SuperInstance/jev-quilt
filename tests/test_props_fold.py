@@ -234,10 +234,12 @@ class TestFoldProperties(unittest.TestCase):
     def test_verify_rejects_tampered_prefix(self): self._check(prop_verify_rejects_tampered_folded_prefix)
     def test_verify_requires_matching_fold(self): self._check(prop_verify_requires_matching_fold)
 
+    @unittest.expectedFailure  # VIOLATION pinned; see tests/receipts/005-r2-properties.json
     def test_verify_tail_detects_tampered_sliver(self):
-        # FAIL-first: asserts the DOCUMENTED behavior; fails on main because
-        # verify_tail's sliver check is vacuous. Marked expectedFailure in
-        # the follow-up commit (see tests/receipts/005-r2-properties.json).
+        # Docstring: 'The sliver after the fold must continue the chain
+        # honestly'. Main's check is vacuous (mmr_root never returns b"")
+        # so ANY non-empty sliver passes, tampered or not. Asserts the
+        # DOCUMENTED behavior; will unexpected-success if code is fixed.
         self._check(prop_verify_tail_detects_tampered_sliver)
 
     def test_fold_recompute_idempotent(self): self._check(prop_fold_recompute_is_idempotent)
