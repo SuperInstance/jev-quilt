@@ -1,0 +1,12 @@
+{
+  "decision": "vectors-shipping",
+  "options": ["move-into-package+ship", "keep-at-root-not-shipped", "drop-entirely"],
+  "verdict": "keep-at-root-not-shipped",
+  "evidence": "only tests/test_receipts_v2.py consumes vectors/signed_receipt_vectors.json; no runtime reader exists in jev_quilt/",
+  "rejected": {
+    "move-into-package+ship": "wheel weight for zero runtime value; churns a pinned cross-language byte fixture",
+    "drop-entirely": "breaks cross-language byte-pin contract tests (docs/RECEIPTS-V2.md)"
+  },
+  "tiebreak": null,
+  "signed_with": "lane-local structured receipt (release lane, both authors: direct + recovered spawn)"
+}

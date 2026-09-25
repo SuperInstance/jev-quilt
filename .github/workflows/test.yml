@@ -31,7 +31,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           # No third-party deps; stdlib only (no requests, no numpy, no pytest)
-          pip install -e . --no-deps || true
+          # No '|| true' here: an install failure must fail the job, not hide
+          # behind the unittest suite (the missing polyformalism module on main
+          # was masked exactly this way).
+          pip install -e . --no-deps
 
       - name: test (stdlib unittest, no pytest)
         run: |
@@ -45,7 +48,7 @@ jobs:
           from jev_quilt.polyformalism import fleet_canary
           c = fleet_canary()
           assert c == '0x024a555471370b18d', f'canary mismatch: {c}'
-          print(f'✓ fleet canary {c} verified across Python {python_version}')
+          print(f'✓ fleet canary {c} verified on Python ${{ matrix.python-version }}')
           "
 
 
