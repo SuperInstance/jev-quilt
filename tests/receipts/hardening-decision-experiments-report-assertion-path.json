@@ -1,0 +1,48 @@
+{
+  "candidates": [
+    {
+      "cell": "cand-a",
+      "coord": [
+        0,
+        0
+      ],
+      "design": "assert on the JSON report run() writes via out_path",
+      "name": "out-path-json"
+    },
+    {
+      "cell": "cand-b",
+      "coord": [
+        1,
+        0
+      ],
+      "design": "capture stdout and parse the printed report",
+      "name": "stdout-json"
+    }
+  ],
+  "chain_tip": "06ea263356a37b9b8774f8eb7cdc9c91b75444d8e23da64c87b4d3e20562dc3f",
+  "decision": "experiments-report-assertion-path",
+  "envelope": {
+    "chain_head": "5687da5d2358575a",
+    "receipt": {
+      "decision_kind": "choice",
+      "delta_hash": "d4e3eaa6b194aebbcf0cf29ab62aae52653b72a68f4ab73338fbc63696ffa402",
+      "payload": "{\"why\": \"run() prints only text[:1200] \\u2014 the printed report is a TRUNCATED JSON, so stdout parsing is objectively weaker, not a tie. Rationale decides; substrate witnesses.\", \"winner\": \"out-path-",
+      "payload_hash": "8684cfd3f91584a3",
+      "state_hash": "e69c613a1d6170b562f39bcb0435ab993fd2b6fd203d33ea94c91dff9da43d3c",
+      "tick": 3
+    },
+    "signature": "ff7fa70a6bf782c598d040e837d7b8673bf2f04314376832e0774b8363582f56836e24d2d9c2ab2652b7429396ac426086dd760f53cf5133228d9a49ce96da05",
+    "signer": "hardening-a.k1"
+  },
+  "note": "verify-only receipt: the Ed25519 seed is never serialized",
+  "signer": "hardening-a.k1",
+  "signer_pubkey": "f1c5aaed8a4df40dca4f06634d91570fb847f55d356cfa8a7d702c054cbbfa8a",
+  "tiebreak": "rationale (substrate-witnessed)",
+  "verification": {
+    "ok": true,
+    "reasons": [],
+    "signer": "hardening-a.k1"
+  },
+  "why": "run() prints only text[:1200] \u2014 the printed report is a TRUNCATED JSON, so stdout parsing is objectively weaker, not a tie. Rationale decides; substrate witnesses.",
+  "winner": "out-path-json"
+}

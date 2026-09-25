@@ -91,8 +91,8 @@ print(f"Misquote: {result['misquote_score']:.3f}")
 questions = [
     {'name': 'voice', 'type': 'noul', 'instructions': 'Is this Fleet Radio voice?'},
     {'name': 'doctrine_scar', 'type': 'noul', 'instructions': 'Are cells scars, not parameters?'},
-    {'name': 'verdict', 'choice', 'instructions': 'How canonical is this?',
-     'options': {'strong': 'strongly aligned', 'weak': 'weakly aligned', 'none': 'not aligned'}},
+    {'name': 'verdict', 'type': 'choice', 'instructions': 'How canonical is this?',
+     'criteria': {'strong': 'strongly aligned', 'weak': 'weakly aligned', 'none': 'not aligned'}},
 ]
 decisions, meta = backend.decide_batch(state, questions)
 ```
@@ -166,13 +166,14 @@ else:
 from jev_quilt.typesafe_client import TypeSafeBackend
 
 backend = TypeSafeBackend()
-state = {'my_canon': {...}}
+state = {'my_canon': {'doctrines': ['Cells are scars, not parameters.']}}
 
 # Ask 10 questions about the submission
 submission = "..."
 questions = [
     {'name': f'q{i}', 'type': 'noul', 'instructions': f'Is "{submission}" {aspect}?'}
-    for i, aspect in enumerate(['canonical', 'Fleet Radio', 'doctrinal', ...])
+    for i, aspect in enumerate(['canonical', 'Fleet Radio', 'doctrinal',
+                                'substrate-true', 'voice-true'])
 ]
 
 decisions, meta = backend.decide_batch(state, questions)
@@ -186,7 +187,7 @@ for d in decisions:
 - `jev_oracle.py` — Production submission validator
 - `JEV_ORACLE_SPEC.md` — Oracle spec
 - `JEV_LEARNINGS.md` — Findings from 13 sessions
-- `tests/test_jev_oracle.py` — 6/6 test cases
+- `tests/test_jev_oracle.py` — 6-case live-API oracle suite (script, not unittest-discovered); requires a TypeSafe API key, run: `python3 tests/test_jev_oracle.py`
 
 ## Further Reading
 

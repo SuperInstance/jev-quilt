@@ -1,10 +1,48 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "jev-quilt"
-version = "0.0.1"
+version = "0.1.0"
 description = "JEV for quilt as understood output: cellular-first decision substrate"
+readme = "README.md"
 requires-python = ">=3.10"
-license = {text = "MIT"}
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    {name = "Cocapn Fleet"},
+]
+maintainers = [
+    {name = "Cocapn Fleet"},
+]
+keywords = ["jev", "quilt", "cellular", "decision-substrate", "bookkeeper", "witness"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.urls]
+Homepage = "https://github.com/SuperInstance/jev-quilt#readme"
+Repository = "https://github.com/SuperInstance/jev-quilt"
+Issues = "https://github.com/SuperInstance/jev-quilt/issues"
+
+[tool.setuptools.packages.find]
+include = ["jev_quilt*"]
+exclude = ["tests*", "docs*", "ports*", "examples*", "experiments*"]
+
+[tool.setuptools.package-data]
+# Deliberately empty: vectors/signed_receipt_vectors.json is a TEST-ONLY
+# cross-language contract pin (docs/RECEIPTS-V2.md), referenced solely by
+# tests/test_receipts_v2.py via repo-relative path. It does NOT ship in
+# the wheel — see docs/receipts/ for the signed tradeoff receipts.
+jev_quilt = []

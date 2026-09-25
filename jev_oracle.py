@@ -15,9 +15,13 @@ Usage:
 import os, sys, json, time
 from pathlib import Path
 
-os.environ.setdefault('TYPESAFEAI_KEY', 'apikey_2217d2c797da8a2d48d887bd713a67e1f235_e376d8a7b61fe16caf5645c0e53de638c87580d1bec9695f5edd0b1098728599')
-sys.path.insert(0, '/workspace/repos/jev-quilt')
+# Resolve repo root from this file's location — works from any checkout path.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from jev_quilt.typesafe_client import TypeSafeBackend
+
+# NOTE: no API key is hardcoded here. Set one of:
+#   JEV_API_KEY / TYPESAFE_API_KEY / TYPESAFEAI_KEY
+# The backend raises a clear error if none is set (typesafe_client.py).
 
 
 CANON_STATE = {
