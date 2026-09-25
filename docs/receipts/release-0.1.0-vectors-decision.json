@@ -1,0 +1,14 @@
+{
+  "chain_tip": "875d635972c064806c9ff8fa995fafe0f594b71ab58df0e0465912700aff6579",
+  "ledger": "release-0.1.0.vectors-shipping",
+  "note": "Seed intentionally NOT persisted (module law: seeds are never serialized). Decision material, not a real node key.",
+  "options": [
+    "A.move_into_package",
+    "B.keep_at_root_exclude",
+    "C.drop"
+  ],
+  "sealed_tip_receipt": "{\"chain_head\":\"3d4110633ca9fbe9\",\"receipt\":{\"decision_kind\":\"decided\",\"delta_hash\":\"a350d89aff248c8a3019861b6d6216594dfd2835b8f3a4c73896e04302608f16\",\"payload\":\"{\\\"decision\\\": \\\"keep_at_root_exclude\\\"}\",\"payload_hash\":\"ebf0a9fd5db40580\",\"state_hash\":\"b0ff7d3137883f9cf92df78c7cba8d57f479bd83420a93f5760a7de2f24d7182\",\"tick\":4},\"signature\":\"2317a86c83bd943708718d8c99101d3ea26a71d2c734b20d62a506913bd2d90e011861412b7d20543e463cbd91ec2606b41a70cff5d8138e98e2cd2f41ec6e0b\",\"signer\":\"lane-b.releaser.k1\"}",
+  "signer": "lane-b.releaser.k1",
+  "verdict": "B.keep_at_root_exclude WINS. The vectors file is a TEST-ONLY cross-language contract pin (docs/RECEIPTS-V2.md): 2006 bytes of known-answer material for the receipts-v2 envelope that Rust ports/ and TS twist-engine MUST reproduce byte-for-byte. Runtime code (jev_quilt/signed_receipts.py) never loads it \u2014 grep-verified. Shipping it would install test fixtures into site-packages and create a false runtime dependency; dropping it would break the pinned cross-language contract. No tie: A and C each fail one hard gate (site-packages hygiene / contract survival), B passes both. Quantum tiebreak not invoked.",
+  "verify_only_pubkey": "323c814466f8b2dbb46f4afe40a3d0531f2aead742903843fd8a97d52051aad4"
+}
