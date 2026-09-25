@@ -1,0 +1,42 @@
+{
+  "ledger": "r8.goodhart-audit",
+  "decision": "attack-own-kpis",
+  "verdict": "5 exploits confirmed, 2 partial, 1 refuted; 3 code pins applied; 5 policy items escalated",
+  "repro": "cd /tmp/jq-r8 && python3 -m unittest discover -s tests -q  # 81 pass/3 skip baseline on main",
+  "payload_sha256": "a62d878f68a7e226a91d6a53492e75671d68dffe7bd4e8f6233f357946650e95",
+  "metrics_attacked": [
+    "test-suite green (115 claimed post-PR#21 / 81 pass 3 skip on main)",
+    "receipts shipped (tests/receipts + docs/receipts counts)",
+    "fleet canary grep (0x024a555471370b18d)",
+    "stdlib-only deterministic claim",
+    "doc suite-count claims"
+  ],
+  "exploits_confirmed": [
+    "E-1 leaked API key + import-time env mutation (jev_oracle.py:18, test_jev_oracle.py:13) — causes skip of no-key test",
+    "E-2 main CI red on all recent pushes while suite claims green; pip install masked by '|| true' (.github/workflows/test.yml:34)",
+    "E-3 stale suite counts: README.md:180 '43 Python tests' (actual 81/3); README.md:181 + docs/POLYFORMAL.md:5 'Rust 7/7' (actual 13/13)",
+    "E-4 prose-only receipt passes casual review (demo: tests/fixtures/receipts/FAKE_R8_minted_prose_receipt.json; cf. PR#20 001-vectors-shipping.json)",
+    "E-5 unit canary test reimplements fnv1a locally — never binds jev_quilt.bookkeeper.fnv1a; CI canary step imports a module missing on main"
+  ],
+  "exploits_partial": [
+    "E-6 skips as green drift: 3 skipTest on main are undated coverage holes (now registry-pinned)",
+    "E-7 determinism: network client in library (typesafe_client.py:86, documented README:157); unseeded random in dead file _typesafe_fix_demo.py:114-125"
+  ],
+  "exploits_refuted": [
+    "E-8 stdlib-only: AST scan of all library imports found zero third-party modules — claim VERIFIED TRUE",
+    "E-9 PR#21 canary decorative: REFUTED — polyformalism.py computes fnv1a(CANARY_STRING) live and asserts (weaknesses: bare assert strips under -O; docstring claims import-time, actually call-time)"
+  ],
+  "fixes": [
+    "tests/test_fnv1a_reference_vectors.py — library pinned to chongo reference vectors + differential anti-constant checks",
+    "tests/test_receipt_schema.py + tests/fixtures/receipts/FAKE_R8_minted_prose_receipt.json — schema v1 validator, fake as negative control",
+    "tests/test_known_skips_registry.py + tests/KNOWN_SKIPS.md — unregistered skipTest fails suite",
+    "README.md / docs/POLYFORMAL.md stale counts corrected"
+  ],
+  "open_policy_items": [
+    "P-1 rotate/revoke the committed TYPESAFEAI_KEY and purge from git history; never commit keys",
+    "P-2 gate merges on CI green; PR#20 removes the '|| true' mask — merge it",
+    "P-3 after PR#21 merges, add a unit test calling jev_quilt.polyformalism.fleet_canary(); replace bare assert with raise (survives -O)",
+    "P-4 decide governance: walker '130 tests' claims (README:56,127; essays) are unverifiable from this repo — verify against walker repos or label as fleet-lore",
+    "P-5 delete or deterministically seed _typesafe_fix_demo.py; remove hardcoded sys.path.insert in jev_oracle.py / test_jev_oracle.py"
+  ]
+}
