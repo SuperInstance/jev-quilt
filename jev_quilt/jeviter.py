@@ -31,8 +31,16 @@ class JevIterator:
     """Iterate a stream by surprise, not by index.
 
     stream: iterable of dicts (each a reading over the same keys).
+        Values must be ints (or integer-valued numerics): a reading is
+        carried on the exact Q16 integer lattice, and any non-integer
+        value silently coerces to Q16(0, 1) — zero. A fully fractional
+        reading therefore becomes an all-zero belief (and skips the
+        sum-normalization, whose guard requires total > 0). Feed it
+        pre-discretized readings.
     gate:   TapGate — admits when KL(prev_admitted, reading) > dynamic.
-    keeper: books 'silence' per rejected pull and 'event' per yield.
+    keeper: books 'seed' on the first pull (belief established), 'silence'
+        per rejected pull, 'event' per yield, and 'exhausted' when the
+        stream ends (the witnessed-exhaustion receipt).
     """
 
     def __init__(self, stream, gate: TapGate, keeper: Bookkeeper):
