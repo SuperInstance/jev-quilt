@@ -8,8 +8,16 @@ Tests three categories:
   3. Chatbot-style text → should REJECT
 """
 import os, sys
-sys.path.insert(0, '/workspace/repos/jev-quilt')
-os.environ.setdefault('TYPESAFEAI_KEY', 'apikey_2217d2c797da8a2d48d887bd713a67e1f235_e376d8a7b61fe16caf5645c0e53de638c87580d1bec9695f5edd0b1098728599')
+from pathlib import Path
+
+# Resolve repo root from this file's location.
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+# No key is hardcoded. The suite SKIPS unless one of these is set in the env:
+#   JEV_API_KEY / TYPESAFE_API_KEY / TYPESAFEAI_KEY
+if not any(os.environ.get(k) for k in ('JEV_API_KEY', 'TYPESAFE_API_KEY', 'TYPESAFEAI_KEY')):
+    print("SKIP: set JEV_API_KEY (or TYPESAFE_API_KEY / TYPESAFEAI_KEY) to run the live oracle suite")
+    sys.exit(0)
 
 from jev_oracle import validate
 
