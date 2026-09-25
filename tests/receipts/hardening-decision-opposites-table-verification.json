@@ -1,0 +1,48 @@
+{
+  "candidates": [
+    {
+      "cell": "cand-a",
+      "coord": [
+        0,
+        0
+      ],
+      "design": "loop the involution/antisymmetry laws over every TABLE pair",
+      "name": "whole-table-property"
+    },
+    {
+      "cell": "cand-b",
+      "coord": [
+        1,
+        0
+      ],
+      "design": "one explicit assert per known key",
+      "name": "per-key-literals"
+    }
+  ],
+  "chain_tip": "ee9bc16bfea6a9cc6209777a5338f4e2385453fc1ee9481dbfb95ff10ac43e11",
+  "decision": "opposites-table-verification",
+  "envelope": {
+    "chain_head": "72deb67fb39c0964",
+    "receipt": {
+      "decision_kind": "choice",
+      "delta_hash": "a6fad039ca284cb2e38f5d942542bb11ec03ddfc15a8623f13d602767bc2ac3a",
+      "payload": "{\"why\": \"TABLE is data; the LAW is the invariant. Literals sample and would silently miss a broken new pair; the property covers the table as it grows.\", \"winner\": \"whole-table-property\"}",
+      "payload_hash": "42b61cb2aee60084",
+      "state_hash": "c1b6aa22dcbd77e1489d12bb50c30589bab4bc7dec1632718219e2ee2ad83939",
+      "tick": 3
+    },
+    "signature": "79095842177dba63f5092065625362a554e980536270c6c0a9c24ba4fbcecf86aeb1fc5f734feebf37b1b09b9e2e24417d38bad8717649915e1986506a607a0b",
+    "signer": "hardening-a.k1"
+  },
+  "note": "verify-only receipt: the Ed25519 seed is never serialized",
+  "signer": "hardening-a.k1",
+  "signer_pubkey": "5797ce68d319b97a291784561e523710b599ff718387da872720a8bb5fbd23ea",
+  "tiebreak": "rationale (substrate-witnessed)",
+  "verification": {
+    "ok": true,
+    "reasons": [],
+    "signer": "hardening-a.k1"
+  },
+  "why": "TABLE is data; the LAW is the invariant. Literals sample and would silently miss a broken new pair; the property covers the table as it grows.",
+  "winner": "whole-table-property"
+}
