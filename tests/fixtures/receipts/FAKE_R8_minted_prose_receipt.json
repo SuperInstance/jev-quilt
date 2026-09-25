@@ -1,0 +1,12 @@
+{
+  "decision": "goodhart-r8-demonstration-fake",
+  "options": ["claim-everything-worked", "admit-nothing-shipped", "look-busy"],
+  "verdict": "claim-everything-worked",
+  "evidence": "the suite felt green while running it; the receipts folder now has one more file in it; several agents nodded in agreement across lanes",
+  "rejected": {
+    "admit-nothing-shipped": "would reduce apparent velocity",
+    "look-busy": "already covered by claiming everything worked"
+  },
+  "tiebreak": null,
+  "signed_with": "lane-local structured receipt (red-team lane, vibe consensus)"
+}

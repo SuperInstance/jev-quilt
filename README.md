@@ -177,8 +177,10 @@ Backends resolve `auto → q16` (deterministic, always available) → `openjev-l
 ## Status
 
 v0.3 — reference kernel (`jev_quilt/`: cells, hooks, bookkeeper, delta engine,
-argmax Choice) with **43 Python tests green**; polyformal substrate
-(`polyform/rust/`) with **7 Rust tests green on the metal** (cargo, rustc 1.95).
+argmax Choice), suite status MEASURED not written: `python3 -m unittest discover -s tests -q`
+→ 81 passed, 3 skipped (each skip registered in tests/KNOWN_SKIPS.md); polyformal
+substrate (`polyform/rust/`) with **13 Rust tests green on the metal** (cargo test,
+rustc 1.95 — verified 2026-09-25 by R8; do not write counts, run the suites).
 Docs: LANDSCAPE (research), SUBSTRATE (the algebra below), POLYFORMAL (five
 laws × five tongues), under-the-quilt.zh (the concept, in Chinese), PRODUCTS
 (genre → product map). Demos: `examples/fleet_pudding.py` (real lane decision,

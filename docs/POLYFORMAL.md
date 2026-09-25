@@ -2,9 +2,10 @@
 
 *One concept, many architectures. Each formalism holds the same laws;
 where a formalism cannot hold one, the gap is labeled rather than hidden.
-Verification status: **Python 43/43 green · Rust 7/7 green (cargo test,
-rustc 1.95) · Mercury uncompiled (no mmc) · Haskell uncompiled (no ghc) ·
-C below as struct sketch only.***
+Verification status: **Python: run `python3 -m unittest discover -s tests -q`
+(81 passed, 3 skipped as of 2026-09-25 — measured, not asserted) · Rust 13/13 green
+(cargo test, rustc 1.95, verified 2026-09-25) · Mercury uncompiled (no mmc) ·
+Haskell uncompiled (no ghc) · C below as struct sketch only.***
 
 ---
 
