@@ -1,0 +1,16 @@
+{
+  "decision": "r6-jev-distortion-probes",
+  "mode": "record-only (live api, 8 cases)",
+  "verdicts": {
+    "numerical_drift_hash": "REJECT (one-nibble hash lie caught)",
+    "port_count_lie_12": "REJECT",
+    "port_count_lie_14": "REJECT",
+    "voice_mimicry_no_doctrine": "REVIEW ⚠ calibration gap F1: tone-only prose scored alignment≥0.65 band; gate held (not ACCEPT) but REVIEW asserts alignment where no doctrine exists",
+    "doctrine_true_rephrased": "ACCEPT (rephrase-robustness confirmed F2)",
+    "one_lie_among_five_true": "DISCUSS (partial-truth band F3: misquote≈0.2)",
+    "empty_canonical_echo": "ACCEPT (matches shipped battery expectation)",
+    "substrate_false_math": "DISCUSS"
+  },
+  "proposed_threshold_change": "REVIEW band requires substance_score>=0.5 OR doctrine_score>=0.5 — NOT applied, awaiting Casey",
+  "artifacts": ["jev_sessions/session_r6_distortion_classes.json", "docs/R6_JEV_DISTORTION_PROBES.md"]
+}
