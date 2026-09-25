@@ -8,6 +8,7 @@ Tests three categories:
   3. Chatbot-style text → should REJECT
 """
 import os, sys
+import unittest
 from pathlib import Path
 
 # Resolve repo root from this file's location.
@@ -16,8 +17,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 # No key is hardcoded. The suite SKIPS unless one of these is set in the env:
 #   JEV_API_KEY / TYPESAFE_API_KEY / TYPESAFEAI_KEY
 if not any(os.environ.get(k) for k in ('JEV_API_KEY', 'TYPESAFE_API_KEY', 'TYPESAFEAI_KEY')):
-    print("SKIP: set JEV_API_KEY (or TYPESAFE_API_KEY / TYPESAFEAI_KEY) to run the live oracle suite")
-    sys.exit(0)
+    # Under unittest discovery a module-level sys.exit(0) aborts the whole
+    # loader with a SystemExit error; SkipTest marks every test skipped.
+    if __name__ == "__main__":
+        print("SKIP: set JEV_API_KEY (or TYPESAFE_API_KEY / TYPESAFEAI_KEY) to run the live oracle suite")
+        sys.exit(0)
+    raise unittest.SkipTest("set JEV_API_KEY / TYPESAFE_API_KEY / TYPESAFEAI_KEY for the live oracle suite")
 
 from jev_oracle import validate
 
