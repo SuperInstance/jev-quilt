@@ -1,7 +1,16 @@
 {
-  "decision": "tutorial-integrity-audit",
-  "method": "extracted all 6 python blocks from JEV_TUTORIAL.md, ran each against live package (PYTHONPATH=repo root)",
-  "blocks": {"00": "PASS (live API, key present in env)", "01": "PASS", "02": "CONTEXTUAL (submission_text defined by reader context)", "03": "WAS-BROKEN: syntax error 'choice' bare token + 'options' key contradicts wire protocol 'criteria' -> FIXED in markdown", "04": "CONTEXTUAL (reads new_piece.md the reader supplies)", "05": "WAS-BROKEN: {'my_canon': {...}} is a set literal, json.dumps raises TypeError -> FIXED to real dict placeholder; trailing '...' in aspect list replaced with real aspects"},
-  "files_claim": "tutorial claimed 'tests/test_jev_oracle.py — 6/6 test cases'; file is a script suite (6 cases, manual run, needs API key), 0 unittest TestCases — clarified in tutorial",
-  "other": "link audit 38/38 alive; 26/26 README assets present; 2 orphan mp4 (hero.mp4 residue of intentional hero-video removal, polyformalism_12_ports.mp4 unreferenced) — left in place, reported"
+ "decision": "tutorial-integrity-audit",
+ "verdict": "audited: blocks 00-02 live-PASS, 03 documented was-broken, 04-05 PASS; files_claim corrected (script suite, 0 unittest TestCases)",
+ "method": "extracted all 6 python blocks from JEV_TUTORIAL.md, ran each against live package (PYTHONPATH=repo root)",
+ "blocks": {
+  "00": "PASS (live API, key present in env)",
+  "01": "PASS",
+  "02": "CONTEXTUAL (submission_text defined by reader context)",
+  "03": "WAS-BROKEN: syntax error 'choice' bare token + 'options' key contradicts wire protocol 'criteria' -> FIXED in markdown",
+  "04": "CONTEXTUAL (reads new_piece.md the reader supplies)",
+  "05": "WAS-BROKEN: {'my_canon': {...}} is a set literal, json.dumps raises TypeError -> FIXED to real dict placeholder; trailing '...' in aspect list replaced with real aspects"
+ },
+ "files_claim": "tutorial claimed 'tests/test_jev_oracle.py — 6/6 test cases'; file is a script suite (6 cases, manual run, needs API key), 0 unittest TestCases — clarified in tutorial",
+ "other": "link audit 38/38 alive; 26/26 README assets present; 2 orphan mp4 (hero.mp4 residue of intentional hero-video removal, polyformalism_12_ports.mp4 unreferenced) — left in place, reported",
+ "repro": "python3 tests/test_jev_oracle.py   # tutorial's own script suite (needs TYPESAFEAI_KEY); link/asset audit per method field"
 }

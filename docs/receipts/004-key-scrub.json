@@ -1,8 +1,13 @@
 {
-  "decision": "credential-scrub",
-  "severity": "SECURITY",
-  "finding": "live-looking TYPESAFEAI_KEY hardcoded via os.environ.setdefault in jev_oracle.py:18 and tests/test_jev_oracle.py:12, committed since 3dd2efc/04c4370; repo is public",
-  "action": "removed both setdefault lines; jev_oracle now resolves repo root from __file__ (was hardcoded '/workspace/repos/jev-quilt'); test suite exits 0 with SKIP message when no key env var present",
-  "residual_risk": "key remains in PUBLIC GIT HISTORY — rotation required; history rewrite not attempted (org-main no-force-push rule)",
-  "verified": ["grep apikey_ across repo: only placeholder 'apikey_xxx' remains in docs", "unittest discover: 81 pass 3 skip"]
+ "decision": "credential-scrub",
+ "verdict": "scrub-complete: setdefault hardcode removed from jev_oracle.py + test; placeholder only remains; key rotation still required (public history)",
+ "severity": "SECURITY",
+ "finding": "live-looking TYPESAFEAI_KEY hardcoded via os.environ.setdefault in jev_oracle.py:18 and tests/test_jev_oracle.py:12, committed since 3dd2efc/04c4370; repo is public",
+ "action": "removed both setdefault lines; jev_oracle now resolves repo root from __file__ (was hardcoded '/workspace/repos/jev-quilt'); test suite exits 0 with SKIP message when no key env var present",
+ "residual_risk": "key remains in PUBLIC GIT HISTORY — rotation required; history rewrite not attempted (org-main no-force-push rule)",
+ "verified": [
+  "grep apikey_ across repo: only placeholder 'apikey_xxx' remains in docs",
+  "unittest discover: 81 pass 3 skip"
+ ],
+ "repro": "grep -rn 'apikey_' jev_quilt/ tests/ | grep -vE 'apikey_(xxx|test)' || true   # expect: no live key; then: python3 -m unittest discover -s tests -q"
 }
