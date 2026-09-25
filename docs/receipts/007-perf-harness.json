@@ -1,10 +1,24 @@
 {
-  "decision": "r7-perf-regression-harness",
-  "method": "stdlib time.perf_counter budgets, FAIL = >3x budget (order-of-magnitude guard, flake-resistant)",
-  "budgets_ms": {"fnv1a_64_x10k": 250, "fnv1a_batch_100k": 60, "canary_call_x1k": 20},
-  "fail_first_evidence": "initial guessed budget (30ms for 10k calls) tripped FAIL at 210.6ms, proving the harness detects breach; budget then calibrated to measured 21us/call reality",
-  "measured_first_run": {"fnv1a_64_x10k": 210.6, "fnv1a_batch_100k": 56.2, "canary_call_x1k": 5.3},
-  "measured_warm_run": {"fnv1a_64_x10k": 103.1, "fnv1a_batch_100k": 18.6, "canary_call_x1k": 0.7},
-  "note": "bookkeeper.fnv1a takes bytes (str raises TypeError) — docstring sweep material for R3",
-  "ci_integration": "wire as a unittest TestCase or workflow step once Casey picks a lane; script exits non-zero on breach"
+ "decision": "r7-perf-regression-harness",
+ "verdict": "harness calibrated + fail-first proven; 3/3 within budget (103.1/18.6/0.7ms vs 250/60/20ms)",
+ "method": "stdlib time.perf_counter budgets, FAIL = >3x budget (order-of-magnitude guard, flake-resistant)",
+ "budgets_ms": {
+  "fnv1a_64_x10k": 250,
+  "fnv1a_batch_100k": 60,
+  "canary_call_x1k": 20
+ },
+ "fail_first_evidence": "initial guessed budget (30ms for 10k calls) tripped FAIL at 210.6ms, proving the harness detects breach; budget then calibrated to measured 21us/call reality",
+ "measured_first_run": {
+  "fnv1a_64_x10k": 210.6,
+  "fnv1a_batch_100k": 56.2,
+  "canary_call_x1k": 5.3
+ },
+ "measured_warm_run": {
+  "fnv1a_64_x10k": 103.1,
+  "fnv1a_batch_100k": 18.6,
+  "canary_call_x1k": 0.7
+ },
+ "note": "bookkeeper.fnv1a takes bytes (str raises TypeError) — docstring sweep material for R3",
+ "ci_integration": "wire as a unittest TestCase or workflow step once Casey picks a lane; script exits non-zero on breach",
+ "repro": "python3 tests/r7_perf_harness.py   # exits non-zero on >3x budget breach"
 }

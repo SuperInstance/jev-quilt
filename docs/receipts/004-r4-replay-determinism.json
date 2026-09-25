@@ -1,12 +1,14 @@
 {
-  "decision": "r4-replay-determinism",
-  "claims_pinned": [
-    "Law 4 replay ≡ live: JSON-persistence round-trip replay byte-identical",
-    "cross-process determinism: subprocess cold-start booking yields identical chain (guards import-order/time/global-state dependence)",
-    "tamper evidence: 1-char payload edit diverges chain; tick corruption fails verify()",
-    "fnv1a-64 cross-language pin: fnv1a('café Δ 日本語'.encode()) == 0x024A555471370B18D (Rust side must assert the same)",
-    "empty-payload back-compat: stored hash formula pinned"
-  ],
-  "violations_found": 0,
-  "fail_first_note": "initial cross-process pin tripped because the subprocess booked DIFFERENT state/delta records than the parent helper — chain referee correctly distinguished them; test corrected to book identical records (the referee was right, the test was wrong)"
+ "decision": "r4-replay-determinism",
+ "verdict": "replay≡live confirmed: 0 violations_found; cross-process pin green after referee fix",
+ "claims_pinned": [
+  "Law 4 replay ≡ live: JSON-persistence round-trip replay byte-identical",
+  "cross-process determinism: subprocess cold-start booking yields identical chain (guards import-order/time/global-state dependence)",
+  "tamper evidence: 1-char payload edit diverges chain; tick corruption fails verify()",
+  "fnv1a-64 cross-language pin: fnv1a('café Δ 日本語'.encode()) == 0x024A555471370B18D (Rust side must assert the same)",
+  "empty-payload back-compat: stored hash formula pinned"
+ ],
+ "violations_found": 0,
+ "fail_first_note": "initial cross-process pin tripped because the subprocess booked DIFFERENT state/delta records than the parent helper — chain referee correctly distinguished them; test corrected to book identical records (the referee was right, the test was wrong)",
+ "repro": "python3 -m unittest tests.test_replay_determinism -q"
 }
