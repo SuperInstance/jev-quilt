@@ -19,6 +19,7 @@ from .engine import Engine, WakeResult
 from .tap import TapGate, ProposalGate, kl_divergence
 from .fold import FoldedLedger, Checkpoint, mmr_root
 from .standing import Standing, verdict as standing_verdict
+from .commons import Commons, Deposit
 from . import blake3, ed25519, signed_receipts
 
 __all__ = [
@@ -34,7 +35,7 @@ __all__ = [
     "Engine", "WakeResult",
     "TapGate", "ProposalGate", "kl_divergence",
     "FoldedLedger", "Checkpoint", "mmr_root",
-    "Standing", "standing_verdict",
+    "Standing", "standing_verdict", "Commons", "Deposit",
     "blake3", "ed25519", "signed_receipts",
 ]
 

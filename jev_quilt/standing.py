@@ -106,6 +106,15 @@ class Standing:
     def count(self) -> int:
         return sum(1 for k, v in self._streak.items() if v >= self.diploma)
 
+    def deposits(self) -> list[tuple[str, str, int]]:
+        """(key, proven_answer, streak) for every key with a live correct streak
+        — what this cell contributes to the shared commons (see commons.py).
+        Sorted for a deterministic, content-addressable order."""
+        out = [(k, self._answer[k], v) for k, v in self._streak.items()
+               if v > 0 and k in self._answer]
+        out.sort()
+        return out
+
 
 def verdict(standing: Standing, key: str, base_verdict: str) -> tuple[str, Optional[str]]:
     """The fourth verdict. Returns ('ANSWER', proven_answer) when standing is held
