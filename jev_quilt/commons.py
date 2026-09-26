@@ -50,36 +50,84 @@ class Commons:
     """A shared, content-addressed, confluent store of proven (key → answer)
     routes with pooled evidence weights."""
 
+    ANON = "__anon__"   # source tag for deposits with no named provenance
+
     def __init__(self, quorum: int = DEFAULT_DIPLOMA):
         self.quorum = max(1, quorum)
         self._w: dict[tuple[str, str], int] = {}   # (key, answer) -> aggregate weight
+        # provenance: (key, answer) -> {source -> weight}. Kept alongside _w so a
+        # trust-free reading (recall/root) is unchanged, but a trust-weighted
+        # gluing (G11) can down-weight a source the fleet has not earned to trust.
+        self._prov: dict[tuple[str, str], dict[str, int]] = {}
 
     # ── building ────────────────────────────────────────────────────
-    def deposit(self, key: str, answer: str, weight: int = 1) -> None:
+    def deposit(self, key: str, answer: str, weight: int = 1, source: str | None = None) -> None:
         if weight <= 0:
             return
         self._w[(key, answer)] = self._w.get((key, answer), 0) + weight
+        src = source or self.ANON
+        pm = self._prov.setdefault((key, answer), {})
+        pm[src] = pm.get(src, 0) + weight
 
-    def absorb_standing(self, standing: Standing) -> None:
-        """Fold one cell's earned standing into the commons."""
+    def absorb_standing(self, standing: Standing, source: str | None = None) -> None:
+        """Fold one cell's earned standing into the commons, tagged by source."""
         for key, answer, streak in standing.deposits():
-            self.deposit(key, answer, streak)
+            self.deposit(key, answer, streak, source=source)
 
     @classmethod
     def from_books(cls, books: dict, *, diploma: int = DEFAULT_DIPLOMA,
                    quorum: int = DEFAULT_DIPLOMA, **standing_kw) -> "Commons":
-        """Build the commons by replaying every contributing cell's book."""
+        """Build the commons by replaying every contributing cell's book. The
+        book's name is its provenance — so trust can later be applied per source."""
         c = cls(quorum=quorum)
-        for _name, book in books.items():
-            c.absorb_standing(Standing.from_book(book, diploma=diploma, **standing_kw))
+        for name, book in books.items():
+            c.absorb_standing(Standing.from_book(book, diploma=diploma, **standing_kw), source=name)
         return c
 
     def merge(self, other: "Commons") -> "Commons":
-        """Confluent union: weights add, so order and grouping never matter.
-        Returns self for chaining."""
-        for (key, answer), w in other._w.items():
-            self.deposit(key, answer, w)
+        """Confluent union: weights add (and per-source provenance adds), so order
+        and grouping never matter. Returns self for chaining."""
+        for (key, answer), srcmap in other._prov.items():
+            for src, w in srcmap.items():
+                self.deposit(key, answer, w, source=(None if src == self.ANON else src))
         return self
+
+    # ── trust-weighted gluing (G11) ──────────────────────────────────
+    def sources(self) -> set:
+        """Every named source that has deposited (excludes anonymous)."""
+        return {s for pm in self._prov.values() for s in pm if s != self.ANON}
+
+    def trust_weighted(self, trust: dict[str, int], default: int = 0) -> "Commons":
+        """A new commons whose weights are re-scaled by each source's EARNED trust:
+        effective(key,answer) = Σ_source trust.get(source, default) · raw_weight.
+
+        This is the gluing a fleet can survive a stranger joining. Blind weight-sum
+        (the base merge) is buyable — an adversary inflates a weight and steers the
+        commons. Here an unseen source defaults to trust 0: it contributes nothing
+        until the fleet has earned reason to trust it, so a lie deposited at weight
+        1000 by a stranger is scaled to 0 and cannot outvote a small, trusted
+        truth. Trust is the lever; weight alone is not. Confluent and
+        content-addressed like any commons (it *is* one). Integer-exact — no float
+        touches identity."""
+        c = Commons(quorum=self.quorum)
+        for (key, answer), srcmap in self._prov.items():
+            eff = sum(trust.get(src, default) * w for src, w in srcmap.items())
+            if eff > 0:
+                # deposit the effective weight, preserving provenance for re-gluing
+                for src, w in srcmap.items():
+                    tw = trust.get(src, default) * w
+                    if tw > 0:
+                        c.deposit(key, answer, tw, source=(None if src == self.ANON else src))
+        return c
+
+    def provenance_merge(self, *others: "Commons", trust: dict[str, int], default: int = 0) -> "Commons":
+        """Glue self with other fleets' commons, then read through trust. Order-free
+        (confluent): the raw union commutes, and trust is applied deterministically
+        after — so no arrival order lets a stranger win."""
+        raw = Commons(quorum=self.quorum).merge(self)
+        for o in others:
+            raw.merge(o)
+        return raw.trust_weighted(trust, default=default)
 
     # ── reading ─────────────────────────────────────────────────────
     def recall(self, key: str) -> str | None:
