@@ -52,10 +52,27 @@ gale — which is exactly why a child can see the law before the sea hides it.
   the calibrated floor catches a 0.03 ripple a 0.05 fixed floor sleeps through.
 - **Forward Arc:** G2.
 
-### R2 · The commons & earned standing — the fourth verdict
+### R2 · The commons & earned standing — the fourth verdict *(SHIPPED — `jev_quilt/standing.py` + `jev_quilt/commons.py`)*
 - **The failure it prevents.** Every cell re-asking the fleet what it already
   knows cold — a radio channel jammed with questions whose answers are aboard. And
   the opposite: a cell trusting a proven route whose sea has since changed.
+- **Shipped.** `Standing.from_book()` derives standing by *replaying the
+  Bookkeeper* (law 4: replay ≡ live; the book is the corpus) — a run of
+  `diploma` booked-correct receipts on a residue-key confers the fourth verdict
+  **`ANSWER`** (recall the proven decision, stop asking), and a single booked-wrong
+  outcome revokes it. Never self-granted; `ANSWER` only ever names an answer the
+  book proved. `standing.verdict()` returns `('ANSWER', proven)` when earned, else
+  the base `ACT/CONFIRM/ESCALATE`. `tests/test_standing.py` (6 checks).
+- **Shipped (commons half).** `commons.py` glues many cells' earned standing into
+  one shared memory over `fold.mmr_root` — the same content-addressed root that
+  proves *replay ≡ live* now proves two nodes' commons **agree** (the sheaf
+  gluing condition PRODUCTS.md filed for `sheaf-gossip`: `agrees_with()` is one
+  32-byte comparison). Deposits are content-addressed and **confluent**
+  (`A.merge(B).root() == B.merge(A).root()`), so gossip converges in any order.
+  **Pooled evidence** is the point: ten cells each with a streak of 1 sum to a
+  fleet weight of 10, so a route no single cell had *earned* is still
+  fleet-earned — a fresh cell reads the commons and answers instead of
+  re-deriving. `tests/test_commons.py` (6 checks). **Rung complete.**
 - **Toy.** Two cells, one page, a handful of repeated intents; watch queries fall
   as standing is earned, and watch standing evaporate the moment the answer goes
   stale.

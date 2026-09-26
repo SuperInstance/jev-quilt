@@ -112,6 +112,12 @@ def test_imagine_score_and_noul_honesty():
 
 def test_imagine_budget_refuses():
     w = _gridworld()
-    with self.assertRaises(ValueError) as _cm:
-        self.assertIn("budget", str(_cm.exception))
+    # a botched unittest→function conversion left this using `self`; the intent
+    # is: an over-budget imagination refuses with a ValueError naming the budget.
+    raised = False
+    try:
         imagine_choice(w, Q16(0, 1), ["right"] * 5000, horizon=1)
+    except ValueError as e:
+        raised = True
+        assert "budget" in str(e), f"refusal should name the budget, got: {e}"
+    assert raised, "imagine_choice should refuse an over-budget rollout"
