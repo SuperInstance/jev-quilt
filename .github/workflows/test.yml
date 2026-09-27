@@ -60,6 +60,25 @@ jobs:
           "
 
 
+  g20b-second-reader:
+    name: G20b — second reader (Rust, cross-language pins)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install (no deps)
+        run: pip install -e . --no-deps
+      - name: regenerate + freshness-check the cross-language vectors
+        run: |
+          python vectors/gen_g20b_second_reader_vectors.py
+          git diff --exit-code -- vectors/g20b_second_reader_vectors.json || \
+            (echo "::error::vectors/g20b_second_reader_vectors.json is stale — rerun the generator and commit the result" && exit 1)
+      - name: cargo test (no external crates — pure std)
+        working-directory: ports/rust
+        run: cargo test
+
   build:
     name: package build
     runs-on: ubuntu-latest

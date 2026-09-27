@@ -16,6 +16,10 @@ pub fn fnv1a(s: &str) -> u64 {
     h
 }
 
+pub mod g20b;
+pub mod minijson;
+pub mod sha256;
+
 /// Hash-chained receipts; verify() re-derives every link.
 #[derive(Default)]
 pub struct ReceiptChain {
