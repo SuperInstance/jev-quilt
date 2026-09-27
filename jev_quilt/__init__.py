@@ -25,6 +25,9 @@ from .diploma import (Diploma, issue as issue_diploma,
                       sea_graded_verdict, canonical_diploma_bytes,
                       diploma_root, parse_floor)
 from .claim import Claim, Reading, claim_standing
+from .attest import (Attestation, WitnessReading, Admission,
+                     attest, verify_attestation, admit,
+                     attestation_root, canonical_attestation_bytes)
 from . import blake3, ed25519, signed_receipts
 
 __all__ = [
@@ -45,6 +48,9 @@ __all__ = [
     "sea_graded_verdict", "canonical_diploma_bytes", "diploma_root",
     "parse_floor",
     "Claim", "Reading", "claim_standing",
+    "Attestation", "WitnessReading", "Admission",
+    "attest", "verify_attestation", "admit",
+    "attestation_root", "canonical_attestation_bytes",
     "blake3", "ed25519", "signed_receipts",
 ]
 
