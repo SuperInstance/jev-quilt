@@ -73,6 +73,17 @@ gale — which is exactly why a child can see the law before the sea hides it.
   fleet weight of 10, so a route no single cell had *earned* is still
   fleet-earned — a fresh cell reads the commons and answers instead of
   re-deriving. `tests/test_commons.py` (6 checks). **Rung complete.**
+- **Hardened (G11 — trust-weighted gluing).** Blind weight-sum is *buyable* — a
+  stranger inflates a weight and steers the commons (the Goodhart surface the R8
+  red-team probes). So deposits now carry **provenance** (per-source weight), and
+  `provenance_merge(..., trust=…)` / `trust_weighted()` re-scale each source's
+  evidence by its **earned** trust: an unseen source defaults to trust 0 and
+  contributes nothing until the fleet earns reason to trust it, so a lie deposited
+  at weight 1000 by a stranger is scaled to 0 and cannot outvote a small trusted
+  truth. Still confluent (`A∪B == B∪A` under trust) and content-addressed
+  (`agrees_with` survives), integer-exact. `tests/test_commons.py` (+4 G11
+  checks). *Surfaced by Situation 01 "The Hundred Boats"; the step from one
+  honest account's commons to a fabric strangers can safely glue.*
 - **Toy.** Two cells, one page, a handful of repeated intents; watch queries fall
   as standing is earned, and watch standing evaporate the moment the answer goes
   stale.
