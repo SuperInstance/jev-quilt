@@ -20,6 +20,10 @@ from .tap import TapGate, ProposalGate, kl_divergence
 from .fold import FoldedLedger, Checkpoint, mmr_root
 from .standing import Standing, verdict as standing_verdict
 from .commons import Commons, Deposit
+from .diploma import (Diploma, issue as issue_diploma,
+                      verify_diploma, standing_from_diploma,
+                      sea_graded_verdict, canonical_diploma_bytes,
+                      diploma_root, parse_floor)
 from .claim import Claim, Reading, claim_standing
 from . import blake3, ed25519, signed_receipts
 
@@ -37,6 +41,9 @@ __all__ = [
     "TapGate", "ProposalGate", "kl_divergence",
     "FoldedLedger", "Checkpoint", "mmr_root",
     "Standing", "standing_verdict", "Commons", "Deposit",
+    "Diploma", "issue_diploma", "verify_diploma", "standing_from_diploma",
+    "sea_graded_verdict", "canonical_diploma_bytes", "diploma_root",
+    "parse_floor",
     "Claim", "Reading", "claim_standing",
     "blake3", "ed25519", "signed_receipts",
 ]
