@@ -83,6 +83,23 @@ class Standing:
             s.observe(k, correct_fn(res), str(answer))
         return s
 
+    @classmethod
+    def from_deposits(cls, deposits, *, diploma_n: int = DEFAULT_DIPLOMA) -> "Standing":
+        """Build Standing directly from a (key, answer, streak) deposit list
+        — the shape `.deposits()` produces and a portable Diploma (G13)
+        carries. Unlike `from_book`, this does not replay booked outcomes;
+        it takes the streak counts as given, so callers that trust the
+        deposits' provenance (a verified diploma) can confer standing
+        without re-deriving it move-by-move. The threshold applied is
+        THIS call's `diploma_n`, independent of whatever threshold produced
+        the deposits — earning is decided locally, same as always."""
+        s = cls(diploma_n)
+        for key, answer, streak in deposits:
+            if streak > 0:
+                s._streak[key] = streak
+                s._answer[key] = answer
+        return s
+
     def observe(self, key: str, correct: bool, answer: str) -> None:
         """Fold one booked outcome into standing. A miss tears standing up."""
         if correct:
