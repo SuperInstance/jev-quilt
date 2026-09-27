@@ -77,3 +77,52 @@ def test_payload_tamper_breaks_replay():
     bk.entries[0] = type(e)(e.tick, e.state_hash, e.delta_hash,
                             e.decision_kind, e.payload_hash, payload='{"v": "EVIL"}')
     assert bk.replay() != h
+
+
+# ── G20a: typed, uncapped decision fields (closes C9) ──────────────────
+
+def test_book_without_typed_fields_is_byte_for_byte_unchanged():
+    """A booking that never sets a typed decision field hashes IDENTICALLY
+    to the historical formula -- the declared G20a pin change is scoped to
+    callers that opt in (orgbook.py), never to the fleet's other cells."""
+    bk = Bookkeeper("c")
+    r = bk.book({"s": 1}, {"d": 1}, "choice", {"v": "a"})
+    assert r.decision_bytes() == b""
+    raw = f"1|{r.state_hash}|{r.delta_hash}|choice|{r.payload_hash}"
+    import hashlib
+    assert r.sha() == hashlib.sha256(raw.encode()).hexdigest()
+
+
+def test_book_accepts_typed_decision_fields_uncapped():
+    """A decision field far longer than the 200-char residue cap is
+    carried EXACTLY -- the render may still be capped; the decision never
+    is (Law 1/3: identity never floats, decide from the typed field)."""
+    bk = Bookkeeper("c")
+    long_reason = "x" * 500
+    r = bk.book({"s": 1}, {"d": 1}, "ACT", {"reason": long_reason},
+               dispatch_id="d1", runner="r1", key="k1", correct=False,
+               base_verdict="CONFIRM", answer="k1")
+    assert r.runner == "r1" and r.key == "k1" and r.correct is False
+    assert r.base_verdict == "CONFIRM" and r.dispatch_id == "d1"
+    assert len(r.payload) <= 200          # the render stays capped ...
+    assert r.decision_bytes() != b""      # ... the decision does not
+
+
+def test_book_refuses_a_decision_field_that_is_not_a_bool_or_str():
+    bk = Bookkeeper("c")
+    try:
+        bk.book({}, {}, "ACT", {}, runner="r1", correct="yes")  # not a bool
+        assert False, "expected a refusal"
+    except ValueError:
+        pass
+    assert bk.entries == []   # refused at book() -- never a partial land
+
+
+def test_book_refuses_a_decision_field_containing_the_reserved_delimiter():
+    bk = Bookkeeper("c")
+    try:
+        bk.book({}, {}, "ACT", {}, runner="r1\x1fEVIL")
+        assert False, "expected a refusal"
+    except ValueError:
+        pass
+    assert bk.entries == []

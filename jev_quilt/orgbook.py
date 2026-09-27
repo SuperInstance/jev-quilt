@@ -33,6 +33,23 @@ reproduction. Exact and deterministic throughout: two org-books built from the
 same dispatch sequence reconstruct the same decisions and agree on the same
 digest, on deck or in a datacenter.
 
+G20a (closes C9 — fail-open revocation, `ai-writings/situations/FABLE-ANSWER.md`
+§3-4): a dispatch's identity — `dispatch_id`, `runner`, `key` (task_class),
+`correct`, `base_verdict`, `answer` — is booked as `Receipt`'s TYPED, uncapped
+fields, never packed into `Bookkeeper`'s 200-char capped residue. `book_for`,
+`replay`, and (through `standing.Standing.from_book`) `route` all read those
+typed fields; none of them parses the residue to decide anything. A REFUSED
+admission's `reason` can be arbitrarily long — it stays in the freeform
+residue (still capped, still an audited render, never a decision input) — and
+no longer costs the dispatch its identity: `route()` and `replay()` see every
+booked dispatch, including a refusal, so one booked-wrong (refused) admission
+revokes standing exactly as Law 2/R2 promises, instead of silently vanishing
+past the cap. Declared cost, exactly as `fold.py`'s v2 note declares for the
+peak rule: `chain()`, `decisions_digest()`, and `Schoolhouse.pins()` change
+for any script that already hit the residue-truncation bug (a refused
+admission is now VISIBLE to replay), because the org's chain now binds the
+typed identity fields too, not merely the capped residue text.
+
 Honest limit (flagged, not fixed here): O7 / R5 — cost-per-passed-acceptance-
 test as a *conserved* budget that throttles a tier — is a metabolism, not a
 wire. It is out of scope for this module (see `NEW-DIRECTIONS.md` §B); this
@@ -42,7 +59,6 @@ file books the *routing* half only.
 from __future__ import annotations
 
 import hashlib
-import json
 from dataclasses import dataclass
 from typing import Optional
 
@@ -52,18 +68,6 @@ from .standing import Standing, verdict as standing_verdict, DEFAULT_DIPLOMA
 # Outcomes that fold to `correct=True` when the caller doesn't pass `correct`
 # explicitly (Law 5: viability is binary — pick a side, don't average it).
 _CORRECT_OUTCOMES = {"correct", "pass", "passed", "viable", "ok", "done"}
-
-
-def _residue(entry: Receipt) -> dict:
-    """The booked residue as a dict — same read `standing.py` does over its
-    own receipts. A truncated or non-JSON residue (bookkeeper caps payload at
-    200 chars) reads as empty rather than raising: an unreadable receipt is
-    honest absence, not a crash."""
-    try:
-        r = json.loads(entry.payload)
-        return r if isinstance(r, dict) else {}
-    except Exception:
-        return {}
 
 
 @dataclass(frozen=True)
@@ -110,6 +114,11 @@ class OrgBook:
         """
         if correct is None:
             correct = str(outcome).lower() in _CORRECT_OUTCOMES
+        answer_value = answer if answer is not None else tier
+        # The residue: still a capped, human-readable RENDER (Law 3) — kept
+        # exactly as before, for audit/display, and it may still be cut at
+        # the 200-char cap for a long `reason`/etc. That is fine now: no
+        # read path below decides from it any more.
         payload = {
             "dispatch_id": dispatch_id,
             "runner": runner,
@@ -118,14 +127,20 @@ class OrgBook:
             "outcome": outcome,
             "correct": bool(correct),
             "key": task_class,
-            "answer": answer if answer is not None else tier,
+            "answer": answer_value,
         }
         if base_verdict is not None:
             payload["base_verdict"] = base_verdict
         payload.update(extra)
+        # G20a: the identity this dispatch is BOOKED under — typed, uncapped,
+        # never packed into the residue. `book()` refuses (raises) rather
+        # than truncate any of these (Law 6 totality).
         return self.book.book({"dispatch_id": dispatch_id},
                               {"outcome": outcome, "correct": bool(correct)},
-                              verdict, payload)
+                              verdict, payload,
+                              dispatch_id=dispatch_id, runner=runner,
+                              key=task_class, correct=bool(correct),
+                              base_verdict=base_verdict, answer=answer_value)
 
     # ── deriving per-runner / per-class books (pure reads) ─────────────
     def book_for(self, runner: str, task_class: Optional[str] = None) -> Bookkeeper:
@@ -134,10 +149,14 @@ class OrgBook:
         routing is a pure function of the booked history, never a side
         table. Ticks are NOT renumbered (they stay the org WAL's own ticks):
         `Standing.from_book` only walks `.entries` in order, so this is
-        replay-safe without pretending the sub-book is a from-genesis WAL."""
+        replay-safe without pretending the sub-book is a from-genesis WAL.
+
+        Reads the TYPED `runner`/`key` fields (G20a) — never the capped
+        residue — so a dispatch whose freeform `reason` overran the render
+        cap is still found here, exactly like any other booked dispatch."""
         entries = [e for e in self.book.entries
-                  if _residue(e).get("runner") == runner
-                  and (task_class is None or _residue(e).get("key") == task_class)]
+                  if e.runner == runner
+                  and (task_class is None or e.key == task_class)]
         return Bookkeeper(cell_name=f"{self.book.cell_name}::{runner}", entries=entries)
 
     def standing_for(self, runner: str) -> Standing:
@@ -166,24 +185,29 @@ class OrgBook:
         recorded dispatch is otherwise walked in the org's own tick order, so
         two org-books built from the same sequence reconstruct identically.
         """
+        # G20a: `base`/`runner`/`task_class`/`dispatch_id` are read off the
+        # TYPED fields (never the capped residue) — so a well-formed WAL
+        # (every dispatch booked through `record_dispatch`, which always
+        # sets them) never hits `base is None: continue` for a reason as
+        # shallow as a long `reason` string; that branch is reachable now
+        # only for a dispatch a caller deliberately booked without
+        # recording its pre-standing verdict.
         decisions: list[Dispatch] = []
         entries = self.book.entries
         for i, e in enumerate(entries):
-            res = _residue(e)
-            base = res.get("base_verdict")
+            base = e.base_verdict
             if base is None:
                 continue
-            runner = res.get("runner")
-            task_class = res.get("key")
+            runner = e.runner
+            task_class = e.key
             prior = [x for x in entries[:i]
-                    if _residue(x).get("runner") == runner
-                    and _residue(x).get("key") == task_class]
+                    if x.runner == runner and x.key == task_class]
             sub = Bookkeeper(cell_name=f"{self.book.cell_name}::{runner}::replay",
                              entries=prior)
             s = Standing.from_book(sub, diploma=self.diploma)
             v, answer = standing_verdict(s, task_class, base)
             decisions.append(Dispatch(
-                dispatch_id=res.get("dispatch_id"),
+                dispatch_id=e.dispatch_id,
                 tick=e.tick,
                 runner=runner,
                 task_class=task_class,

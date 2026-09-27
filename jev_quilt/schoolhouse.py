@@ -45,33 +45,27 @@ associative algebra across the witness/issuer/org layers, rather than the
 serial, gated composition built here, is filed as an open law-level
 question (candidate C8), not answered by this build.
 
-**Newly discovered honest limit (found composing this module, not present
-in any single shipped rung's own tests): the `admit` dispatch collides
-with `Bookkeeper`'s fixed 200-character residue cap.** `record_dispatch`
-already books eight fields for this rung (tier/task_class/runner/verdict/
-outcome/correct/key/base_verdict) plus this module's own `reason` extra;
-a REFUSED admission's `reason` is `attest.admit`'s
-`"not_reproduced_for_recipient"` (29 bytes) — carrying it pushes the
-JSON-encoded residue over 200 characters for *any* signer id length (the
-budget is exhausted by the other seven mandatory fields alone before the
-signer id is even counted). `bookkeeper.py`'s residue is silently
-truncated at the cap (by design — it is a capped, human-readable audit
-copy, not the chain's source of truth), which breaks the JSON for that
-one receipt; `orgbook.py`'s own `_residue()` reads that as `{}` (also by
-design — an unreadable residue is honest absence, not a crash), so that
-*specific* dispatch becomes invisible to `OrgBook.route()`/`replay()`/
-`book_for()` — its `runner`/`base_verdict` can no longer be recovered by
-the org's own routing machinery, even though the raw `Receipt` stays
-truthfully in the WAL (`org.book.entries`) and `book.verify()` still
-holds. The refusal itself is never lost — `Enrollment.admission.reason`
-carries it exactly, untruncated, in the live object; only the org's own
-*replay-reconstruction* of that one dispatch's routing decision is
-affected. This is additive-only and immutable-respecting on both sides
-(neither `bookkeeper.py`'s cap nor `orgbook.py`'s refusal-is-absence
-polarity is touched); it is filed here as a composite-only finding for
-the Fable dossier, since no single shipped rung's own test suite drives
-a residue this wide. `tests/test_schoolhouse.py` exercises and asserts
-this exact behavior rather than hiding it behind a hand-picked short id.
+**Closed (G20a — was a newly discovered honest limit, found composing this
+module: C9, fail-open revocation).** The `admit` dispatch books more fields
+for this rung (tier/task_class/runner/verdict/outcome/correct/key/
+base_verdict) than any other rung's, plus this module's own `reason` extra
+on a refusal; a REFUSED admission's `reason` is `attest.admit`'s
+`"not_reproduced_for_recipient"` (29 bytes) — carrying it still pushes the
+JSON-encoded RESIDUE (the capped, human-readable audit render;
+`bookkeeper.py`'s docstring) over 200 characters for *any* signer id
+length. That render staying capped is fine now: `record_dispatch` also
+hands `Bookkeeper.book()` this dispatch's identity as TYPED, uncapped
+fields (`dispatch_id`, `runner`, `key`, `correct`, `base_verdict`,
+`answer` — see `bookkeeper.py`/`orgbook.py`'s module docstrings), and
+`OrgBook.route()`/`replay()`/`book_for()` read those, never the residue.
+A REFUSED admission is therefore booked, replay-reconstructed, and
+revokes the issuer's standing exactly like any other booked-wrong
+outcome — no longer invisible to the org's own routing machinery just
+because its human-readable render overran a display cap.
+`tests/test_schoolhouse.py`'s `TestG20aClosesFailOpenRevocation` is the
+promoted negative control (was the fire-time C9 probe); predicate 4
+exercises the flip side (`replay()` is now total over a script that
+includes a refusal).
 """
 
 from __future__ import annotations
