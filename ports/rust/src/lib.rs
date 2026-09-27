@@ -7,6 +7,11 @@ pub const PRIME: u64 = 0x100000001b3;
 /// JEV-SPEC §3 pinned vector.
 pub const PIN_CAFE: u64 = 0x024a555471370b18d;
 
+pub mod g20b;
+pub mod g20c;
+pub mod minijson;
+pub mod sha256;
+
 pub fn fnv1a(s: &str) -> u64 {
     let mut h = BASIS;
     for b in s.as_bytes() {
