@@ -28,6 +28,7 @@ from .claim import Claim, Reading, claim_standing
 from .attest import (Attestation, WitnessReading, Admission,
                      attest, verify_attestation, admit,
                      attestation_root, canonical_attestation_bytes)
+from .orgbook import OrgBook, Dispatch
 from . import blake3, ed25519, signed_receipts
 
 __all__ = [
@@ -51,6 +52,7 @@ __all__ = [
     "Attestation", "WitnessReading", "Admission",
     "attest", "verify_attestation", "admit",
     "attestation_root", "canonical_attestation_bytes",
+    "OrgBook", "Dispatch",
     "blake3", "ed25519", "signed_receipts",
 ]
 
