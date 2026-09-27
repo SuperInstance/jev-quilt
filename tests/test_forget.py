@@ -118,5 +118,42 @@ class TestForgetAllAnswersForAKey(unittest.TestCase):
         self.assertEqual(c.weight("other", "x"), 9)
 
 
+class TestForgetSurvivesTrustWeightedMerge(unittest.TestCase):
+    """A forgotten pair must not resurface through the provenance-keyed G11
+    read paths after a merge: trust_weighted() and provenance_merge() index
+    `_prov` directly (never `_w`), so merge() must purge `_prov` of any
+    tombstoned pair too, not just `_w`."""
+
+    def test_forget_survives_trust_weighted_merge(self):
+        c = Commons(quorum=1)
+        c.deposit("k", "secret", 5, source="A")
+        c.forget("k", "secret")
+
+        other = Commons(quorum=1)
+        other.deposit("k", "public", 3, source="B")
+
+        trust = {"A": 100, "B": 10}  # trust favors the forgotten pair's source
+
+        merged = copy.deepcopy(c).merge(copy.deepcopy(other))
+        self.assertEqual(merged.weight("k", "secret"), 0)
+
+        tw = merged.trust_weighted(trust)
+        self.assertEqual(tw.weight("k", "secret"), 0)
+        self.assertNotEqual(tw.recall("k"), "secret")
+        self.assertEqual(tw.recall("k"), "public")
+
+        pm = c.provenance_merge(other, trust=trust)
+        self.assertEqual(pm.weight("k", "secret"), 0)
+        self.assertNotEqual(pm.recall("k"), "secret")
+        self.assertEqual(pm.recall("k"), "public")
+
+        # the erasure stays witnessed even though every read path treats
+        # the pair as absent: the tombstone leaf is still folded into root()
+        self.assertIn(("k", "secret"), merged._tombstones)
+        surviving_leaves = [_leaf(d.key, d.answer, d.weight) for d in merged.deposits()]
+        tombstone_leaves = [_tombstone_leaf(k, a) for (k, a) in sorted(merged._tombstones)]
+        self.assertEqual(mmr_root(surviving_leaves + tombstone_leaves), merged.root())
+
+
 if __name__ == "__main__":
     unittest.main()

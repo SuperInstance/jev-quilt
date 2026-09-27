@@ -160,19 +160,36 @@ class Commons:
 
         G12 merge rule for tombstones (the one real judgment call — see the
         class docstring's STRETCH note): `_tombstones` is unioned like
-        `_prov`, and afterward any `_w` entry whose pair is in the unioned
-        tombstone set is dropped. That means forgetting only suppresses a
-        pair's weight in the merge result where the tombstone has actually
-        propagated to it — a node that has not yet received a given
-        tombstone will still contribute that pair's weight into the merge,
-        and only stops once the tombstone itself is gossiped in. This is
+        `_prov`, and afterward every read path is purged of any pair in the
+        unioned tombstone set — not just `_w`, but `_prov` too, so a
+        forgotten pair cannot resurface through the provenance-keyed G11
+        reads (`trust_weighted` / `provenance_merge` / `sources`), which
+        index `_prov` directly and never consult `_w`. Without purging
+        `_prov` as well, a stranger's un-forgotten copy of a pair could be
+        merged in, re-populate `_prov`, and then a `trust_weighted` read of
+        the *merged* commons would resurrect weight for a pair this node has
+        explicitly forgotten — a real leak, since `forget()` already scrubs
+        `_prov` locally but a merge was re-adding it from the other side.
+        Now both `_w` and `_prov` are dropped for every tombstoned pair
+        after each merge, so a forgotten pair is absent from every read
+        path (`recall`, `weight`, `earned`, `sources`, `trust_weighted`,
+        `provenance_merge`) the moment its tombstone is present, while the
+        tombstone leaf itself still stays folded into `root()` — the
+        erasure remains witnessed even though the pair reads as gone.
+
+        This still means forgetting only suppresses a pair's weight in the
+        merge result where the tombstone has actually propagated to it — a
+        node that has not yet received a given tombstone will still
+        contribute that pair's weight (and provenance) into the merge, and
+        only stops once the tombstone itself is gossiped in. That is
         deliberately *not* instantaneous global erasure (that would require
         a surveillance archive tracking every copy); it is the honest,
         gossip-safe semantics: forgetting is local unless gossiped as its
         own tombstone. The rule stays confluent — union is commutative and
         associative for both `_prov` and `_tombstones`, and the drop step is
         a deterministic function of the unioned sets, so `A.merge(B)` and
-        `B.merge(A)` still converge to the same root.
+        `B.merge(A)` still converge to the same root (and the same purged
+        `_prov`).
         """
         for (key, answer), srcmap in other._prov.items():
             for src, w in srcmap.items():
@@ -180,6 +197,7 @@ class Commons:
         self._tombstones |= other._tombstones
         for pair in self._tombstones:
             self._w.pop(pair, None)
+            self._prov.pop(pair, None)
         return self
 
     # ── trust-weighted gluing (G11) ──────────────────────────────────
