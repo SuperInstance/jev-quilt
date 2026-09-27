@@ -46,9 +46,43 @@ def _leaf(key: str, answer: str, weight: int) -> bytes:
     return hashlib.sha256(canon.encode("utf-8")).digest()
 
 
+def _tombstone_leaf(key: str, answer: str) -> bytes:
+    """A 32-byte content-addressed leaf for a forgotten (key, answer) pair.
+
+    `__tomb__` is a namespace prefix no deposit leaf can ever produce (a
+    deposit leaf's canonical string always starts with the deposit's own
+    key), so a tombstone can never collide with, or be forged as, a live
+    deposit leaf."""
+    canon = f"__tomb__\x1f{key}\x1f{answer}"
+    return hashlib.sha256(canon.encode("utf-8")).digest()
+
+
 class Commons:
     """A shared, content-addressed, confluent store of proven (key → answer)
-    routes with pooled evidence weights."""
+    routes with pooled evidence weights.
+
+    G12 — provable forgetting: a person has a right to leave, and a fleet has
+    a right to shed a route that encoded someone's private ground. But the
+    commons is append-only and content-addressed on doctrine — the
+    witness-referenced is never destroyed. The resolution is the same trick
+    as everywhere else here: you do not *mutate the past out*, you *fold the
+    erasure in*. `forget()` does not edit history invisibly; it books a
+    tombstone leaf, a witnessed, content-addressed record that a pair was
+    removed. `root()` folds tombstones in alongside deposits, so forgetting
+    is itself a real, provable state change — a peer can replay the delta
+    (surviving deposits + the new tombstone) and land on the same root. A
+    commons that has never called `forget` roots byte-identically to the
+    pre-G12 commons (empty tombstone set ⇒ unchanged behavior): forgetting
+    is purely additive.
+
+    STRETCH / honest limit: `merge()`'s tombstone rule is gossip-safe, not
+    magically global. A tombstone suppresses a pair's weight on merge only
+    where the tombstone itself has propagated — see `merge()`'s docstring.
+    Nothing here can force every node to forget instantaneously without
+    delivering the tombstone to it; that would require a surveillance
+    archive of all copies, which is exactly what the right to leave is
+    against.
+    """
 
     ANON = "__anon__"   # source tag for deposits with no named provenance
 
@@ -59,6 +93,9 @@ class Commons:
         # trust-free reading (recall/root) is unchanged, but a trust-weighted
         # gluing (G11) can down-weight a source the fleet has not earned to trust.
         self._prov: dict[tuple[str, str], dict[str, int]] = {}
+        # G12: pairs whose forgetting has been booked locally. Sorted before
+        # rooting (see root()) so tombstone order never affects the root.
+        self._tombstones: set[tuple[str, str]] = set()
 
     # ── building ────────────────────────────────────────────────────
     def deposit(self, key: str, answer: str, weight: int = 1, source: str | None = None) -> None:
@@ -74,6 +111,39 @@ class Commons:
         for key, answer, streak in standing.deposits():
             self.deposit(key, answer, streak, source=source)
 
+    # ── forgetting (G12) ────────────────────────────────────────────
+    def forget(self, key: str, answer: str | None = None) -> None:
+        """Book the removal of a deposit — the right to leave, witnessed.
+
+        Removes `(key, answer)` (or, if `answer` is None, every answer
+        deposited under `key`) from `self._w` and `self._prov`, and adds
+        each removed pair to `self._tombstones`. After this call
+        `recall(key)` / `weight(key, ...)` read as if the pair had never
+        been deposited (they read `self._w`, which this emptied) — but the
+        forgetting itself is not silent: it is folded into `root()` as a
+        tombstone leaf, so a peer can replay the erasure and land on the
+        same root, and no one can quietly claim the pair was simply never
+        there.
+
+        Idempotent, and books the tombstone even when the pair was already
+        absent — the *intent* to forget is itself witnessed, regardless of
+        whether there was anything live to remove.
+
+        No silent resurrection: because this deletes `self._w[(k, a)]`
+        outright (not merely masks it), a later `deposit(key, answer, ...)`
+        starts counting from 0. The tombstone stays folded into the root
+        even after re-deposit — that is correct: the ledger then shows *it
+        was forgotten, then re-learned*, not that it was never forgotten.
+        """
+        if answer is not None:
+            pairs = [(key, answer)]
+        else:
+            pairs = [k for k in self._w if k[0] == key]
+        for pair in pairs:
+            self._w.pop(pair, None)
+            self._prov.pop(pair, None)
+            self._tombstones.add(pair)
+
     @classmethod
     def from_books(cls, books: dict, *, diploma: int = DEFAULT_DIPLOMA,
                    quorum: int = DEFAULT_DIPLOMA, **standing_kw) -> "Commons":
@@ -86,10 +156,30 @@ class Commons:
 
     def merge(self, other: "Commons") -> "Commons":
         """Confluent union: weights add (and per-source provenance adds), so order
-        and grouping never matter. Returns self for chaining."""
+        and grouping never matter. Returns self for chaining.
+
+        G12 merge rule for tombstones (the one real judgment call — see the
+        class docstring's STRETCH note): `_tombstones` is unioned like
+        `_prov`, and afterward any `_w` entry whose pair is in the unioned
+        tombstone set is dropped. That means forgetting only suppresses a
+        pair's weight in the merge result where the tombstone has actually
+        propagated to it — a node that has not yet received a given
+        tombstone will still contribute that pair's weight into the merge,
+        and only stops once the tombstone itself is gossiped in. This is
+        deliberately *not* instantaneous global erasure (that would require
+        a surveillance archive tracking every copy); it is the honest,
+        gossip-safe semantics: forgetting is local unless gossiped as its
+        own tombstone. The rule stays confluent — union is commutative and
+        associative for both `_prov` and `_tombstones`, and the drop step is
+        a deterministic function of the unioned sets, so `A.merge(B)` and
+        `B.merge(A)` still converge to the same root.
+        """
         for (key, answer), srcmap in other._prov.items():
             for src, w in srcmap.items():
                 self.deposit(key, answer, w, source=(None if src == self.ANON else src))
+        self._tombstones |= other._tombstones
+        for pair in self._tombstones:
+            self._w.pop(pair, None)
         return self
 
     # ── trust-weighted gluing (G11) ──────────────────────────────────
@@ -160,10 +250,20 @@ class Commons:
 
     # ── proving agreement ───────────────────────────────────────────
     def root(self) -> bytes:
-        """Content-addressed MMR root over the canonical deposit leaves. Two
-        commons with the same deposits return the same root, regardless of the
-        order they were built or merged in."""
-        return mmr_root([_leaf(d.key, d.answer, d.weight) for d in self.deposits()])
+        """Content-addressed MMR root over the canonical deposit leaves,
+        followed by the canonical tombstone leaves (G12). Two commons with
+        the same deposits AND the same forgets return the same root,
+        regardless of the order they were built, forgotten from, or merged
+        in — both leaf groups are sorted before rooting.
+
+        Backward-compat pin: an empty tombstone set (no `forget` ever
+        called) makes this byte-identical to the pre-G12 root — tombstone
+        leaves are strictly appended after all deposit leaves, so a commons
+        that never forgets anything roots exactly as it did before G12.
+        """
+        leaves = [_leaf(d.key, d.answer, d.weight) for d in self.deposits()]
+        leaves += [_tombstone_leaf(k, a) for (k, a) in sorted(self._tombstones)]
+        return mmr_root(leaves)
 
     def agrees_with(self, other: "Commons") -> bool:
         """Do two nodes hold the same commons? One 32-byte comparison, not a
