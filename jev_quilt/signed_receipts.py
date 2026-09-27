@@ -57,6 +57,12 @@ def canonical_bytes(receipt: Receipt) -> bytes:
     hash, the historical back-compat formula). Cross-language form so
     Rust/TS ports reproduce it byte-for-byte: pipe-joined UTF-8, no
     JSON, no pickle, no repr.
+
+    G20a: a receipt whose typed decision fields are set (see
+    `bookkeeper.Receipt.decision_bytes`) extends this preimage the exact
+    same way `sha()` does; a receipt that never set them (every receipt
+    this module's own tests and vectors exercise) is byte-for-byte
+    unaffected — the historical formula, back-compat pinned.
     """
     payload_hash = (
         f"{fnv1a(receipt.payload.encode('utf-8')):016x}"
@@ -66,6 +72,9 @@ def canonical_bytes(receipt: Receipt) -> bytes:
         f"{receipt.tick}|{receipt.state_hash}|{receipt.delta_hash}|"
         f"{receipt.decision_kind}|{payload_hash}"
     )
+    decision = receipt.decision_bytes()
+    if decision:
+        raw = raw + "|" + decision.decode("utf-8")
     return raw.encode("utf-8")
 
 

@@ -73,14 +73,29 @@ class Standing:
     def from_book(cls, book: Bookkeeper, *, diploma: int = DEFAULT_DIPLOMA,
                   key_fn: Callable[[dict], Optional[str]] = _default_key,
                   correct_fn: Callable[[dict], bool] = _default_correct) -> "Standing":
+        """G20a: an entry that was booked WITH `Bookkeeper`'s typed decision
+        fields (`Receipt.key`/`correct`/`answer` — see `orgbook.record_dispatch`)
+        is observed from THOSE, uncapped, never from the residue — a caller
+        that opted into typed identity gets it back exactly, regardless of
+        what a freeform `reason` etc. did to the capped render. An entry
+        that never set them (every plain `Bookkeeper.book()` caller this
+        classmethod already served) falls back to the historical residue
+        read, byte-for-byte unchanged — `key_fn`/`correct_fn` still apply
+        there exactly as before."""
         s = cls(diploma)
         for e in book.entries:
-            res = _residue(e)
-            k = key_fn(res)
-            if k is None:
-                continue
-            answer = res.get("answer") if res.get("answer") is not None else e.decision_kind
-            s.observe(k, correct_fn(res), str(answer))
+            if e.key is not None:
+                k = e.key
+                is_correct = bool(e.correct) if e.correct is not None else False
+                answer = e.answer if e.answer is not None else e.decision_kind
+            else:
+                res = _residue(e)
+                k = key_fn(res)
+                if k is None:
+                    continue
+                is_correct = correct_fn(res)
+                answer = res.get("answer") if res.get("answer") is not None else e.decision_kind
+            s.observe(k, is_correct, str(answer))
         return s
 
     @classmethod

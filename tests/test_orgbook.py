@@ -161,6 +161,58 @@ class TestOrgBook(unittest.TestCase):
         assert org.book.entries == [r]
         assert org.book.verify()   # structurally sound WAL: ticks 1..N, no gaps
 
+    # ── G20a: closes C9 (fail-open revocation) ─────────────────────────
+
+    def test_a_refused_run_with_an_over_cap_reason_still_revokes(self):
+        """The exact C9 mechanism: a booked-wrong run whose `reason` alone
+        overruns Bookkeeper's 200-char residue cap must still revoke
+        standing -- route() must never fail open just because the render
+        of THIS ONE receipt was unreadable."""
+        org = OrgBook("org.test")
+        for i in range(DEFAULT_DIPLOMA):
+            _run(org, f"d{i}", "admit", "issuer-1", "haiku", "correct")
+        assert org.route("admit", "issuer-1", "CONFIRM") == ("ANSWER", "haiku")
+
+        over_cap_reason = "not_reproduced_for_recipient" + ("!" * 200)
+        org.record_dispatch("d-refused", "haiku", "admit", "issuer-1", "CONFIRM",
+                            "refused", base_verdict="CONFIRM", correct=False,
+                            answer="haiku", reason=over_cap_reason)
+        v, answer = org.route("admit", "issuer-1", "CONFIRM")
+        assert (v, answer) == ("CONFIRM", None)   # revoked, not a stale ANSWER
+
+        # replay() drops nothing -- not even the over-cap receipt.
+        assert len(org.replay()) == len(org.book.entries)
+
+    def test_residue_length_never_moves_the_decision(self):
+        """'A residue of any length leaves every pin unchanged' (G20a
+        predicate), read precisely: `route()`, `replay()`'s reconstructed
+        decisions, and `decisions_digest()` are pure functions of the TYPED
+        fields, so they are IDENTICAL whether a freeform extra (`reason`)
+        is short or absurdly long. (`chain()` is deliberately NOT among
+        these -- it binds the receipt's exact bytes, residue included, by
+        design, so tampering with the render is still caught; see
+        `Receipt.sha()`'s docstring. Decisions don't float; the tamper-
+        evident chain over the render is a different, orthogonal, still-
+        working guarantee.)"""
+        def build(reason):
+            org = OrgBook("org.test")
+            for i in range(DEFAULT_DIPLOMA):
+                _run(org, f"d{i}", "admit", "issuer-2", "haiku", "correct")
+            org.record_dispatch("d-refused", "haiku", "admit", "issuer-2", "CONFIRM",
+                                "refused", base_verdict="CONFIRM", correct=False,
+                                answer="haiku", reason=reason)
+            return org
+
+        short = build("no")
+        long_ = build("x" * 5000)
+        assert short.route("admit", "issuer-2", "CONFIRM") == long_.route("admit", "issuer-2", "CONFIRM")
+        assert short.decisions_digest() == long_.decisions_digest()
+        assert ([(d.dispatch_id, d.verdict) for d in short.replay()] ==
+               [(d.dispatch_id, d.verdict) for d in long_.replay()])
+        # the chain still diverges -- it is a tamper-evident hash over the
+        # receipt's own bytes (residue included), never a decision input.
+        assert short.chain() != long_.chain()
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -10,21 +10,24 @@ it (`attest`, G17) -> a stranger admits it under its OWN trust/quorum/floor
 `test_attest.py` / `test_claim.py` / `test_orgbook.py` already use; nothing
 here re-implements a shipped module.
 
-A residue note (see `schoolhouse.py`'s module docstring for the full
-finding): `Bookkeeper` caps a receipt's readable residue at 200 characters.
-An `admit` dispatch books more fields than any other rung's, so its raw
-`entry.payload` text is frequently truncated mid-value for realistic signer
-ids — `json.loads` on it then raises, exactly the case `orgbook.py`'s own
-`_residue()` treats as honest absence (`{}`), not a crash. Rather than
-`json.loads`-ing the capped residue directly (which is what breaks), the
-helpers below extract individual fields with a regex that tolerates a
-truncated tail — the same fields `orgbook.py` itself would recover had they
-appeared earlier in the (alphabetically key-sorted) JSON. Predicate 4 tests
-the truncation's real, load-bearing consequence head-on: a REFUSED admit
-dispatch whose `reason` is the 29-byte `"not_reproduced_for_recipient"`
-overruns the cap and is provably invisible to `OrgBook.replay()`, even
-though it remains, untruncated, in the raw WAL and in the schoolhouse's own
-`Enrollment` object.
+A residue note, now closed (G20a — see `bookkeeper.py`/`orgbook.py`'s module
+docstrings for the fix, and `ai-writings/situations/FABLE-ANSWER.md` §3-4
+for the diagnosis this closes, C9): `Bookkeeper` caps a receipt's readable
+residue at 200 characters, and an `admit` dispatch books more fields than
+any other rung's, so its raw `entry.payload` text is still frequently
+truncated mid-value for realistic signer ids — `json.loads` on it still
+raises. What changed is that `OrgBook` no longer decides anything from that
+residue: `dispatch_id`/`runner`/`key`/`correct`/`base_verdict`/`answer` are
+booked as `Receipt`'s TYPED, uncapped fields, so a truncated residue can no
+longer make a dispatch invisible to `route()`/`replay()`/`book_for()`. The
+helpers below still extract display fields (`outcome`, `reason`, ...) from
+the residue text with a regex that tolerates a truncated tail, purely for
+the test's own readability — no production read path does this any more.
+`TestG20aClosesFailOpenRevocation` is the promoted negative control (was
+the C9 probe, `ai-writings/situations/FABLE-ANSWER.md` §3.1): a REFUSED
+admission now revokes standing instead of leaving a stale `ANSWER`.
+Predicate 4 exercises the flip side: the refusal that used to be invisible
+to `replay()` is now reconstructed exactly like any other booked dispatch.
 """
 
 import json
@@ -286,12 +289,13 @@ def _drive_script(name: str, *, ring_trust: dict, diploma: int = 1):
     Returns `(school, live)`, where `live` is `[(dispatch_id, verdict), ...]`
     — the `base_verdict` field each dispatch was actually booked with (the
     routed decision for `enroll`, the literal parameter for
-    `reproduce`/`issue`/`forget`). For every dispatch `org.replay()` DOES
-    reconstruct, its `.verdict` equals this recorded value exactly (law 4);
-    a dispatch whose residue overran Bookkeeper's 200-char cap (the ring's
-    REFUSED admissions, whose `reason` is the 29-byte
-    `not_reproduced_for_recipient`) is invisible to `replay()` regardless —
-    see this module and `schoolhouse.py`'s docstrings.
+    `reproduce`/`issue`/`forget`). For EVERY dispatch (G20a: `replay()` is
+    now total over this script, including the ring's REFUSED admissions,
+    whose `reason` is the 29-byte `not_reproduced_for_recipient` that used
+    to overrun Bookkeeper's 200-char residue cap and vanish from
+    `replay()`), `org.replay()`'s reconstructed `.verdict` equals this
+    recorded value exactly (law 4) — see this module and
+    `orgbook.py`/`bookkeeper.py`'s docstrings.
     """
     school = Schoolhouse(name, quorum=3, diploma=diploma)
     live = []
@@ -346,25 +350,25 @@ class TestReplayEqualsLiveOverTheWholeSchoolhouse(unittest.TestCase):
             self.assertIn(d.dispatch_id, live_by_id)
             self.assertEqual(d.verdict, live_by_id[d.dispatch_id])
 
-        # the reproduce/attest/k1/k1b dispatches all comfortably fit the
-        # residue cap and ARE reconstructed:
+        # G20a: replay() is now TOTAL over this script -- every booked
+        # dispatch is reconstructed, none dropped (Law 4 clause iii; C9
+        # closed). Previously the two REFUSED ring admissions (k2, k3),
+        # whose `reason` is the 29-byte "not_reproduced_for_recipient",
+        # overran Bookkeeper's 200-char residue cap and vanished from
+        # replay(); they are booked as Receipt's TYPED fields now, so the
+        # cap can no longer make them invisible.
         replayed_ids = {d.dispatch_id for d in replayed}
-        for did, _v in live_a[:4]:
+        self.assertEqual(len(replayed), len(school_a.org.book.entries))
+        for did, _v in live_a:
             self.assertIn(did, replayed_ids)
 
-        # the two REFUSED ring admissions (k2, k3) carry the 29-byte
-        # "not_reproduced_for_recipient" reason; that overruns Bookkeeper's
-        # 200-char residue cap regardless of signer-id length (see the
-        # module docstring) -- they are booked (present in the raw WAL) but
-        # invisible to replay(). This is the honest limit, tested directly
-        # rather than avoided.
         ring_dispatch_ids = {did for did, _v in live_a[4:6]}
         raw_ids = {_residue_field(e, "dispatch_id") for e in school_a.org.book.entries}
-        self.assertTrue(ring_dispatch_ids.issubset(raw_ids))       # booked ...
-        self.assertTrue(ring_dispatch_ids.isdisjoint(replayed_ids))  # ... but not replay-reconstructed
-        # ... while the schoolhouse's OWN Enrollment record never lost the
-        # refusal reason at all (see predicate 2) -- only the org's internal
-        # replay machinery is affected by the residue cap, nothing else.
+        self.assertTrue(ring_dispatch_ids.issubset(raw_ids))        # booked ...
+        self.assertTrue(ring_dispatch_ids.issubset(replayed_ids))  # ... AND replay-reconstructed
+        # ... exactly as the schoolhouse's OWN Enrollment record never lost
+        # the refusal reason either (see predicate 2) -- the org's internal
+        # replay machinery is no longer affected by the residue cap at all.
 
         # the whole chain is content-addressed: schoolhouse B runs the SAME
         # script (a differently-named cell) and agrees on all three pins.
@@ -374,26 +378,33 @@ class TestReplayEqualsLiveOverTheWholeSchoolhouse(unittest.TestCase):
 
         # schoolhouse C diverges at exactly one step: it TRUSTS the ring the
         # others distrust, so the same laundered credential confers there
-        # (and, being conferred, carries no `reason` -- its residue fits the
-        # cap and IS visible to replay(), unlike A/B's refusal of it).
+        # instead of refusing.
         school_c, _live_c = _drive_script("school-p4-c", ring_trust=_TRUST_RING)
         self.assertNotEqual(school_a.pins(), school_c.pins())
         # the divergence shows up in the org's raw chain (the booked outcome/
-        # correct/verdict fields differ from the very first ring dispatch,
-        # regardless of residue-cap truncation, since chain() hashes the
-        # receipt's own fields, not a re-parse of the capped text) ...
+        # correct fields differ from the very first ring dispatch; chain()
+        # binds the receipt's own typed fields, not a re-parse of the
+        # capped text) ...
         self.assertNotEqual(school_a.org.chain(), school_c.org.chain())
         # ... in the commons root (C actually deposits the ring's credential
         # twice; A deposits it never) ...
         self.assertNotEqual(school_a.commons.root(), school_c.commons.root())
-        # ... and in the decisions digest: C's ring admissions are visible to
-        # replay() (conferred, short residue) so the ring's standing there
-        # genuinely accumulates and is later observed; A's are invisible
-        # (refused, truncated) so the reconstructed decision streams differ
-        # in content, not merely in the underlying WAL bytes.
+        # ... and in the decisions digest: both A and C now RECONSTRUCT the
+        # ring dispatches (G20a: neither is invisible to replay() any more),
+        # so the digests diverge on real content -- C's ring admissions are
+        # conferred and its standing for that issuer genuinely accumulates
+        # (k3 recalls ANSWER), while A's stay refused (k3 stays CONFIRM,
+        # revoked every time, never earning ANSWER) -- not merely because
+        # one side dropped rows the other kept.
         self.assertNotEqual(school_a.org.decisions_digest(), school_c.org.decisions_digest())
         c_replayed_ids = {d.dispatch_id for d in school_c.org.replay()}
-        self.assertTrue(ring_dispatch_ids.issubset(c_replayed_ids))  # visible in C, unlike in A
+        self.assertTrue(ring_dispatch_ids.issubset(c_replayed_ids))  # visible in C ...
+        self.assertTrue(ring_dispatch_ids.issubset(replayed_ids))    # ... AND in A (G20a)
+        a_verdicts = {d.dispatch_id: d.verdict for d in replayed}
+        c_verdicts = {d.dispatch_id: d.verdict for d in school_c.org.replay()}
+        for did in ring_dispatch_ids:
+            self.assertEqual(a_verdicts[did], "CONFIRM")  # A: refused, never earns ANSWER
+        self.assertEqual(c_verdicts[sorted(ring_dispatch_ids)[-1]], "ANSWER")  # C: conferred twice, earns it
 
         # the rebuilt-object invariant: a fresh OrgBook fed B's exact WAL
         # entries reconstructs identically — replay == live, not replay ==
@@ -419,6 +430,72 @@ class TestReplayEqualsLiveOverTheWholeSchoolhouse(unittest.TestCase):
         # of the script's content (never the random Ed25519 seed material).
         school2, _live2 = _drive_script("school-p4-pin-vector-again", ring_trust=_DISTRUST_RING)
         self.assertEqual(school.pins(), school2.pins())
+
+
+# ── G20a: the C9 probe, promoted (was `ai-writings/situations/FABLE-ANSWER.md`
+# §3.1's scratchpad `c9_probe.py`) — a green negative control, not a skip ──
+
+class TestG20aClosesFailOpenRevocation(unittest.TestCase):
+    """Verbatim shape of the fire-time C9 probe: issuer A attests a clean
+    5-witness claim; the schoolhouse (`diploma=3`) enrolls it three times
+    under full trust -> A earns ANSWER at the `admit` door. Then A attests a
+    ring-padded claim; the schoolhouse distrusts the ring -> refused,
+    `reason == "not_reproduced_for_recipient"` (the 29-byte string that
+    overran Bookkeeper's 200-char residue cap). Before G20a this refusal was
+    silently dropped by `_residue()`'s parse failure and `route()` kept
+    answering ANSWER — fail-open revocation, C9. G20a's fix: the refusal
+    revokes standing back to base, and every dispatch — including the
+    refusal — is replay-reconstructed."""
+
+    def test_refused_admission_revokes_and_replay_drops_nothing(self):
+        signer, seed_hex, pk_hex = _identity("issuerG20a", 0)
+        pubkeys = {signer: pk_hex}
+        full_trust = {f"w{i}": 1 for i in range(5)}
+        school = Schoolhouse("school-g20a", quorum=3, diploma=DEFAULT_DIPLOMA)
+
+        # three CLEAN, conferred admissions on three different commons keys
+        # -- task_class is always "admit", so the issuer's standing AT THE
+        # DOOR accumulates across them regardless of the key.
+        for key in ("k1", "k2", "k3"):
+            claim = Claim.from_books(_swarm(5, "42", 100), reading_fn=_reading_fn, quorum=3)
+            att = attest(claim, signer=signer, seed_hex=seed_hex)
+            enrollment = school.enroll(att, pubkeys, key=key, trust=full_trust, quorum=3)
+            self.assertTrue(enrollment.admission.conferred)
+
+        # the issuer has earned ANSWER at the admit door.
+        self.assertEqual(school.org.route("admit", signer, "CONFIRM"),
+                         ("ANSWER", "admit"))
+
+        # now the SAME issuer launders a ring-padded claim; the recipient
+        # distrusts the ring -> refused. This is the exact receipt whose
+        # `reason` overran the residue cap and (pre-G20a) vanished from the
+        # org's own routing machinery.
+        ring_books = {
+            "clean1": _witness_book("42", 100), "clean2": _witness_book("42", 100),
+            "ring1": _witness_book("42", 100), "ring2": _witness_book("42", 100),
+        }
+        ring_claim = Claim.from_books(ring_books, reading_fn=_reading_fn, quorum=4)
+        ring_att = attest(ring_claim, signer=signer, seed_hex=seed_hex)
+        enrollment = school.enroll(
+            ring_att, pubkeys, key="k4",
+            trust={"clean1": 1, "clean2": 1, "ring1": 0, "ring2": 0}, quorum=4)
+        self.assertFalse(enrollment.admission.conferred)
+        self.assertEqual(enrollment.admission.reason, "not_reproduced_for_recipient")
+
+        # THE FIX (was: fail-open, route() kept returning ANSWER here):
+        # one booked-wrong (refused) admission revokes standing back to base.
+        v, answer = school.org.route("admit", signer, "CONFIRM")
+        self.assertEqual((v, answer), ("CONFIRM", None))
+        self.assertNotEqual(v, "ANSWER")
+
+        # Law 4 totality: replay() drops NOTHING -- every booked dispatch,
+        # including the refusal, is reconstructed (C9 closed).
+        self.assertEqual(len(school.org.replay()), len(school.org.book.entries))
+
+        # the refused admission is not lost to book_for() either -- it is
+        # counted in the issuer's own runner-book, revoking the streak.
+        issuer_book = school.org.book_for(signer, "admit")
+        self.assertEqual(len(issuer_book.entries), 4)   # 3 conferred + 1 refused
 
 
 if __name__ == "__main__":
