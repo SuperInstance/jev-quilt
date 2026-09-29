@@ -1,0 +1,34 @@
+# .quilt/links.yml — the Reader's Fold manifest (jev-quilt Law 6).
+# This repo carries NO verdicts about its neighbors — only content-addressed
+# pointers each reader folds under its own weights. Edit this file; never edit
+# the generated block in README.md by hand.
+#
+# jev-quilt is the SUBSTRATE: Law 6 (the Reader's Fold) and Law 7 (the Reach
+# Bound) originate here. Law 6 is enforced at the source in
+# jev_quilt/bookkeeper.py (totality: refuse what cannot be carried exactly);
+# its statement lives in AI-Writings situations/FABLE-ANSWER.md, Law 7's in
+# situations/FABLE-BROAD-ANSWER.md. The fold is operationalized as reusable
+# tools in AI-Writings labs/jev-fold and labs/weakest-claim.
+
+repo: jev-quilt
+family: quilt
+
+provides:
+  - id: readers-fold
+    what: Law 6, the Reader's Fold — a verdict is never carried, only content-addressed evidence each reader folds under its own weights (operationalized in AI-Writings `labs/jev-fold` + `labs/weakest-claim`)
+  - id: reach-bound
+    what: Law 7, the Reach Bound — a fold cannot land a truth no reader's evidence reaches; manifests name 1-hop neighbors only
+  - id: answer-verdict
+    what: the earned ANSWER / CONFIRM verdict — `standing` + `diploma` + `attest` Admission; recall autopilots only while surprise stays under the floor
+  - id: commons
+    what: the deposit commons — content-addressed, confluent `Commons.root()` over `fold.mmr_root`; A.merge(B) == B.merge(A)
+  - id: cell-doctrine
+    what: the five laws — cell / hook-on-delta / decide-once / bookkeeper WAL / binary viability floor + the q16 exact-rational codec
+  - id: second-reader-vectors
+    what: G20b/G20c cross-language vectors (`vectors/`) — an independent Rust reader derives the orgbook chain, commons root and deposit table
+
+related:
+  - repo: qthe
+    why: the physical layer of the Reader's Fold — 8-bit value-is-geometry primitive with the Abstain (look-again) state
+  - repo: exoj
+    why: holds the field of possibilities open as primary; a decision is the only thing that collapses it
