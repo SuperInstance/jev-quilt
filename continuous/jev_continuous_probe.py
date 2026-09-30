@@ -198,9 +198,15 @@ def build_question_specs(round_idx: int, n: int = 5) -> tuple[dict, list]:
     return out, [s[0] for s in sampled]
 
 def parse_verdicts(resp: dict) -> dict:
-    """Extract p-value per qid from JEV response."""
+    """Extract p-value per qid from JEV response.
+
+    `answers` is read with `or {}` because Typesafe can return the key present and null --
+    a partial-error body does exactly that. `resp.get("answers", {})` yields None there and
+    `.items()` raises, which kills the round instead of recording it as a failure. Found by
+    test_probe_kat.py, which is the entire reason that file now exists.
+    """
     out = {}
-    answers = resp.get("answers", {})
+    answers = resp.get("answers") or {}
     for qid, payload in answers.items():
         if isinstance(payload, dict):
             noul = payload.get("noul")

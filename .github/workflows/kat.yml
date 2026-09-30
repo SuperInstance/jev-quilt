@@ -1,0 +1,20 @@
+name: known-answer tests
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  kat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # Network-free on purpose. A known-answer test that needs a Typesafe key to pass is
+      # a test that silently stops being run the first time the key expires.
+      - name: probe KAT (no network, no key)
+        run: python3 continuous/test_probe_kat.py
+      - name: analyzer still runs on the recorded example run
+        run: python3 continuous/analyze_jev.py continuous/example_run
