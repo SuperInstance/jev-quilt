@@ -1,0 +1,23 @@
+{
+  "round": 55,
+  "ts": "2026-10-01T16:07:01Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q18_address_is_data",
+    "q19_pressure_cascade",
+    "q01_cells_are_scars",
+    "q12_witness_note_opcode"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.94,
+    "q18_address_is_data": 0.59,
+    "q19_pressure_cascade": 0.25,
+    "q01_cells_are_scars": 0.97,
+    "q12_witness_note_opcode": 0.57
+  },
+  "usage": {
+    "input_tokens": 1397,
+    "output_tokens": 116
+  }
+}

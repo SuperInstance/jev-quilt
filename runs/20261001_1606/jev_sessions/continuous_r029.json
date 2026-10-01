@@ -1,0 +1,23 @@
+{
+  "round": 29,
+  "ts": "2026-10-01T16:06:54Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q20_wolffs_law",
+    "q05_lenia_flows",
+    "q21_memory_sandbox",
+    "q17_canary_honesty",
+    "q06_three_views"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.56,
+    "q05_lenia_flows": 0.96,
+    "q21_memory_sandbox": 0.3,
+    "q17_canary_honesty": 0.78,
+    "q06_three_views": 0.23
+  },
+  "usage": {
+    "input_tokens": 1416,
+    "output_tokens": 114
+  }
+}

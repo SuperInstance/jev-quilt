@@ -1,0 +1,23 @@
+{
+  "round": 51,
+  "ts": "2026-10-01T16:07:00Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q20_wolffs_law",
+    "q14_canon_equals_speculation",
+    "q19_pressure_cascade",
+    "q17_canary_honesty",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.57,
+    "q14_canon_equals_speculation": 0.07,
+    "q19_pressure_cascade": 0.25,
+    "q17_canary_honesty": 0.76,
+    "q10_quorum_meshing": 0.85
+  },
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 119
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 49,
+  "ts": "2026-10-01T16:06:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q09_signal_chain",
+    "q19_pressure_cascade",
+    "q03_substrate_is_grown",
+    "q20_wolffs_law"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.22,
+    "q09_signal_chain": 0.59,
+    "q19_pressure_cascade": 0.25,
+    "q03_substrate_is_grown": 0.97,
+    "q20_wolffs_law": 0.57
+  },
+  "usage": {
+    "input_tokens": 1398,
+    "output_tokens": 115
+  }
+}

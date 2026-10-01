@@ -1,0 +1,23 @@
+{
+  "round": 16,
+  "ts": "2026-10-01T16:06:51Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q14_canon_equals_speculation",
+    "q10_quorum_meshing",
+    "q04_oracle_is_heard",
+    "q16_canonicity_score",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q14_canon_equals_speculation": 0.06,
+    "q10_quorum_meshing": 0.86,
+    "q04_oracle_is_heard": 0.96,
+    "q16_canonicity_score": 0.22,
+    "q09_signal_chain": 0.62
+  },
+  "usage": {
+    "input_tokens": 1388,
+    "output_tokens": 116
+  }
+}

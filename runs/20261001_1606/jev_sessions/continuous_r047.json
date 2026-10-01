@@ -1,0 +1,23 @@
+{
+  "round": 47,
+  "ts": "2026-10-01T16:06:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q20_wolffs_law",
+    "q14_canon_equals_speculation",
+    "q19_pressure_cascade",
+    "q07_eleven_opcodes",
+    "q13_chain_dialing"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.54,
+    "q14_canon_equals_speculation": 0.06,
+    "q19_pressure_cascade": 0.26,
+    "q07_eleven_opcodes": 0.95,
+    "q13_chain_dialing": 0.62
+  },
+  "usage": {
+    "input_tokens": 1393,
+    "output_tokens": 118
+  }
+}

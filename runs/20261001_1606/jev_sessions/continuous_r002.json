@@ -1,0 +1,23 @@
+{
+  "round": 2,
+  "ts": "2026-10-01T16:06:47Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q03_substrate_is_grown",
+    "q16_canonicity_score",
+    "q18_address_is_data",
+    "q01_cells_are_scars"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q03_substrate_is_grown": 0.97,
+    "q16_canonicity_score": 0.21,
+    "q18_address_is_data": 0.57,
+    "q01_cells_are_scars": 0.97
+  },
+  "usage": {
+    "input_tokens": 1409,
+    "output_tokens": 115
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 1,
+  "ts": "2026-10-01T16:06:47Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q08_polyformalism_12_ports",
+    "q07_eleven_opcodes",
+    "q14_canon_equals_speculation",
+    "q06_three_views",
+    "q03_substrate_is_grown"
+  ],
+  "verdicts": {
+    "q08_polyformalism_12_ports": 0.88,
+    "q07_eleven_opcodes": 0.95,
+    "q14_canon_equals_speculation": 0.06,
+    "q06_three_views": 0.22,
+    "q03_substrate_is_grown": 0.97
+  },
+  "usage": {
+    "input_tokens": 1420,
+    "output_tokens": 121
+  }
+}

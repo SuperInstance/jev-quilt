@@ -1,0 +1,23 @@
+{
+  "round": 24,
+  "ts": "2026-10-01T16:06:53Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q18_address_is_data",
+    "q07_eleven_opcodes",
+    "q01_cells_are_scars",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q18_address_is_data": 0.56,
+    "q07_eleven_opcodes": 0.95,
+    "q01_cells_are_scars": 0.97,
+    "q21_memory_sandbox": 0.28
+  },
+  "usage": {
+    "input_tokens": 1404,
+    "output_tokens": 115
+  }
+}

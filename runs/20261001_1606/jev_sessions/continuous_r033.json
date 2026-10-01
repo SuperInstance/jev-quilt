@@ -1,0 +1,23 @@
+{
+  "round": 33,
+  "ts": "2026-10-01T16:06:55Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q09_signal_chain",
+    "q16_canonicity_score",
+    "q13_chain_dialing",
+    "q17_canary_honesty"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.94,
+    "q09_signal_chain": 0.64,
+    "q16_canonicity_score": 0.23,
+    "q13_chain_dialing": 0.61,
+    "q17_canary_honesty": 0.77
+  },
+  "usage": {
+    "input_tokens": 1430,
+    "output_tokens": 115
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 39,
+  "ts": "2026-10-01T16:06:56Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q18_address_is_data",
+    "q07_eleven_opcodes",
+    "q05_lenia_flows",
+    "q20_wolffs_law",
+    "q11_canon_gate_is_chord"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q05_lenia_flows": 0.96,
+    "q20_wolffs_law": 0.55,
+    "q11_canon_gate_is_chord": 0.56,
+    "q18_address_is_data": 0.6
+  },
+  "usage": {
+    "input_tokens": 1414,
+    "output_tokens": 116
+  }
+}
