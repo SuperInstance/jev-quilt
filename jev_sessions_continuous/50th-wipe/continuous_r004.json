@@ -1,0 +1,23 @@
+{
+  "round": 4,
+  "ts": "2026-10-01T22:03:04Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q09_signal_chain",
+    "q08_polyformalism_12_ports",
+    "q13_chain_dialing",
+    "q20_wolffs_law",
+    "q02_witness_log_is_prediction"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.57,
+    "q02_witness_log_is_prediction": 0.93,
+    "q09_signal_chain": 0.62,
+    "q08_polyformalism_12_ports": 0.88,
+    "q13_chain_dialing": 0.62
+  },
+  "usage": {
+    "input_tokens": 1431,
+    "output_tokens": 119
+  }
+}

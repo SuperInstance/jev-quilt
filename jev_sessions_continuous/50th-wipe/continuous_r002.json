@@ -1,0 +1,23 @@
+{
+  "round": 2,
+  "ts": "2026-10-01T22:03:04Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q01_cells_are_scars",
+    "q10_quorum_meshing",
+    "q04_oracle_is_heard",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q10_quorum_meshing": 0.86,
+    "q04_oracle_is_heard": 0.96,
+    "q09_signal_chain": 0.59,
+    "q03_substrate_is_grown": 0.97,
+    "q01_cells_are_scars": 0.97
+  },
+  "usage": {
+    "input_tokens": 1392,
+    "output_tokens": 115
+  }
+}
