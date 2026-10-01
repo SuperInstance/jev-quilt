@@ -1,0 +1,12 @@
+{
+  "round": 7,
+  "ts": "2026-10-01T15:04:33Z",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q07_eleven_opcodes",
+    "q20_wolffs_law",
+    "q17_canary_honesty",
+    "q10_quorum_meshing"
+  ],
+  "error": "HTTP 503: upstream connect error or disconnect/reset before headers. retried and the latest reset reason: remote connection failure, transport failure reason: TLS_error:|268435581:SSL routines:OPENSSL_internal:"
+}

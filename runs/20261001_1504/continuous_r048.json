@@ -1,0 +1,23 @@
+{
+  "round": 48,
+  "ts": "2026-10-01T15:04:46Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q09_signal_chain",
+    "q14_canon_equals_speculation",
+    "q15_twentyfour_ports",
+    "q07_eleven_opcodes",
+    "q03_substrate_is_grown"
+  ],
+  "verdicts": {
+    "q09_signal_chain": 0.58,
+    "q14_canon_equals_speculation": 0.06,
+    "q15_twentyfour_ports": 0.2,
+    "q07_eleven_opcodes": 0.95,
+    "q03_substrate_is_grown": 0.97
+  },
+  "usage": {
+    "input_tokens": 1397,
+    "output_tokens": 118
+  }
+}

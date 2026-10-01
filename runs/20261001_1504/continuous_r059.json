@@ -1,0 +1,23 @@
+{
+  "round": 59,
+  "ts": "2026-10-01T15:04:48Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q18_address_is_data",
+    "q09_signal_chain",
+    "q22_provenance_conflict",
+    "q06_three_views",
+    "q12_witness_note_opcode"
+  ],
+  "verdicts": {
+    "q18_address_is_data": 0.56,
+    "q09_signal_chain": 0.59,
+    "q22_provenance_conflict": 0.33,
+    "q06_three_views": 0.22,
+    "q12_witness_note_opcode": 0.56
+  },
+  "usage": {
+    "input_tokens": 1419,
+    "output_tokens": 111
+  }
+}

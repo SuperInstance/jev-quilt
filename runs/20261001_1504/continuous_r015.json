@@ -1,0 +1,23 @@
+{
+  "round": 15,
+  "ts": "2026-10-01T15:04:39Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q20_wolffs_law",
+    "q21_memory_sandbox",
+    "q15_twentyfour_ports",
+    "q12_witness_note_opcode",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.54,
+    "q21_memory_sandbox": 0.26,
+    "q15_twentyfour_ports": 0.15,
+    "q12_witness_note_opcode": 0.58,
+    "q09_signal_chain": 0.61
+  },
+  "usage": {
+    "input_tokens": 1406,
+    "output_tokens": 115
+  }
+}

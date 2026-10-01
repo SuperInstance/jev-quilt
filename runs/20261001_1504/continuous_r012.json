@@ -1,0 +1,23 @@
+{
+  "round": 12,
+  "ts": "2026-10-01T15:04:38Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q19_pressure_cascade",
+    "q13_chain_dialing",
+    "q08_polyformalism_12_ports",
+    "q20_wolffs_law"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.97,
+    "q19_pressure_cascade": 0.26,
+    "q13_chain_dialing": 0.62,
+    "q08_polyformalism_12_ports": 0.87,
+    "q20_wolffs_law": 0.54
+  },
+  "usage": {
+    "input_tokens": 1409,
+    "output_tokens": 119
+  }
+}

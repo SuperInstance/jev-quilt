@@ -1,0 +1,23 @@
+{
+  "round": 31,
+  "ts": "2026-10-01T15:04:42Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q10_quorum_meshing",
+    "q09_signal_chain",
+    "q18_address_is_data",
+    "q02_witness_log_is_prediction",
+    "q03_substrate_is_grown"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q10_quorum_meshing": 0.86,
+    "q09_signal_chain": 0.58,
+    "q18_address_is_data": 0.59,
+    "q02_witness_log_is_prediction": 0.93
+  },
+  "usage": {
+    "input_tokens": 1411,
+    "output_tokens": 115
+  }
+}

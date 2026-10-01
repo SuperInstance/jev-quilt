@@ -1,0 +1,23 @@
+{
+  "round": 40,
+  "ts": "2026-10-01T15:04:44Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q08_polyformalism_12_ports",
+    "q04_oracle_is_heard",
+    "q13_chain_dialing",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q08_polyformalism_12_ports": 0.9,
+    "q04_oracle_is_heard": 0.96,
+    "q13_chain_dialing": 0.62,
+    "q09_signal_chain": 0.63
+  },
+  "usage": {
+    "input_tokens": 1440,
+    "output_tokens": 117
+  }
+}

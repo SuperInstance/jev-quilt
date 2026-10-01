@@ -1,0 +1,23 @@
+{
+  "round": 58,
+  "ts": "2026-10-01T15:04:48Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q21_memory_sandbox",
+    "q14_canon_equals_speculation",
+    "q13_chain_dialing",
+    "q19_pressure_cascade",
+    "q04_oracle_is_heard"
+  ],
+  "verdicts": {
+    "q21_memory_sandbox": 0.28,
+    "q14_canon_equals_speculation": 0.06,
+    "q13_chain_dialing": 0.6,
+    "q19_pressure_cascade": 0.26,
+    "q04_oracle_is_heard": 0.96
+  },
+  "usage": {
+    "input_tokens": 1366,
+    "output_tokens": 118
+  }
+}

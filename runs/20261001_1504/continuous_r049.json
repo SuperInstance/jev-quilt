@@ -1,0 +1,23 @@
+{
+  "round": 49,
+  "ts": "2026-10-01T15:04:46Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q12_witness_note_opcode",
+    "q06_three_views",
+    "q19_pressure_cascade",
+    "q18_address_is_data"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.19,
+    "q12_witness_note_opcode": 0.54,
+    "q06_three_views": 0.22,
+    "q19_pressure_cascade": 0.25,
+    "q18_address_is_data": 0.59
+  },
+  "usage": {
+    "input_tokens": 1408,
+    "output_tokens": 113
+  }
+}

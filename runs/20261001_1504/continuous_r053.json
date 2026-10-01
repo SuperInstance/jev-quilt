@@ -1,0 +1,23 @@
+{
+  "round": 53,
+  "ts": "2026-10-01T15:04:47Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q18_address_is_data",
+    "q13_chain_dialing",
+    "q17_canary_honesty",
+    "q01_cells_are_scars",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q18_address_is_data": 0.6,
+    "q13_chain_dialing": 0.59,
+    "q17_canary_honesty": 0.76,
+    "q01_cells_are_scars": 0.97,
+    "q16_canonicity_score": 0.22
+  },
+  "usage": {
+    "input_tokens": 1418,
+    "output_tokens": 114
+  }
+}

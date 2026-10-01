@@ -1,0 +1,23 @@
+{
+  "round": 25,
+  "ts": "2026-10-01T15:04:41Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q16_canonicity_score",
+    "q03_substrate_is_grown",
+    "q08_polyformalism_12_ports",
+    "q17_canary_honesty"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.94,
+    "q16_canonicity_score": 0.22,
+    "q03_substrate_is_grown": 0.97,
+    "q08_polyformalism_12_ports": 0.88,
+    "q17_canary_honesty": 0.77
+  },
+  "usage": {
+    "input_tokens": 1433,
+    "output_tokens": 123
+  }
+}

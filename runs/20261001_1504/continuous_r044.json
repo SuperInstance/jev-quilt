@@ -1,0 +1,23 @@
+{
+  "round": 44,
+  "ts": "2026-10-01T15:04:45Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q19_pressure_cascade",
+    "q12_witness_note_opcode",
+    "q18_address_is_data",
+    "q17_canary_honesty"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.22,
+    "q19_pressure_cascade": 0.26,
+    "q12_witness_note_opcode": 0.56,
+    "q18_address_is_data": 0.57,
+    "q17_canary_honesty": 0.77
+  },
+  "usage": {
+    "input_tokens": 1422,
+    "output_tokens": 115
+  }
+}

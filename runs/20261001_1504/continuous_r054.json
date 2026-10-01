@@ -1,0 +1,23 @@
+{
+  "round": 54,
+  "ts": "2026-10-01T15:04:47Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q19_pressure_cascade",
+    "q18_address_is_data",
+    "q13_chain_dialing",
+    "q08_polyformalism_12_ports"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q19_pressure_cascade": 0.26,
+    "q18_address_is_data": 0.58,
+    "q13_chain_dialing": 0.6,
+    "q08_polyformalism_12_ports": 0.87
+  },
+  "usage": {
+    "input_tokens": 1414,
+    "output_tokens": 119
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 26,
+  "ts": "2026-10-01T15:04:41Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q10_quorum_meshing",
+    "q13_chain_dialing",
+    "q06_three_views",
+    "q08_polyformalism_12_ports"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.2,
+    "q10_quorum_meshing": 0.85,
+    "q13_chain_dialing": 0.62,
+    "q06_three_views": 0.22,
+    "q08_polyformalism_12_ports": 0.88
+  },
+  "usage": {
+    "input_tokens": 1430,
+    "output_tokens": 117
+  }
+}
