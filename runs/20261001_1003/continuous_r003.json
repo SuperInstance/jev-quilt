@@ -1,0 +1,23 @@
+{
+  "round": 3,
+  "ts": "2026-10-01T10:03:56Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q17_canary_honesty",
+    "q08_polyformalism_12_ports",
+    "q13_chain_dialing",
+    "q15_twentyfour_ports"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.26,
+    "q17_canary_honesty": 0.73,
+    "q08_polyformalism_12_ports": 0.88,
+    "q13_chain_dialing": 0.6,
+    "q15_twentyfour_ports": 0.17
+  },
+  "usage": {
+    "input_tokens": 1430,
+    "output_tokens": 120
+  }
+}

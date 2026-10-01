@@ -1,0 +1,23 @@
+{
+  "round": 35,
+  "ts": "2026-10-01T10:04:04Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q15_twentyfour_ports",
+    "q18_address_is_data",
+    "q17_canary_honesty",
+    "q20_wolffs_law"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.18,
+    "q18_address_is_data": 0.58,
+    "q17_canary_honesty": 0.77,
+    "q20_wolffs_law": 0.55,
+    "q07_eleven_opcodes": 0.95
+  },
+  "usage": {
+    "input_tokens": 1434,
+    "output_tokens": 116
+  }
+}

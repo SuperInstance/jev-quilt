@@ -1,0 +1,23 @@
+{
+  "round": 53,
+  "ts": "2026-10-01T10:04:07Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q05_lenia_flows",
+    "q04_oracle_is_heard",
+    "q03_substrate_is_grown",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q04_oracle_is_heard": 0.96,
+    "q03_substrate_is_grown": 0.97,
+    "q09_signal_chain": 0.6,
+    "q15_twentyfour_ports": 0.18,
+    "q05_lenia_flows": 0.95
+  },
+  "usage": {
+    "input_tokens": 1386,
+    "output_tokens": 116
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 37,
+  "ts": "2026-10-01T10:04:04Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q09_signal_chain",
+    "q10_quorum_meshing",
+    "q18_address_is_data",
+    "q19_pressure_cascade",
+    "q02_witness_log_is_prediction"
+  ],
+  "verdicts": {
+    "q09_signal_chain": 0.57,
+    "q10_quorum_meshing": 0.86,
+    "q18_address_is_data": 0.57,
+    "q19_pressure_cascade": 0.25,
+    "q02_witness_log_is_prediction": 0.94
+  },
+  "usage": {
+    "input_tokens": 1412,
+    "output_tokens": 113
+  }
+}

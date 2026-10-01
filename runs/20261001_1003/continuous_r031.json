@@ -1,0 +1,23 @@
+{
+  "round": 31,
+  "ts": "2026-10-01T10:04:03Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q08_polyformalism_12_ports",
+    "q18_address_is_data",
+    "q19_pressure_cascade",
+    "q20_wolffs_law",
+    "q15_twentyfour_ports"
+  ],
+  "verdicts": {
+    "q08_polyformalism_12_ports": 0.89,
+    "q18_address_is_data": 0.6,
+    "q19_pressure_cascade": 0.27,
+    "q20_wolffs_law": 0.57,
+    "q15_twentyfour_ports": 0.21
+  },
+  "usage": {
+    "input_tokens": 1415,
+    "output_tokens": 119
+  }
+}

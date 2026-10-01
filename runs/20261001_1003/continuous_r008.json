@@ -1,0 +1,23 @@
+{
+  "round": 8,
+  "ts": "2026-10-01T10:03:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q17_canary_honesty",
+    "q10_quorum_meshing",
+    "q04_oracle_is_heard",
+    "q01_cells_are_scars"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q17_canary_honesty": 0.77,
+    "q10_quorum_meshing": 0.85,
+    "q04_oracle_is_heard": 0.96,
+    "q01_cells_are_scars": 0.97
+  },
+  "usage": {
+    "input_tokens": 1400,
+    "output_tokens": 118
+  }
+}

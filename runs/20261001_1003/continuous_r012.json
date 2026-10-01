@@ -1,0 +1,23 @@
+{
+  "round": 12,
+  "ts": "2026-10-01T10:03:59Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q11_canon_gate_is_chord",
+    "q16_canonicity_score",
+    "q01_cells_are_scars",
+    "q03_substrate_is_grown",
+    "q07_eleven_opcodes"
+  ],
+  "verdicts": {
+    "q11_canon_gate_is_chord": 0.58,
+    "q16_canonicity_score": 0.23,
+    "q01_cells_are_scars": 0.97,
+    "q03_substrate_is_grown": 0.97,
+    "q07_eleven_opcodes": 0.94
+  },
+  "usage": {
+    "input_tokens": 1404,
+    "output_tokens": 118
+  }
+}

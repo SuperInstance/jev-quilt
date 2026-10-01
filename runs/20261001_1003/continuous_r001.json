@@ -1,0 +1,23 @@
+{
+  "round": 1,
+  "ts": "2026-10-01T10:03:55Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q12_witness_note_opcode",
+    "q05_lenia_flows",
+    "q07_eleven_opcodes",
+    "q17_canary_honesty",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q12_witness_note_opcode": 0.56,
+    "q05_lenia_flows": 0.96,
+    "q07_eleven_opcodes": 0.95,
+    "q17_canary_honesty": 0.75,
+    "q10_quorum_meshing": 0.86
+  },
+  "usage": {
+    "input_tokens": 1436,
+    "output_tokens": 116
+  }
+}

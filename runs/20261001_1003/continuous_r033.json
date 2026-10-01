@@ -1,0 +1,23 @@
+{
+  "round": 33,
+  "ts": "2026-10-01T10:04:03Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q06_three_views",
+    "q12_witness_note_opcode",
+    "q08_polyformalism_12_ports",
+    "q14_canon_equals_speculation",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q06_three_views": 0.2,
+    "q12_witness_note_opcode": 0.56,
+    "q08_polyformalism_12_ports": 0.88,
+    "q14_canon_equals_speculation": 0.06,
+    "q21_memory_sandbox": 0.28
+  },
+  "usage": {
+    "input_tokens": 1411,
+    "output_tokens": 120
+  }
+}

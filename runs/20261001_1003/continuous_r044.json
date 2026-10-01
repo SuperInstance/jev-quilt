@@ -1,0 +1,23 @@
+{
+  "round": 44,
+  "ts": "2026-10-01T10:04:05Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q10_quorum_meshing",
+    "q05_lenia_flows",
+    "q17_canary_honesty",
+    "q03_substrate_is_grown"
+  ],
+  "verdicts": {
+    "q10_quorum_meshing": 0.86,
+    "q05_lenia_flows": 0.95,
+    "q17_canary_honesty": 0.74,
+    "q03_substrate_is_grown": 0.97,
+    "q07_eleven_opcodes": 0.94
+  },
+  "usage": {
+    "input_tokens": 1425,
+    "output_tokens": 117
+  }
+}

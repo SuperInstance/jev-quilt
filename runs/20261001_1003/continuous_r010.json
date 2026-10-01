@@ -1,0 +1,23 @@
+{
+  "round": 10,
+  "ts": "2026-10-01T10:03:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q16_canonicity_score",
+    "q04_oracle_is_heard",
+    "q03_substrate_is_grown",
+    "q06_three_views"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.27,
+    "q16_canonicity_score": 0.24,
+    "q04_oracle_is_heard": 0.96,
+    "q03_substrate_is_grown": 0.97,
+    "q06_three_views": 0.22
+  },
+  "usage": {
+    "input_tokens": 1390,
+    "output_tokens": 115
+  }
+}

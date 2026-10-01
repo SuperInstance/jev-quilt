@@ -1,0 +1,23 @@
+{
+  "round": 48,
+  "ts": "2026-10-01T10:04:06Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q21_memory_sandbox",
+    "q07_eleven_opcodes",
+    "q12_witness_note_opcode",
+    "q03_substrate_is_grown"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.93,
+    "q21_memory_sandbox": 0.29,
+    "q07_eleven_opcodes": 0.94,
+    "q12_witness_note_opcode": 0.55,
+    "q03_substrate_is_grown": 0.97
+  },
+  "usage": {
+    "input_tokens": 1411,
+    "output_tokens": 119
+  }
+}

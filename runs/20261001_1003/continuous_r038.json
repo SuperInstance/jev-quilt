@@ -1,0 +1,23 @@
+{
+  "round": 38,
+  "ts": "2026-10-01T10:04:04Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q08_polyformalism_12_ports",
+    "q05_lenia_flows",
+    "q19_pressure_cascade",
+    "q06_three_views"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.93,
+    "q08_polyformalism_12_ports": 0.88,
+    "q05_lenia_flows": 0.95,
+    "q19_pressure_cascade": 0.27,
+    "q06_three_views": 0.22
+  },
+  "usage": {
+    "input_tokens": 1418,
+    "output_tokens": 118
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 29,
+  "ts": "2026-10-01T10:04:02Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q04_oracle_is_heard",
+    "q12_witness_note_opcode",
+    "q14_canon_equals_speculation",
+    "q01_cells_are_scars"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q04_oracle_is_heard": 0.96,
+    "q12_witness_note_opcode": 0.58,
+    "q14_canon_equals_speculation": 0.06,
+    "q01_cells_are_scars": 0.97
+  },
+  "usage": {
+    "input_tokens": 1388,
+    "output_tokens": 119
+  }
+}

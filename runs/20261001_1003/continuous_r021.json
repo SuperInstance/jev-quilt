@@ -1,0 +1,23 @@
+{
+  "round": 21,
+  "ts": "2026-10-01T10:04:01Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q07_eleven_opcodes",
+    "q21_memory_sandbox",
+    "q12_witness_note_opcode",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.97,
+    "q07_eleven_opcodes": 0.95,
+    "q21_memory_sandbox": 0.29,
+    "q12_witness_note_opcode": 0.58,
+    "q05_lenia_flows": 0.96
+  },
+  "usage": {
+    "input_tokens": 1405,
+    "output_tokens": 115
+  }
+}
