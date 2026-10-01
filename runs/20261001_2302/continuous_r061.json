@@ -1,0 +1,23 @@
+{
+  "round": 61,
+  "ts": "2026-10-01T23:04:15Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q17_canary_honesty",
+    "q01_cells_are_scars",
+    "q05_lenia_flows",
+    "q21_memory_sandbox",
+    "q08_polyformalism_12_ports"
+  ],
+  "verdicts": {
+    "q17_canary_honesty": 0.78,
+    "q01_cells_are_scars": 0.97,
+    "q05_lenia_flows": 0.96,
+    "q21_memory_sandbox": 0.29,
+    "q08_polyformalism_12_ports": 0.89
+  },
+  "usage": {
+    "input_tokens": 1422,
+    "output_tokens": 119
+  }
+}

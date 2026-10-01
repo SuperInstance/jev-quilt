@@ -1,0 +1,23 @@
+{
+  "round": 84,
+  "ts": "2026-10-01T23:04:20Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q06_three_views",
+    "q09_signal_chain",
+    "q19_pressure_cascade",
+    "q03_substrate_is_grown",
+    "q12_witness_note_opcode"
+  ],
+  "verdicts": {
+    "q06_three_views": 0.23,
+    "q09_signal_chain": 0.57,
+    "q19_pressure_cascade": 0.25,
+    "q03_substrate_is_grown": 0.97,
+    "q12_witness_note_opcode": 0.57
+  },
+  "usage": {
+    "input_tokens": 1410,
+    "output_tokens": 113
+  }
+}

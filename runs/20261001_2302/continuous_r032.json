@@ -1,0 +1,23 @@
+{
+  "round": 32,
+  "ts": "2026-10-01T23:04:09Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q20_wolffs_law",
+    "q17_canary_honesty",
+    "q12_witness_note_opcode",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.19,
+    "q20_wolffs_law": 0.57,
+    "q17_canary_honesty": 0.78,
+    "q12_witness_note_opcode": 0.55,
+    "q16_canonicity_score": 0.22
+  },
+  "usage": {
+    "input_tokens": 1419,
+    "output_tokens": 118
+  }
+}

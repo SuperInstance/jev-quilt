@@ -1,0 +1,23 @@
+{
+  "round": 58,
+  "ts": "2026-10-01T23:04:14Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q20_wolffs_law",
+    "q08_polyformalism_12_ports",
+    "q10_quorum_meshing",
+    "q21_memory_sandbox",
+    "q06_three_views"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.52,
+    "q08_polyformalism_12_ports": 0.88,
+    "q10_quorum_meshing": 0.84,
+    "q21_memory_sandbox": 0.28,
+    "q06_three_views": 0.22
+  },
+  "usage": {
+    "input_tokens": 1428,
+    "output_tokens": 117
+  }
+}

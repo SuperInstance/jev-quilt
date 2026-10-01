@@ -1,0 +1,23 @@
+{
+  "round": 67,
+  "ts": "2026-10-01T23:04:16Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q12_witness_note_opcode",
+    "q18_address_is_data",
+    "q03_substrate_is_grown",
+    "q13_chain_dialing"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.22,
+    "q12_witness_note_opcode": 0.56,
+    "q18_address_is_data": 0.61,
+    "q03_substrate_is_grown": 0.97,
+    "q13_chain_dialing": 0.61
+  },
+  "usage": {
+    "input_tokens": 1405,
+    "output_tokens": 116
+  }
+}

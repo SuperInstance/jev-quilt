@@ -1,0 +1,23 @@
+{
+  "round": 57,
+  "ts": "2026-10-01T23:04:14Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q09_signal_chain",
+    "q18_address_is_data",
+    "q17_canary_honesty",
+    "q12_witness_note_opcode",
+    "q06_three_views"
+  ],
+  "verdicts": {
+    "q09_signal_chain": 0.62,
+    "q18_address_is_data": 0.56,
+    "q17_canary_honesty": 0.74,
+    "q12_witness_note_opcode": 0.55,
+    "q06_three_views": 0.21
+  },
+  "usage": {
+    "input_tokens": 1444,
+    "output_tokens": 111
+  }
+}

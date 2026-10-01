@@ -1,0 +1,23 @@
+{
+  "round": 140,
+  "ts": "2026-10-01T23:04:31Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q02_witness_log_is_prediction",
+    "q21_memory_sandbox",
+    "q16_canonicity_score",
+    "q11_canon_gate_is_chord"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q02_witness_log_is_prediction": 0.94,
+    "q21_memory_sandbox": 0.29,
+    "q16_canonicity_score": 0.22,
+    "q11_canon_gate_is_chord": 0.58
+  },
+  "usage": {
+    "input_tokens": 1414,
+    "output_tokens": 118
+  }
+}

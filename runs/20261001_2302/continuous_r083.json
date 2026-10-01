@@ -1,0 +1,23 @@
+{
+  "round": 83,
+  "ts": "2026-10-01T23:04:19Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q18_address_is_data",
+    "q03_substrate_is_grown",
+    "q20_wolffs_law",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.93,
+    "q18_address_is_data": 0.61,
+    "q03_substrate_is_grown": 0.97,
+    "q20_wolffs_law": 0.56,
+    "q16_canonicity_score": 0.21
+  },
+  "usage": {
+    "input_tokens": 1399,
+    "output_tokens": 118
+  }
+}

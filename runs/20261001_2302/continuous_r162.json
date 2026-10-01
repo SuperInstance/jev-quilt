@@ -1,0 +1,23 @@
+{
+  "round": 162,
+  "ts": "2026-10-01T23:04:36Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q20_wolffs_law",
+    "q01_cells_are_scars",
+    "q06_three_views",
+    "q07_eleven_opcodes"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.94,
+    "q20_wolffs_law": 0.56,
+    "q01_cells_are_scars": 0.97,
+    "q06_three_views": 0.22,
+    "q07_eleven_opcodes": 0.95
+  },
+  "usage": {
+    "input_tokens": 1418,
+    "output_tokens": 115
+  }
+}

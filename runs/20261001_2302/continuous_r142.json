@@ -1,0 +1,23 @@
+{
+  "round": 142,
+  "ts": "2026-10-01T23:04:32Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q07_eleven_opcodes",
+    "q22_provenance_conflict",
+    "q05_lenia_flows",
+    "q08_polyformalism_12_ports"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.97,
+    "q07_eleven_opcodes": 0.95,
+    "q22_provenance_conflict": 0.34,
+    "q05_lenia_flows": 0.96,
+    "q08_polyformalism_12_ports": 0.89
+  },
+  "usage": {
+    "input_tokens": 1417,
+    "output_tokens": 119
+  }
+}

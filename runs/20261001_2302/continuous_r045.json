@@ -1,0 +1,23 @@
+{
+  "round": 45,
+  "ts": "2026-10-01T23:04:12Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q08_polyformalism_12_ports",
+    "q13_chain_dialing",
+    "q18_address_is_data",
+    "q02_witness_log_is_prediction",
+    "q01_cells_are_scars"
+  ],
+  "verdicts": {
+    "q08_polyformalism_12_ports": 0.88,
+    "q13_chain_dialing": 0.6,
+    "q18_address_is_data": 0.6,
+    "q02_witness_log_is_prediction": 0.94,
+    "q01_cells_are_scars": 0.97
+  },
+  "usage": {
+    "input_tokens": 1420,
+    "output_tokens": 119
+  }
+}

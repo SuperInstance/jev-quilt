@@ -1,0 +1,23 @@
+{
+  "round": 7,
+  "ts": "2026-10-01T23:04:04Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q17_canary_honesty",
+    "q12_witness_note_opcode",
+    "q02_witness_log_is_prediction",
+    "q19_pressure_cascade"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.97,
+    "q17_canary_honesty": 0.77,
+    "q12_witness_note_opcode": 0.56,
+    "q02_witness_log_is_prediction": 0.94,
+    "q19_pressure_cascade": 0.26
+  },
+  "usage": {
+    "input_tokens": 1410,
+    "output_tokens": 118
+  }
+}

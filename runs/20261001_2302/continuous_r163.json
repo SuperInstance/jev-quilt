@@ -1,0 +1,23 @@
+{
+  "round": 163,
+  "ts": "2026-10-01T23:04:36Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q04_oracle_is_heard",
+    "q18_address_is_data",
+    "q02_witness_log_is_prediction",
+    "q08_polyformalism_12_ports",
+    "q19_pressure_cascade"
+  ],
+  "verdicts": {
+    "q04_oracle_is_heard": 0.96,
+    "q18_address_is_data": 0.57,
+    "q02_witness_log_is_prediction": 0.93,
+    "q08_polyformalism_12_ports": 0.88,
+    "q19_pressure_cascade": 0.26
+  },
+  "usage": {
+    "input_tokens": 1412,
+    "output_tokens": 120
+  }
+}

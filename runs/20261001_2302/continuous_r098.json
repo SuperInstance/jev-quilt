@@ -1,0 +1,23 @@
+{
+  "round": 98,
+  "ts": "2026-10-01T23:04:23Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q06_three_views",
+    "q10_quorum_meshing",
+    "q04_oracle_is_heard",
+    "q08_polyformalism_12_ports",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q06_three_views": 0.23,
+    "q10_quorum_meshing": 0.87,
+    "q04_oracle_is_heard": 0.96,
+    "q08_polyformalism_12_ports": 0.89,
+    "q05_lenia_flows": 0.95
+  },
+  "usage": {
+    "input_tokens": 1419,
+    "output_tokens": 117
+  }
+}

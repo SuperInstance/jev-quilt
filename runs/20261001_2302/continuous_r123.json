@@ -1,0 +1,23 @@
+{
+  "round": 123,
+  "ts": "2026-10-01T23:04:28Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q05_lenia_flows",
+    "q03_substrate_is_grown",
+    "q16_canonicity_score",
+    "q10_quorum_meshing",
+    "q14_canon_equals_speculation"
+  ],
+  "verdicts": {
+    "q05_lenia_flows": 0.95,
+    "q03_substrate_is_grown": 0.97,
+    "q16_canonicity_score": 0.22,
+    "q10_quorum_meshing": 0.85,
+    "q14_canon_equals_speculation": 0.07
+  },
+  "usage": {
+    "input_tokens": 1374,
+    "output_tokens": 119
+  }
+}

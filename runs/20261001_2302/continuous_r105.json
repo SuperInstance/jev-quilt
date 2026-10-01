@@ -1,0 +1,23 @@
+{
+  "round": 105,
+  "ts": "2026-10-01T23:04:24Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q20_wolffs_law",
+    "q19_pressure_cascade",
+    "q04_oracle_is_heard",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.97,
+    "q20_wolffs_law": 0.54,
+    "q19_pressure_cascade": 0.25,
+    "q04_oracle_is_heard": 0.96,
+    "q05_lenia_flows": 0.95
+  },
+  "usage": {
+    "input_tokens": 1374,
+    "output_tokens": 116
+  }
+}

@@ -1,0 +1,192 @@
+{
+  "overall_mean_p": 0.6061700000000001,
+  "round_min": 0.254,
+  "round_max": 0.9219999999999999,
+  "round_stdev": 0.11349744975108475,
+  "q_stats": [
+    {
+      "qid": "q01_cells_are_scars",
+      "kind": "bedrock",
+      "n": 46,
+      "mean": 0.9686956521739125,
+      "p70_rate": 1.0,
+      "p90_rate": 1.0
+    },
+    {
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "n": 41,
+      "mean": 0.9360975609756097,
+      "p70_rate": 1.0,
+      "p90_rate": 1.0
+    },
+    {
+      "qid": "q03_substrate_is_grown",
+      "kind": "bedrock",
+      "n": 50,
+      "mean": 0.9699999999999993,
+      "p70_rate": 1.0,
+      "p90_rate": 1.0
+    },
+    {
+      "qid": "q04_oracle_is_heard",
+      "kind": "bedrock",
+      "n": 42,
+      "mean": 0.9600000000000006,
+      "p70_rate": 1.0,
+      "p90_rate": 1.0
+    },
+    {
+      "qid": "q05_lenia_flows",
+      "kind": "bedrock",
+      "n": 37,
+      "mean": 0.955135135135135,
+      "p70_rate": 1.0,
+      "p90_rate": 1.0
+    },
+    {
+      "qid": "q06_three_views",
+      "kind": "speculative",
+      "n": 46,
+      "mean": 0.22021739130434792,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q07_eleven_opcodes",
+      "kind": "bedrock",
+      "n": 42,
+      "mean": 0.9483333333333333,
+      "p70_rate": 1.0,
+      "p90_rate": 1.0
+    },
+    {
+      "qid": "q08_polyformalism_12_ports",
+      "kind": "bedrock",
+      "n": 50,
+      "mean": 0.8782000000000001,
+      "p70_rate": 1.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q09_signal_chain",
+      "kind": "speculative",
+      "n": 50,
+      "mean": 0.6045999999999999,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q10_quorum_meshing",
+      "kind": "review",
+      "n": 45,
+      "mean": 0.858,
+      "p70_rate": 1.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q11_canon_gate_is_chord",
+      "kind": "speculative",
+      "n": 46,
+      "mean": 0.5926086956521739,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q12_witness_note_opcode",
+      "kind": "speculative",
+      "n": 52,
+      "mean": 0.5569230769230767,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q13_chain_dialing",
+      "kind": "speculative",
+      "n": 52,
+      "mean": 0.6030769230769233,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q14_canon_equals_speculation",
+      "kind": "adversarial",
+      "n": 39,
+      "mean": 0.06512820512820515,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q15_twentyfour_ports",
+      "kind": "adversarial",
+      "n": 47,
+      "mean": 0.18999999999999995,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q16_canonicity_score",
+      "kind": "review",
+      "n": 43,
+      "mean": 0.224186046511628,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q17_canary_honesty",
+      "kind": "review",
+      "n": 49,
+      "mean": 0.7597959183673468,
+      "p70_rate": 1.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q18_address_is_data",
+      "kind": "review",
+      "n": 49,
+      "mean": 0.5861224489795918,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q19_pressure_cascade",
+      "kind": "review",
+      "n": 44,
+      "mean": 0.2593181818181817,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q20_wolffs_law",
+      "kind": "review",
+      "n": 40,
+      "mean": 0.5562499999999999,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q21_memory_sandbox",
+      "kind": "review",
+      "n": 44,
+      "mean": 0.2865909090909089,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    },
+    {
+      "qid": "q22_provenance_conflict",
+      "kind": "review",
+      "n": 46,
+      "mean": 0.3358695652173913,
+      "p70_rate": 0.0,
+      "p90_rate": 0.0
+    }
+  ],
+  "prior_means": {
+    "47th": 0.7659999999999999,
+    "48th": 0.9019999999999999,
+    "49th": 0.702,
+    "49th-batch": 0.702
+  },
+  "n_rounds": 200,
+  "n_verdicts": 1000
+}

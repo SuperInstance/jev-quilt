@@ -1,0 +1,23 @@
+{
+  "round": 10,
+  "ts": "2026-10-01T23:04:04Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q09_signal_chain",
+    "q08_polyformalism_12_ports",
+    "q13_chain_dialing",
+    "q18_address_is_data"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.22,
+    "q09_signal_chain": 0.61,
+    "q08_polyformalism_12_ports": 0.88,
+    "q13_chain_dialing": 0.6,
+    "q18_address_is_data": 0.6
+  },
+  "usage": {
+    "input_tokens": 1437,
+    "output_tokens": 115
+  }
+}

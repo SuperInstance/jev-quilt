@@ -1,0 +1,23 @@
+{
+  "round": 46,
+  "ts": "2026-10-01T23:04:12Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q18_address_is_data",
+    "q08_polyformalism_12_ports",
+    "q19_pressure_cascade",
+    "q07_eleven_opcodes",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q18_address_is_data": 0.62,
+    "q08_polyformalism_12_ports": 0.87,
+    "q19_pressure_cascade": 0.26,
+    "q07_eleven_opcodes": 0.95,
+    "q10_quorum_meshing": 0.87
+  },
+  "usage": {
+    "input_tokens": 1439,
+    "output_tokens": 117
+  }
+}

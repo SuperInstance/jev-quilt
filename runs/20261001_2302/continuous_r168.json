@@ -1,0 +1,23 @@
+{
+  "round": 168,
+  "ts": "2026-10-01T23:04:37Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q17_canary_honesty",
+    "q12_witness_note_opcode",
+    "q06_three_views",
+    "q05_lenia_flows",
+    "q04_oracle_is_heard"
+  ],
+  "verdicts": {
+    "q17_canary_honesty": 0.77,
+    "q12_witness_note_opcode": 0.56,
+    "q06_three_views": 0.22,
+    "q05_lenia_flows": 0.96,
+    "q04_oracle_is_heard": 0.96
+  },
+  "usage": {
+    "input_tokens": 1417,
+    "output_tokens": 115
+  }
+}

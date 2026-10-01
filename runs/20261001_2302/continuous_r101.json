@@ -1,0 +1,23 @@
+{
+  "round": 101,
+  "ts": "2026-10-01T23:04:23Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q08_polyformalism_12_ports",
+    "q02_witness_log_is_prediction",
+    "q19_pressure_cascade",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q08_polyformalism_12_ports": 0.87,
+    "q02_witness_log_is_prediction": 0.93,
+    "q19_pressure_cascade": 0.28,
+    "q21_memory_sandbox": 0.29
+  },
+  "usage": {
+    "input_tokens": 1405,
+    "output_tokens": 122
+  }
+}

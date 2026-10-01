@@ -1,0 +1,23 @@
+{
+  "round": 69,
+  "ts": "2026-10-01T23:04:17Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q07_eleven_opcodes",
+    "q15_twentyfour_ports",
+    "q01_cells_are_scars",
+    "q13_chain_dialing"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.27,
+    "q07_eleven_opcodes": 0.95,
+    "q15_twentyfour_ports": 0.2,
+    "q01_cells_are_scars": 0.97,
+    "q13_chain_dialing": 0.62
+  },
+  "usage": {
+    "input_tokens": 1402,
+    "output_tokens": 115
+  }
+}

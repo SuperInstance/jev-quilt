@@ -1,0 +1,23 @@
+{
+  "round": 194,
+  "ts": "2026-10-01T23:04:43Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q12_witness_note_opcode",
+    "q01_cells_are_scars",
+    "q04_oracle_is_heard",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.28,
+    "q12_witness_note_opcode": 0.57,
+    "q01_cells_are_scars": 0.97,
+    "q04_oracle_is_heard": 0.96,
+    "q16_canonicity_score": 0.22
+  },
+  "usage": {
+    "input_tokens": 1386,
+    "output_tokens": 116
+  }
+}

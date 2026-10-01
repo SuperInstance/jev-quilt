@@ -1,0 +1,23 @@
+{
+  "round": 190,
+  "ts": "2026-10-01T23:04:42Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q15_twentyfour_ports",
+    "q09_signal_chain",
+    "q01_cells_are_scars",
+    "q07_eleven_opcodes"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q15_twentyfour_ports": 0.19,
+    "q09_signal_chain": 0.6,
+    "q01_cells_are_scars": 0.97,
+    "q07_eleven_opcodes": 0.95
+  },
+  "usage": {
+    "input_tokens": 1409,
+    "output_tokens": 115
+  }
+}

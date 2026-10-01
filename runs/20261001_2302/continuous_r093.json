@@ -1,0 +1,23 @@
+{
+  "round": 93,
+  "ts": "2026-10-01T23:04:22Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q15_twentyfour_ports",
+    "q09_signal_chain",
+    "q13_chain_dialing",
+    "q12_witness_note_opcode"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.97,
+    "q15_twentyfour_ports": 0.18,
+    "q09_signal_chain": 0.61,
+    "q13_chain_dialing": 0.59,
+    "q12_witness_note_opcode": 0.55
+  },
+  "usage": {
+    "input_tokens": 1405,
+    "output_tokens": 114
+  }
+}

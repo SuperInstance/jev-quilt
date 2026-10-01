@@ -1,0 +1,23 @@
+{
+  "round": 18,
+  "ts": "2026-10-01T23:04:06Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q08_polyformalism_12_ports",
+    "q04_oracle_is_heard",
+    "q13_chain_dialing",
+    "q17_canary_honesty",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q08_polyformalism_12_ports": 0.88,
+    "q04_oracle_is_heard": 0.96,
+    "q13_chain_dialing": 0.62,
+    "q17_canary_honesty": 0.77,
+    "q21_memory_sandbox": 0.29
+  },
+  "usage": {
+    "input_tokens": 1428,
+    "output_tokens": 120
+  }
+}

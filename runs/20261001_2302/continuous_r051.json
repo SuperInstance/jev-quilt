@@ -1,0 +1,23 @@
+{
+  "round": 51,
+  "ts": "2026-10-01T23:04:13Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q20_wolffs_law",
+    "q07_eleven_opcodes",
+    "q05_lenia_flows",
+    "q19_pressure_cascade"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.57,
+    "q07_eleven_opcodes": 0.95,
+    "q05_lenia_flows": 0.96,
+    "q19_pressure_cascade": 0.26,
+    "q16_canonicity_score": 0.23
+  },
+  "usage": {
+    "input_tokens": 1406,
+    "output_tokens": 115
+  }
+}

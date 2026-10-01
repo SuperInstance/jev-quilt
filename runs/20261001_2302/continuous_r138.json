@@ -1,0 +1,23 @@
+{
+  "round": 138,
+  "ts": "2026-10-01T23:04:31Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q21_memory_sandbox",
+    "q14_canon_equals_speculation",
+    "q15_twentyfour_ports",
+    "q03_substrate_is_grown",
+    "q12_witness_note_opcode"
+  ],
+  "verdicts": {
+    "q21_memory_sandbox": 0.28,
+    "q14_canon_equals_speculation": 0.06,
+    "q15_twentyfour_ports": 0.18,
+    "q03_substrate_is_grown": 0.97,
+    "q12_witness_note_opcode": 0.55
+  },
+  "usage": {
+    "input_tokens": 1372,
+    "output_tokens": 121
+  }
+}

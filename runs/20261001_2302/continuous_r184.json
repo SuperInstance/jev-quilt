@@ -1,0 +1,23 @@
+{
+  "round": 184,
+  "ts": "2026-10-01T23:04:41Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q13_chain_dialing",
+    "q06_three_views",
+    "q21_memory_sandbox",
+    "q02_witness_log_is_prediction"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.19,
+    "q13_chain_dialing": 0.61,
+    "q06_three_views": 0.22,
+    "q21_memory_sandbox": 0.28,
+    "q02_witness_log_is_prediction": 0.93
+  },
+  "usage": {
+    "input_tokens": 1403,
+    "output_tokens": 115
+  }
+}

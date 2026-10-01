@@ -1,0 +1,23 @@
+{
+  "round": 196,
+  "ts": "2026-10-01T23:04:43Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q09_signal_chain",
+    "q07_eleven_opcodes",
+    "q21_memory_sandbox",
+    "q06_three_views",
+    "q17_canary_honesty"
+  ],
+  "verdicts": {
+    "q09_signal_chain": 0.62,
+    "q07_eleven_opcodes": 0.95,
+    "q21_memory_sandbox": 0.3,
+    "q06_three_views": 0.21,
+    "q17_canary_honesty": 0.76
+  },
+  "usage": {
+    "input_tokens": 1448,
+    "output_tokens": 111
+  }
+}

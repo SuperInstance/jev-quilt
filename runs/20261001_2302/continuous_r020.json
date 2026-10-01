@@ -1,0 +1,23 @@
+{
+  "round": 20,
+  "ts": "2026-10-01T23:04:07Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q17_canary_honesty",
+    "q05_lenia_flows",
+    "q06_three_views",
+    "q02_witness_log_is_prediction",
+    "q11_canon_gate_is_chord"
+  ],
+  "verdicts": {
+    "q17_canary_honesty": 0.79,
+    "q05_lenia_flows": 0.96,
+    "q06_three_views": 0.22,
+    "q02_witness_log_is_prediction": 0.94,
+    "q11_canon_gate_is_chord": 0.59
+  },
+  "usage": {
+    "input_tokens": 1420,
+    "output_tokens": 117
+  }
+}

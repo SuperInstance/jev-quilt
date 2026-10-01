@@ -1,0 +1,23 @@
+{
+  "round": 153,
+  "ts": "2026-10-01T23:04:34Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q04_oracle_is_heard",
+    "q14_canon_equals_speculation",
+    "q13_chain_dialing",
+    "q19_pressure_cascade",
+    "q06_three_views"
+  ],
+  "verdicts": {
+    "q04_oracle_is_heard": 0.96,
+    "q14_canon_equals_speculation": 0.06,
+    "q13_chain_dialing": 0.62,
+    "q19_pressure_cascade": 0.25,
+    "q06_three_views": 0.22
+  },
+  "usage": {
+    "input_tokens": 1378,
+    "output_tokens": 116
+  }
+}

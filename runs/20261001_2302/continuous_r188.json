@@ -1,0 +1,23 @@
+{
+  "round": 188,
+  "ts": "2026-10-01T23:04:41Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q12_witness_note_opcode",
+    "q07_eleven_opcodes",
+    "q05_lenia_flows",
+    "q04_oracle_is_heard"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.26,
+    "q12_witness_note_opcode": 0.55,
+    "q07_eleven_opcodes": 0.94,
+    "q05_lenia_flows": 0.96,
+    "q04_oracle_is_heard": 0.96
+  },
+  "usage": {
+    "input_tokens": 1402,
+    "output_tokens": 116
+  }
+}

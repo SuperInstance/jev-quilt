@@ -1,0 +1,23 @@
+{
+  "round": 169,
+  "ts": "2026-10-01T23:04:37Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q18_address_is_data",
+    "q01_cells_are_scars",
+    "q12_witness_note_opcode",
+    "q05_lenia_flows",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q18_address_is_data": 0.57,
+    "q01_cells_are_scars": 0.97,
+    "q12_witness_note_opcode": 0.58,
+    "q05_lenia_flows": 0.95,
+    "q16_canonicity_score": 0.22
+  },
+  "usage": {
+    "input_tokens": 1398,
+    "output_tokens": 114
+  }
+}

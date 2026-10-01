@@ -1,0 +1,23 @@
+{
+  "round": 103,
+  "ts": "2026-10-01T23:04:24Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q12_witness_note_opcode",
+    "q03_substrate_is_grown",
+    "q08_polyformalism_12_ports",
+    "q07_eleven_opcodes",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q12_witness_note_opcode": 0.56,
+    "q03_substrate_is_grown": 0.97,
+    "q08_polyformalism_12_ports": 0.87,
+    "q07_eleven_opcodes": 0.95,
+    "q21_memory_sandbox": 0.3
+  },
+  "usage": {
+    "input_tokens": 1431,
+    "output_tokens": 121
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 157,
+  "ts": "2026-10-01T23:04:35Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q12_witness_note_opcode",
+    "q21_memory_sandbox",
+    "q15_twentyfour_ports",
+    "q01_cells_are_scars"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q12_witness_note_opcode": 0.56,
+    "q21_memory_sandbox": 0.29,
+    "q15_twentyfour_ports": 0.18,
+    "q01_cells_are_scars": 0.97
+  },
+  "usage": {
+    "input_tokens": 1407,
+    "output_tokens": 116
+  }
+}

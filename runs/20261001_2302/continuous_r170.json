@@ -1,0 +1,23 @@
+{
+  "round": 170,
+  "ts": "2026-10-01T23:04:38Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q20_wolffs_law",
+    "q19_pressure_cascade",
+    "q11_canon_gate_is_chord",
+    "q14_canon_equals_speculation"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q20_wolffs_law": 0.57,
+    "q19_pressure_cascade": 0.27,
+    "q11_canon_gate_is_chord": 0.6,
+    "q14_canon_equals_speculation": 0.07
+  },
+  "usage": {
+    "input_tokens": 1391,
+    "output_tokens": 120
+  }
+}

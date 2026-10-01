@@ -1,0 +1,23 @@
+{
+  "round": 181,
+  "ts": "2026-10-01T23:04:40Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q18_address_is_data",
+    "q01_cells_are_scars",
+    "q20_wolffs_law",
+    "q08_polyformalism_12_ports",
+    "q12_witness_note_opcode"
+  ],
+  "verdicts": {
+    "q18_address_is_data": 0.61,
+    "q01_cells_are_scars": 0.96,
+    "q20_wolffs_law": 0.56,
+    "q08_polyformalism_12_ports": 0.88,
+    "q12_witness_note_opcode": 0.56
+  },
+  "usage": {
+    "input_tokens": 1422,
+    "output_tokens": 119
+  }
+}

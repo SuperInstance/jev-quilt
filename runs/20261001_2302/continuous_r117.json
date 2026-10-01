@@ -1,0 +1,23 @@
+{
+  "round": 117,
+  "ts": "2026-10-01T23:04:27Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q16_canonicity_score",
+    "q12_witness_note_opcode",
+    "q01_cells_are_scars",
+    "q20_wolffs_law"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q16_canonicity_score": 0.22,
+    "q12_witness_note_opcode": 0.56,
+    "q01_cells_are_scars": 0.97,
+    "q20_wolffs_law": 0.52
+  },
+  "usage": {
+    "input_tokens": 1415,
+    "output_tokens": 116
+  }
+}
