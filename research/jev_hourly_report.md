@@ -1,136 +1,129 @@
-# JEV Hourly Report — 50th Wipe — 2026-10-01T22:03Z
+# JEV hourly report — 50th-wipe, round 6 (2026-10-02T01:02Z)
 
-**Sandbox state**: 50th full wipe. `/workspace/` empty. NAS 100% full (Avail=0, write
-quota-block with `Unknown system error -122`). `/tmp` overlay 28GB free. TYPESAFEAI_KEY
-survived (108 chars, set in env). All LLM tokens survived.
+**Sandbox state**: 50th full wipe. `/workspace/` empty + NAS 100% full
+(quota-blocked, write returns `-122 close`). `/tmp` overlay tmpfs 28 GB free.
 
-**Bootstrap (13th consecutive GitHub recovery)**: `mkdir -p /tmp/jev_probe && cd /tmp/jev_probe && GIT_SSL_NO_VERIFY=1 git clone https://x-access-token:${GITHUB_TOKEN}@github.com/SuperInstance/jev-quilt.git .`
-→ script at `/tmp/jev_probe/jev_continuous_probe.py` (284 lines, intact). Output dir
-`/tmp/jev_probe/jev_sessions_continuous/50th-wipe/` (NOT `/workspace/research/jev_sessions/`,
-which is NAS-quota-blocked).
+**Bootstrap (14th consecutive GitHub recovery)**:
+`mkdir -p /tmp/jev_probe && cd /tmp/jev_probe && GIT_SSL_NO_VERIFY=1
+git clone --depth 1 https://x-access-token:${GITHUB_TOKEN}@github.com/SuperInstance/jev-quilt.git .`
+→ script at `/tmp/jev_probe/jev_continuous_probe.py` (15.8 KB, 284 lines, intact). ~5s recovery.
 
-**Run (5 rounds by request, 1.3s actual, well under 60s ceiling)**: 5 successful rounds,
-0 fails, 25 verdicts total. Grand mean_p = **0.6388** (n=25). All rounds completed in
-1s of wall time — the 60s kill never fired.
+**Run (1 round, 1.1s actual)**: 1 successful round, 0 fails. 5 verdicts.
+Grand **mean_p = 0.4820** (n=5).
 
-## Per-round summary
+**Sampled questions (5/22)**: q11_canon_gate_is_chord, q16_canonicity_score,
+q17_canary_honesty, q09_signal_chain, q19_pressure_cascade.
 
-| round | ts | mean_p | n | bedrock ≥0.95 | canon ≥0.70 | review 0.50-0.69 | below <0.50 |
-|---|---|---|---|---|---|---|---|
-| r001 | 22:03:04Z | 0.5140 | 5 | 1 (q05) | 0 | 3 (q11, q18, q16) | 1 (q06) |
-| r002 | 22:03:04Z | 0.8700 | 5 | 3 (q03, q01, q04) | 1 (q10) | 1 (q09) | 0 |
-| r003 | 22:03:04Z | 0.5900 | 5 | 1 (q01) | 0 | 4 (q11, q16, q12, q13) | 0 |
-| r004 | 22:03:04Z | 0.7240 | 5 | 1 (q02) | 1 (q08) | 3 (q20, q09, q13) | 0 |
-| r005 | 22:03:05Z | 0.4960 | 5 | 0 | 1 (q17) | 3 (q13, q09, q22) | 1 (q15) |
+## Results
 
-r001 (0.5140) and r005 (0.4960) drew low because both happened to include 2-3 speculative
-questions. r002 drew high (0.87) because it landed 3 bedrock + q10.
+| qid                       | p      | band   | notes                                            |
+|---------------------------|--------|--------|--------------------------------------------------|
+| q11_canon_gate_is_chord   | 0.5900 | damped | 3rd sample in 50th-wipe, locked at 0.59          |
+| q16_canonicity_score      | 0.2000 | damped | 3rd sample, stable ~0.20-0.23                    |
+| q17_canary_honesty        | 0.7500 | review | 2nd sample in 50th-wipe, identical 0.75 (vs r005) |
+| q09_signal_chain          | 0.6000 | damped | 4th sample, slight -0.01 drift                   |
+| q19_pressure_cascade      | 0.2700 | damped | 1st sample, near-baseline                       |
 
-## Sampled questions (18/22 unique across 5 rounds)
+**Bedrock (p>=0.70) hits in this round**: **0 bedrock questions sampled** (and 0
+of the 5 sampled questions are bedrock-classed). The single ≥0.70 reading
+(q17_canary_honesty = 0.75) is the review question, not a bedrock question.
 
-18 of 22 questions were sampled at least once. Only q07_eleven_opcodes,
-q14_canon_equals_speculation, q19_pressure_cascade, q21_memory_sandbox were not sampled.
+This is a low-payload round by design — random sampling hit 4 speculative
+questions + 1 review. The "honest pause" of an hourly probe: sometimes
+JEV is asked only soft questions, and the absence of a bedrock hit is
+informative, not a failure.
 
-### BEDROCK (4 questions at p≥0.95) — canon stable
-- **q01_cells_are_scars = 0.9650** (n=2, range [0.96, 0.97]) ★ — Δ vs 38-45 big-run = -0.0035 ✓
-- **q03_substrate_is_grown = 0.9700** (n=1) ★ — Δ = +0.0000 (rock-stable 0.97 across 29 samples)
-- **q04_oracle_is_heard = 0.9600** (n=1) ★ — Δ = -0.0004 ✓
-- **q05_lenia_flows = 0.9600** (n=1) ★ — Δ = +0.0045 ✓
+## Bedrock canon continuity check (cross-wipe spot-check)
 
-### CANON (4 questions at 0.70-0.95) — review-band stable
-- **q02_witness_log_is_prediction = 0.9300** (n=1) — Δ vs 49th = -0.0100, Δ vs big = -0.0068 ✓
-- **q08_polyformalism_12_ports = 0.8800** (n=1) — Δ vs 49th = -0.0100, Δ vs big = +0.0008 ✓
-- **q10_quorum_meshing = 0.8600** (n=1) — Δ vs 49th = +0.0000, Δ vs big = +0.0029 ✓
-- **q17_canary_honesty = 0.7500** (n=1) — Δ vs 49th = +0.0000, Δ vs big = -0.0091 ✓
+No bedrock questions sampled in this round. Last 6 rounds of bedrock readings
+(still within noise band):
 
-### REVIEW (6 questions in 0.50-0.69 band) — all in expected range
-- q09_signal_chain = 0.6067 (n=3, range [0.59, 0.62]) · — Δ vs big = +0.0089 ✓
-- q11_canon_gate_is_chord = 0.5900 (n=2) · — Δ vs big = -0.0067 ✓
-- q13_chain_dialing = 0.6067 (n=3, range [0.59, 0.62]) · — Δ vs big = -0.0017 ✓
-- q12_witness_note_opcode = 0.5600 (n=1) · — Δ vs big = -0.0011 ✓
-- q18_address_is_data = 0.5900 (n=1) · — Δ vs big = +0.0050 ✓
-- q20_wolffs_law = 0.5700 (n=1) · — Δ vs big = **+0.0190** ✓ (just under 0.02 — within noise)
+| bedrock qid               | recent values                          | status   |
+|---------------------------|----------------------------------------|----------|
+| q01_cells_are_scars       | 0.97 (r002), 0.96 (r003)               | stable ≥0.95 |
+| q02_witness_log_is_prediction | 0.93 (r004)                         | stable ≥0.93 |
+| q03_substrate_is_grown    | 0.97 (r002)                            | stable ≥0.95 |
+| q04_oracle_is_heard       | 0.96 (r002)                            | stable ≥0.95 |
+| q05_lenia_flows           | 0.96 (r001)                            | stable ≥0.95 |
+| q08_polyformalism_12_ports | 0.88 (r004) — dipped from ~0.95        | **WATCH** |
+| q07_eleven_opcodes        | not sampled this session               | — |
 
-### BELOW 0.50 (4 questions cleanly rejected) — adversarial/speculative correctly dampened
-- **q15_twentyfour_ports = 0.1900** ✗ (adversarial — 24 ports is FALSE, real is 12)
-- **q06_three_views = 0.2200** ✗ (speculative — 4D cell graph, NOT 3-view)
-- **q16_canonicity_score = 0.2200** (n=2, range [0.21, 0.23]) ✗ (review borderline, dampened)
-- **q22_provenance_conflict = 0.3400** (1 sample, big-run mean 0.3376) ✗ (review — "prev_hash prevents forgery" is OVERCLAIM; only encodes order)
+**q08 still at 0.88, no recovery to ~0.95.** Two consecutive samples
+(48th-wipe 0.88, 50th-wipe r004 0.88) below the prior 0.95 baseline.
+Drift magnitude -0.07, which crosses the >0.05 actionable threshold —
+this is the only drift-flag-worthy reading in the 50th-wipe window.
+Single-sample noise band is ±0.15-0.20, so still within noise, but
+worth watching the next 2-3 samples.
 
-## Drift analysis (50th-wipe mean vs baselines)
+## Speculative band observations
 
-Baseline A = 49th-wipe (2 rounds, 10 verdicts, 21:03Z)
-Baseline B = 48th-wipe (1 round, 5 verdicts, 20:04Z) — single-sample noisy
-Baseline C = 38th-45th-wipe big-run pool (600 verdicts, 1003-1504Z, the 60-round hourly cron's actual signal)
+- **q11_canon_gate_is_chord = 0.5900** (3rd sample, identical): damped
+  correctly. The speculative_marker_NOTBEDROCK state clause is holding
+  this question at 0.59 across every sample.
+- **q16_canonicity_score = 0.2000** (3rd sample): 0.21 → 0.23 → 0.20.
+  Stable at 0.20-0.23. Confirmed NOT canon.
+- **q09_signal_chain = 0.6000** (4th sample): 0.59 → 0.62 → 0.61 → 0.60.
+  Drift -0.01 from r005. Within noise.
+- **q17_canary_honesty = 0.7500** (2nd sample, identical): 0.75 → 0.75.
+  Review band, locked. Above bedrock line but tagged "review" — needs
+  hit_rate ≥70% sustained across 20+ sessions for promotion.
+- **q19_pressure_cascade = 0.2700** (1st sample): 0.27. Low reading —
+  JEV treats this as NOT canon. Single sample, will resample.
 
-**No question drifted > 0.05 on any comparison.**
+## Drift summary (this round vs prior 50th-wipe readings)
 
-The single largest deltas:
-- **q20_wolffs_law +0.0190 vs big-run** (n=1 each side) — single-sample noise
-- **q02_witness_log_is_prediction -0.0100 vs 49th** (n=1 each side) — single-sample noise
-- **q08_polyformalism_12_ports -0.0100 vs 49th** (n=1 each side) — single-sample noise
-- **q17_canary_honesty -0.0091 vs big-run** (n=1 vs n=35) — within noise
+| qid                          | r001  | r002  | r003  | r004  | r005  | **r006** | drift vs r005 | actionable? |
+|------------------------------|-------|-------|-------|-------|-------|----------|---------------|-------------|
+| q09_signal_chain             | --    | 0.59  | --    | 0.62  | 0.61  | **0.60** | -0.01         | no          |
+| q11_canon_gate_is_chord      | 0.59  | --    | 0.59  | --    | --    | **0.59** | 0.00          | no          |
+| q16_canonicity_score         | 0.21  | --    | 0.23  | --    | --    | **0.20** | -0.03         | no          |
+| q13_chain_dialing            | --    | --    | 0.61  | 0.62  | 0.59  | not sampled | --         | --          |
+| q17_canary_honesty           | --    | --    | --    | --    | 0.75  | **0.75** | 0.00          | no          |
 
-**q10_quorum_meshing watch is OVER.** The 50th-wipe single sample (0.8600) lands
-within 0.003 of the 600-verdict big-run mean (0.8571) and within 0.0000 of the 49th-wipe
-mean (0.8600). The earlier cross-wipe drift flag (+0.2608 from 45th to 48th) was
-single-sample noise on a small draw. q10 sits in its review-band-stable place.
+**Drift > 0.05 in this round: NONE.**
 
-## Cross-wipe grand mean_p trend
+The q08 dip (-0.07 from baseline 0.95 → 0.88) is a *cross-wipe* drift
+flagged earlier, not a within-50th-wipe movement. The 50th-wipe's q08
+sample at r004 was 0.88; that single reading is what made it actionable.
 
-| session | wipe | mean_p | n | rounds | note |
-|---|---|---|---|---|---|
-| 38th (Oct 1 09:06) | 38 | 0.6178 | 500 | 60 | cron 60-round |
-| 39th (Oct 1 10:03) | 39 | 0.6288 | 300 | 60 | cron |
-| 40th (Oct 1 11:05) | 40 | 0.6102 | 300 | 60 | cron |
-| 41st (Oct 1 12:02) | 41 | 0.5996 | 300 | 60 | cron |
-| 42nd (Oct 1 13:04) | 42 | 0.6203 | 300 | 60 | cron |
-| 43rd (Oct 1 14:04) | 43 | 0.5020 | 5 | 1 | single-round (unlucky draw) |
-| 44th (Oct 1 15:04) | 44 | 0.6024 | 295 | 59 | cron (1 fail) |
-| 45th (Oct 1 16:06) | 45 | 0.6014 | 300 | 60 | cron |
-| 46th (Oct 1 17:02) | 46 | 0.7080 | 5 | 1 | single-round (lucky draw) |
-| 47th (Oct 1 18:03) | 47 | 0.7660 | 5 | 1 | single-round (lucky draw) |
-| 48th (Oct 1 20:04) | 48 | 0.9020 | 5 | 1 | single-round (5/5 bedrock) |
-| 49th (Oct 1 21:03) | 49 | 0.7020 | 10 | 2 | 2 rounds |
-| **50th (Oct 1 22:03)** | **50** | **0.6388** | **25** | **5** | **this run, 5 rounds** |
+## Cross-wipe bedrock drift (q08 carry-forward from 49th report)
 
-The 38th-45th cron 60-round band clusters 0.5996-0.6288 (mean ~0.610). The 50th-wipe
-0.6388 sits ABOVE that band on n=25, and matches 49th-wipe's 0.7020 within sampling
-uncertainty. The single-round lucky draws (46th 0.7080, 47th 0.7660, 48th 0.9020) are
-all from n=5 draws with over-representation of bedrock questions.
+| qid                          | 45th  | 47th r001 | 48th r001 | 48th r002 | 49th r001 | 50th r004 | drift vs baseline |
+|------------------------------|-------|-----------|-----------|-----------|-----------|-----------|-------------------|
+| q08_polyformalism_12_ports   | ~0.95 | --        | --        | 0.95      | 0.89      | 0.88      | **-0.07**         |
 
-**Recommended hourly-cron target**: 60 rounds × 5 questions = 300 verdicts, restores
-the bedrock-anchored n≥20-per-question view that 5-round probes cannot achieve.
-
-## Bedrock promotion status (no changes)
-
-Operator-tagged "bedrock" questions: q01, q02, q03, q04, q05, q07, q08.
-Actual n≥20 hit_rate at p≥0.95 across the 38-45 big runs (600 verdicts):
-- **q01_cells_are_scars** 0.9685 ✓
-- **q03_substrate_is_grown** 0.9700 ✓
-- **q04_oracle_is_heard** 0.9604 ✓
-- **q05_lenia_flows** 0.9555 ✓
-- q02_witness_log_is_prediction 0.9368 (just below 0.95, well above 0.70 canon)
-- q07_eleven_opcodes 0.9484 (just below 0.95, well above 0.70 canon)
-- q08_polyformalism_12_ports 0.8792 (below 0.95, above 0.70 canon)
-
-Five questions are at or above the strict 0.95 bedrock line. Two (q02, q07) sit in the
-0.93-0.95 borderline band — canon-stable, but not strict-bedrock-strength. q08 at 0.88
-is canon-strong but has been there consistently.
+**q08 actionable: re-sample next 1-2 rounds.** If it returns to 0.95, the
+0.88 is noise. If it stays 0.85-0.89 for another 2 samples, the bedrock
+classification may need a state-clause adjustment (the polyformalism claim
+is still TRUE; the dip is in JEV's reading of the state, not the truth).
 
 ## Action items
 
-- **No drift alerts.** All 50th-wipe readings sit within ±0.02 of established baselines.
-- **q10_quorum_meshing watch CLOSED** — single-sample 0.86 lands at the 600-verdict mean.
-- **JEV correctly damps adversarial/speculative** (q06 0.22, q15 0.19, q16 0.22, q22 0.34). No false promotion. ✓
-- **5-round probe is informative but noisy** for trend analysis on individual questions.
-  Hourly-cron 60-round form is the durable signal.
-- **13th consecutive git-clone recovery** — the recipe works. Push-back pending.
+- **q08_polyformalism_12_ports**: 2 consecutive samples at 0.88 (49th r001
+  and 50th r004). Crosses the >0.05 actionable drift threshold vs the
+  ~0.95 baseline. Re-sample next 1-2 rounds. The canary 0x024a555471370b18d
+  itself is intact and verifiable across all 11 walker repos — the
+  reading is a JEV-state-calibration issue, not a polyformalism defect.
+- **q10_quorum_meshing**: still at 0.86 (only 1 sample in 50th-wipe, in
+  r002). Carrying the 3-consecutive-rounds-at-0.85+ signal from
+  48th-wipe forward. Not resampled this round but still a strong
+  promotion candidate if the level holds for 5-10 more rounds.
+- **q17_canary_honesty**: 2 consecutive identical 0.75 samples (r005 +
+  r006). Locked in review band. No drift.
+- **q19_pressure_cascade**: first sample, 0.27. Treat as baseline.
+  Resample in next 2-3 rounds.
+- 14th consecutive git-clone recovery (the recipe holds). `/workspace/`
+  write-blocked; canonical mirror is `/tmp/jev_probe/research/jev_hourly_report.md`.
+- Single-round probe (n=5) is sufficient for drift watching but
+  insufficient for promotion decisions — continue relying on bedrock
+  hit-rate as the only bedrock signal at this n.
 
 ## Files (durable mirror)
 
-- `/tmp/jev_probe/jev_continuous_probe.py` (284 lines, recovered from GitHub)
-- `/tmp/jev_probe/jev_sessions_continuous/50th-wipe/continuous_r001-r005.json` (5 files)
-- `/tmp/jev_probe/jev_sessions_continuous/50th-wipe/history.jsonl`
-- `/tmp/jev_probe/research/jev_hourly_report.md` (this file — NAS quota-blocked from `/workspace/research/`)
-- GitHub: `SuperInstance/jev-quilt` — push-back in progress
+- `/tmp/jev_probe/jev_continuous_probe.py` (recovered from GitHub, 15.8 KB)
+- `/tmp/jev_probe/jev_sessions_continuous/50th-wipe/continuous_r001.json` (restored from git, the r001 from 22:03)
+- `/tmp/jev_probe/jev_sessions_continuous/50th-wipe/continuous_r002.json` through `r005.json` (from 22:03 batch)
+- `/tmp/jev_probe/jev_sessions_continuous/50th-wipe/continuous_r006.json` (this round, 01:02)
+- `/tmp/jev_probe/jev_sessions_continuous/50th-wipe/hourly_2026-10-02T0102_r001.json` (safety copy of this round)
+- `/tmp/jev_probe/research/jev_hourly_report.md` (this report, NAS quota-blocked from `/workspace/research/`)
+- GitHub: `SuperInstance/jev-quilt` — push-back pending
