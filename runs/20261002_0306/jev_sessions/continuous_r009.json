@@ -1,0 +1,23 @@
+{
+  "round": 9,
+  "ts": "2026-10-02T03:06:23Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q04_oracle_is_heard",
+    "q17_canary_honesty",
+    "q09_signal_chain",
+    "q03_substrate_is_grown"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.97,
+    "q04_oracle_is_heard": 0.96,
+    "q17_canary_honesty": 0.74,
+    "q09_signal_chain": 0.6,
+    "q03_substrate_is_grown": 0.97
+  },
+  "usage": {
+    "input_tokens": 1406,
+    "output_tokens": 116
+  }
+}

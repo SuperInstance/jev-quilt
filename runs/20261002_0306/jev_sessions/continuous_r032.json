@@ -1,0 +1,23 @@
+{
+  "round": 32,
+  "ts": "2026-10-02T03:06:27Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q21_memory_sandbox",
+    "q08_polyformalism_12_ports",
+    "q04_oracle_is_heard",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.22,
+    "q21_memory_sandbox": 0.28,
+    "q08_polyformalism_12_ports": 0.89,
+    "q04_oracle_is_heard": 0.96,
+    "q05_lenia_flows": 0.96
+  },
+  "usage": {
+    "input_tokens": 1405,
+    "output_tokens": 119
+  }
+}

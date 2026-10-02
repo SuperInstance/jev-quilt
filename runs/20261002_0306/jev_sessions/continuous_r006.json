@@ -1,0 +1,23 @@
+{
+  "round": 6,
+  "ts": "2026-10-02T03:06:22Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q11_canon_gate_is_chord",
+    "q03_substrate_is_grown",
+    "q07_eleven_opcodes",
+    "q09_signal_chain",
+    "q15_twentyfour_ports"
+  ],
+  "verdicts": {
+    "q11_canon_gate_is_chord": 0.59,
+    "q03_substrate_is_grown": 0.97,
+    "q07_eleven_opcodes": 0.95,
+    "q09_signal_chain": 0.63,
+    "q15_twentyfour_ports": 0.18
+  },
+  "usage": {
+    "input_tokens": 1415,
+    "output_tokens": 117
+  }
+}

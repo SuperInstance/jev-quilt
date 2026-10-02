@@ -1,0 +1,23 @@
+{
+  "round": 41,
+  "ts": "2026-10-02T03:06:29Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q05_lenia_flows",
+    "q07_eleven_opcodes",
+    "q15_twentyfour_ports",
+    "q13_chain_dialing",
+    "q20_wolffs_law"
+  ],
+  "verdicts": {
+    "q05_lenia_flows": 0.95,
+    "q07_eleven_opcodes": 0.94,
+    "q15_twentyfour_ports": 0.2,
+    "q13_chain_dialing": 0.6,
+    "q20_wolffs_law": 0.54
+  },
+  "usage": {
+    "input_tokens": 1408,
+    "output_tokens": 116
+  }
+}

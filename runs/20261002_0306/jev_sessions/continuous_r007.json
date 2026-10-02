@@ -1,0 +1,23 @@
+{
+  "round": 7,
+  "ts": "2026-10-02T03:06:22Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q12_witness_note_opcode",
+    "q04_oracle_is_heard",
+    "q05_lenia_flows",
+    "q02_witness_log_is_prediction",
+    "q14_canon_equals_speculation"
+  ],
+  "verdicts": {
+    "q12_witness_note_opcode": 0.55,
+    "q04_oracle_is_heard": 0.96,
+    "q05_lenia_flows": 0.95,
+    "q02_witness_log_is_prediction": 0.93,
+    "q14_canon_equals_speculation": 0.06
+  },
+  "usage": {
+    "input_tokens": 1373,
+    "output_tokens": 121
+  }
+}

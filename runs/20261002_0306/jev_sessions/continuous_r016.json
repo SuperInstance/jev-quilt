@@ -1,0 +1,23 @@
+{
+  "round": 16,
+  "ts": "2026-10-02T03:06:24Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q21_memory_sandbox",
+    "q11_canon_gate_is_chord",
+    "q12_witness_note_opcode",
+    "q19_pressure_cascade",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q21_memory_sandbox": 0.3,
+    "q11_canon_gate_is_chord": 0.6,
+    "q12_witness_note_opcode": 0.55,
+    "q19_pressure_cascade": 0.26,
+    "q10_quorum_meshing": 0.85
+  },
+  "usage": {
+    "input_tokens": 1398,
+    "output_tokens": 117
+  }
+}

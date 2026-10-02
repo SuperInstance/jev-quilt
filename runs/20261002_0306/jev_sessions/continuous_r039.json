@@ -1,0 +1,23 @@
+{
+  "round": 39,
+  "ts": "2026-10-02T03:06:29Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q07_eleven_opcodes",
+    "q15_twentyfour_ports",
+    "q05_lenia_flows",
+    "q13_chain_dialing"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.25,
+    "q07_eleven_opcodes": 0.95,
+    "q15_twentyfour_ports": 0.19,
+    "q05_lenia_flows": 0.95,
+    "q13_chain_dialing": 0.59
+  },
+  "usage": {
+    "input_tokens": 1403,
+    "output_tokens": 115
+  }
+}

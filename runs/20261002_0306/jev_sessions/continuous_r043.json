@@ -1,0 +1,23 @@
+{
+  "round": 43,
+  "ts": "2026-10-02T03:06:30Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q17_canary_honesty",
+    "q05_lenia_flows",
+    "q03_substrate_is_grown",
+    "q18_address_is_data",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q17_canary_honesty": 0.77,
+    "q05_lenia_flows": 0.96,
+    "q03_substrate_is_grown": 0.97,
+    "q18_address_is_data": 0.57,
+    "q09_signal_chain": 0.6
+  },
+  "usage": {
+    "input_tokens": 1419,
+    "output_tokens": 114
+  }
+}

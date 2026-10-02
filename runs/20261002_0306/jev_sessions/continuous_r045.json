@@ -1,0 +1,23 @@
+{
+  "round": 45,
+  "ts": "2026-10-02T03:06:30Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q15_twentyfour_ports",
+    "q14_canon_equals_speculation",
+    "q20_wolffs_law",
+    "q06_three_views"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.94,
+    "q15_twentyfour_ports": 0.2,
+    "q14_canon_equals_speculation": 0.07,
+    "q20_wolffs_law": 0.55,
+    "q06_three_views": 0.21
+  },
+  "usage": {
+    "input_tokens": 1386,
+    "output_tokens": 119
+  }
+}
