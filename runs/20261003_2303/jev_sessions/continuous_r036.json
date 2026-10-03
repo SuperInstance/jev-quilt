@@ -1,0 +1,23 @@
+{
+  "round": 36,
+  "ts": "2026-10-03T23:03:19Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q05_lenia_flows",
+    "q09_signal_chain",
+    "q01_cells_are_scars",
+    "q19_pressure_cascade",
+    "q02_witness_log_is_prediction"
+  ],
+  "verdicts": {
+    "q05_lenia_flows": 0.96,
+    "q09_signal_chain": 0.61,
+    "q01_cells_are_scars": 0.97,
+    "q19_pressure_cascade": 0.27,
+    "q02_witness_log_is_prediction": 0.94
+  },
+  "usage": {
+    "input_tokens": 1392,
+    "output_tokens": 114
+  }
+}

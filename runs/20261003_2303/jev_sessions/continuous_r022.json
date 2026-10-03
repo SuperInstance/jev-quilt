@@ -1,0 +1,23 @@
+{
+  "round": 22,
+  "ts": "2026-10-03T23:03:16Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q04_oracle_is_heard",
+    "q11_canon_gate_is_chord",
+    "q05_lenia_flows",
+    "q19_pressure_cascade",
+    "q18_address_is_data"
+  ],
+  "verdicts": {
+    "q04_oracle_is_heard": 0.96,
+    "q11_canon_gate_is_chord": 0.6,
+    "q05_lenia_flows": 0.96,
+    "q19_pressure_cascade": 0.26,
+    "q18_address_is_data": 0.57
+  },
+  "usage": {
+    "input_tokens": 1385,
+    "output_tokens": 116
+  }
+}

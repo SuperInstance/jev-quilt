@@ -1,0 +1,23 @@
+{
+  "round": 49,
+  "ts": "2026-10-03T23:03:21Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q08_polyformalism_12_ports",
+    "q03_substrate_is_grown",
+    "q19_pressure_cascade",
+    "q06_three_views",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q08_polyformalism_12_ports": 0.89,
+    "q03_substrate_is_grown": 0.97,
+    "q19_pressure_cascade": 0.26,
+    "q06_three_views": 0.23,
+    "q21_memory_sandbox": 0.29
+  },
+  "usage": {
+    "input_tokens": 1413,
+    "output_tokens": 118
+  }
+}

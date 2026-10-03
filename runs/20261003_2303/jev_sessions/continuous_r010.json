@@ -1,0 +1,23 @@
+{
+  "round": 10,
+  "ts": "2026-10-03T23:03:13Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q20_wolffs_law",
+    "q04_oracle_is_heard",
+    "q01_cells_are_scars",
+    "q09_signal_chain",
+    "q08_polyformalism_12_ports"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.53,
+    "q04_oracle_is_heard": 0.96,
+    "q01_cells_are_scars": 0.97,
+    "q09_signal_chain": 0.62,
+    "q08_polyformalism_12_ports": 0.88
+  },
+  "usage": {
+    "input_tokens": 1415,
+    "output_tokens": 118
+  }
+}

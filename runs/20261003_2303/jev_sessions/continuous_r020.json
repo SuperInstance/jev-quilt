@@ -1,0 +1,23 @@
+{
+  "round": 20,
+  "ts": "2026-10-03T23:03:15Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q14_canon_equals_speculation",
+    "q06_three_views",
+    "q21_memory_sandbox",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.96,
+    "q14_canon_equals_speculation": 0.06,
+    "q06_three_views": 0.22,
+    "q21_memory_sandbox": 0.28,
+    "q16_canonicity_score": 0.21
+  },
+  "usage": {
+    "input_tokens": 1381,
+    "output_tokens": 115
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 41,
+  "ts": "2026-10-03T23:03:20Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q02_witness_log_is_prediction",
+    "q16_canonicity_score",
+    "q07_eleven_opcodes",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.26,
+    "q02_witness_log_is_prediction": 0.94,
+    "q16_canonicity_score": 0.23,
+    "q07_eleven_opcodes": 0.95,
+    "q21_memory_sandbox": 0.28
+  },
+  "usage": {
+    "input_tokens": 1409,
+    "output_tokens": 116
+  }
+}

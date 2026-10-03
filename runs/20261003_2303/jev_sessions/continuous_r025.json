@@ -1,0 +1,23 @@
+{
+  "round": 25,
+  "ts": "2026-10-03T23:03:16Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q08_polyformalism_12_ports",
+    "q17_canary_honesty",
+    "q15_twentyfour_ports",
+    "q02_witness_log_is_prediction",
+    "q11_canon_gate_is_chord"
+  ],
+  "verdicts": {
+    "q08_polyformalism_12_ports": 0.89,
+    "q17_canary_honesty": 0.77,
+    "q15_twentyfour_ports": 0.17,
+    "q02_witness_log_is_prediction": 0.94,
+    "q11_canon_gate_is_chord": 0.59
+  },
+  "usage": {
+    "input_tokens": 1434,
+    "output_tokens": 124
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 3,
+  "ts": "2026-10-03T23:03:12Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q05_lenia_flows",
+    "q09_signal_chain",
+    "q13_chain_dialing",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.93,
+    "q05_lenia_flows": 0.95,
+    "q09_signal_chain": 0.62,
+    "q13_chain_dialing": 0.62,
+    "q16_canonicity_score": 0.24
+  },
+  "usage": {
+    "input_tokens": 1407,
+    "output_tokens": 114
+  }
+}

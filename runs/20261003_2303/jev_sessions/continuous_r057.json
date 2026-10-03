@@ -1,0 +1,23 @@
+{
+  "round": 57,
+  "ts": "2026-10-03T23:03:23Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q13_chain_dialing",
+    "q04_oracle_is_heard",
+    "q16_canonicity_score",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q13_chain_dialing": 0.6,
+    "q04_oracle_is_heard": 0.96,
+    "q16_canonicity_score": 0.22,
+    "q05_lenia_flows": 0.96
+  },
+  "usage": {
+    "input_tokens": 1406,
+    "output_tokens": 115
+  }
+}

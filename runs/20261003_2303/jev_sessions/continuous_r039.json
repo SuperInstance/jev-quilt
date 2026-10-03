@@ -1,0 +1,23 @@
+{
+  "round": 39,
+  "ts": "2026-10-03T23:03:19Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q21_memory_sandbox",
+    "q07_eleven_opcodes",
+    "q08_polyformalism_12_ports",
+    "q11_canon_gate_is_chord",
+    "q17_canary_honesty"
+  ],
+  "verdicts": {
+    "q17_canary_honesty": 0.77,
+    "q21_memory_sandbox": 0.28,
+    "q07_eleven_opcodes": 0.95,
+    "q08_polyformalism_12_ports": 0.87,
+    "q11_canon_gate_is_chord": 0.56
+  },
+  "usage": {
+    "input_tokens": 1450,
+    "output_tokens": 121
+  }
+}

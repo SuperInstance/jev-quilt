@@ -1,0 +1,23 @@
+{
+  "round": 48,
+  "ts": "2026-10-03T23:03:21Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q20_wolffs_law",
+    "q09_signal_chain",
+    "q16_canonicity_score",
+    "q10_quorum_meshing",
+    "q06_three_views"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.57,
+    "q09_signal_chain": 0.6,
+    "q16_canonicity_score": 0.23,
+    "q10_quorum_meshing": 0.86,
+    "q06_three_views": 0.24
+  },
+  "usage": {
+    "input_tokens": 1422,
+    "output_tokens": 111
+  }
+}

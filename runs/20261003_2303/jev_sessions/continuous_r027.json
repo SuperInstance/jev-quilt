@@ -1,0 +1,23 @@
+{
+  "round": 27,
+  "ts": "2026-10-03T23:03:17Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q04_oracle_is_heard",
+    "q18_address_is_data",
+    "q16_canonicity_score",
+    "q11_canon_gate_is_chord",
+    "q02_witness_log_is_prediction"
+  ],
+  "verdicts": {
+    "q04_oracle_is_heard": 0.96,
+    "q18_address_is_data": 0.58,
+    "q16_canonicity_score": 0.21,
+    "q11_canon_gate_is_chord": 0.6,
+    "q02_witness_log_is_prediction": 0.93
+  },
+  "usage": {
+    "input_tokens": 1398,
+    "output_tokens": 118
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 14,
+  "ts": "2026-10-03T23:03:14Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q06_three_views",
+    "q20_wolffs_law",
+    "q18_address_is_data",
+    "q14_canon_equals_speculation"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.19,
+    "q06_three_views": 0.22,
+    "q20_wolffs_law": 0.55,
+    "q18_address_is_data": 0.58,
+    "q14_canon_equals_speculation": 0.06
+  },
+  "usage": {
+    "input_tokens": 1390,
+    "output_tokens": 116
+  }
+}
