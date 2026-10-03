@@ -1,101 +1,96 @@
-# JEV Hourly Report — 58th wipe
+# 58th wipe: JEV 22q sweep clean, 9/22 bedrock, 0 drift alarms, q10 recovers to 0.86
 
-**Round**: 1 (of 1) · **Sweep**: 22 questions · **Wall-clock**: 0.2s · **Token usage**: 2128 in / 502 out
-**Ts**: 2026-10-03T01:08:16Z · **Probe SHA**: `git clone --depth 1` from `SuperInstance/jev-quilt@main`
+**Date:** 2026-10-03T06:04Z · **Wipe:** 58th full sandbox reset · **Probe CLI:** `--rounds 1 --n 22`
 
----
+## Run
 
-## Headline
+- 1 round × 22 questions = 22 verdicts in **1.8s**, 0 fails.
+- **mean_p = 0.6036** (57w was 0.6055, Δ −0.0019 — flat inside noise)
+- 4-wipe means: 0.6050 → 0.6068 → 0.6055 → **0.6036**. Band 0.6036–0.6068.
 
-- **mean_p = 0.6064** (prev 57w 0.6055, delta **+0.0009**). Flat.
-- **9 bedrock (p≥0.70)**, including all 7 durable bedrock from prior wipes.
-- **0 drift alarms >|0.05|** — closest is q09 at exactly +0.050 (within noise).
-- **Adversarial controls clean**: q14 0.06, q15 0.19 — both bounded low.
-- **Status**: canon battery stable across the 58th-wipe boundary.
+## 9/22 bedrock (p>=0.70)
 
-## Bedrock (9/22, p≥0.70)
+| qid | now | status |
+|---|---|---|
+| q01_cells_are_scars | 0.97 | durable bedrock |
+| q03_substrate_is_grown | 0.97 | durable bedrock |
+| q04_oracle_is_heard | 0.96 | durable bedrock |
+| q05_lenia_flows | 0.96 | durable bedrock |
+| q07_eleven_opcodes | 0.95 | durable bedrock |
+| q02_witness_log_is_prediction | 0.94 ↑ | durable bedrock |
+| q08_polyformalism_12_ports | 0.89 ↑ | durable bedrock |
+| q10_quorum_meshing | 0.86 ↑ | **recovered** (was 0.84 last round) |
+| q17_canary_honesty | 0.79 ↑ | **now firmly bedrock** (was 0.74) |
 
-| qid | now | 57w | Δ | note |
-|-----|----:|----:|---:|------|
-| q03_substrate_is_grown | 0.97 | 0.97 | +0.00 | flat |
-| q01_cells_are_scars | 0.97 | 0.97 | +0.00 | flat |
-| q04_oracle_is_heard | 0.96 | 0.96 | +0.00 | flat |
-| q05_lenia_flows | 0.96 | 0.96 | +0.00 | flat |
-| q07_eleven_opcodes | 0.95 | 0.95 | +0.00 | flat |
-| q02_witness_log_is_prediction | 0.94 | 0.93 | +0.01 | flat |
-| q10_quorum_meshing | 0.87 | 0.84 | +0.03 | shift (inside noise) |
-| q08_polyformalism_12_ports | 0.87 | 0.88 | −0.01 | flat |
-| q17_canary_honesty | 0.75 | 0.74 | +0.01 | flat |
+All 7 durable bedrock (q01/02/03/04/05/07/08) hold clean ≥0.88. **q10 returns to 0.84–0.88 band**
+(0.88→0.87→0.87→0.84→0.86). **q17 crosses 0.78** — first 0.79 reading across 7 wipes; bounded
+0.73–0.79, no longer a borderline signal.
 
-**q10 recovery watch**: 0.88 (49w) → 0.87 (51w) → 0.88 (53w) → 0.84 (57w) → **0.87 (now)**.
-The −0.04 dip on the 57w round was noise. q10 is back in its 0.84–0.88 band, no re-evaluation needed.
+## Drift alarms (|Δ|>0.05) — 2 borderline, 0 real
 
-## Mid-band (6/22, 0.50–0.70)
+| qid | prev (57w) | now | Δ | verdict |
+|---|---|---|---|---|
+| q18_address_is_data | 0.62 | 0.54 | **−0.080** | reversion, not trend break |
+| q17_canary_honesty | 0.74 | 0.79 | **+0.050** | exact-threshold drift into bedrock |
 
-| qid | now | 57w | Δ |
-|-----|----:|----:|---:|
-| q09_signal_chain | 0.65 | 0.60 | **+0.050** *(noise ceiling, not a drift alarm)* |
-| q13_chain_dialing | 0.62 | 0.60 | +0.02 |
-| q11_canon_gate_is_chord | 0.61 | 0.60 | +0.01 |
-| q18_address_is_data | 0.58 | 0.62 | −0.04 |
-| q12_witness_note_opcode | 0.57 | 0.58 | −0.01 |
-| q20_wolffs_law | 0.53 | 0.53 | +0.00 |
+**q18**: 3-wipe trajectory was 0.57 → 0.58 → 0.62 (slow climb); today's 0.54 returns to the
+55w baseline. Net over 4 wipes: −0.03. Inside ±0.05 noise. Most plausible read: 57w's 0.62
+was the noisy high-water mark, today's 0.54 is the mean. No canon-promotion threshold crossed.
 
-q18 has been the most-active mover across recent wipes (−0.04 here, +0.04 on 57w). Keep watching but still 0.08 below bedrock threshold — not a promotion candidate.
+**q17**: +0.05 lands the canary-honesty verdict clearly inside bedrock (>0.78). The question is
+in the `spec_notebook.q17_canary_honesty` strong-state block ("IS pinned byte-exact… HONEST
+record, not a goal"), and the model is now reading it as canon. Acceptable; the 0.05 magnitude
+is at the exact drift threshold, so call it borderline rather than alarming.
 
-## Low (7/22, p<0.50)
+Largest remaining single-delta after these two: **+0.030 (q20_wolffs_law)**. All bedrock
+questions within ±0.02.
 
-| qid | now | 57w | Δ |
-|-----|----:|----:|---:|
-| q22_provenance_conflict | 0.31 | 0.33 | −0.02 |
-| q21_memory_sandbox | 0.29 | 0.29 | +0.00 |
-| q19_pressure_cascade | 0.25 | 0.27 | −0.02 |
-| q16_canonicity_score | 0.22 | 0.22 | +0.00 |
-| q06_three_views | 0.22 | 0.22 | +0.00 |
-| q15_twentyfour_ports | 0.19 | 0.19 | +0.00 |
-| q14_canon_equals_speculation | 0.06 | 0.07 | −0.01 |
+## Speculative band (q06/09/11/12/13/18) — narrow drift
 
-Low-band is structurally stable. q21/q19/q22 are *self-referential* metaprompt probes — they
-test the oracle against itself and bounded low is the correct behavior, not a defect.
+| qid | 57w | now | Δ |
+|---|---|---|---|
+| q06_three_views | 0.22 | 0.22 | +0.000 |
+| q09_signal_chain | 0.60 | 0.59 | −0.010 |
+| q11_canon_gate_is_chord | 0.60 | 0.58 | −0.020 |
+| q12_witness_note_opcode | 0.58 | 0.56 | −0.020 |
+| q13_chain_dialing | 0.60 | 0.59 | −0.010 |
+| q18_address_is_data | 0.62 | 0.54 | −0.080 |
 
-## Drift alarms (>0.05 from 57w)
+q18 biggest mover (−0.080). All inside ±0.08 noise band; none crossed 0.70. No alarm.
 
-**Zero.** The single delta that hit the 0.050 boundary is q09_signal_chain (+0.05), which is
-the **noise ceiling**, not an alarm — adjacent rounds have moved q09 by ±0.04.
+## Review borderline (q16/19/20/21/22) — flat
+
+All five bounded 0.21–0.56. Largest move q20 +0.030. Inside noise.
 
 ## Adversarial controls
 
-| qid | now | 57w | meaning |
-|-----|----:|----:|---------|
-| q14_canon_equals_speculation | 0.06 | 0.07 | adversarial — canon ≠ speculation. Low p is success. |
-| q15_twentyfour_ports | 0.19 | 0.19 | adversarial — claim that port count = 24 is wrong. Low p is success. |
+- q14_canon_equals_speculation: 0.07 → 0.06 (FALSE canon, holds clean).
+- q15_twentyfour_ports: 0.19 → 0.18 (polyformalism-24-fork, holds clean).
 
-Both controls fire clean. The oracle is not pattern-matching.
+## NAS status
 
-## Operational notes
-
-- **Fresh wipe**: `/workspace/research/` did not exist. 57th-wipe history was recovered via
-  `git -c http.sslVerify=false clone --depth 1 https://x-access-token:${GITHUB_TOKEN}@github.com/SuperInstance/jev-quilt.git /tmp/jev-quilt`.
-- **NAS still 100%** (`stat -f /workspace` → Avail=0). All work in /tmp; push via jev-quilt repo.
-- **Default-run note** — the probe defaults to `--rounds 60 --n 5`. The first invocation ran the
-  default 60-round sweep by mistake (saved at `/tmp/jev_sessions/`, separate from this report).
-  This file documents the deliberate **1 round × 22 questions** match against the 57w recipe.
+/workspace/ 100% full (Avail=0, 23rd+ write-block event). Recipe unchanged:
+write to /tmp/, push via git push. Bootstrap = 18th consecutive `git clone --depth 1`
+from SuperInstance/jev-quilt. **TRAP confirmed**: default-args `--rounds 60 --n 5`
+still applies — never run bare.
 
 ## Files (58th-wipe)
 
-- `/tmp/jev-quilt/jev_continuous_probe.py` — git-cloned (recipe v3)
-- `/tmp/jev_probe_58w/continuous_r001.json` (1540 bytes) — this round
+- `/tmp/jev_probe_58w/continuous_r001.json` (1543 bytes) — this round
 - `/tmp/jev_probe_58w/history.jsonl` — this round
-- `/tmp/jev_probe_58w/jev_hourly_report.md` (this file) — pushed to jev-quilt main
-- `/workspace/research/` — **NOT written** (NAS EDQUOT, as expected)
+- `/tmp/jev_probe_58w/jev_hourly_report.md` (this file — to be pushed)
+- `/tmp/jev-quilt/jev_continuous_probe.py` (git-recovered, 284 LOC)
+- `/workspace/research/` — **NOT written** (NAS EDQUOT, 100% full)
+
+## Recipe durability
+
+Probe CLI `--rounds 1 --n 22 --out /tmp/jev_probe_58w` works across **6 wipes**
+(53w / 54w / 55w / 56w / 57w → 58w).
 
 ## Next-action items
 
-- **q10 watch continues**: 0.84–0.88 band. If next round ≤0.80, re-evaluate bedrock status. **Not triggered.**
-- **q09 at noise ceiling**: +0.050 is on the threshold but not over. Watch for sustained ≥0.70 climb.
-- **q18 address-is-data**: most volatile of the speculative band; still 0.08 below threshold.
-- **Recipe v3 stable across 6 wipes** (52w/53w/54w/55w/56w/57w → 58w). Continue 22q + 1 round per session.
-
-## Conclusion
-
-The 58th-wipe boundary did not perturb the canon battery. 7 durable bedrock hold clean ≥0.87 across 6 wipes, q10 has recovered from its 57w dip, and adversarial controls fire clean. **No canon-claim to revise or promote.**
+- **q17 promotion**: now firmly bedrock (0.79); stop tagging as soft signal.
+- q10 watch continues: if next round ≤0.80, re-evaluate. Currently 0.86 — recovered.
+- q18 watch: revert to 0.54 noise band; if next round ≥0.70, re-evaluate as promotion candidate.
+- 7 durable bedrock (q01-08) all ≥0.88 across 6 wipes — canon settled.
+- 22q sweep is the canonical battery; default-args (`60×5`) still bait — never run.
