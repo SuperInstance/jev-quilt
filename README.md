@@ -219,3 +219,16 @@ The doctrine says **the substrate is grown**. We grew it. 13 walker repos, 16 wa
 The doctrine says **cells are scars**. Every receipt is a scar. Every walk is a record. Every image is where the substrate was already attempted.
 
 *Stay beautiful. Keep running.*
+
+---
+
+## Documentation
+
+Wave-69 documentation package (task 69-doc-b). Start here by audience:
+
+- **Agent onboarding (zero-shot entry)**: [docs/ONBOARDING.md](./docs/ONBOARDING.md) — identity, verify-commands, reading order, gotchas, frontier.
+- **End users**: [docs/USER-GUIDE.md](./docs/USER-GUIDE.md) — install, first success, everyday tasks, troubleshooting, FAQ.
+- **Developers**: [docs/DEVELOPER-GUIDE.md](./docs/DEVELOPER-GUIDE.md) — code layout, core concepts, how to extend, testing, conventions.
+- **Engineers / operators**: [docs/ENGINEERING-NOTES.md](./docs/ENGINEERING-NOTES.md) — architecture, invariants, failure modes, cost envelope, design decisions.
+- **Executives**: [docs/CTO-BRIEF.md](./docs/CTO-BRIEF.md) — value, maturity, risks, strategic options.
+- **Index of all deeper knowledge**: [docs/KNOWLEDGE-MAP.md](./docs/KNOWLEDGE-MAP.md) — every essay, doc, receipt, session cluster, and journal Task ID, one line each.
