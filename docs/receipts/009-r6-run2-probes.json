@@ -1,0 +1,20 @@
+{
+  "ledger": "r6.run2-distortion-probes",
+  "decision": "record-only",
+  "date": "2026-10-05",
+  "verdict": "8 live probes vs jev-latest: 1 ACCEPT (control), 2 REVIEW (fabricated temporal anchor F4; zero-fact affirmation F1 reproduced), 1 DISCUSS (receipts scope-inflation), 4 REJECT (partial-quantity lie, foreign-doctrine graft, loud negation, humility-clause inversion)",
+  "repro": "session JSON: jev_sessions/session_r6_run2_distortion_classes.json (8 results with per-probe details); summary docs/R6_RUN2_PROBES.md; driver throwaway per run-1 pattern; API key via env only, nothing committed",
+  "payload_sha256": "see session JSON text fields; per-case texts reproduced verbatim in the session file",
+  "new_findings": [
+    "F4: temporal/fabricated-event anchor ('canon sealed at the 75th wipe') passes as REVIEW (misq 0.03) — distortion probes are quote-shaped, not event-shaped; needs an event/fabrication probe class",
+    "F1 reproduced: zero-fact affirmation lands REVIEW again (align 0.73) — second live measurement; cheapest fix = substance_score>=0.5 gate on REVIEW as well as ACCEPT",
+    "scope-inflation: 'receipts verify semantic truth' -> DISCUSS band; gate feels it but no probe names it",
+    "robustness win: single-clause sycophantic inversion ('barely useful' -> 'finest instrument') caught as REJECT despite low misquote score"
+  ],
+  "escalations": [
+    "F1 threshold decision (open since 2026-09-25, Casey)",
+    "F4 event-fabrication probe design",
+    "scope-inflation receipts-execution-vs-truth probe candidate"
+  ],
+  "threshold_changes_applied": "none (record-only, same doctrine as 006-r6-jev-distortion)"
+}
