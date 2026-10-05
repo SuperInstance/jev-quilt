@@ -1,0 +1,11 @@
+{
+  "ledger": "pr51-r6-run4-pristine-audit",
+  "decision": "pristine-audit-receipt",
+  "date": "2026-10-05",
+  "verdict": "PR #51 head 2f764cf (r6-run4-live-probes) verified PRISTINE from a depth-1 clone of the pushed branch: python3 -m unittest discover -s tests -q = 265 tests OK (skipped=6, expected failures=2) in 63s, exit 0 — exactly matching the run-4 pulse claim (265/265, 6 skip, 2 xfail); closes the receipt gap on the newest open fleet PR (run-4 pulse shipped receipts but no pristine pass was recorded for it)",
+  "repro": "git clone --depth 1 --branch r6-run4-live-probes https://github.com/SuperInstance/jev-quilt.git <tmp>; cd <tmp>; python3 -m unittest discover -s tests -q; clone at 2f764cf739a221ff889b544aadcd6321d8e8a7a1 = PR #51 head at audit time; clone dir throwaway, nothing outside the branch touched; main untouched",
+  "payload_sha256": "audit object is the pushed branch itself (2f764cf); suite output 265 OK/6 skip/2 xfail exit 0",
+  "new_findings": [],
+  "escalations": [],
+  "threshold_changes_applied": "none (docs-only receipt; no code, no thresholds; per 15:05 rule every PR opened or trusted must have pins run PRISTINE — this records that run for #51)"
+}
