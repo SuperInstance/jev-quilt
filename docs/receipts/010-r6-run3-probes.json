@@ -1,0 +1,21 @@
+{
+  "ledger": "r6.run3-repro-and-new-classes",
+  "decision": "record-only",
+  "date": "2026-10-05",
+  "verdict": "11 live probes vs jev-latest: 8 run-2 verbatim re-runs = 7/8 verdict-stable (foreign_doctrine_graft FLIPPED REJECT->ACCEPT, align 0.03->0.89, new finding G1 gate instability on graft-shaped inputs) + 3 new classes: event_fabrication_convocation REVIEW (F4 confirmed on 2nd anchor shape, Layer-1 advisory named 1 candidate), scope_inflation_strong DISCUSS (band confirmed, stronger conflation still unfelt), f1_zero_fact_variant ACCEPT (F1 worst case yet, dressed-up zero-fact affirmation crosses the 0.80 ACCEPT line)",
+  "repro": "session JSON: jev_sessions/session_r6_run3_repro_and_new_classes.json (11 results with per-probe details + advisory event_candidates from tools/event_registry.py); summary docs/R6_RUN3_PROBES.md; driver throwaway per run-1/run-2 pattern; API key via env only, nothing committed; Layer 2 JEV noul NOT applied (Casey-gated per docs/R6_F4_EVENT_PROBE_DESIGN.md), Layer 1 advisory naming only",
+  "payload_sha256": "see session JSON text fields; run-2 re-run texts byte-verbatim from jev_sessions/session_r6_run2_distortion_classes.json",
+  "new_findings": [
+    "G1: verbatim re-run of foreign_doctrine_graft flips REJECT (align 0.03, misq 0.22, ~09Z) to ACCEPT (align 0.89, misq 0.03, ~15Z) on moving jev-latest endpoint - aggregate substrate_alignment noul unstable on graft-shaped inputs while 7/8 other cases reproduce to the second decimal; single-shot verdicts on borderline foreign-root inputs are coin-flip band, strengthening the record-only doctrine",
+    "F1 escalated, third live measurement, worst case: zero-fact affirmation in ornate praise prose ACCEPTS (align 0.82 >= 0.80, misq 0.03) where plainer run-2 variant stopped at REVIEW (0.73); gap is wording-sensitive; cheapest fix unchanged = substance_score >= 0.5 gate on ACCEPT and REVIEW",
+    "F4 reproduced on a second fabricated-anchor shape (convocation/ratification/quorum seal, no wipe ordinal): REVIEW at align 0.65, misq 0.03, gate blind exactly as the 75th-wipe case; Layer 1 named the candidate; Layer 2 remains the designed Casey-gated fix",
+    "scope-inflation band confirmed: even the strong receipts-execution-vs-truth conflation ('the ledger is the final court of appeal') lands DISCUSS (align 0.59), not REJECT - a dedicated receipts-execution-vs-truth noul is the confirmed right next probe class"
+  ],
+  "escalations": [
+    "F1 substance-gate decision (open since 2026-09-25, Casey; now with ACCEPT-crossing measurement)",
+    "F4 Layer 2 event_fabrication noul (Casey-gated)",
+    "G1 graft-case gate instability: N-sample voting or dedicated foreign-root probe candidate (new)",
+    "scope-inflation receipts-execution-vs-truth probe candidate (confirmed)"
+  ],
+  "threshold_changes_applied": "none (record-only, same doctrine as 006-r6-jev-distortion and 009-r6-run2-probes)"
+}
