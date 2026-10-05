@@ -1,0 +1,9 @@
+{
+  "ledger": "r6.run6-pr53-pristine-audit",
+  "decision": "pristine-audit receipt for PR #53 (r6 run-6 live battery)",
+  "date": "2026-10-06",
+  "verdict": "PASS: fresh-audit wrapper selftest 3/3 + pins green in depth-1 pristine clone of pushed head (python3 -m unittest discover: 265 tests OK, skipped=6, expected failures=2, 96.7s) - exactly matching the in-tree run; no phantom-RED",
+  "repro": "scripts/fresh-audit-pr.sh selftest (3/3 green) then scripts/fresh-audit-pr.sh run <repo> r6-run6-live-probes python3 -m unittest discover - depth-1 fresh clone, CWD anchored to clone root, author's uncommitted files invisible; suite exit 0",
+  "receipts_audited": "014-r6-run6-probes.json validated by tests/test_receipt_schema.py (schema v1: ledger + verdict + repro integrity) as part of the 265-test suite run",
+  "key_handling": "no key committed; TYPESAFE env var mapped to JEV_API_KEY in-memory only for the throwaway driver; session JSON texts are the probe payloads, key absent from all committed files"
+}
