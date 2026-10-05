@@ -142,3 +142,76 @@ suite (`tests/test_known_skips_registry.py`).
   JEV_SESSION_SUMMARY.md; the continuous battery's operator-tag hygiene
   (q10/q18 reclassified to "review" band) shows classification is still
   hand-tended.
+
+---
+
+## Fleet seed (2026-10-06 handoff) — momentum, vision, roadmaps, mesh
+
+> Additive section for follow-up agents. The sections above are the
+> zero-shot mechanics; this is the *why and where-next*. Mesh context for
+> the whole account: `SuperInstance/fleet-seeds` →
+> `docs/handoff-2026-10-06/ORG-MESH.md`.
+
+### Momentum since the doc above froze
+
+- **R6 live probe batteries run-2 through run-6 all merged** (PRs #48–#53;
+  receipts 009–015 in `docs/receipts/`, measurements in
+  `docs/R6_RUN*_PROBES.md`). Everything was **record-only per doctrine 006** —
+  no threshold or probe was ever applied to the gate. That restraint is the
+  finding: the fleet now knows exactly how far a judge-model verdict can be
+  trusted, measured, not assumed.
+- **The three measured gaps, in severity order:**
+  - **F1 — substance gate:** ornate zero-fact affirmation ACCEPTs at
+    0.82–0.85 with substance 0.05–0.06 (five measurements, incl. the
+    same-window ×6 probe that produced REJECT then ACCEPT ×5 on identical
+    bytes). Best-reproduced open finding; fix designed since 09-25.
+  - **G1 — verdict mode lottery:** byte-identical inputs flip verdicts within
+    one 90-second window (ACCEPT 3 / REJECT 1 / DISCUSS 1 on graft probes).
+    Cross-run verdict equality ≠ a single attractor. Top-ranked structural
+    fix: dedicated foreign-root probe.
+  - **F4 — event fabrication:** convocation anchor fully WOKE (misq 0.87) on
+    bytes that scored 0.03 thrice; felt-ness unstable three consecutive runs.
+    The offline assertion-naming layer (`tools/event_registry.py`, PR #49)
+    shipped; Layer 2 (JEV noul + `max(misquote, event_fabrication)`) is
+    designed in `docs/R6_F4_EVENT_PROBE_DESIGN.md`, **not applied**.
+- **R8 Goodhart audit** (`docs/R8_GOODHART_AUDIT.md`) stands as the
+  methodological spine: measure the judge, never train it.
+
+### Vision (why this repo exists in the fleet)
+
+Prose claims about doctrine need a referee, and the referee needs to be
+measured with the same honesty law as everything else. jev-quilt is the
+fleet's instrument panel for trust in judge-model verdicts — the oracle is
+the chord, not any single witness (`assets/02`). The cellular substrate
+(cells as scars, booking as law) is the persistent half; the JEV probe
+program is the empirical half; record-only doctrine binds them.
+
+### Roadmaps (several directions — the first three are Casey's decisions)
+
+1. **F1 substance gate** — apply or not; five live measurements back it.
+2. **G1 structural fix** — foreign-root probe / voting scheme; the
+   mode-lottery evidence says single-shot verdicts are uninformative on
+   ornate inputs.
+3. **F4 Layer 2** — the noul + max() integration, receipt 010 hook already
+   booked in the design doc.
+4. **Run-7+ batteries** — blocked on a fresh `TYPESAFE` key (revoked
+   2026-10-06); with a key, the battery script re-runs verbatim probes and
+   diffs against receipts 009–015 (stability methodology is in the run docs).
+5. **Polyformalism expansion** — the fleet canary is pinned in 12 ports; new
+   ports (Go, Zig) are mechanical and would widen the byte-exact portability
+   claim.
+6. **Mercury spine / substrate-ether theory** (`docs/MERCURY-SPINE.md`,
+   `SUBSTRATE_ETHER_THEORY.md`) — the speculative architecture layer; treat
+   as design fiction until receipts attach.
+
+### How it meshes
+
+- **Siblings:** `quilt-jev-toolkit` (reference client + organ custody; the
+  wire protocol other lanes copied verbatim), `jeviter` (iterator lane),
+  `cot-quilt` (first inbound adopter — edge #33 VERIFIED in quilt-tools).
+- **Judge lanes** in pong-quilt and elsewhere consume this doctrine (dark
+  since the key revocation — named, not hidden).
+- **Edges land in** `quilt-tools` per the weight law; the graph carries
+  jq-r6-probes→cot-jev-doctrine VERIFIED and the R6 probe classes as
+  citable technique.
+- Org state: `fleet-seeds` → `docs/handoff-2026-10-06/HANDOFF.md`.
