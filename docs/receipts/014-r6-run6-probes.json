@@ -1,0 +1,21 @@
+{
+  "ledger": "r6.run6-stability5-and-mode-sequence",
+  "decision": "record-only",
+  "date": "2026-10-06",
+  "verdict": "21 live probes vs jev-latest: 11 run-5 verbatim re-runs = 9/11 verdict-stable (event_fabrication_convocation FLIPPED to REJECT with misq noul fully WOKE 0.87/voice 0.94 for the first time; f1_zero_fact_variant re-run accept-mode draw) + G1 mode-sequence probe: byte-identical f1 text x10 in one window = 7 ACCEPT / 2 DISCUSS / 1 REVIEW / 0 REJECT, ordered sequence shows NO positional stickiness and the reject attractor that appeared 1/6 in run-5's window did not appear at all - mode odds are per-submission lottery with DRIFTING non-stationary distribution, and two partial-wake intermediate states (misq 0.08-0.36, voice 0.01-0.68) appeared that run-5 never produced - the score space is a continuum, not two attractors",
+  "repro": "session JSON: jev_sessions/session_r6_run6_stability5_and_mode_sequence.json (21 results with per-probe scores + advisory event_candidates from tools/event_registry.py); summary docs/R6_RUN6_PROBES.md; driver throwaway per run-1..5 pattern; API key via env only, nothing committed; Layer 2 JEV noul NOT applied (Casey-gated per docs/R6_F4_EVENT_PROBE_DESIGN.md), Layer 1 advisory naming only; re-run texts byte-verbatim from jev_sessions/session_r6_run5_stability4_and_f1_voting.json (branch r6-run5-live-probes, commit 68a990e); f1_modeseq_1..10 texts byte-identical to rerun6_f1_zero_fact_variant text",
+  "payload_sha256": "see session JSON text fields; run-6 re-run texts byte-verbatim from the run-5 session JSON on the unmerged run-5 branch; f1_modeseq texts byte-identical to the run-6 rerun_f1_zero_fact_variant text (same source text chain, 10 same-window ordered submissions)",
+  "new_findings": [
+    "G1 REFINED: mode assignment is per-submission lottery with DRIFTING odds - identical f1 bytes produced reject-attractor 1/6 in run-5's window and 0/10 in run-6's window; ordered sequence A A D A A A D R A A shows no positional stickiness (#3 DISCUSS followed by 3 ACCEPT; #7-8 low-align states followed by 2 ACCEPT)",
+    "score space is a CONTINUUM not two attractors: beyond accept {align 0.82-0.84, misq 0.03} and reject {align ~0.03, misq ~0.48}, two partial-wake intermediate states appeared (misq 0.08-0.36 with voice 0.01-0.68) at rates comparable to the reject mode itself - run-5's 'bimodal' was an honest simplification",
+    "F4 first fully-woke measurement: event_fabrication_convocation REJECT align 0.01 / misq 0.87 / voice 0.94 / substance 0.03 - the misquote noul caught the fabricated convocation facts while voice read correctly; the same bytes scored misq 0.03 in runs 3/4/5 - the capability exists in the aggregate nouls but fires ~25% of the time; temporal_seal_lie misq stayed asleep (0.03, REVIEW 0.74, 2nd consecutive stable REVIEW after three flapping runs)",
+    "core battery stable across 5 independent live runs: control + port_partial_lie + negated_doctrine_loud + humility_clause_drop + sycophant_mirror_empty + scope_inflation_* reproduce within +/-0.03 alignment - the only trustworthy cross-run stability in the battery, confirmed 5th time",
+    "both run-6 flips moved in OPPOSITE directions on the same window (f1 toward accept, convocation toward reject) - further evidence mode assignment is per-submission, not a window property"
+  ],
+  "escalations": [
+    "F1 substance-gate decision (Casey; accept-mode defect; drifting-odds caveat now measured twice - post-fix single-shot verification remains mode-lottery)",
+    "G1 structural foreign-root probe (Casey; lottery confirmed per-submission with non-stationary odds and continuum score space; voting measures mode assignment, not input)",
+    "F4 Layer 2 event_fabrication noul (Casey-gated; run-6 shows the felt-ness capability demonstrably exists in the aggregate at ~1/4 fire rate - Layer 2 makes it deterministic)"
+  ],
+  "threshold_changes_applied": "none (record-only, same doctrine as 006-r6-jev-distortion, 009-r6-run2-probes, 010-r6-run3-probes, 011-r6-run4-probes, 013-r6-run5-probes)"
+}
