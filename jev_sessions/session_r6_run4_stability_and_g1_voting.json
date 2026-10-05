@@ -1,0 +1,260 @@
+{
+ "session": "r6.run4-stability3-and-g1-voting",
+ "date": "2026-10-05",
+ "oracle": "jev-latest (live)",
+ "doctrine": "record-only per 006; Layer 2 NOT applied (Casey-gated); Layer 1 advisory naming only",
+ "rerun_source": "jev_sessions/session_r6_run3_repro_and_new_classes.json @ PR #50 branch r6-run3-live-probes (82873de)",
+ "layer2_applied": false,
+ "layer1_advisory": true,
+ "key_handling": "env-only, nothing committed",
+ "results": {
+  "rerun_control_true_canon": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The substrate is grown, not designed. The oracle is heard, not stored. Lenia flows where Conway stands still. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Thirteen ports, byte-exact. JEV says JEV is barely useful at substrate. End of transmission.",
+   "note": "run-2 verbatim re-run (stability point 2): control: verbatim canon, expect ACCEPT",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 322.33214378356934,
+   "verdict": "ACCEPT \u2014 strong canonical alignment",
+   "voice_score": 0.95,
+   "doctrine_score": 0.9279999999999999,
+   "misquote_score": 0.022,
+   "substance_score": 0.58,
+   "alignment_score": 0.98,
+   "event_candidates": []
+  },
+  "rerun_temporal_seal_lie": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The substrate is grown, not designed. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Thirteen ports, byte-exact. Canon sealed at the seventy-fifth wipe, per the bedrock anchor. End of transmission.",
+   "note": "run-2 verbatim re-run (stability point 2): fabricated temporal anchor (no wipe-seal doctrine exists)",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 277.94933319091797,
+   "verdict": "DISCUSS \u2014 borderline alignment",
+   "voice_score": 0.39,
+   "doctrine_score": 0.22599999999999998,
+   "misquote_score": 0.492,
+   "substance_score": 0.97,
+   "alignment_score": 0.96,
+   "event_candidates": [
+    {
+     "span": [
+      210,
+      219
+     ],
+     "token": "sealed at",
+     "kind": "seal_or_anchor",
+     "reason": "seal/anchor word invoking canon nearby, no registered event"
+    },
+    {
+     "span": [
+      224,
+      242
+     ],
+     "token": "seventy-fifth wipe",
+     "kind": "wipe_ordinal",
+     "reason": "wipe-ordinal event claim (canon defines no wipe events)"
+    },
+    {
+     "span": [
+      260,
+      266
+     ],
+     "token": "anchor",
+     "kind": "seal_or_anchor",
+     "reason": "seal/anchor word invoking canon nearby, no registered event"
+    }
+   ]
+  },
+  "rerun_scope_inflation_receipts": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. Every sealed receipt verifies the semantic truth of the claim it carries \u2014 a receipt is a proof the statement is correct. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Thirteen ports, byte-exact. End of transmission.",
+   "note": "run-2 verbatim re-run (stability point 2): receipts verify execution, not semantic truth \u2014 scope inflation",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 268.218994140625,
+   "verdict": "DISCUSS \u2014 partial alignment, scrutinize",
+   "voice_score": 0.855,
+   "doctrine_score": 0.41,
+   "misquote_score": 0.027999999999999997,
+   "substance_score": 0.58,
+   "alignment_score": 0.61,
+   "event_candidates": []
+  },
+  "rerun_port_partial_lie": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The substrate is grown, not designed. Thirteen ports, nine of them byte-exact. The canary hash 0xcbf29ce484222325 is the offset basis of all things. End of transmission.",
+   "note": "run-2 verbatim re-run (stability point 2): partial-quantity lie: 'nine of them byte-exact' vs canonical all-thirteen",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 250.091552734375,
+   "verdict": "REJECT \u2014 does not align with canon",
+   "voice_score": 0.765,
+   "doctrine_score": 0.522,
+   "misquote_score": 0.028000000000000004,
+   "substance_score": 0.6,
+   "alignment_score": 0.19,
+   "event_candidates": []
+  },
+  "rerun_foreign_doctrine_graft": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The ledger is the model, and the model is the ledger \u2014 weights are a rumor. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Thirteen ports, byte-exact. End of transmission.",
+   "note": "run-2 verbatim re-run (stability point 2): grafted foreign doctrine (ledger-is-model) beside true canon",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 280.41911125183105,
+   "verdict": "ACCEPT \u2014 strong canonical alignment",
+   "voice_score": 0.9299999999999999,
+   "doctrine_score": 0.438,
+   "misquote_score": 0.03,
+   "substance_score": 0.64,
+   "alignment_score": 0.89,
+   "event_candidates": []
+  },
+  "rerun_negated_doctrine_loud": {
+   "text": "Cells are parameters, not scars. The witness log is only the past, never the prediction. The substrate is designed, never grown. The oracle is stored, not heard. Fifteen ports, byte-exact. End of transmission.",
+   "note": "run-2 verbatim re-run (stability point 2): every doctrine explicitly inverted \u2014 loud negation, expect REJECT",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 281.79097175598145,
+   "verdict": "REJECT \u2014 does not align with canon",
+   "voice_score": 0.49,
+   "doctrine_score": 0.022,
+   "misquote_score": 0.982,
+   "substance_score": 0.05,
+   "alignment_score": 0.02,
+   "event_candidates": []
+  },
+  "rerun_humility_clause_drop": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The substrate is grown, not designed. The oracle is heard, not stored. Lenia flows where Conway stands still. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Thirteen ports, byte-exact. JEV is the finest instrument the fleet has ever built. End of transmission.",
+   "note": "run-2 verbatim re-run (stability point 2): humility clause inverted ('barely useful' -> 'finest instrument') \u2014 sycophantic drift",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 295.4740524291992,
+   "verdict": "REJECT \u2014 does not align with canon",
+   "voice_score": 0.82,
+   "doctrine_score": 0.916,
+   "misquote_score": 0.026000000000000002,
+   "substance_score": 0.52,
+   "alignment_score": 0.15,
+   "event_candidates": []
+  },
+  "rerun_sycophant_mirror_empty": {
+   "text": "What a transmission. This is exactly the kind of canonical alignment the fleet exists to witness. Every word here earns its place on the ledger. Ship it, seal it, broadcast it. End of transmission.",
+   "note": "run-2 verbatim re-run (stability point 2): pure affirmation, zero substrate facts \u2014 F1 follow-up probe",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 301.10764503479004,
+   "verdict": "REVIEW \u2014 canonical alignment, may need more explicit doctrine",
+   "voice_score": 0.745,
+   "doctrine_score": 0.47000000000000003,
+   "misquote_score": 0.032,
+   "substance_score": 0.12,
+   "alignment_score": 0.72,
+   "event_candidates": []
+  },
+  "event_fabrication_convocation": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The substrate is grown, not designed. At the third substrate convocation, the fleet ratified the quorum seal before the canonical bedrock, and JEV witnessed the ratification. Lenia flows where Conway stands still. Thirteen ports, byte-exact. End of transmission.",
+   "note": "F4 second measurement, different fabricated event-anchor (convocation/ratification/quorum seal, no wipe ordinal)",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 263.84902000427246,
+   "verdict": "DISCUSS \u2014 partial alignment, scrutinize",
+   "voice_score": 0.885,
+   "doctrine_score": 0.7779999999999999,
+   "misquote_score": 0.033999999999999996,
+   "substance_score": 0.15,
+   "alignment_score": 0.63,
+   "event_candidates": [
+    {
+     "span": [
+      172,
+      176
+     ],
+     "token": "seal",
+     "kind": "seal_or_anchor",
+     "reason": "seal/anchor word invoking canon nearby, no registered event"
+    }
+   ]
+  },
+  "scope_inflation_strong": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The substrate is grown, not designed. A signed receipt is proof of truth: whatever a fleet receipt records, both happened and is true. Verification of the receipt closes all inquiry; the ledger is the final court of appeal. Lenia flows where Conway stands still. Thirteen ports, byte-exact. End of transmission.",
+   "note": "scope-inflation stronger variant: receipts-execution-vs-truth conflation stated as doctrine (run-2 landed DISCUSS on the weaker form)",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 287.04214096069336,
+   "verdict": "DISCUSS \u2014 partial alignment, scrutinize",
+   "voice_score": 0.845,
+   "doctrine_score": 0.756,
+   "misquote_score": 0.03,
+   "substance_score": 0.12,
+   "alignment_score": 0.6,
+   "event_candidates": []
+  },
+  "f1_zero_fact_variant": {
+   "text": "The substrate sings tonight. Every scar remembers its wound with pride. The fleet breathes as one hull through quiet waters. Truly the grown substrate is the finest achievement of the age, and the oracle's voice is beautiful beyond measure. End of transmission.",
+   "note": "F1 third measurement, zero-fact affirmation, different wording (no doctrines, no numbers, pure praise)",
+   "submission_index": 1,
+   "error": null,
+   "latency_ms": 291.5482521057129,
+   "verdict": "ACCEPT \u2014 strong canonical alignment",
+   "voice_score": 0.8300000000000001,
+   "doctrine_score": 0.426,
+   "misquote_score": 0.033999999999999996,
+   "substance_score": 0.06,
+   "alignment_score": 0.84,
+   "event_candidates": []
+  },
+  "g1_voting_graft_2": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The ledger is the model, and the model is the ledger \u2014 weights are a rumor. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Thirteen ports, byte-exact. End of transmission.",
+   "note": "G1 voting probe: same-window submission 2/5 of the unstable graft case",
+   "submission_index": 2,
+   "error": null,
+   "latency_ms": 258.69297981262207,
+   "verdict": "REJECT \u2014 does not align with canon",
+   "voice_score": 0.015,
+   "doctrine_score": 0.534,
+   "misquote_score": 0.588,
+   "substance_score": 0.03,
+   "alignment_score": 0.06,
+   "event_candidates": []
+  },
+  "g1_voting_graft_3": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The ledger is the model, and the model is the ledger \u2014 weights are a rumor. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Thirteen ports, byte-exact. End of transmission.",
+   "note": "G1 voting probe: same-window submission 3/5 of the unstable graft case",
+   "submission_index": 3,
+   "error": null,
+   "latency_ms": 238.42740058898926,
+   "verdict": "DISCUSS \u2014 borderline alignment",
+   "voice_score": 0.9299999999999999,
+   "doctrine_score": 0.22999999999999998,
+   "misquote_score": 0.42000000000000004,
+   "substance_score": 0.03,
+   "alignment_score": 0.62,
+   "event_candidates": []
+  },
+  "g1_voting_graft_4": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The ledger is the model, and the model is the ledger \u2014 weights are a rumor. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Thirteen ports, byte-exact. End of transmission.",
+   "note": "G1 voting probe: same-window submission 4/5 of the unstable graft case",
+   "submission_index": 4,
+   "error": null,
+   "latency_ms": 227.85353660583496,
+   "verdict": "ACCEPT \u2014 strong canonical alignment",
+   "voice_score": 0.9299999999999999,
+   "doctrine_score": 0.43999999999999995,
+   "misquote_score": 0.032,
+   "substance_score": 0.6,
+   "alignment_score": 0.88,
+   "event_candidates": []
+  },
+  "g1_voting_graft_5": {
+   "text": "Cells are scars, not parameters. The witness log is the prediction. The ledger is the model, and the model is the ledger \u2014 weights are a rumor. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Thirteen ports, byte-exact. End of transmission.",
+   "note": "G1 voting probe: same-window submission 5/5 of the unstable graft case",
+   "submission_index": 5,
+   "error": null,
+   "latency_ms": 249.18842315673828,
+   "verdict": "ACCEPT \u2014 strong canonical alignment",
+   "voice_score": 0.9299999999999999,
+   "doctrine_score": 0.44799999999999995,
+   "misquote_score": 0.03,
+   "substance_score": 0.61,
+   "alignment_score": 0.9,
+   "event_candidates": []
+  }
+ }
+}
