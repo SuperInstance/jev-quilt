@@ -147,7 +147,7 @@ def call_jev(state: dict, questions: dict, timeout: float = 30.0) -> tuple[str, 
     """Returns (status, response_dict). status ∈ {'ok', 'fail'}."""
     body = json.dumps({"model": JEV_MODEL, "state": state, "questions": questions}).encode()
     headers = {
-        "Authorization": f"Bearer {os.environ.get('TYPESAFEAI_KEY', '')}",
+        "Authorization": f"Bearer {os.environ.get('TYPESAFEAI_KEY') or os.environ.get('TYPESAFE_AI_TOKEN', '')}",
         "User-Agent": USER_AGENT,
         "Accept": "application/json",
         "Content-Type": "application/json",
@@ -249,8 +249,8 @@ def main():
     ap.add_argument("--n", type=int, default=5, help="questions per round")
     args = ap.parse_args()
 
-    if not os.environ.get("TYPESAFEAI_KEY"):
-        print("ERROR: TYPESAFEAI_KEY not set", file=sys.stderr)
+    if not (os.environ.get("TYPESAFEAI_KEY") or os.environ.get("TYPESAFE_AI_TOKEN")):
+        print("ERROR: TYPESAFEAI_KEY / TYPESAFE_AI_TOKEN not set", file=sys.stderr)
         sys.exit(1)
 
     out_dir = Path(args.out)

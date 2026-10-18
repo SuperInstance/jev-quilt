@@ -1,0 +1,23 @@
+{
+  "round": 110,
+  "ts": "2026-10-18T15:02:30Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q10_quorum_meshing",
+    "q04_oracle_is_heard",
+    "q18_address_is_data",
+    "q21_memory_sandbox",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q10_quorum_meshing": 0.84,
+    "q04_oracle_is_heard": 0.96,
+    "q18_address_is_data": 0.6,
+    "q21_memory_sandbox": 0.29,
+    "q09_signal_chain": 0.6
+  },
+  "usage": {
+    "input_tokens": 1406,
+    "output_tokens": 112
+  }
+}

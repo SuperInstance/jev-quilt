@@ -1,0 +1,23 @@
+{
+  "round": 13,
+  "ts": "2026-10-18T15:02:16Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q11_canon_gate_is_chord",
+    "q16_canonicity_score",
+    "q10_quorum_meshing",
+    "q20_wolffs_law"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q11_canon_gate_is_chord": 0.58,
+    "q16_canonicity_score": 0.21,
+    "q10_quorum_meshing": 0.87,
+    "q20_wolffs_law": 0.57
+  },
+  "usage": {
+    "input_tokens": 1397,
+    "output_tokens": 119
+  }
+}

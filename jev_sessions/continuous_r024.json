@@ -1,0 +1,23 @@
+{
+  "round": 24,
+  "ts": "2026-10-18T15:02:17Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q06_three_views",
+    "q01_cells_are_scars",
+    "q21_memory_sandbox",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.26,
+    "q06_three_views": 0.22,
+    "q01_cells_are_scars": 0.96,
+    "q21_memory_sandbox": 0.28,
+    "q05_lenia_flows": 0.96
+  },
+  "usage": {
+    "input_tokens": 1387,
+    "output_tokens": 112
+  }
+}

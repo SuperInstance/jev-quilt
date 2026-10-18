@@ -1,0 +1,23 @@
+{
+  "round": 192,
+  "ts": "2026-10-18T15:02:42Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q19_pressure_cascade",
+    "q13_chain_dialing",
+    "q06_three_views",
+    "q02_witness_log_is_prediction"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q19_pressure_cascade": 0.26,
+    "q13_chain_dialing": 0.58,
+    "q06_three_views": 0.21,
+    "q02_witness_log_is_prediction": 0.94
+  },
+  "usage": {
+    "input_tokens": 1398,
+    "output_tokens": 116
+  }
+}

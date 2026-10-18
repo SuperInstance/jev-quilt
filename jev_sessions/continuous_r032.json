@@ -1,0 +1,23 @@
+{
+  "round": 32,
+  "ts": "2026-10-18T15:02:18Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q09_signal_chain",
+    "q11_canon_gate_is_chord",
+    "q03_substrate_is_grown",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.94,
+    "q09_signal_chain": 0.59,
+    "q11_canon_gate_is_chord": 0.59,
+    "q03_substrate_is_grown": 0.97,
+    "q16_canonicity_score": 0.21
+  },
+  "usage": {
+    "input_tokens": 1404,
+    "output_tokens": 118
+  }
+}

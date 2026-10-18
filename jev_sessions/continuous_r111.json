@@ -1,0 +1,23 @@
+{
+  "round": 111,
+  "ts": "2026-10-18T15:02:30Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q06_three_views",
+    "q11_canon_gate_is_chord",
+    "q16_canonicity_score",
+    "q13_chain_dialing"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.26,
+    "q06_three_views": 0.22,
+    "q11_canon_gate_is_chord": 0.58,
+    "q16_canonicity_score": 0.22,
+    "q13_chain_dialing": 0.6
+  },
+  "usage": {
+    "input_tokens": 1405,
+    "output_tokens": 114
+  }
+}

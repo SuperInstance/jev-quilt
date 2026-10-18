@@ -1,0 +1,23 @@
+{
+  "round": 58,
+  "ts": "2026-10-18T15:02:22Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q09_signal_chain",
+    "q01_cells_are_scars",
+    "q16_canonicity_score",
+    "q11_canon_gate_is_chord",
+    "q12_witness_note_opcode"
+  ],
+  "verdicts": {
+    "q09_signal_chain": 0.6,
+    "q01_cells_are_scars": 0.97,
+    "q16_canonicity_score": 0.22,
+    "q11_canon_gate_is_chord": 0.61,
+    "q12_witness_note_opcode": 0.57
+  },
+  "usage": {
+    "input_tokens": 1408,
+    "output_tokens": 115
+  }
+}

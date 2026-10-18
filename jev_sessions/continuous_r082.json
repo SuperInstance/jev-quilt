@@ -1,0 +1,23 @@
+{
+  "round": 82,
+  "ts": "2026-10-18T15:02:26Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q21_memory_sandbox",
+    "q15_twentyfour_ports",
+    "q13_chain_dialing",
+    "q05_lenia_flows",
+    "q12_witness_note_opcode"
+  ],
+  "verdicts": {
+    "q21_memory_sandbox": 0.29,
+    "q15_twentyfour_ports": 0.2,
+    "q13_chain_dialing": 0.6,
+    "q05_lenia_flows": 0.95,
+    "q12_witness_note_opcode": 0.54
+  },
+  "usage": {
+    "input_tokens": 1393,
+    "output_tokens": 116
+  }
+}

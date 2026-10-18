@@ -1,0 +1,23 @@
+{
+  "round": 168,
+  "ts": "2026-10-18T15:02:38Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q12_witness_note_opcode",
+    "q11_canon_gate_is_chord",
+    "q15_twentyfour_ports",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.21,
+    "q12_witness_note_opcode": 0.55,
+    "q11_canon_gate_is_chord": 0.58,
+    "q15_twentyfour_ports": 0.2,
+    "q09_signal_chain": 0.61
+  },
+  "usage": {
+    "input_tokens": 1411,
+    "output_tokens": 116
+  }
+}

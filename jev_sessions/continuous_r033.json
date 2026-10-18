@@ -1,0 +1,23 @@
+{
+  "round": 33,
+  "ts": "2026-10-18T15:02:19Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q10_quorum_meshing",
+    "q16_canonicity_score",
+    "q07_eleven_opcodes",
+    "q14_canon_equals_speculation"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.18,
+    "q10_quorum_meshing": 0.86,
+    "q16_canonicity_score": 0.21,
+    "q07_eleven_opcodes": 0.95,
+    "q14_canon_equals_speculation": 0.07
+  },
+  "usage": {
+    "input_tokens": 1399,
+    "output_tokens": 118
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 52,
+  "ts": "2026-10-18T15:02:22Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q02_witness_log_is_prediction",
+    "q05_lenia_flows",
+    "q14_canon_equals_speculation",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.21,
+    "q02_witness_log_is_prediction": 0.93,
+    "q05_lenia_flows": 0.95,
+    "q14_canon_equals_speculation": 0.06,
+    "q10_quorum_meshing": 0.86
+  },
+  "usage": {
+    "input_tokens": 1381,
+    "output_tokens": 119
+  }
+}

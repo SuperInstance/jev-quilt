@@ -1,0 +1,23 @@
+{
+  "round": 112,
+  "ts": "2026-10-18T15:02:30Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q12_witness_note_opcode",
+    "q01_cells_are_scars",
+    "q09_signal_chain",
+    "q06_three_views",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q12_witness_note_opcode": 0.54,
+    "q01_cells_are_scars": 0.97,
+    "q09_signal_chain": 0.61,
+    "q06_three_views": 0.23,
+    "q05_lenia_flows": 0.95
+  },
+  "usage": {
+    "input_tokens": 1410,
+    "output_tokens": 111
+  }
+}

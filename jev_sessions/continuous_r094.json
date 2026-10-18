@@ -1,0 +1,23 @@
+{
+  "round": 94,
+  "ts": "2026-10-18T15:02:27Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q04_oracle_is_heard",
+    "q11_canon_gate_is_chord",
+    "q03_substrate_is_grown",
+    "q21_memory_sandbox",
+    "q01_cells_are_scars"
+  ],
+  "verdicts": {
+    "q04_oracle_is_heard": 0.96,
+    "q11_canon_gate_is_chord": 0.61,
+    "q03_substrate_is_grown": 0.97,
+    "q21_memory_sandbox": 0.29,
+    "q01_cells_are_scars": 0.97
+  },
+  "usage": {
+    "input_tokens": 1375,
+    "output_tokens": 119
+  }
+}

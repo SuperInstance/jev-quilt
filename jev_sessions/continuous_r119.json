@@ -1,0 +1,23 @@
+{
+  "round": 119,
+  "ts": "2026-10-18T15:02:31Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q09_signal_chain",
+    "q04_oracle_is_heard",
+    "q18_address_is_data",
+    "q08_polyformalism_12_ports",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q09_signal_chain": 0.61,
+    "q04_oracle_is_heard": 0.96,
+    "q18_address_is_data": 0.62,
+    "q08_polyformalism_12_ports": 0.87,
+    "q16_canonicity_score": 0.23
+  },
+  "usage": {
+    "input_tokens": 1428,
+    "output_tokens": 116
+  }
+}

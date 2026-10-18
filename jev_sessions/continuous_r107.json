@@ -1,0 +1,23 @@
+{
+  "round": 107,
+  "ts": "2026-10-18T15:02:29Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q05_lenia_flows",
+    "q20_wolffs_law",
+    "q12_witness_note_opcode",
+    "q17_canary_honesty",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q05_lenia_flows": 0.96,
+    "q20_wolffs_law": 0.52,
+    "q12_witness_note_opcode": 0.55,
+    "q17_canary_honesty": 0.74,
+    "q09_signal_chain": 0.61
+  },
+  "usage": {
+    "input_tokens": 1425,
+    "output_tokens": 115
+  }
+}

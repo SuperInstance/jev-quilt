@@ -1,0 +1,23 @@
+{
+  "round": 18,
+  "ts": "2026-10-18T15:02:16Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q08_polyformalism_12_ports",
+    "q05_lenia_flows",
+    "q18_address_is_data",
+    "q03_substrate_is_grown",
+    "q06_three_views"
+  ],
+  "verdicts": {
+    "q08_polyformalism_12_ports": 0.89,
+    "q05_lenia_flows": 0.96,
+    "q18_address_is_data": 0.58,
+    "q03_substrate_is_grown": 0.97,
+    "q06_three_views": 0.22
+  },
+  "usage": {
+    "input_tokens": 1421,
+    "output_tokens": 117
+  }
+}

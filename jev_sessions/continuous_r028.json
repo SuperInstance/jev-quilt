@@ -1,0 +1,23 @@
+{
+  "round": 28,
+  "ts": "2026-10-18T15:02:18Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q20_wolffs_law",
+    "q21_memory_sandbox",
+    "q12_witness_note_opcode",
+    "q02_witness_log_is_prediction",
+    "q19_pressure_cascade"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.56,
+    "q21_memory_sandbox": 0.29,
+    "q12_witness_note_opcode": 0.55,
+    "q02_witness_log_is_prediction": 0.94,
+    "q19_pressure_cascade": 0.25
+  },
+  "usage": {
+    "input_tokens": 1395,
+    "output_tokens": 118
+  }
+}

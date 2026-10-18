@@ -1,0 +1,23 @@
+{
+  "round": 35,
+  "ts": "2026-10-18T15:02:19Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q14_canon_equals_speculation",
+    "q19_pressure_cascade",
+    "q11_canon_gate_is_chord",
+    "q07_eleven_opcodes"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.22,
+    "q14_canon_equals_speculation": 0.06,
+    "q19_pressure_cascade": 0.25,
+    "q11_canon_gate_is_chord": 0.6,
+    "q07_eleven_opcodes": 0.95
+  },
+  "usage": {
+    "input_tokens": 1393,
+    "output_tokens": 119
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 15,
+  "ts": "2026-10-18T15:02:16Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q06_three_views",
+    "q04_oracle_is_heard",
+    "q20_wolffs_law",
+    "q09_signal_chain",
+    "q19_pressure_cascade"
+  ],
+  "verdicts": {
+    "q06_three_views": 0.22,
+    "q04_oracle_is_heard": 0.96,
+    "q20_wolffs_law": 0.54,
+    "q09_signal_chain": 0.6,
+    "q19_pressure_cascade": 0.27
+  },
+  "usage": {
+    "input_tokens": 1404,
+    "output_tokens": 112
+  }
+}

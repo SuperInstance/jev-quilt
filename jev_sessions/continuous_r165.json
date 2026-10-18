@@ -1,0 +1,23 @@
+{
+  "round": 165,
+  "ts": "2026-10-18T15:02:37Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q12_witness_note_opcode",
+    "q03_substrate_is_grown",
+    "q06_three_views",
+    "q11_canon_gate_is_chord"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.26,
+    "q12_witness_note_opcode": 0.56,
+    "q03_substrate_is_grown": 0.97,
+    "q06_three_views": 0.22,
+    "q11_canon_gate_is_chord": 0.58
+  },
+  "usage": {
+    "input_tokens": 1400,
+    "output_tokens": 117
+  }
+}

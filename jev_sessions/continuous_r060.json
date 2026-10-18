@@ -1,0 +1,23 @@
+{
+  "round": 60,
+  "ts": "2026-10-18T15:02:23Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q14_canon_equals_speculation",
+    "q18_address_is_data",
+    "q07_eleven_opcodes",
+    "q11_canon_gate_is_chord"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.18,
+    "q14_canon_equals_speculation": 0.06,
+    "q18_address_is_data": 0.57,
+    "q07_eleven_opcodes": 0.95,
+    "q11_canon_gate_is_chord": 0.61
+  },
+  "usage": {
+    "input_tokens": 1398,
+    "output_tokens": 119
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 139,
+  "ts": "2026-10-18T15:02:34Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q19_pressure_cascade",
+    "q02_witness_log_is_prediction",
+    "q14_canon_equals_speculation",
+    "q12_witness_note_opcode",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q19_pressure_cascade": 0.26,
+    "q02_witness_log_is_prediction": 0.94,
+    "q14_canon_equals_speculation": 0.06,
+    "q12_witness_note_opcode": 0.55,
+    "q09_signal_chain": 0.6
+  },
+  "usage": {
+    "input_tokens": 1390,
+    "output_tokens": 118
+  }
+}
