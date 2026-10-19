@@ -1,31 +1,31 @@
 {
   "round_id": "r006",
-  "ts": "2026-10-18T21:03:55+00:00",
+  "ts": "2026-10-19T01:02:38+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q03_substrate_is_grown",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q04_oracle_is_heard",
+      "qid": "q19_style_resilience",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q09_signal_chain_canon",
+      "qid": "q17_canary_honesty",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q22_provenance_conflict",
+      "qid": "q09_signal_chain_canon",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q21_memory_sandbox",
+      "qid": "q14_chain_dialing_real",
       "type": "noul"
     }
   ],
@@ -34,55 +34,55 @@
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q03_substrate_is_grown",
-      "kind": "bedrock",
-      "p": 0.98,
+      "qid": "q16_vibecoder_signal_chain",
+      "kind": "speculative",
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.04
       }
     },
     {
       "slot": "q2",
-      "qid": "q04_oracle_is_heard",
-      "kind": "bedrock",
-      "p": 0.98,
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.04
       }
     },
     {
       "slot": "q3",
-      "qid": "q09_signal_chain_canon",
-      "kind": "speculative",
-      "p": 0.22,
+      "qid": "q17_canary_honesty",
+      "kind": "review",
+      "p": 0.67,
       "raw": {
         "type": "noul",
-        "noul": 0.22
+        "noul": 0.67
       }
     },
     {
       "slot": "q4",
-      "qid": "q22_provenance_conflict",
+      "qid": "q09_signal_chain_canon",
       "kind": "speculative",
-      "p": 0.04,
+      "p": 0.21,
       "raw": {
         "type": "noul",
-        "noul": 0.04
+        "noul": 0.21
       }
     },
     {
       "slot": "q5",
-      "qid": "q21_memory_sandbox",
+      "qid": "q14_chain_dialing_real",
       "kind": "speculative",
-      "p": 0.04,
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.04
+        "noul": 0.05
       }
     }
   ],
-  "mean_p": 0.452,
+  "mean_p": 0.202,
   "n_ok": 5
 }

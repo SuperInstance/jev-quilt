@@ -1,26 +1,26 @@
 {
   "round_id": "r026",
-  "ts": "2026-10-18T21:03:58+00:00",
+  "ts": "2026-10-19T01:02:41+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q14_chain_dialing_real",
+      "qid": "q07_11_opcodes",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q08_polyformalism",
+      "qid": "q09_signal_chain_canon",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q05_lenia_flows",
+      "qid": "q01_cells_are_scars",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q07_11_opcodes",
+      "qid": "q17_canary_honesty",
       "type": "noul"
     },
     {
@@ -29,22 +29,32 @@
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.187,
+  "elapsed_s": 0.161,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q14_chain_dialing_real",
-      "kind": "speculative",
-      "p": 0.05,
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.97,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.97
       }
     },
     {
       "slot": "q2",
-      "qid": "q08_polyformalism",
+      "qid": "q09_signal_chain_canon",
+      "kind": "speculative",
+      "p": 0.21,
+      "raw": {
+        "type": "noul",
+        "noul": 0.21
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q01_cells_are_scars",
       "kind": "bedrock",
       "p": 0.98,
       "raw": {
@@ -53,23 +63,13 @@
       }
     },
     {
-      "slot": "q3",
-      "qid": "q05_lenia_flows",
-      "kind": "bedrock",
-      "p": 0.97,
-      "raw": {
-        "type": "noul",
-        "noul": 0.97
-      }
-    },
-    {
       "slot": "q4",
-      "qid": "q07_11_opcodes",
-      "kind": "bedrock",
-      "p": 0.97,
+      "qid": "q17_canary_honesty",
+      "kind": "review",
+      "p": 0.67,
       "raw": {
         "type": "noul",
-        "noul": 0.97
+        "noul": 0.67
       }
     },
     {
@@ -83,6 +83,6 @@
       }
     }
   ],
-  "mean_p": 0.604,
+  "mean_p": 0.576,
   "n_ok": 5
 }

@@ -1,39 +1,79 @@
 {
   "round_id": "r079",
-  "ts": "2026-10-18T21:04:05+00:00",
+  "ts": "2026-10-19T01:02:49+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q08_polyformalism",
+      "qid": "q14_chain_dialing_real",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q12_substrate_polyformal",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q11_canon_gate_is_chord",
+      "qid": "q05_lenia_flows",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q18_address_is_data",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q20_wolffs_law",
+      "qid": "q08_polyformalism",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.176,
+  "elapsed_s": 0.119,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
+      "qid": "q14_chain_dialing_real",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q12_substrate_polyformal",
+      "kind": "review",
+      "p": 0.62,
+      "raw": {
+        "type": "noul",
+        "noul": 0.62
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q05_lenia_flows",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q16_vibecoder_signal_chain",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q5",
       "qid": "q08_polyformalism",
       "kind": "bedrock",
       "p": 0.98,
@@ -41,48 +81,8 @@
         "type": "noul",
         "noul": 0.98
       }
-    },
-    {
-      "slot": "q2",
-      "qid": "q13_witness_log_opcode",
-      "kind": "review",
-      "p": 0.11,
-      "raw": {
-        "type": "noul",
-        "noul": 0.11
-      }
-    },
-    {
-      "slot": "q3",
-      "qid": "q11_canon_gate_is_chord",
-      "kind": "review",
-      "p": 0.05,
-      "raw": {
-        "type": "noul",
-        "noul": 0.05
-      }
-    },
-    {
-      "slot": "q4",
-      "qid": "q18_address_is_data",
-      "kind": "speculative",
-      "p": 0.05,
-      "raw": {
-        "type": "noul",
-        "noul": 0.05
-      }
-    },
-    {
-      "slot": "q5",
-      "qid": "q20_wolffs_law",
-      "kind": "speculative",
-      "p": 0.05,
-      "raw": {
-        "type": "noul",
-        "noul": 0.05
-      }
     }
   ],
-  "mean_p": 0.248,
+  "mean_p": 0.532,
   "n_ok": 5
 }

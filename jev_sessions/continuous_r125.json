@@ -1,21 +1,21 @@
 {
   "round_id": "r125",
-  "ts": "2026-10-18T21:04:12+00:00",
+  "ts": "2026-10-19T01:02:55+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q10_quorum_meshing",
+      "qid": "q18_address_is_data",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q02_witness_log_is_prediction",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q15_jev_synapse",
+      "qid": "q21_memory_sandbox",
       "type": "noul"
     },
     {
@@ -25,64 +25,64 @@
     },
     {
       "slot": "q5",
-      "qid": "q14_chain_dialing_real",
+      "qid": "q07_11_opcodes",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.134,
+  "elapsed_s": 0.118,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q10_quorum_meshing",
-      "kind": "speculative",
-      "p": 0.03,
-      "raw": {
-        "type": "noul",
-        "noul": 0.03
-      }
-    },
-    {
-      "slot": "q2",
-      "qid": "q02_witness_log_is_prediction",
-      "kind": "bedrock",
-      "p": 0.97,
-      "raw": {
-        "type": "noul",
-        "noul": 0.97
-      }
-    },
-    {
-      "slot": "q3",
-      "qid": "q15_jev_synapse",
+      "qid": "q18_address_is_data",
       "kind": "speculative",
       "p": 0.05,
       "raw": {
         "type": "noul",
         "noul": 0.05
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q16_vibecoder_signal_chain",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q21_memory_sandbox",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
       }
     },
     {
       "slot": "q4",
       "qid": "q01_cells_are_scars",
       "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
       "p": 0.97,
       "raw": {
         "type": "noul",
         "noul": 0.97
       }
-    },
-    {
-      "slot": "q5",
-      "qid": "q14_chain_dialing_real",
-      "kind": "speculative",
-      "p": 0.05,
-      "raw": {
-        "type": "noul",
-        "noul": 0.05
-      }
     }
   ],
-  "mean_p": 0.414,
+  "mean_p": 0.416,
   "n_ok": 5
 }

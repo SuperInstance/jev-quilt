@@ -1,31 +1,31 @@
 {
   "round_id": "r016",
-  "ts": "2026-10-18T21:03:56+00:00",
+  "ts": "2026-10-19T01:02:40+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q04_oracle_is_heard",
+      "qid": "q19_style_resilience",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q05_lenia_flows",
+      "qid": "q22_provenance_conflict",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q06_three_views",
+      "qid": "q01_cells_are_scars",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q08_polyformalism",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q22_provenance_conflict",
+      "qid": "q02_witness_log_is_prediction",
       "type": "noul"
     }
   ],
@@ -34,46 +34,16 @@
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q04_oracle_is_heard",
-      "kind": "bedrock",
-      "p": 0.98,
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.04
       }
     },
     {
       "slot": "q2",
-      "qid": "q05_lenia_flows",
-      "kind": "bedrock",
-      "p": 0.97,
-      "raw": {
-        "type": "noul",
-        "noul": 0.97
-      }
-    },
-    {
-      "slot": "q3",
-      "qid": "q06_three_views",
-      "kind": "review",
-      "p": 0.17,
-      "raw": {
-        "type": "noul",
-        "noul": 0.17
-      }
-    },
-    {
-      "slot": "q4",
-      "qid": "q08_polyformalism",
-      "kind": "bedrock",
-      "p": 0.98,
-      "raw": {
-        "type": "noul",
-        "noul": 0.98
-      }
-    },
-    {
-      "slot": "q5",
       "qid": "q22_provenance_conflict",
       "kind": "speculative",
       "p": 0.03,
@@ -81,8 +51,38 @@
         "type": "noul",
         "noul": 0.03
       }
+    },
+    {
+      "slot": "q3",
+      "qid": "q01_cells_are_scars",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
     }
   ],
-  "mean_p": 0.626,
+  "mean_p": 0.414,
   "n_ok": 5
 }

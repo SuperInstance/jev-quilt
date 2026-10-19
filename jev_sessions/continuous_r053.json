@@ -1,50 +1,50 @@
 {
   "round_id": "r053",
-  "ts": "2026-10-18T21:04:02+00:00",
+  "ts": "2026-10-19T01:02:45+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q11_canon_gate_is_chord",
+      "qid": "q03_substrate_is_grown",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q05_lenia_flows",
+      "qid": "q07_11_opcodes",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q19_style_resilience",
+      "qid": "q11_canon_gate_is_chord",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q01_cells_are_scars",
+      "qid": "q17_canary_honesty",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q02_witness_log_is_prediction",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.117,
+  "elapsed_s": 0.163,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q11_canon_gate_is_chord",
-      "kind": "review",
-      "p": 0.05,
+      "qid": "q03_substrate_is_grown",
+      "kind": "bedrock",
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.98
       }
     },
     {
       "slot": "q2",
-      "qid": "q05_lenia_flows",
+      "qid": "q07_11_opcodes",
       "kind": "bedrock",
       "p": 0.97,
       "raw": {
@@ -54,35 +54,35 @@
     },
     {
       "slot": "q3",
-      "qid": "q19_style_resilience",
-      "kind": "adversarial",
-      "p": 0.04,
+      "qid": "q11_canon_gate_is_chord",
+      "kind": "review",
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.04
+        "noul": 0.05
       }
     },
     {
       "slot": "q4",
-      "qid": "q01_cells_are_scars",
-      "kind": "bedrock",
-      "p": 0.98,
+      "qid": "q17_canary_honesty",
+      "kind": "review",
+      "p": 0.66,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.66
       }
     },
     {
       "slot": "q5",
-      "qid": "q02_witness_log_is_prediction",
-      "kind": "bedrock",
-      "p": 0.98,
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.05
       }
     }
   ],
-  "mean_p": 0.604,
+  "mean_p": 0.542,
   "n_ok": 5
 }

@@ -1,51 +1,41 @@
 {
   "round_id": "r075",
-  "ts": "2026-10-18T21:04:05+00:00",
+  "ts": "2026-10-19T01:02:48+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q19_style_resilience",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q16_vibecoder_signal_chain",
+      "qid": "q01_cells_are_scars",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q20_wolffs_law",
-      "type": "noul"
-    },
-    {
-      "slot": "q4",
       "qid": "q15_jev_synapse",
       "type": "noul"
     },
     {
+      "slot": "q4",
+      "qid": "q08_polyformalism",
+      "type": "noul"
+    },
+    {
       "slot": "q5",
-      "qid": "q17_canary_honesty",
+      "qid": "q02_witness_log_is_prediction",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.125,
+  "elapsed_s": 0.119,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q13_witness_log_opcode",
-      "kind": "review",
-      "p": 0.12,
-      "raw": {
-        "type": "noul",
-        "noul": 0.12
-      }
-    },
-    {
-      "slot": "q2",
-      "qid": "q16_vibecoder_signal_chain",
-      "kind": "speculative",
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
       "p": 0.04,
       "raw": {
         "type": "noul",
@@ -53,17 +43,17 @@
       }
     },
     {
-      "slot": "q3",
-      "qid": "q20_wolffs_law",
-      "kind": "speculative",
-      "p": 0.05,
+      "slot": "q2",
+      "qid": "q01_cells_are_scars",
+      "kind": "bedrock",
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.98
       }
     },
     {
-      "slot": "q4",
+      "slot": "q3",
       "qid": "q15_jev_synapse",
       "kind": "speculative",
       "p": 0.05,
@@ -73,16 +63,26 @@
       }
     },
     {
-      "slot": "q5",
-      "qid": "q17_canary_honesty",
-      "kind": "review",
-      "p": 0.68,
+      "slot": "q4",
+      "qid": "q08_polyformalism",
+      "kind": "bedrock",
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.68
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
       }
     }
   ],
-  "mean_p": 0.188,
+  "mean_p": 0.604,
   "n_ok": 5
 }

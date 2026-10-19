@@ -1,70 +1,70 @@
 {
   "round_id": "r025",
-  "ts": "2026-10-18T21:03:58+00:00",
+  "ts": "2026-10-19T01:02:41+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q11_canon_gate_is_chord",
+      "qid": "q10_quorum_meshing",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q06_three_views",
+      "qid": "q07_11_opcodes",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q19_style_resilience",
+      "qid": "q09_signal_chain_canon",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q20_wolffs_law",
+      "qid": "q14_chain_dialing_real",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q09_signal_chain_canon",
+      "qid": "q08_polyformalism",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.127,
+  "elapsed_s": 0.122,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q11_canon_gate_is_chord",
-      "kind": "review",
-      "p": 0.05,
+      "qid": "q10_quorum_meshing",
+      "kind": "speculative",
+      "p": 0.03,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.03
       }
     },
     {
       "slot": "q2",
-      "qid": "q06_three_views",
-      "kind": "review",
-      "p": 0.16,
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.97,
       "raw": {
         "type": "noul",
-        "noul": 0.16
+        "noul": 0.97
       }
     },
     {
       "slot": "q3",
-      "qid": "q19_style_resilience",
-      "kind": "adversarial",
-      "p": 0.04,
+      "qid": "q09_signal_chain_canon",
+      "kind": "speculative",
+      "p": 0.22,
       "raw": {
         "type": "noul",
-        "noul": 0.04
+        "noul": 0.22
       }
     },
     {
       "slot": "q4",
-      "qid": "q20_wolffs_law",
+      "qid": "q14_chain_dialing_real",
       "kind": "speculative",
       "p": 0.05,
       "raw": {
@@ -74,15 +74,15 @@
     },
     {
       "slot": "q5",
-      "qid": "q09_signal_chain_canon",
-      "kind": "speculative",
-      "p": 0.2,
+      "qid": "q08_polyformalism",
+      "kind": "bedrock",
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.2
+        "noul": 0.98
       }
     }
   ],
-  "mean_p": 0.1,
+  "mean_p": 0.45,
   "n_ok": 5
 }

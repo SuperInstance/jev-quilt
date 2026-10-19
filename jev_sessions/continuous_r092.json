@@ -1,6 +1,6 @@
 {
   "round_id": "r092",
-  "ts": "2026-10-18T21:04:07+00:00",
+  "ts": "2026-10-19T01:02:50+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
@@ -10,17 +10,17 @@
     },
     {
       "slot": "q2",
-      "qid": "q14_chain_dialing_real",
+      "qid": "q15_jev_synapse",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q22_provenance_conflict",
+      "qid": "q13_witness_log_opcode",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q07_11_opcodes",
+      "qid": "q02_witness_log_is_prediction",
       "type": "noul"
     },
     {
@@ -29,22 +29,22 @@
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.128,
+  "elapsed_s": 0.167,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
       "qid": "q04_oracle_is_heard",
       "kind": "bedrock",
-      "p": 0.97,
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.97
+        "noul": 0.98
       }
     },
     {
       "slot": "q2",
-      "qid": "q14_chain_dialing_real",
+      "qid": "q15_jev_synapse",
       "kind": "speculative",
       "p": 0.05,
       "raw": {
@@ -54,22 +54,22 @@
     },
     {
       "slot": "q3",
-      "qid": "q22_provenance_conflict",
-      "kind": "speculative",
-      "p": 0.03,
+      "qid": "q13_witness_log_opcode",
+      "kind": "review",
+      "p": 0.11,
       "raw": {
         "type": "noul",
-        "noul": 0.03
+        "noul": 0.11
       }
     },
     {
       "slot": "q4",
-      "qid": "q07_11_opcodes",
+      "qid": "q02_witness_log_is_prediction",
       "kind": "bedrock",
-      "p": 0.97,
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.97
+        "noul": 0.98
       }
     },
     {
@@ -83,6 +83,6 @@
       }
     }
   ],
-  "mean_p": 0.6,
+  "mean_p": 0.62,
   "n_ok": 5
 }

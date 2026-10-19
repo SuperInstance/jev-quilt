@@ -1,40 +1,70 @@
 {
   "round_id": "r056",
-  "ts": "2026-10-18T21:04:02+00:00",
+  "ts": "2026-10-19T01:02:45+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q22_provenance_conflict",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q04_oracle_is_heard",
+      "qid": "q02_witness_log_is_prediction",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q21_memory_sandbox",
+      "qid": "q14_chain_dialing_real",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q18_address_is_data",
+      "qid": "q10_quorum_meshing",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q15_jev_synapse",
+      "qid": "q08_polyformalism",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.161,
+  "elapsed_s": 0.108,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q22_provenance_conflict",
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q14_chain_dialing_real",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q10_quorum_meshing",
       "kind": "speculative",
       "p": 0.03,
       "raw": {
@@ -43,46 +73,16 @@
       }
     },
     {
-      "slot": "q2",
-      "qid": "q04_oracle_is_heard",
+      "slot": "q5",
+      "qid": "q08_polyformalism",
       "kind": "bedrock",
       "p": 0.98,
       "raw": {
         "type": "noul",
         "noul": 0.98
       }
-    },
-    {
-      "slot": "q3",
-      "qid": "q21_memory_sandbox",
-      "kind": "speculative",
-      "p": 0.04,
-      "raw": {
-        "type": "noul",
-        "noul": 0.04
-      }
-    },
-    {
-      "slot": "q4",
-      "qid": "q18_address_is_data",
-      "kind": "speculative",
-      "p": 0.05,
-      "raw": {
-        "type": "noul",
-        "noul": 0.05
-      }
-    },
-    {
-      "slot": "q5",
-      "qid": "q15_jev_synapse",
-      "kind": "speculative",
-      "p": 0.05,
-      "raw": {
-        "type": "noul",
-        "noul": 0.05
-      }
     }
   ],
-  "mean_p": 0.23,
+  "mean_p": 0.416,
   "n_ok": 5
 }

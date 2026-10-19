@@ -1,88 +1,88 @@
 {
   "round_id": "r093",
-  "ts": "2026-10-18T21:04:07+00:00",
+  "ts": "2026-10-19T01:02:51+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q07_11_opcodes",
+      "qid": "q08_polyformalism",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q14_chain_dialing_real",
+      "qid": "q12_substrate_polyformal",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q06_three_views",
+      "qid": "q19_style_resilience",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q15_jev_synapse",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q17_canary_honesty",
+      "qid": "q04_oracle_is_heard",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.123,
+  "elapsed_s": 0.119,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q07_11_opcodes",
+      "qid": "q08_polyformalism",
       "kind": "bedrock",
-      "p": 0.97,
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.97
+        "noul": 0.98
       }
     },
     {
       "slot": "q2",
-      "qid": "q14_chain_dialing_real",
-      "kind": "speculative",
-      "p": 0.05,
+      "qid": "q12_substrate_polyformal",
+      "kind": "review",
+      "p": 0.61,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.61
       }
     },
     {
       "slot": "q3",
-      "qid": "q06_three_views",
-      "kind": "review",
-      "p": 0.16,
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.16
+        "noul": 0.04
       }
     },
     {
       "slot": "q4",
-      "qid": "q15_jev_synapse",
+      "qid": "q16_vibecoder_signal_chain",
       "kind": "speculative",
-      "p": 0.05,
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.04
       }
     },
     {
       "slot": "q5",
-      "qid": "q17_canary_honesty",
-      "kind": "review",
-      "p": 0.67,
+      "qid": "q04_oracle_is_heard",
+      "kind": "bedrock",
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.67
+        "noul": 0.98
       }
     }
   ],
-  "mean_p": 0.38,
+  "mean_p": 0.53,
   "n_ok": 5
 }

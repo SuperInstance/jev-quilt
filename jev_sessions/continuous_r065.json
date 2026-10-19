@@ -1,88 +1,88 @@
 {
   "round_id": "r065",
-  "ts": "2026-10-18T21:04:03+00:00",
+  "ts": "2026-10-19T01:02:47+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q19_style_resilience",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q18_address_is_data",
+      "qid": "q12_substrate_polyformal",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q11_canon_gate_is_chord",
+      "qid": "q02_witness_log_is_prediction",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q06_three_views",
+      "qid": "q21_memory_sandbox",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q22_provenance_conflict",
+      "qid": "q14_chain_dialing_real",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.143,
+  "elapsed_s": 0.173,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q13_witness_log_opcode",
-      "kind": "review",
-      "p": 0.12,
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.12
+        "noul": 0.04
       }
     },
     {
       "slot": "q2",
-      "qid": "q18_address_is_data",
-      "kind": "speculative",
-      "p": 0.05,
+      "qid": "q12_substrate_polyformal",
+      "kind": "review",
+      "p": 0.63,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.63
       }
     },
     {
       "slot": "q3",
-      "qid": "q11_canon_gate_is_chord",
-      "kind": "review",
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q21_memory_sandbox",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q14_chain_dialing_real",
+      "kind": "speculative",
       "p": 0.05,
       "raw": {
         "type": "noul",
         "noul": 0.05
       }
-    },
-    {
-      "slot": "q4",
-      "qid": "q06_three_views",
-      "kind": "review",
-      "p": 0.16,
-      "raw": {
-        "type": "noul",
-        "noul": 0.16
-      }
-    },
-    {
-      "slot": "q5",
-      "qid": "q22_provenance_conflict",
-      "kind": "speculative",
-      "p": 0.03,
-      "raw": {
-        "type": "noul",
-        "noul": 0.03
-      }
     }
   ],
-  "mean_p": 0.082,
+  "mean_p": 0.348,
   "n_ok": 5
 }

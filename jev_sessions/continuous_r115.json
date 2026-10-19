@@ -1,69 +1,39 @@
 {
   "round_id": "r115",
-  "ts": "2026-10-18T21:04:10+00:00",
+  "ts": "2026-10-19T01:02:54+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q19_style_resilience",
-      "type": "noul"
-    },
-    {
-      "slot": "q2",
-      "qid": "q06_three_views",
-      "type": "noul"
-    },
-    {
-      "slot": "q3",
-      "qid": "q09_signal_chain_canon",
-      "type": "noul"
-    },
-    {
-      "slot": "q4",
       "qid": "q08_polyformalism",
       "type": "noul"
     },
     {
+      "slot": "q2",
+      "qid": "q01_cells_are_scars",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q16_vibecoder_signal_chain",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q14_chain_dialing_real",
+      "type": "noul"
+    },
+    {
       "slot": "q5",
-      "qid": "q22_provenance_conflict",
+      "qid": "q07_11_opcodes",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.157,
+  "elapsed_s": 0.091,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q19_style_resilience",
-      "kind": "adversarial",
-      "p": 0.04,
-      "raw": {
-        "type": "noul",
-        "noul": 0.04
-      }
-    },
-    {
-      "slot": "q2",
-      "qid": "q06_three_views",
-      "kind": "review",
-      "p": 0.17,
-      "raw": {
-        "type": "noul",
-        "noul": 0.17
-      }
-    },
-    {
-      "slot": "q3",
-      "qid": "q09_signal_chain_canon",
-      "kind": "speculative",
-      "p": 0.2,
-      "raw": {
-        "type": "noul",
-        "noul": 0.2
-      }
-    },
-    {
-      "slot": "q4",
       "qid": "q08_polyformalism",
       "kind": "bedrock",
       "p": 0.98,
@@ -73,16 +43,46 @@
       }
     },
     {
-      "slot": "q5",
-      "qid": "q22_provenance_conflict",
-      "kind": "speculative",
-      "p": 0.03,
+      "slot": "q2",
+      "qid": "q01_cells_are_scars",
+      "kind": "bedrock",
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.03
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q16_vibecoder_signal_chain",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q14_chain_dialing_real",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
       }
     }
   ],
-  "mean_p": 0.284,
+  "mean_p": 0.604,
   "n_ok": 5
 }

@@ -1,88 +1,88 @@
 {
   "round_id": "r085",
-  "ts": "2026-10-18T21:04:06+00:00",
+  "ts": "2026-10-19T01:02:49+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q20_wolffs_law",
+      "qid": "q07_11_opcodes",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q01_cells_are_scars",
+      "qid": "q05_lenia_flows",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q03_substrate_is_grown",
+      "qid": "q04_oracle_is_heard",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q21_memory_sandbox",
+      "qid": "q19_style_resilience",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q12_substrate_polyformal",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.104,
+  "elapsed_s": 0.1,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q20_wolffs_law",
-      "kind": "speculative",
-      "p": 0.05,
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.97,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.97
       }
     },
     {
       "slot": "q2",
-      "qid": "q01_cells_are_scars",
+      "qid": "q05_lenia_flows",
       "kind": "bedrock",
-      "p": 0.98,
+      "p": 0.97,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.97
       }
     },
     {
       "slot": "q3",
-      "qid": "q03_substrate_is_grown",
+      "qid": "q04_oracle_is_heard",
       "kind": "bedrock",
-      "p": 0.98,
+      "p": 0.97,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.97
       }
     },
     {
       "slot": "q4",
-      "qid": "q21_memory_sandbox",
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
+      "p": 0.03,
+      "raw": {
+        "type": "noul",
+        "noul": 0.03
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q16_vibecoder_signal_chain",
       "kind": "speculative",
       "p": 0.04,
       "raw": {
         "type": "noul",
         "noul": 0.04
       }
-    },
-    {
-      "slot": "q5",
-      "qid": "q12_substrate_polyformal",
-      "kind": "review",
-      "p": 0.62,
-      "raw": {
-        "type": "noul",
-        "noul": 0.62
-      }
     }
   ],
-  "mean_p": 0.534,
+  "mean_p": 0.596,
   "n_ok": 5
 }

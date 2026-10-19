@@ -1,6 +1,6 @@
 {
   "round_id": "r011",
-  "ts": "2026-10-18T21:03:56+00:00",
+  "ts": "2026-10-19T01:02:39+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
@@ -15,21 +15,21 @@
     },
     {
       "slot": "q3",
-      "qid": "q16_vibecoder_signal_chain",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q06_three_views",
+      "qid": "q21_memory_sandbox",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q11_canon_gate_is_chord",
+      "qid": "q09_signal_chain_canon",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.166,
+  "elapsed_s": 0.11,
   "status": "ok",
   "verdicts": [
     {
@@ -54,7 +54,17 @@
     },
     {
       "slot": "q3",
-      "qid": "q16_vibecoder_signal_chain",
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q21_memory_sandbox",
       "kind": "speculative",
       "p": 0.04,
       "raw": {
@@ -63,26 +73,16 @@
       }
     },
     {
-      "slot": "q4",
-      "qid": "q06_three_views",
-      "kind": "review",
-      "p": 0.16,
-      "raw": {
-        "type": "noul",
-        "noul": 0.16
-      }
-    },
-    {
       "slot": "q5",
-      "qid": "q11_canon_gate_is_chord",
-      "kind": "review",
-      "p": 0.05,
+      "qid": "q09_signal_chain_canon",
+      "kind": "speculative",
+      "p": 0.22,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.22
       }
     }
   ],
-  "mean_p": 0.442,
+  "mean_p": 0.454,
   "n_ok": 5
 }

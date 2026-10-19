@@ -1,40 +1,40 @@
 {
   "round_id": "r082",
-  "ts": "2026-10-18T21:04:06+00:00",
+  "ts": "2026-10-19T01:02:49+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q20_wolffs_law",
+      "qid": "q15_jev_synapse",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q03_substrate_is_grown",
+      "qid": "q21_memory_sandbox",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q04_oracle_is_heard",
+      "qid": "q10_quorum_meshing",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q06_three_views",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q01_cells_are_scars",
+      "qid": "q06_three_views",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.145,
+  "elapsed_s": 0.087,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q20_wolffs_law",
+      "qid": "q15_jev_synapse",
       "kind": "speculative",
       "p": 0.05,
       "raw": {
@@ -44,45 +44,45 @@
     },
     {
       "slot": "q2",
-      "qid": "q03_substrate_is_grown",
-      "kind": "bedrock",
-      "p": 0.98,
+      "qid": "q21_memory_sandbox",
+      "kind": "speculative",
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.04
       }
     },
     {
       "slot": "q3",
-      "qid": "q04_oracle_is_heard",
-      "kind": "bedrock",
-      "p": 0.97,
+      "qid": "q10_quorum_meshing",
+      "kind": "speculative",
+      "p": 0.03,
       "raw": {
         "type": "noul",
-        "noul": 0.97
+        "noul": 0.03
       }
     },
     {
       "slot": "q4",
-      "qid": "q06_three_views",
-      "kind": "review",
-      "p": 0.19,
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.19
+        "noul": 0.05
       }
     },
     {
       "slot": "q5",
-      "qid": "q01_cells_are_scars",
-      "kind": "bedrock",
-      "p": 0.98,
+      "qid": "q06_three_views",
+      "kind": "review",
+      "p": 0.21,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.21
       }
     }
   ],
-  "mean_p": 0.634,
+  "mean_p": 0.076,
   "n_ok": 5
 }

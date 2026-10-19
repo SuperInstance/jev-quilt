@@ -1,51 +1,51 @@
 {
   "round_id": "r080",
-  "ts": "2026-10-18T21:04:05+00:00",
+  "ts": "2026-10-19T01:02:49+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q05_lenia_flows",
+      "qid": "q11_canon_gate_is_chord",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q19_style_resilience",
+      "qid": "q21_memory_sandbox",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q12_substrate_polyformal",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q02_witness_log_is_prediction",
+      "qid": "q07_11_opcodes",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q10_quorum_meshing",
+      "qid": "q13_witness_log_opcode",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.113,
+  "elapsed_s": 0.14,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q05_lenia_flows",
-      "kind": "bedrock",
-      "p": 0.97,
+      "qid": "q11_canon_gate_is_chord",
+      "kind": "review",
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.97
+        "noul": 0.05
       }
     },
     {
       "slot": "q2",
-      "qid": "q19_style_resilience",
-      "kind": "adversarial",
+      "qid": "q21_memory_sandbox",
+      "kind": "speculative",
       "p": 0.04,
       "raw": {
         "type": "noul",
@@ -54,35 +54,35 @@
     },
     {
       "slot": "q3",
-      "qid": "q12_substrate_polyformal",
-      "kind": "review",
-      "p": 0.61,
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.61
+        "noul": 0.05
       }
     },
     {
       "slot": "q4",
-      "qid": "q02_witness_log_is_prediction",
+      "qid": "q07_11_opcodes",
       "kind": "bedrock",
-      "p": 0.98,
+      "p": 0.97,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.97
       }
     },
     {
       "slot": "q5",
-      "qid": "q10_quorum_meshing",
-      "kind": "speculative",
-      "p": 0.03,
+      "qid": "q13_witness_log_opcode",
+      "kind": "review",
+      "p": 0.12,
       "raw": {
         "type": "noul",
-        "noul": 0.03
+        "noul": 0.12
       }
     }
   ],
-  "mean_p": 0.526,
+  "mean_p": 0.246,
   "n_ok": 5
 }
