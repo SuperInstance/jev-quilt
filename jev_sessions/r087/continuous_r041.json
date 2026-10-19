@@ -1,0 +1,23 @@
+{
+  "round": 41,
+  "ts": "2026-10-19T08:04:51Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q11_canon_gate_is_chord",
+    "q04_oracle_is_heard",
+    "q09_signal_chain",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.22,
+    "q11_canon_gate_is_chord": 0.58,
+    "q04_oracle_is_heard": 0.96,
+    "q09_signal_chain": 0.57,
+    "q21_memory_sandbox": 0.29
+  },
+  "usage": {
+    "input_tokens": 1399,
+    "output_tokens": 115
+  }
+}

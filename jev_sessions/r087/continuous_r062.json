@@ -1,0 +1,23 @@
+{
+  "round": 62,
+  "ts": "2026-10-19T08:04:54Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q06_three_views",
+    "q04_oracle_is_heard",
+    "q11_canon_gate_is_chord",
+    "q12_witness_note_opcode",
+    "q03_substrate_is_grown"
+  ],
+  "verdicts": {
+    "q06_three_views": 0.23,
+    "q04_oracle_is_heard": 0.96,
+    "q11_canon_gate_is_chord": 0.59,
+    "q12_witness_note_opcode": 0.56,
+    "q03_substrate_is_grown": 0.97
+  },
+  "usage": {
+    "input_tokens": 1398,
+    "output_tokens": 118
+  }
+}

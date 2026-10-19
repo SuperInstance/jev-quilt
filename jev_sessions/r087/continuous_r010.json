@@ -1,0 +1,23 @@
+{
+  "round": 10,
+  "ts": "2026-10-19T08:04:47Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q04_oracle_is_heard",
+    "q21_memory_sandbox",
+    "q12_witness_note_opcode",
+    "q13_chain_dialing"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.93,
+    "q04_oracle_is_heard": 0.96,
+    "q21_memory_sandbox": 0.28,
+    "q12_witness_note_opcode": 0.56,
+    "q13_chain_dialing": 0.62
+  },
+  "usage": {
+    "input_tokens": 1395,
+    "output_tokens": 118
+  }
+}

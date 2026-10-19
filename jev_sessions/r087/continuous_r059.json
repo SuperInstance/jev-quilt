@@ -1,0 +1,23 @@
+{
+  "round": 59,
+  "ts": "2026-10-19T08:04:54Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q17_canary_honesty",
+    "q15_twentyfour_ports",
+    "q11_canon_gate_is_chord",
+    "q18_address_is_data"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q17_canary_honesty": 0.77,
+    "q15_twentyfour_ports": 0.18,
+    "q11_canon_gate_is_chord": 0.58,
+    "q18_address_is_data": 0.6
+  },
+  "usage": {
+    "input_tokens": 1434,
+    "output_tokens": 117
+  }
+}

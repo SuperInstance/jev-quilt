@@ -1,0 +1,23 @@
+{
+  "round": 42,
+  "ts": "2026-10-19T08:04:51Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q12_witness_note_opcode",
+    "q06_three_views",
+    "q07_eleven_opcodes",
+    "q04_oracle_is_heard",
+    "q08_polyformalism_12_ports"
+  ],
+  "verdicts": {
+    "q12_witness_note_opcode": 0.56,
+    "q06_three_views": 0.21,
+    "q07_eleven_opcodes": 0.94,
+    "q04_oracle_is_heard": 0.96,
+    "q08_polyformalism_12_ports": 0.88
+  },
+  "usage": {
+    "input_tokens": 1442,
+    "output_tokens": 118
+  }
+}

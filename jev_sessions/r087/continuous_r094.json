@@ -1,0 +1,23 @@
+{
+  "round": 94,
+  "ts": "2026-10-19T08:04:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q18_address_is_data",
+    "q10_quorum_meshing",
+    "q05_lenia_flows",
+    "q17_canary_honesty",
+    "q15_twentyfour_ports"
+  ],
+  "verdicts": {
+    "q18_address_is_data": 0.6,
+    "q10_quorum_meshing": 0.86,
+    "q05_lenia_flows": 0.96,
+    "q17_canary_honesty": 0.76,
+    "q15_twentyfour_ports": 0.18
+  },
+  "usage": {
+    "input_tokens": 1416,
+    "output_tokens": 115
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 21,
+  "ts": "2026-10-19T08:04:48Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q01_cells_are_scars",
+    "q15_twentyfour_ports",
+    "q13_chain_dialing",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.23,
+    "q01_cells_are_scars": 0.97,
+    "q15_twentyfour_ports": 0.2,
+    "q13_chain_dialing": 0.6,
+    "q05_lenia_flows": 0.95
+  },
+  "usage": {
+    "input_tokens": 1387,
+    "output_tokens": 115
+  }
+}

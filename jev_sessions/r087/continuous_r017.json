@@ -1,0 +1,23 @@
+{
+  "round": 17,
+  "ts": "2026-10-19T08:04:48Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q18_address_is_data",
+    "q20_wolffs_law",
+    "q08_polyformalism_12_ports",
+    "q17_canary_honesty"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.22,
+    "q18_address_is_data": 0.59,
+    "q20_wolffs_law": 0.55,
+    "q08_polyformalism_12_ports": 0.87,
+    "q17_canary_honesty": 0.76
+  },
+  "usage": {
+    "input_tokens": 1443,
+    "output_tokens": 119
+  }
+}

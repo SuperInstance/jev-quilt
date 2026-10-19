@@ -1,0 +1,23 @@
+{
+  "round": 18,
+  "ts": "2026-10-19T08:04:48Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q12_witness_note_opcode",
+    "q04_oracle_is_heard",
+    "q18_address_is_data",
+    "q01_cells_are_scars",
+    "q02_witness_log_is_prediction"
+  ],
+  "verdicts": {
+    "q12_witness_note_opcode": 0.57,
+    "q04_oracle_is_heard": 0.96,
+    "q18_address_is_data": 0.59,
+    "q01_cells_are_scars": 0.97,
+    "q02_witness_log_is_prediction": 0.94
+  },
+  "usage": {
+    "input_tokens": 1395,
+    "output_tokens": 117
+  }
+}
