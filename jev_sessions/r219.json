@@ -1,0 +1,88 @@
+{
+  "round_id": "r219",
+  "ts": "2026-10-19T12:04:25+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q07_11_opcodes",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q19_style_resilience",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q14_chain_dialing_real",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q18_address_is_data",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q21_memory_sandbox",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.134,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q14_chain_dialing_real",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q18_address_is_data",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q21_memory_sandbox",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    }
+  ],
+  "mean_p": 0.23,
+  "n_ok": 5
+}

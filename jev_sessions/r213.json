@@ -1,0 +1,88 @@
+{
+  "round_id": "r213",
+  "ts": "2026-10-19T12:04:24+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q21_memory_sandbox",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q06_three_views",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q03_substrate_is_grown",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q15_jev_synapse",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q20_wolffs_law",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.16,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q21_memory_sandbox",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q06_three_views",
+      "kind": "review",
+      "p": 0.15,
+      "raw": {
+        "type": "noul",
+        "noul": 0.15
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q03_substrate_is_grown",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q15_jev_synapse",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    }
+  ],
+  "mean_p": 0.254,
+  "n_ok": 5
+}

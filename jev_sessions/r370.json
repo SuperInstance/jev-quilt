@@ -1,0 +1,88 @@
+{
+  "round_id": "r370",
+  "ts": "2026-10-19T12:04:49+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q01_cells_are_scars",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q22_provenance_conflict",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q03_substrate_is_grown",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q08_polyformalism",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q16_vibecoder_signal_chain",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.17,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q01_cells_are_scars",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q22_provenance_conflict",
+      "kind": "speculative",
+      "p": 0.03,
+      "raw": {
+        "type": "noul",
+        "noul": 0.03
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q03_substrate_is_grown",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q08_polyformalism",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q16_vibecoder_signal_chain",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    }
+  ],
+  "mean_p": 0.6,
+  "n_ok": 5
+}

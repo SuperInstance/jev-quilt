@@ -1,0 +1,88 @@
+{
+  "round_id": "r399",
+  "ts": "2026-10-19T12:04:53+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q05_lenia_flows",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q06_three_views",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q02_witness_log_is_prediction",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q07_11_opcodes",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q19_style_resilience",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.144,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q05_lenia_flows",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q06_three_views",
+      "kind": "review",
+      "p": 0.16,
+      "raw": {
+        "type": "noul",
+        "noul": 0.16
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    }
+  ],
+  "mean_p": 0.622,
+  "n_ok": 5
+}
