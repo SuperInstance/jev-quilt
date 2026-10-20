@@ -1,23 +1,23 @@
 {
   "round": 31,
-  "ts": "2026-10-18T15:02:18Z",
+  "ts": "2026-10-20T13:02:56Z",
   "status": "ok",
   "sampled_qids": [
-    "q06_three_views",
-    "q05_lenia_flows",
-    "q21_memory_sandbox",
-    "q16_canonicity_score",
-    "q12_witness_note_opcode"
+    "q12_witness_note_opcode",
+    "q04_oracle_is_heard",
+    "q18_address_is_data",
+    "q11_canon_gate_is_chord",
+    "q17_canary_honesty"
   ],
   "verdicts": {
-    "q06_three_views": 0.22,
-    "q05_lenia_flows": 0.96,
-    "q21_memory_sandbox": 0.3,
-    "q16_canonicity_score": 0.22,
-    "q12_witness_note_opcode": 0.57
+    "q12_witness_note_opcode": 0.56,
+    "q04_oracle_is_heard": 0.96,
+    "q18_address_is_data": 0.56,
+    "q11_canon_gate_is_chord": 0.57,
+    "q17_canary_honesty": 0.75
   },
   "usage": {
-    "input_tokens": 1405,
-    "output_tokens": 113
+    "input_tokens": 1418,
+    "output_tokens": 118
   }
 }

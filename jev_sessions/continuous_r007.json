@@ -1,23 +1,23 @@
 {
   "round": 7,
-  "ts": "2026-10-18T15:02:15Z",
+  "ts": "2026-10-20T13:02:45Z",
   "status": "ok",
   "sampled_qids": [
-    "q07_eleven_opcodes",
-    "q21_memory_sandbox",
-    "q09_signal_chain",
     "q01_cells_are_scars",
-    "q13_chain_dialing"
+    "q19_pressure_cascade",
+    "q04_oracle_is_heard",
+    "q21_memory_sandbox",
+    "q12_witness_note_opcode"
   ],
   "verdicts": {
-    "q07_eleven_opcodes": 0.94,
+    "q01_cells_are_scars": 0.97,
+    "q19_pressure_cascade": 0.26,
+    "q04_oracle_is_heard": 0.96,
     "q21_memory_sandbox": 0.28,
-    "q09_signal_chain": 0.6,
-    "q01_cells_are_scars": 0.96,
-    "q13_chain_dialing": 0.63
+    "q12_witness_note_opcode": 0.56
   },
   "usage": {
-    "input_tokens": 1417,
-    "output_tokens": 112
+    "input_tokens": 1381,
+    "output_tokens": 116
   }
 }

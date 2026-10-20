@@ -1,23 +1,23 @@
 {
   "round": 51,
-  "ts": "2026-10-18T15:02:21Z",
+  "ts": "2026-10-20T13:02:59Z",
   "status": "ok",
   "sampled_qids": [
-    "q04_oracle_is_heard",
-    "q09_signal_chain",
     "q01_cells_are_scars",
-    "q15_twentyfour_ports",
-    "q03_substrate_is_grown"
+    "q07_eleven_opcodes",
+    "q12_witness_note_opcode",
+    "q13_chain_dialing",
+    "q11_canon_gate_is_chord"
   ],
   "verdicts": {
-    "q04_oracle_is_heard": 0.96,
-    "q09_signal_chain": 0.59,
     "q01_cells_are_scars": 0.97,
-    "q15_twentyfour_ports": 0.2,
-    "q03_substrate_is_grown": 0.97
+    "q07_eleven_opcodes": 0.95,
+    "q12_witness_note_opcode": 0.55,
+    "q13_chain_dialing": 0.62,
+    "q11_canon_gate_is_chord": 0.63
   },
   "usage": {
-    "input_tokens": 1385,
-    "output_tokens": 116
+    "input_tokens": 1415,
+    "output_tokens": 117
   }
 }

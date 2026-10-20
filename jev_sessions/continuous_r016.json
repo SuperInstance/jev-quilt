@@ -1,23 +1,23 @@
 {
   "round": 16,
-  "ts": "2026-10-18T15:02:16Z",
+  "ts": "2026-10-20T13:02:51Z",
   "status": "ok",
   "sampled_qids": [
-    "q16_canonicity_score",
-    "q09_signal_chain",
-    "q04_oracle_is_heard",
-    "q12_witness_note_opcode",
-    "q18_address_is_data"
+    "q17_canary_honesty",
+    "q21_memory_sandbox",
+    "q05_lenia_flows",
+    "q19_pressure_cascade",
+    "q03_substrate_is_grown"
   ],
   "verdicts": {
-    "q16_canonicity_score": 0.23,
-    "q09_signal_chain": 0.64,
-    "q04_oracle_is_heard": 0.96,
-    "q12_witness_note_opcode": 0.56,
-    "q18_address_is_data": 0.61
+    "q17_canary_honesty": 0.76,
+    "q21_memory_sandbox": 0.29,
+    "q05_lenia_flows": 0.96,
+    "q19_pressure_cascade": 0.25,
+    "q03_substrate_is_grown": 0.97
   },
   "usage": {
-    "input_tokens": 1412,
-    "output_tokens": 113
+    "input_tokens": 1396,
+    "output_tokens": 117
   }
 }

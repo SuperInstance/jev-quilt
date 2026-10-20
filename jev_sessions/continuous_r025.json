@@ -1,23 +1,23 @@
 {
   "round": 25,
-  "ts": "2026-10-18T15:02:18Z",
+  "ts": "2026-10-20T13:02:55Z",
   "status": "ok",
   "sampled_qids": [
-    "q11_canon_gate_is_chord",
-    "q21_memory_sandbox",
+    "q15_twentyfour_ports",
+    "q18_address_is_data",
     "q05_lenia_flows",
-    "q02_witness_log_is_prediction",
-    "q17_canary_honesty"
+    "q21_memory_sandbox",
+    "q09_signal_chain"
   ],
   "verdicts": {
-    "q11_canon_gate_is_chord": 0.57,
-    "q21_memory_sandbox": 0.28,
+    "q15_twentyfour_ports": 0.19,
+    "q18_address_is_data": 0.6,
     "q05_lenia_flows": 0.95,
-    "q02_witness_log_is_prediction": 0.93,
-    "q17_canary_honesty": 0.73
+    "q21_memory_sandbox": 0.28,
+    "q09_signal_chain": 0.6
   },
   "usage": {
-    "input_tokens": 1408,
-    "output_tokens": 119
+    "input_tokens": 1401,
+    "output_tokens": 112
   }
 }

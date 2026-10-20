@@ -1,23 +1,23 @@
 {
   "round": 14,
-  "ts": "2026-10-18T15:02:16Z",
+  "ts": "2026-10-20T13:02:50Z",
   "status": "ok",
   "sampled_qids": [
-    "q20_wolffs_law",
-    "q14_canon_equals_speculation",
+    "q04_oracle_is_heard",
+    "q17_canary_honesty",
     "q07_eleven_opcodes",
-    "q13_chain_dialing",
-    "q01_cells_are_scars"
+    "q15_twentyfour_ports",
+    "q14_canon_equals_speculation"
   ],
   "verdicts": {
-    "q20_wolffs_law": 0.58,
-    "q14_canon_equals_speculation": 0.06,
+    "q04_oracle_is_heard": 0.96,
+    "q17_canary_honesty": 0.77,
     "q07_eleven_opcodes": 0.95,
-    "q13_chain_dialing": 0.6,
-    "q01_cells_are_scars": 0.97
+    "q15_twentyfour_ports": 0.19,
+    "q14_canon_equals_speculation": 0.06
   },
   "usage": {
-    "input_tokens": 1392,
-    "output_tokens": 118
+    "input_tokens": 1404,
+    "output_tokens": 120
   }
 }
