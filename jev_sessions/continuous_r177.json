@@ -1,40 +1,70 @@
 {
   "round_id": "r177",
-  "ts": "2026-10-19T01:03:02+00:00",
+  "ts": "2026-10-20T06:03:55+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q21_memory_sandbox",
+      "qid": "q14_chain_dialing_real",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q17_canary_honesty",
+      "qid": "q12_substrate_polyformal",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q10_quorum_meshing",
+      "qid": "q01_cells_are_scars",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q10_quorum_meshing",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q12_substrate_polyformal",
+      "qid": "q11_canon_gate_is_chord",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.131,
+  "elapsed_s": 0.12,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q21_memory_sandbox",
+      "qid": "q14_chain_dialing_real",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q12_substrate_polyformal",
+      "kind": "review",
+      "p": 0.63,
+      "raw": {
+        "type": "noul",
+        "noul": 0.63
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q01_cells_are_scars",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q10_quorum_meshing",
       "kind": "speculative",
       "p": 0.04,
       "raw": {
@@ -43,46 +73,16 @@
       }
     },
     {
-      "slot": "q2",
-      "qid": "q17_canary_honesty",
-      "kind": "review",
-      "p": 0.64,
-      "raw": {
-        "type": "noul",
-        "noul": 0.64
-      }
-    },
-    {
-      "slot": "q3",
-      "qid": "q10_quorum_meshing",
-      "kind": "speculative",
-      "p": 0.03,
-      "raw": {
-        "type": "noul",
-        "noul": 0.03
-      }
-    },
-    {
-      "slot": "q4",
-      "qid": "q13_witness_log_opcode",
-      "kind": "review",
-      "p": 0.09,
-      "raw": {
-        "type": "noul",
-        "noul": 0.09
-      }
-    },
-    {
       "slot": "q5",
-      "qid": "q12_substrate_polyformal",
+      "qid": "q11_canon_gate_is_chord",
       "kind": "review",
-      "p": 0.6,
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.6
+        "noul": 0.05
       }
     }
   ],
-  "mean_p": 0.28,
+  "mean_p": 0.35,
   "n_ok": 5
 }

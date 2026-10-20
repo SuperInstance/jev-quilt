@@ -1,6 +1,6 @@
 {
   "round_id": "r109",
-  "ts": "2026-10-19T01:02:53+00:00",
+  "ts": "2026-10-20T06:03:47+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
@@ -10,26 +10,26 @@
     },
     {
       "slot": "q2",
-      "qid": "q09_signal_chain_canon",
+      "qid": "q17_canary_honesty",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q21_memory_sandbox",
+      "qid": "q10_quorum_meshing",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q01_cells_are_scars",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q05_lenia_flows",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.131,
+  "elapsed_s": 0.208,
   "status": "ok",
   "verdicts": [
     {
@@ -44,45 +44,45 @@
     },
     {
       "slot": "q2",
-      "qid": "q09_signal_chain_canon",
-      "kind": "speculative",
-      "p": 0.21,
+      "qid": "q17_canary_honesty",
+      "kind": "review",
+      "p": 0.63,
       "raw": {
         "type": "noul",
-        "noul": 0.21
+        "noul": 0.63
       }
     },
     {
       "slot": "q3",
-      "qid": "q21_memory_sandbox",
+      "qid": "q10_quorum_meshing",
+      "kind": "speculative",
+      "p": 0.03,
+      "raw": {
+        "type": "noul",
+        "noul": 0.03
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q16_vibecoder_signal_chain",
       "kind": "speculative",
       "p": 0.04,
       "raw": {
         "type": "noul",
         "noul": 0.04
       }
-    },
-    {
-      "slot": "q4",
-      "qid": "q01_cells_are_scars",
-      "kind": "bedrock",
-      "p": 0.98,
-      "raw": {
-        "type": "noul",
-        "noul": 0.98
-      }
-    },
-    {
-      "slot": "q5",
-      "qid": "q05_lenia_flows",
-      "kind": "bedrock",
-      "p": 0.97,
-      "raw": {
-        "type": "noul",
-        "noul": 0.97
-      }
     }
   ],
-  "mean_p": 0.45,
+  "mean_p": 0.16,
   "n_ok": 5
 }

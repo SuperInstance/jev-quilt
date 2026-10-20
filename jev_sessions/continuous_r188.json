@@ -1,26 +1,26 @@
 {
   "round_id": "r188",
-  "ts": "2026-10-19T01:03:04+00:00",
+  "ts": "2026-10-20T06:03:56+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q16_vibecoder_signal_chain",
+      "qid": "q08_polyformalism",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q22_provenance_conflict",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q11_canon_gate_is_chord",
+      "qid": "q13_witness_log_opcode",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q09_signal_chain_canon",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
@@ -29,47 +29,47 @@
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.108,
+  "elapsed_s": 0.117,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q16_vibecoder_signal_chain",
-      "kind": "speculative",
-      "p": 0.04,
+      "qid": "q08_polyformalism",
+      "kind": "bedrock",
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.04
+        "noul": 0.98
       }
     },
     {
       "slot": "q2",
-      "qid": "q13_witness_log_opcode",
-      "kind": "review",
-      "p": 0.1,
+      "qid": "q22_provenance_conflict",
+      "kind": "speculative",
+      "p": 0.03,
       "raw": {
         "type": "noul",
-        "noul": 0.1
+        "noul": 0.03
       }
     },
     {
       "slot": "q3",
-      "qid": "q11_canon_gate_is_chord",
+      "qid": "q13_witness_log_opcode",
       "kind": "review",
-      "p": 0.05,
+      "p": 0.11,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.11
       }
     },
     {
       "slot": "q4",
-      "qid": "q09_signal_chain_canon",
+      "qid": "q20_wolffs_law",
       "kind": "speculative",
-      "p": 0.21,
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.21
+        "noul": 0.05
       }
     },
     {
@@ -83,6 +83,6 @@
       }
     }
   ],
-  "mean_p": 0.274,
+  "mean_p": 0.428,
   "n_ok": 5
 }

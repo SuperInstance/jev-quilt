@@ -1,49 +1,39 @@
 {
   "round_id": "r029",
-  "ts": "2026-10-19T01:02:42+00:00",
+  "ts": "2026-10-20T06:03:37+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q11_canon_gate_is_chord",
-      "type": "noul"
-    },
-    {
-      "slot": "q2",
       "qid": "q06_three_views",
       "type": "noul"
     },
     {
+      "slot": "q2",
+      "qid": "q09_signal_chain_canon",
+      "type": "noul"
+    },
+    {
       "slot": "q3",
-      "qid": "q08_polyformalism",
+      "qid": "q02_witness_log_is_prediction",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q03_substrate_is_grown",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q15_jev_synapse",
+      "qid": "q10_quorum_meshing",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.124,
+  "elapsed_s": 0.107,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q11_canon_gate_is_chord",
-      "kind": "review",
-      "p": 0.05,
-      "raw": {
-        "type": "noul",
-        "noul": 0.05
-      }
-    },
-    {
-      "slot": "q2",
       "qid": "q06_three_views",
       "kind": "review",
       "p": 0.17,
@@ -53,36 +43,46 @@
       }
     },
     {
-      "slot": "q3",
-      "qid": "q08_polyformalism",
-      "kind": "bedrock",
-      "p": 0.98,
+      "slot": "q2",
+      "qid": "q09_signal_chain_canon",
+      "kind": "speculative",
+      "p": 0.2,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.2
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
       }
     },
     {
       "slot": "q4",
-      "qid": "q03_substrate_is_grown",
-      "kind": "bedrock",
-      "p": 0.98,
-      "raw": {
-        "type": "noul",
-        "noul": 0.98
-      }
-    },
-    {
-      "slot": "q5",
-      "qid": "q15_jev_synapse",
+      "qid": "q20_wolffs_law",
       "kind": "speculative",
       "p": 0.05,
       "raw": {
         "type": "noul",
         "noul": 0.05
       }
+    },
+    {
+      "slot": "q5",
+      "qid": "q10_quorum_meshing",
+      "kind": "speculative",
+      "p": 0.03,
+      "raw": {
+        "type": "noul",
+        "noul": 0.03
+      }
     }
   ],
-  "mean_p": 0.446,
+  "mean_p": 0.284,
   "n_ok": 5
 }

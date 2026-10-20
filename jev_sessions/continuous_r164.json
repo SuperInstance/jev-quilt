@@ -1,16 +1,16 @@
 {
   "round_id": "r164",
-  "ts": "2026-10-19T01:03:00+00:00",
+  "ts": "2026-10-20T06:03:53+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q04_oracle_is_heard",
+      "qid": "q07_11_opcodes",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q12_substrate_polyformal",
+      "qid": "q13_witness_log_opcode",
       "type": "noul"
     },
     {
@@ -20,21 +20,21 @@
     },
     {
       "slot": "q4",
-      "qid": "q15_jev_synapse",
+      "qid": "q03_substrate_is_grown",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q06_three_views",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.107,
+  "elapsed_s": 0.103,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q04_oracle_is_heard",
+      "qid": "q07_11_opcodes",
       "kind": "bedrock",
       "p": 0.97,
       "raw": {
@@ -44,12 +44,12 @@
     },
     {
       "slot": "q2",
-      "qid": "q12_substrate_polyformal",
+      "qid": "q13_witness_log_opcode",
       "kind": "review",
-      "p": 0.6,
+      "p": 0.1,
       "raw": {
         "type": "noul",
-        "noul": 0.6
+        "noul": 0.1
       }
     },
     {
@@ -64,25 +64,25 @@
     },
     {
       "slot": "q4",
-      "qid": "q15_jev_synapse",
-      "kind": "speculative",
-      "p": 0.05,
+      "qid": "q03_substrate_is_grown",
+      "kind": "bedrock",
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.98
       }
     },
     {
       "slot": "q5",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q06_three_views",
       "kind": "review",
-      "p": 0.11,
+      "p": 0.17,
       "raw": {
         "type": "noul",
-        "noul": 0.11
+        "noul": 0.17
       }
     }
   ],
-  "mean_p": 0.352,
+  "mean_p": 0.45,
   "n_ok": 5
 }

@@ -1,50 +1,40 @@
 {
   "round_id": "r176",
-  "ts": "2026-10-19T01:03:02+00:00",
+  "ts": "2026-10-20T06:03:55+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q21_memory_sandbox",
+      "qid": "q15_jev_synapse",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q20_wolffs_law",
+      "qid": "q07_11_opcodes",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q06_three_views",
-      "type": "noul"
-    },
-    {
-      "slot": "q4",
       "qid": "q11_canon_gate_is_chord",
       "type": "noul"
     },
     {
-      "slot": "q5",
+      "slot": "q4",
       "qid": "q04_oracle_is_heard",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.107,
+  "elapsed_s": 0.122,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q21_memory_sandbox",
-      "kind": "speculative",
-      "p": 0.04,
-      "raw": {
-        "type": "noul",
-        "noul": 0.04
-      }
-    },
-    {
-      "slot": "q2",
-      "qid": "q20_wolffs_law",
+      "qid": "q15_jev_synapse",
       "kind": "speculative",
       "p": 0.05,
       "raw": {
@@ -53,17 +43,17 @@
       }
     },
     {
-      "slot": "q3",
-      "qid": "q06_three_views",
-      "kind": "review",
-      "p": 0.17,
+      "slot": "q2",
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.97,
       "raw": {
         "type": "noul",
-        "noul": 0.17
+        "noul": 0.97
       }
     },
     {
-      "slot": "q4",
+      "slot": "q3",
       "qid": "q11_canon_gate_is_chord",
       "kind": "review",
       "p": 0.05,
@@ -73,7 +63,7 @@
       }
     },
     {
-      "slot": "q5",
+      "slot": "q4",
       "qid": "q04_oracle_is_heard",
       "kind": "bedrock",
       "p": 0.97,
@@ -81,8 +71,18 @@
         "type": "noul",
         "noul": 0.97
       }
+    },
+    {
+      "slot": "q5",
+      "qid": "q16_vibecoder_signal_chain",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
     }
   ],
-  "mean_p": 0.256,
+  "mean_p": 0.416,
   "n_ok": 5
 }

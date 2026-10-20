@@ -1,59 +1,49 @@
 {
   "round_id": "r049",
-  "ts": "2026-10-19T01:02:44+00:00",
+  "ts": "2026-10-20T06:03:40+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q18_address_is_data",
+      "qid": "q21_memory_sandbox",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q04_oracle_is_heard",
-      "type": "noul"
-    },
-    {
-      "slot": "q3",
       "qid": "q05_lenia_flows",
       "type": "noul"
     },
     {
+      "slot": "q3",
+      "qid": "q19_style_resilience",
+      "type": "noul"
+    },
+    {
       "slot": "q4",
-      "qid": "q08_polyformalism",
+      "qid": "q13_witness_log_opcode",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.16,
+  "elapsed_s": 0.091,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q18_address_is_data",
+      "qid": "q21_memory_sandbox",
       "kind": "speculative",
-      "p": 0.05,
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.04
       }
     },
     {
       "slot": "q2",
-      "qid": "q04_oracle_is_heard",
-      "kind": "bedrock",
-      "p": 0.97,
-      "raw": {
-        "type": "noul",
-        "noul": 0.97
-      }
-    },
-    {
-      "slot": "q3",
       "qid": "q05_lenia_flows",
       "kind": "bedrock",
       "p": 0.97,
@@ -63,17 +53,17 @@
       }
     },
     {
-      "slot": "q4",
-      "qid": "q08_polyformalism",
-      "kind": "bedrock",
-      "p": 0.98,
+      "slot": "q3",
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.04
       }
     },
     {
-      "slot": "q5",
+      "slot": "q4",
       "qid": "q13_witness_log_opcode",
       "kind": "review",
       "p": 0.11,
@@ -81,8 +71,18 @@
         "type": "noul",
         "noul": 0.11
       }
+    },
+    {
+      "slot": "q5",
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
     }
   ],
-  "mean_p": 0.616,
+  "mean_p": 0.242,
   "n_ok": 5
 }

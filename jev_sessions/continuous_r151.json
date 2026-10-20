@@ -1,31 +1,31 @@
 {
   "round_id": "r151",
-  "ts": "2026-10-19T01:02:59+00:00",
+  "ts": "2026-10-20T06:03:52+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q07_11_opcodes",
+      "qid": "q08_polyformalism",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q16_vibecoder_signal_chain",
+      "qid": "q17_canary_honesty",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q02_witness_log_is_prediction",
+      "qid": "q05_lenia_flows",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q22_provenance_conflict",
+      "qid": "q19_style_resilience",
       "type": "noul"
     }
   ],
@@ -34,37 +34,37 @@
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q07_11_opcodes",
+      "qid": "q08_polyformalism",
       "kind": "bedrock",
-      "p": 0.97,
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.97
+        "noul": 0.98
       }
     },
     {
       "slot": "q2",
-      "qid": "q16_vibecoder_signal_chain",
-      "kind": "speculative",
-      "p": 0.04,
+      "qid": "q17_canary_honesty",
+      "kind": "review",
+      "p": 0.63,
       "raw": {
         "type": "noul",
-        "noul": 0.04
+        "noul": 0.63
       }
     },
     {
       "slot": "q3",
-      "qid": "q13_witness_log_opcode",
-      "kind": "review",
-      "p": 0.12,
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.12
+        "noul": 0.05
       }
     },
     {
       "slot": "q4",
-      "qid": "q02_witness_log_is_prediction",
+      "qid": "q05_lenia_flows",
       "kind": "bedrock",
       "p": 0.97,
       "raw": {
@@ -74,15 +74,15 @@
     },
     {
       "slot": "q5",
-      "qid": "q22_provenance_conflict",
-      "kind": "speculative",
-      "p": 0.03,
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.03
+        "noul": 0.04
       }
     }
   ],
-  "mean_p": 0.426,
+  "mean_p": 0.534,
   "n_ok": 5
 }

@@ -1,6 +1,6 @@
 {
   "round_id": "r150",
-  "ts": "2026-10-19T01:02:59+00:00",
+  "ts": "2026-10-20T06:03:52+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
@@ -10,26 +10,26 @@
     },
     {
       "slot": "q2",
-      "qid": "q01_cells_are_scars",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q08_polyformalism",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q15_jev_synapse",
+      "qid": "q04_oracle_is_heard",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q03_substrate_is_grown",
+      "qid": "q01_cells_are_scars",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.099,
+  "elapsed_s": 0.12,
   "status": "ok",
   "verdicts": [
     {
@@ -44,7 +44,17 @@
     },
     {
       "slot": "q2",
-      "qid": "q01_cells_are_scars",
+      "qid": "q16_vibecoder_signal_chain",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q08_polyformalism",
       "kind": "bedrock",
       "p": 0.98,
       "raw": {
@@ -53,28 +63,18 @@
       }
     },
     {
-      "slot": "q3",
-      "qid": "q13_witness_log_opcode",
-      "kind": "review",
-      "p": 0.13,
-      "raw": {
-        "type": "noul",
-        "noul": 0.13
-      }
-    },
-    {
       "slot": "q4",
-      "qid": "q15_jev_synapse",
-      "kind": "speculative",
-      "p": 0.05,
+      "qid": "q04_oracle_is_heard",
+      "kind": "bedrock",
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.98
       }
     },
     {
       "slot": "q5",
-      "qid": "q03_substrate_is_grown",
+      "qid": "q01_cells_are_scars",
       "kind": "bedrock",
       "p": 0.98,
       "raw": {
@@ -83,6 +83,6 @@
       }
     }
   ],
-  "mean_p": 0.438,
+  "mean_p": 0.606,
   "n_ok": 5
 }

@@ -1,49 +1,59 @@
 {
   "round_id": "r060",
-  "ts": "2026-10-19T01:02:46+00:00",
+  "ts": "2026-10-20T06:03:41+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q07_11_opcodes",
+      "qid": "q21_memory_sandbox",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q05_lenia_flows",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q08_polyformalism",
+      "qid": "q05_lenia_flows",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q12_substrate_polyformal",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q20_wolffs_law",
+      "qid": "q18_address_is_data",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.132,
+  "elapsed_s": 0.106,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q07_11_opcodes",
-      "kind": "bedrock",
-      "p": 0.97,
+      "qid": "q21_memory_sandbox",
+      "kind": "speculative",
+      "p": 0.04,
       "raw": {
         "type": "noul",
-        "noul": 0.97
+        "noul": 0.04
       }
     },
     {
       "slot": "q2",
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q3",
       "qid": "q05_lenia_flows",
       "kind": "bedrock",
       "p": 0.97,
@@ -53,28 +63,18 @@
       }
     },
     {
-      "slot": "q3",
-      "qid": "q08_polyformalism",
-      "kind": "bedrock",
-      "p": 0.98,
-      "raw": {
-        "type": "noul",
-        "noul": 0.98
-      }
-    },
-    {
       "slot": "q4",
-      "qid": "q13_witness_log_opcode",
+      "qid": "q12_substrate_polyformal",
       "kind": "review",
-      "p": 0.11,
+      "p": 0.58,
       "raw": {
         "type": "noul",
-        "noul": 0.11
+        "noul": 0.58
       }
     },
     {
       "slot": "q5",
-      "qid": "q20_wolffs_law",
+      "qid": "q18_address_is_data",
       "kind": "speculative",
       "p": 0.05,
       "raw": {
@@ -83,6 +83,6 @@
       }
     }
   ],
-  "mean_p": 0.616,
+  "mean_p": 0.338,
   "n_ok": 5
 }

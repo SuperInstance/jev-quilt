@@ -1,70 +1,50 @@
 {
   "round_id": "r046",
-  "ts": "2026-10-19T01:02:44+00:00",
+  "ts": "2026-10-20T06:03:39+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q19_style_resilience",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q01_cells_are_scars",
+      "qid": "q02_witness_log_is_prediction",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q08_polyformalism",
+      "qid": "q03_substrate_is_grown",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q07_11_opcodes",
+      "qid": "q08_polyformalism",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q21_memory_sandbox",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.098,
+  "elapsed_s": 0.101,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q19_style_resilience",
-      "kind": "adversarial",
-      "p": 0.04,
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.04
+        "noul": 0.05
       }
     },
     {
       "slot": "q2",
-      "qid": "q01_cells_are_scars",
-      "kind": "bedrock",
-      "p": 0.98,
-      "raw": {
-        "type": "noul",
-        "noul": 0.98
-      }
-    },
-    {
-      "slot": "q3",
-      "qid": "q08_polyformalism",
-      "kind": "bedrock",
-      "p": 0.98,
-      "raw": {
-        "type": "noul",
-        "noul": 0.98
-      }
-    },
-    {
-      "slot": "q4",
-      "qid": "q07_11_opcodes",
+      "qid": "q02_witness_log_is_prediction",
       "kind": "bedrock",
       "p": 0.97,
       "raw": {
@@ -73,8 +53,28 @@
       }
     },
     {
+      "slot": "q3",
+      "qid": "q03_substrate_is_grown",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q08_polyformalism",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
       "slot": "q5",
-      "qid": "q21_memory_sandbox",
+      "qid": "q16_vibecoder_signal_chain",
       "kind": "speculative",
       "p": 0.04,
       "raw": {
@@ -83,6 +83,6 @@
       }
     }
   ],
-  "mean_p": 0.602,
+  "mean_p": 0.604,
   "n_ok": 5
 }

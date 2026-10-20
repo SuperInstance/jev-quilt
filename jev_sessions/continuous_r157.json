@@ -1,26 +1,26 @@
 {
   "round_id": "r157",
-  "ts": "2026-10-19T01:03:00+00:00",
+  "ts": "2026-10-20T06:03:53+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q21_memory_sandbox",
+      "qid": "q10_quorum_meshing",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q09_signal_chain_canon",
+      "qid": "q03_substrate_is_grown",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q17_canary_honesty",
+      "qid": "q13_witness_log_opcode",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q20_wolffs_law",
+      "qid": "q22_provenance_conflict",
       "type": "noul"
     },
     {
@@ -29,47 +29,47 @@
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.128,
+  "elapsed_s": 0.102,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q21_memory_sandbox",
+      "qid": "q10_quorum_meshing",
       "kind": "speculative",
-      "p": 0.04,
+      "p": 0.03,
       "raw": {
         "type": "noul",
-        "noul": 0.04
+        "noul": 0.03
       }
     },
     {
       "slot": "q2",
-      "qid": "q09_signal_chain_canon",
-      "kind": "speculative",
-      "p": 0.21,
+      "qid": "q03_substrate_is_grown",
+      "kind": "bedrock",
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.21
+        "noul": 0.98
       }
     },
     {
       "slot": "q3",
-      "qid": "q17_canary_honesty",
+      "qid": "q13_witness_log_opcode",
       "kind": "review",
-      "p": 0.62,
+      "p": 0.12,
       "raw": {
         "type": "noul",
-        "noul": 0.62
+        "noul": 0.12
       }
     },
     {
       "slot": "q4",
-      "qid": "q20_wolffs_law",
+      "qid": "q22_provenance_conflict",
       "kind": "speculative",
-      "p": 0.05,
+      "p": 0.03,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.03
       }
     },
     {
@@ -83,6 +83,6 @@
       }
     }
   ],
-  "mean_p": 0.192,
+  "mean_p": 0.24,
   "n_ok": 5
 }

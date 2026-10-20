@@ -1,40 +1,60 @@
 {
   "round_id": "r059",
-  "ts": "2026-10-19T01:02:46+00:00",
+  "ts": "2026-10-20T06:03:41+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q02_witness_log_is_prediction",
+      "qid": "q20_wolffs_law",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q12_substrate_polyformal",
+      "qid": "q06_three_views",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q19_style_resilience",
+      "qid": "q01_cells_are_scars",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q11_canon_gate_is_chord",
+      "qid": "q05_lenia_flows",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q21_memory_sandbox",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.112,
+  "elapsed_s": 0.126,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q02_witness_log_is_prediction",
+      "qid": "q20_wolffs_law",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q06_three_views",
+      "kind": "review",
+      "p": 0.16,
+      "raw": {
+        "type": "noul",
+        "noul": 0.16
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q01_cells_are_scars",
       "kind": "bedrock",
       "p": 0.97,
       "raw": {
@@ -43,38 +63,18 @@
       }
     },
     {
-      "slot": "q2",
-      "qid": "q12_substrate_polyformal",
-      "kind": "review",
-      "p": 0.65,
-      "raw": {
-        "type": "noul",
-        "noul": 0.65
-      }
-    },
-    {
-      "slot": "q3",
-      "qid": "q19_style_resilience",
-      "kind": "adversarial",
-      "p": 0.04,
-      "raw": {
-        "type": "noul",
-        "noul": 0.04
-      }
-    },
-    {
       "slot": "q4",
-      "qid": "q11_canon_gate_is_chord",
-      "kind": "review",
-      "p": 0.06,
+      "qid": "q05_lenia_flows",
+      "kind": "bedrock",
+      "p": 0.97,
       "raw": {
         "type": "noul",
-        "noul": 0.06
+        "noul": 0.97
       }
     },
     {
       "slot": "q5",
-      "qid": "q21_memory_sandbox",
+      "qid": "q16_vibecoder_signal_chain",
       "kind": "speculative",
       "p": 0.04,
       "raw": {
@@ -83,6 +83,6 @@
       }
     }
   ],
-  "mean_p": 0.352,
+  "mean_p": 0.438,
   "n_ok": 5
 }

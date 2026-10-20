@@ -1,70 +1,50 @@
 {
   "round_id": "r174",
-  "ts": "2026-10-19T01:03:02+00:00",
+  "ts": "2026-10-20T06:03:55+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q01_cells_are_scars",
+      "qid": "q12_substrate_polyformal",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q03_substrate_is_grown",
+      "qid": "q18_address_is_data",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q15_jev_synapse",
+      "qid": "q05_lenia_flows",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q21_memory_sandbox",
+      "qid": "q04_oracle_is_heard",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q11_canon_gate_is_chord",
+      "qid": "q08_polyformalism",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.155,
+  "elapsed_s": 0.127,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q01_cells_are_scars",
-      "kind": "bedrock",
-      "p": 0.98,
+      "qid": "q12_substrate_polyformal",
+      "kind": "review",
+      "p": 0.57,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.57
       }
     },
     {
       "slot": "q2",
-      "qid": "q03_substrate_is_grown",
-      "kind": "bedrock",
-      "p": 0.98,
-      "raw": {
-        "type": "noul",
-        "noul": 0.98
-      }
-    },
-    {
-      "slot": "q3",
-      "qid": "q15_jev_synapse",
-      "kind": "speculative",
-      "p": 0.05,
-      "raw": {
-        "type": "noul",
-        "noul": 0.05
-      }
-    },
-    {
-      "slot": "q4",
-      "qid": "q21_memory_sandbox",
+      "qid": "q18_address_is_data",
       "kind": "speculative",
       "p": 0.04,
       "raw": {
@@ -73,16 +53,36 @@
       }
     },
     {
-      "slot": "q5",
-      "qid": "q11_canon_gate_is_chord",
-      "kind": "review",
-      "p": 0.05,
+      "slot": "q3",
+      "qid": "q05_lenia_flows",
+      "kind": "bedrock",
+      "p": 0.97,
       "raw": {
         "type": "noul",
-        "noul": 0.05
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q04_oracle_is_heard",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q08_polyformalism",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
       }
     }
   ],
-  "mean_p": 0.42,
+  "mean_p": 0.708,
   "n_ok": 5
 }

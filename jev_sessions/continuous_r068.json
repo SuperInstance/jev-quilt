@@ -1,50 +1,50 @@
 {
   "round_id": "r068",
-  "ts": "2026-10-19T01:02:47+00:00",
+  "ts": "2026-10-20T06:03:42+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q03_substrate_is_grown",
+      "qid": "q14_chain_dialing_real",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q02_witness_log_is_prediction",
+      "qid": "q05_lenia_flows",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q16_vibecoder_signal_chain",
+      "qid": "q10_quorum_meshing",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q21_memory_sandbox",
+      "qid": "q08_polyformalism",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q04_oracle_is_heard",
+      "qid": "q16_vibecoder_signal_chain",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.171,
+  "elapsed_s": 0.209,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q03_substrate_is_grown",
-      "kind": "bedrock",
-      "p": 0.98,
+      "qid": "q14_chain_dialing_real",
+      "kind": "speculative",
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.98
+        "noul": 0.05
       }
     },
     {
       "slot": "q2",
-      "qid": "q02_witness_log_is_prediction",
+      "qid": "q05_lenia_flows",
       "kind": "bedrock",
       "p": 0.97,
       "raw": {
@@ -54,17 +54,7 @@
     },
     {
       "slot": "q3",
-      "qid": "q16_vibecoder_signal_chain",
-      "kind": "speculative",
-      "p": 0.04,
-      "raw": {
-        "type": "noul",
-        "noul": 0.04
-      }
-    },
-    {
-      "slot": "q4",
-      "qid": "q21_memory_sandbox",
+      "qid": "q10_quorum_meshing",
       "kind": "speculative",
       "p": 0.03,
       "raw": {
@@ -73,16 +63,26 @@
       }
     },
     {
-      "slot": "q5",
-      "qid": "q04_oracle_is_heard",
+      "slot": "q4",
+      "qid": "q08_polyformalism",
       "kind": "bedrock",
-      "p": 0.97,
+      "p": 0.98,
       "raw": {
         "type": "noul",
-        "noul": 0.97
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q16_vibecoder_signal_chain",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
       }
     }
   ],
-  "mean_p": 0.598,
+  "mean_p": 0.414,
   "n_ok": 5
 }

@@ -1,59 +1,69 @@
 {
   "round_id": "r134",
-  "ts": "2026-10-19T01:02:56+00:00",
+  "ts": "2026-10-20T06:03:50+00:00",
   "endpoint": "https://api.typesafe.ai/v1/systemone",
   "questions": [
     {
       "slot": "q1",
-      "qid": "q19_style_resilience",
+      "qid": "q11_canon_gate_is_chord",
       "type": "noul"
     },
     {
       "slot": "q2",
-      "qid": "q16_vibecoder_signal_chain",
+      "qid": "q05_lenia_flows",
       "type": "noul"
     },
     {
       "slot": "q3",
-      "qid": "q22_provenance_conflict",
+      "qid": "q13_witness_log_opcode",
       "type": "noul"
     },
     {
       "slot": "q4",
-      "qid": "q18_address_is_data",
+      "qid": "q22_provenance_conflict",
       "type": "noul"
     },
     {
       "slot": "q5",
-      "qid": "q17_canary_honesty",
+      "qid": "q18_address_is_data",
       "type": "noul"
     }
   ],
-  "elapsed_s": 0.134,
+  "elapsed_s": 0.109,
   "status": "ok",
   "verdicts": [
     {
       "slot": "q1",
-      "qid": "q19_style_resilience",
-      "kind": "adversarial",
-      "p": 0.04,
+      "qid": "q11_canon_gate_is_chord",
+      "kind": "review",
+      "p": 0.05,
       "raw": {
         "type": "noul",
-        "noul": 0.04
+        "noul": 0.05
       }
     },
     {
       "slot": "q2",
-      "qid": "q16_vibecoder_signal_chain",
-      "kind": "speculative",
-      "p": 0.04,
+      "qid": "q05_lenia_flows",
+      "kind": "bedrock",
+      "p": 0.97,
       "raw": {
         "type": "noul",
-        "noul": 0.04
+        "noul": 0.97
       }
     },
     {
       "slot": "q3",
+      "qid": "q13_witness_log_opcode",
+      "kind": "review",
+      "p": 0.09,
+      "raw": {
+        "type": "noul",
+        "noul": 0.09
+      }
+    },
+    {
+      "slot": "q4",
       "qid": "q22_provenance_conflict",
       "kind": "speculative",
       "p": 0.03,
@@ -63,7 +73,7 @@
       }
     },
     {
-      "slot": "q4",
+      "slot": "q5",
       "qid": "q18_address_is_data",
       "kind": "speculative",
       "p": 0.05,
@@ -71,18 +81,8 @@
         "type": "noul",
         "noul": 0.05
       }
-    },
-    {
-      "slot": "q5",
-      "qid": "q17_canary_honesty",
-      "kind": "review",
-      "p": 0.63,
-      "raw": {
-        "type": "noul",
-        "noul": 0.63
-      }
     }
   ],
-  "mean_p": 0.158,
+  "mean_p": 0.238,
   "n_ok": 5
 }
