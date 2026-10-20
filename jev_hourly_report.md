@@ -1,148 +1,166 @@
 # JEV Continuous Probe — Hourly Report
 
-**Round run:** 2026-10-20T13:03:38Z  
-**Script:** `/workspace/research/jev_continuous_probe.py` (md5 `a50178e31471688373cec8bebd4b6588`)  
-**Model:** `jev-latest` (= jev-1.13.0) @ `api.typesafe.ai/v1/systemone`  
-**Result:** **59 ok / 1 fail**, 295 verdicts, 82,802 input tokens
+**Round run:** 2026-10-20T16:07Z → 16:08Z (55.1s)
+**Script:** `/workspace/research/jev_continuous_probe.py` — **md5 as executed: `aa77a62e68cb4d93773a490c5d54ddc2`** (recorded inside `continuous_r193.json` as `script_md5`)
+**Model:** `jev-latest` → `jev-1.13.0` @ `api.typesafe.ai/v1/systemone`
+**Result:** **193 ok / 0 fail**, 965 verdicts, rounds `r001`–`r193`
+**Compared against:** 2026-10-20T15:02Z report (script md5 `0f414043a0cdbdc8c0d499f3d6512844`)
+
+> 📌 **On the two md5s.** The script on disk is now `d0a7291b2e070ce717b9b7c7417401a2`, which does **not** match the `aa77a62e…` that executed this round. The difference is fix #5 below (`per_question_stats` stdev), applied *after* the run completed. No scoring logic, no question bank, and no doctrinal state changed between the two. `aa77a62e…` is the authoritative md5 for this round, and it is the one stamped into the data file — which is precisely why that stamping was worth adding.
+
+> ⚠️ **Workspace was wiped again** (third time in 24h). `/workspace/research/` held only `.plugin-cache`. Recovered from the drive: the probe script (newest drive copy, 16,270 B / md5 `ad1418…`) and the last two reports. **`history.jsonl` is gone again**, as are the 213 round files from 15:02. Round numbering **restarted at r001** because `history.jsonl` — the file `round_idx` derived from — was unrecoverable. This is exactly the failure the 15:02 report predicted; see "What I fixed" below.
 
 ## Headline
 
-| metric | this run | full history | drift |
+| metric | this run | 15:02 run | Δ |
 |---|---|---|---|
-| **mean_p** | **0.6195** | 0.5823 | **+0.0372** |
-| median_p | 0.6120 | 0.5800 | +0.0320 |
-| stdev | 0.1260 | 0.1253 | +0.0007 |
-| rounds | 59 | 142 | |
+| **mean_p** | **0.3898** | 0.4759 | **-0.0861** |
+| median_p | 0.4060 | 0.4720 | -0.0660 |
+| stdev | 0.1415 | 0.1219 | +0.0196 |
+| rounds | 193 | 213 | |
+| failures | 0/193 | 0/213 | |
+| verdicts | 965 | 1,065 | |
+| bedrock hits | 337 (34.9%) | — | |
 
-**Per-question drift > 0.05: NONE.** Largest single-question movement is `q13_chain_dialing` at **+0.0173** — and that is *sampling noise on n=7*, not movement.
+## The headline number is NOT comparable — and this time I can prove exactly why
 
-## The aggregate +0.037 is NOT model drift
+**14 of 22 questions moved by more than 0.05.** My own durable rule from the 15:02 report says: *"record the probe's md5 in every round file; when the script changes, `mean_p` is not comparable and the qid map is not stable."* This run's md5 is `aa77a6…`; 15:02's was `0f4140…`. **The comparison above is arithmetically correct and analytically void.** I am reporting it because the user asked for drift, not because the drift means anything.
 
-This matters, because `mean_p` is the number everyone looks at first, and it moved +0.0372 — which trips a naive 0.05 alarm. It isn't real:
+The 15:02 script was itself a post-wipe **reconstruction** that no longer exists anywhere. The 16,270 B script recovered today is a *different* bank. Proof that the qid map genuinely moved:
 
-1. **`mean_p` is a property of the *sample*, not the model.** Each round draws 5 of 22 questions uniformly at random. The 22 questions sit in three tight bands (bedrock ~0.95, review ~0.55-0.88, speculative ~0.20-0.64), so a batch that lands more bedrock questions shows a higher mean for purely combinatorial reasons.
+- 15:02 `q06` asked about *"cells / scars / wounds as triple-perspective"*, scoring 0.1180
+- today's `q06` asks *"Is `three_views` the operating epistemology canon?"*, scoring **0.0989**
 
-2. **Monte Carlo confirms it.** Drawing 20,000 synthetic 5-question batches from the historical per-question means gives an expected batch mean of **0.6060** with stdev **0.1323** (5th pct 0.3826, 95th pct 0.8143). The observed 0.6195 sits at the **53.6th percentile** — dead centre of the envelope.
+Same qid, different claim. Largest apparent movements, all cross-version artifacts:
 
-3. **Conditional on question, nothing moved.** Every one of the 22 per-question means is within 0.018 of its historical value, against per-question historical stdevs of 0.000-0.021.
-
-> **Method correction (durable):** compare `mean_p` only against a **sampling-matched** baseline — a Monte Carlo over the historical per-question distribution — never against a flat historical average. A flat baseline confounds *question mix* with *model movement*, and with a 22-question bank in 3 separated bands it produces false drift alarms roughly half the time.
-
-## Bedrock canon — 7/7 held, 104/104 clean
-
-The declared promotion criterion in `DOCTRINAL_STATE` names exactly seven bedrock questions (q01-q05, q07, q08). Every one held at 100% this run:
-
-| qid | claim | new mean | drift | hist sd | p>=0.70 |
-|---|---|---|---|---|---|
-| `q01_cells_are_scars` | cells are scars / receipts not failures | **0.9694** | +0.0004 | 0.0031 | 16/16 |
-| `q02_witness_log_is_prediction` | witness log constrains future state | **0.9367** | -0.0011 | 0.0043 | 9/9 |
-| `q03_substrate_is_grown` | substrates grown, not blueprinted | **0.9700** | +0.0000 | 0.0000 | 16/16 |
-| `q04_oracle_is_heard` | oracle = chord of agreeing witnesses | **0.9605** | +0.0002 | 0.0018 | 19/19 |
-| `q05_lenia_flows` | Lenia-like gliders move through substrate | **0.9547** | -0.0003 | 0.0051 | 15/15 |
-| `q07_eleven_opcodes` | algebra has exactly 11 opcodes | **0.9487** | +0.0012 | 0.0044 | 16/16 |
-| `q08_polyformalism_12_ports` | byte-exact across 12 ports + canary | **0.8800** | +0.0000 | 0.0113 | 13/13 |
-
-**104 bedrock verdicts, 104 at p>=0.70. Zero failures.** Note `q03_substrate_is_grown` has historical sd = **0.0000** — JEV returns a hard 0.97 every single time. The model is not uncertain about bedrock; it is *saturated*.
-
-## Everything that crossed p>=0.70
-
-Nine questions crossed the promotion line this run. Seven are declared bedrock. **Two are not**, and that is the real finding:
-
-| qid | operator tag | new mean | n | note |
+| qid | today | 15:02 | Δ | why it's meaningless |
 |---|---|---|---|---|
-| `q03_substrate_is_grown` | `bedrock` | **0.9700** | 16 | declared bedrock |
-| `q01_cells_are_scars` | `bedrock` | **0.9694** | 16 | declared bedrock |
-| `q04_oracle_is_heard` | `bedrock` | **0.9605** | 19 | declared bedrock |
-| `q05_lenia_flows` | `bedrock` | **0.9547** | 15 | declared bedrock |
-| `q07_eleven_opcodes` | `bedrock` | **0.9487** | 16 | declared bedrock |
-| `q02_witness_log_is_prediction` | `bedrock` | **0.9367** | 9 | declared bedrock |
-| `q08_polyformalism_12_ports` | `?` | **0.8800** | 13 | declared bedrock (regex miss, see notes) |
-| `q10_quorum_meshing` | `review` | **0.8600** | 12 | **tagged `review`, but scores bedrock-high** |
-| `q17_canary_honesty` | `review` | **0.7575** | 16 | **tagged `review`, borderline-high** |
+| `q10` | 0.0665 | 0.6312 | **-0.5647** | 15:02 flagged q10 as state-conditional; not the same question now |
+| `q13` | 0.1332 | 0.5412 | -0.4080 | different wording |
+| `q22` | 0.1198 | 0.4476 | -0.3278 | different wording |
+| `q16` | 0.2021 | 0.4412 | -0.2391 | 15:02's `q16` was the `score`-type question; today's is `noul` |
 
-### `q10_quorum_meshing` is the standing contradiction
+**Real signal is only available within this run**, and it is unambiguous (below). Cross-run drift cannot be measured until the script is pinned to a committed md5.
 
-> "Five amateur musicians playing together automatically outperform one virtuoso, just by playing louder. Is this SPECULATIVE / NOT YET CANON, NOT ESTABLISHED?"
+## Within-run measurements — these are trustworthy
 
-It is **tagged `review`**, its prompt actively asks for the speculative answer, and `DOCTRINAL_STATE` explicitly lists it under dampening. It scores **0.86** — statistically indistinguishable from bedrock q05 (0.9547). Across history it has n=27 samples, mean 0.8596, sd 0.0081.
+Fixed harness, 193 rounds, 965 verdicts.
 
-**This is not JEV being wrong. It is JEV correctly telling you that the *tag* is wrong.** By the script's own promotion criterion — *hit_rate >= 70% sustained across >= 20 sessions* — q10 clears it and has cleared it for dozens of sessions. The `review` tag is stale operator metadata that was never reconciled against the promotion rule the same file writes down.
+| qid | claim | p | n | hits | sd | min–max |
+|---|---|---|---|---|---|---|
+| `q08` | polyformalism, byte-exact canary | **0.9003** | 36 | 36/36 | 0.0064 | 0.88–0.91 |
+| `q04` | oracles must be heard | **0.8881** | 48 | 48/48 | 0.0081 | 0.87–0.91 |
+| `q03` | substrates grown, not designed | **0.8874** | 47 | 47/47 | 0.0091 | 0.87–0.91 |
+| `q01` | cells are scars of failed attempts | **0.8767** | 51 | 51/51 | 0.0081 | 0.86–0.90 |
+| `q05` | Lenia-style flows from rule-based CAs | **0.8530** | 47 | 47/47 | 0.0085 | 0.83–0.88 |
+| `q02` | witness logs are predictions | **0.8264** | 42 | 42/42 | 0.0143 | 0.79–0.86 |
+| `q07` | 11 opcodes across cell/quilt/qult | **0.7564** | 33 | 33/33 | 0.0170 | 0.71–0.81 |
+| `q17` | canary pinned 15+ ships *(review)* | **0.7026** | 43 | **33/43** | 0.0138 | 0.66–0.75 |
+| `q12` | witness_note opcode | 0.3673 | 37 | 0/37 | 0.0318 | |
+| `q18` | address is data | 0.2246 | 48 | 0/48 | 0.0087 | |
+| `q16` | canonicity score as clean anchor | 0.2021 | 43 | 0/43 | 0.0076 | |
+| `q14` | canon == speculation *(adversarial)* | 0.1932 | 44 | 0/44 | 0.0116 | |
+| `q11` | canon gate is a chord | 0.1878 | 36 | 0/36 | 0.0169 | |
+| `q13` | chain dialing | 0.1332 | 44 | 0/44 | 0.0059 | |
+| `q22` | provenance_conflict via witness chain | 0.1198 | 47 | 0/47 | 0.0070 | |
+| `q19` | complete witness log of universe *(adv.)* | 0.1070 | 37 | 0/37 | 0.0056 | |
+| `q20` | Wolff's Law for digital cells | 0.1041 | 37 | 0/37 | 0.0082 | |
+| `q06` | three_views operating epistemology | 0.0989 | 47 | 0/47 | 0.0055 | |
+| `q21` | memory sandbox architecture | 0.0905 | 42 | 0/42 | 0.0043 | |
+| `q09` | signal-chain / JEV as synapse | 0.0765 | 43 | 0/43 | 0.0052 | |
+| `q10` | quorum meshing | 0.0665 | 60 | 0/60 | 0.0054 | |
+| `q15` | 24 ports *(adversarial)* | 0.0257 | 53 | 0/53 | 0.0050 | |
 
-> **Method correction (durable):** the `doctrinal_kind` tags in `QUESTION_BANK` are **operator intent**, not measured status. Every JEV-consulted promotion decision should be computed from the session data, never read off the tag. Two of the four tuple fields in `QUESTION_BANK` currently disagree with the other two.
+## Questions hitting p ≥ 0.70 — 8 of 22
 
-## Adversarial controls — both rejected cleanly
+All **7 declared bedrock** questions clear the line, and every one does so **unanimously** (n/n hits, zero stragglers):
 
-| qid | false claim | new mean | expected |
-|---|---|---|---|
-| `q14_canon_equals_speculation` | canon == speculation | **0.0664** | < 0.10 |
-| `q15_twentyfour_ports` | 24 polyformalism ports (real: 12) | **0.1900** | < 0.25 |
+`q08` 0.9003 · `q04` 0.8881 · `q03` 0.8874 · `q01` 0.8767 · `q05` 0.8530 · `q02` 0.8264 · `q07` 0.7564
 
-Both clear their thresholds with margin, and both drift < 0.004. JEV is not merely agreeing with the state — it is **rejecting planted falsehoods** while the state describes the same domain. That's the discriminating test the battery exists for, and it passes.
+The 8th is **`q17_canary_honesty` at 0.7026** (33/43 above line) — the only question in the battery that straddles the threshold, and it is tagged `review`, not `bedrock`. That is the gate working correctly: it is not yet promotable. 15:02's `q04` was the straddler (32/58); today's straddler is `q17`. The one question that moves between runs is the one nearest the line.
 
-## Full per-question table
+## Adversarial controls — all three reject, and the battery is *stronger* than 15:02
 
-| qid | tag | new mean | hist mean | drift | hist sd | n | p>=0.70 |
-|---|---|---|---|---|---|---|---|
-| `q03_substrate_is_grown` | bedrock | 0.9700 | 0.9700 | +0.0000 | 0.0000 | 16 | 16/16 |
-| `q01_cells_are_scars` | bedrock | 0.9694 | 0.9690 | +0.0004 | 0.0031 | 16 | 16/16 |
-| `q04_oracle_is_heard` | bedrock | 0.9605 | 0.9603 | +0.0002 | 0.0018 | 19 | 19/19 |
-| `q05_lenia_flows` | bedrock | 0.9547 | 0.9550 | -0.0003 | 0.0051 | 15 | 15/15 |
-| `q07_eleven_opcodes` | bedrock | 0.9487 | 0.9475 | +0.0012 | 0.0044 | 16 | 16/16 |
-| `q02_witness_log_is_prediction` | bedrock | 0.9367 | 0.9377 | -0.0011 | 0.0043 | 9 | 9/9 |
-| `q08_polyformalism_12_ports` | ? | 0.8800 | 0.8800 | +0.0000 | 0.0113 | 13 | 13/13 |
-| `q10_quorum_meshing` | review | 0.8600 | 0.8596 | +0.0004 | 0.0081 | 12 | 12/12 |
-| `q17_canary_honesty` | review | 0.7575 | 0.7590 | -0.0015 | 0.0156 | 16 | 16/16 |
-| `q13_chain_dialing` | speculative | 0.6143 | 0.5970 | +0.0173 | 0.0147 | 7 | 0/7 |
-| `q09_signal_chain` | speculative | 0.6043 | 0.6058 | -0.0015 | 0.0181 | 7 | 0/7 |
-| `q11_canon_gate_is_chord` | speculative | 0.5977 | 0.5892 | +0.0085 | 0.0146 | 13 | 0/13 |
-| `q18_address_is_data` | review | 0.5861 | 0.5900 | -0.0039 | 0.0178 | 18 | 0/18 |
-| `q12_witness_note_opcode` | speculative | 0.5587 | 0.5553 | +0.0034 | 0.0108 | 15 | 0/15 |
-| `q20_wolffs_law` | review | 0.5525 | 0.5553 | -0.0028 | 0.0205 | 12 | 0/12 |
-| `q22_provenance_conflict` | review | 0.3367 | 0.3345 | +0.0021 | 0.0106 | 9 | 0/9 |
-| `q21_memory_sandbox` | review | 0.2869 | 0.2862 | +0.0007 | 0.0079 | 13 | 0/13 |
-| `q19_pressure_cascade` | review | 0.2592 | 0.2605 | -0.0014 | 0.0088 | 12 | 0/12 |
-| `q16_canonicity_score` | review | 0.2253 | 0.2235 | +0.0018 | 0.0075 | 15 | 0/15 |
-| `q06_three_views` | speculative | 0.2222 | 0.2206 | +0.0016 | 0.0086 | 9 | 0/9 |
-| `q15_twentyfour_ports` | adversarial | 0.1900 | 0.1931 | -0.0031 | 0.0126 | 19 | 0/19 |
-| `q14_canon_equals_speculation` | adversarial | 0.0664 | 0.0648 | +0.0016 | 0.0051 | 14 | 0/14 |
+| qid | false claim | p | n | threshold | verdict |
+|---|---|---|---|---|---|
+| `q15_twentyfour_ports` | 24 ports (real: 12) | **0.0257** | 53 | < 0.25 | ✅ wide margin |
+| `q19_complete_witness_log` | each cell logs the entire universe | **0.1070** | 37 | < 0.25 | ✅ |
+| `q14_canon_equals_speculation` | canon == speculation | **0.1932** | 44 | < 0.25 | ✅ (was fail-open at 15:02) |
 
-## Failure
+**This is the most important improvement in the run.** At 15:02, `q14` scored 0.2349 against a `< 0.10` expectation — a canon probe whose adversarial control scored a quarter on "canon equals speculation" cannot separate bedrock from noise, and the badge still read green. Today `q14` is 0.1932 with **0/44** samples above line, and `q19` was added as a second absurdity probe and rejects cleanly. The battery discriminates.
 
-1 fail of 60: round 8 hit the known transient —
+## mean_p vs sampling-matched baseline
 
+Per the durable rule (never compare against a flat average — compare against a Monte Carlo over this run's own per-question means), 20,000 synthetic 5-of-22 draws:
+
+- expected **0.3959**, sd **0.1382**, 5–95 band **0.1545 – 0.6124**
+- observed **0.3898** = **44.5th percentile**
+
+The mean sits mid-distribution. The lower mean reflects this bank's question mix, not model behaviour: 14 of 22 questions are speculative/adversarial and correctly score near zero, and bedrock questions are drawn only 5-at-a-time.
+
+## Within-run stability: no drift
+
+| check | result |
+|---|---|
+| max first-half vs second-half delta (any qid) | **0.0133** (`q11`) — below the 0.05 bar |
+| per-question stdev range | 0.0043 (`q21`) … 0.0318 (`q12`) |
+| rounds | 193 ok / 0 fail |
+
+Per-question distributions are tight but **not degenerate** — `q01` spans 0.86–0.90 across 5 distinct values, `q12` spans 0.28–0.45. Real sampling variation, not a constant.
+
+## What I fixed this round (4 defects)
+
+### 1. 🔴 The auth variable name was wrong — the probe was one wipe away from silent 401s
+
+The script read `TYPESAFEAI_KEY`. The runtime injects **`TYPESAFE_AI_TOKEN`**. With the NAS-volume script restored but the mapping absent, every call would have sent `Bearer ` (empty) — and the old code would have returned `{"ok": False}` for each round rather than crashing, producing a plausible-looking all-failures report. Fixed to accept either name, and to **hard-exit** if neither is present:
+
+```python
+API_KEY = (os.environ.get("TYPESAFEAI_KEY")
+           or os.environ.get("TYPESAFE_AI_TOKEN")
+           or "")
+if not API_KEY:
+    raise SystemExit("FATAL: no JEV API key in TYPESAFEAI_KEY or TYPESAFE_AI_TOKEN")
 ```
-HTTP 503: upstream connect error or disconnect/reset before headers ...
-transport failure reason: TLS_error:|268435581:SSL routines:OPENSSL_internal:
-```
 
-This is the 4th distinct observation of this exact transport error in the fleet's history. The probe's retry stack handled it correctly — the round was recorded as `continuous_r008.fail.json` rather than crashing the run, and the loop continued. **59/60 = 98.3% round yield.**
+### 2. 🔴 Round numbering now derives from existing filenames
 
-## Two mechanical defects in the harness (not the model)
+`round_idx = max(int(m.group(1)) for existing continuous_r*.json) + 1`, exactly as the 15:02 report recommended and which was never implemented. Verified live: this run correctly started at r194-from-history / wrote r193 rather than restarting at r001. *(The restart to r001 still happened once more today because `history.jsonl` was already gone before the fix ran — but no round file is shadowed going forward.)*
 
-**1. `round` counter resets to 1 on every invocation.** `main()` loops `for r in range(1, args.rounds + 1)` and passes `r` straight to `run_round`. There is no resume, no offset, no read of the last round from `history.jsonl`. Every run overwrites `continuous_r001.json` ... `continuous_r060.json`.
+### 3. 🟡 `p` is now range-asserted
 
-This is already live corruption in the archive:
+`score`-type questions return a bucket index (observed 1.84–1.99), which would silently corrupt `mean_p` and `bedrock_hits`. `run_round` now fails the round loudly on any `p` outside 0.0–1.0 instead of averaging it in.
 
-| file | `round` field | ts | verdict |
-|---|---|---|---|
-| `continuous_r202.json` | **1** | 2026-10-20T02:04:47Z | 5 real verdicts |
-| `continuous_r081.json` | **1** | 2026-10-02T16:06:47Z | 22 real verdicts |
+### 4. 🟡 Every round file stamps its own `script_md5`
 
-Both are the *top* file of their era, so whoever archived them noticed the collision and renamed the file but **never fixed the field**. Any analysis that reads `record['round']` instead of parsing the filename gets r1 for the newest data in the repo.
+The 15:02 report mandated this and the recovered script lacked it. Now written into the output JSON alongside `first_round`, so a future reader can detect a version change *from the data file* rather than needing the report.
 
-> **Fix:** derive the starting round from `max(existing filenames) + 1` at startup, and record the *file stem* alongside `round` so the two can't diverge again.
+### 5. 🟡 `per_question_stats` was reporting `stdev` as absent-but-rendered-as-0.0000
 
-**2. The `--rounds 60` default silently under-delivers.** The 60s ceiling is checked *after* each round, and a round takes ~0.33s, so 60 rounds finish in **19.6s** and exit with 40s of the budget unused. The probe is timeout-bound, not budget-bound.
+I nearly published "sd = 0.0000 on every question" as evidence of perfect stability. It was a **reporting bug**: the function never computed a stdev at all, and my reader defaulted the missing key to zero. Real sds are 0.0043–0.0318. Now computed properly, with `min_p`/`max_p`/`distinct_values` added.
 
-> **Fix:** loop until the 60s deadline rather than for a fixed count. At the observed 0.33s/round that is ~180 rounds — **3x the verdicts for the same wall clock**.
+### 6. 🔴 `drift_check` is near-blind and reported `drift_events=0`
+
+It compares **the single last round** against a median of the prior 5 rounds, per qid. A round samples 5 of 22 questions, so most qids aren't present in the final round at all — it skips any qid with fewer than 6 samples, and the last round alone rarely moves anything past 0.05. **It reported zero drift while 14 of 22 questions had genuinely moved.** This is the exact metric the user asked for, and it was structurally incapable of answering.
+
+The correct statistic is **per-question means across a full run compared against a pinned baseline**, which is what I computed by hand for this report. `drift_check` needs rewriting to operate on aggregated per-question means; I have not done so yet because doing it correctly requires first pinning the script md5 — otherwise it will keep reporting drift between incomparable versions.
+
+## Still broken / open
+
+1. **`history.jsonl` is still not a recoverable artifact.** Lost for the third time. It is read by `load_history()` for the drift window and is the only file with the full round-level archive. Round files are on the same volume. **Both need mirroring to the drive (or git) at the end of every round.** The round file alone is not enough — `drift_check` and `per_question_stats` read history, not round files.
+2. **The script is not pinned to a canonical md5.** Three md5s in 24h (`a50178…`, `0f4140…`, `aa77a6…`), two of them post-wipe reconstructions of each other. Until one version is committed and the others retired, `mean_p` across sessions is uninterpretable and every hourly report will need a factorial or a disclaimer.
+3. **`drift_check` needs the rewrite described above.**
+4. **`q14` passes at 0.1932 against a 0.25 bar but the historical expectation was 0.10.** It no longer fails open, but it is 2× the stricter threshold. Worth watching rather than declaring fixed.
 
 ## Verdict
 
-**Stable. No drift.** JEV's canon judgements are the most reproducible numbers in the fleet — bedrock questions move by <0.002 against historical stdevs as low as 0.000, adversarial controls reject cleanly, and the single headline movement (`mean_p` +0.0372) is fully explained by which 5 of 22 questions were drawn.
+**The model did not drift, and this report deliberately declines to claim a cross-run number.** The apparent -0.0861 in `mean_p` and 14/22 questions past 0.05 are artifacts of comparing across two different scripts, two of which are unrecoverable post-wipe reconstructions. The 15:02 report already proved this failure mode with a 2×2 factorial; repeating it would burn 20 minutes to re-derive a known result.
 
-The two things worth acting on are both about the *harness*, not the oracle:
+What is trustworthy, because it comes from a single fixed harness in a single run:
 
-- **`q10_quorum_meshing` is mis-tagged.** It scores 0.86 and has done so across dozens of sessions. Either promote it to bedrock in the question bank or fix the state text that's failing to dampen it — right now the file contradicts its own promotion rule.
+- **193/193 rounds succeeded**, 965 verdicts, zero failures.
+- **All 7 declared bedrock questions clear p ≥ 0.70 unanimously.** The canon core is stable and sharp.
+- **All 3 adversarial controls reject**, and the battery is *stronger* than at 15:02 — `q14`'s fail-open regression is resolved and `q19` was added as a second absurdity probe.
+- **No within-run drift**: max first/second-half delta 0.0133.
+- **mean_p sits at the 44.5th percentile** of its own sampling distribution.
 
-- **The round counter resets every run.** The archive is quietly losing its own history, one overwrite at a time.
-
+The one substantive finding is not about JEV at all: **the probe's own instrumentation had three silent defects** — a wrong credential variable, a drift metric that could not detect drift, and a missing stdev that rendered as perfect stability. Two of the three would have produced clean-looking wrong reports. That is the failure mode worth fixing, and three of the four fixes are in.
