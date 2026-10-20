@@ -28,7 +28,7 @@ from pathlib import Path
 ENDPOINT = "https://api.typesafe.ai/v1/systemone"
 SESSIONS_DIR = Path(__file__).parent / "jev_sessions"
 HISTORY_PATH = SESSIONS_DIR / "history.jsonl"
-TIMEOUT_S = 12
+TIMEOUT_S = 4  # R-206: healthy calls complete in ~0.13s; 4s keeps 30x headroom while cutting stall cost 3x
 DRIFT_THRESHOLD = 0.05
 QUESTIONS_PER_ROUND = 5
 

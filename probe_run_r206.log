@@ -1,0 +1,32 @@
+[2026-10-20T19:05:44+00:00] JEV continuous probe - 81st wipe rebuild
+Endpoint: https://api.typesafe.ai/v1/systemone
+API key: set
+Target rounds: 200, ceiling 60s
+History: 0 prior verdicts across 0 questions
+------------------------------------------------------------
+  r001 mean_p=0.25 (5/5) kinds=['review', 'review', 'speculative', 'adversarial', 'bedrock']
+  r002 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+  r003 mean_p=0.234 (5/5) kinds=['speculative', 'speculative', 'review', 'bedrock', 'speculative']
+  r004 mean_p=0.628 (5/5) kinds=['bedrock', 'bedrock', 'bedrock', 'speculative', 'speculative']
+  r005 mean_p=0.462 (5/5) kinds=['bedrock', 'speculative', 'speculative', 'bedrock', 'review']
+  r006 mean_p=0.346 (5/5) kinds=['speculative', 'speculative', 'review', 'bedrock', 'speculative']
+  r007 mean_p=0.242 (5/5) kinds=['bedrock', 'speculative', 'speculative', 'review', 'speculative']
+  r008 mean_p=0.372 (5/5) kinds=['bedrock', 'speculative', 'speculative', 'speculative', 'review']
+  r009 mean_p=0.24 (5/5) kinds=['review', 'bedrock', 'speculative', 'speculative', 'adversarial']
+  r010 mean_p=0.604 (5/5) kinds=['speculative', 'bedrock', 'bedrock', 'speculative', 'bedrock']
+  r011 mean_p=0.192 (5/5) kinds=['speculative', 'speculative', 'review', 'review', 'adversarial']
+  r012 mean_p=0.442 (5/5) kinds=['bedrock', 'speculative', 'speculative', 'speculative', 'bedrock']
+  r013 mean_p=0.554 (5/5) kinds=['speculative', 'bedrock', 'speculative', 'review', 'bedrock']
+  r014 mean_p=0.064 (5/5) kinds=['speculative', 'review', 'speculative', 'review', 'speculative']
+  r015 mean_p=0.552 (5/5) kinds=['bedrock', 'bedrock', 'review', 'review', 'adversarial']
+  r016 mean_p=0.548 (5/5) kinds=['review', 'bedrock', 'review', 'bedrock', 'speculative']
+[ceiling] 16 rounds in 60s; stopping
+------------------------------------------------------------
+Session: 2026-10-20T19:05:44+00:00 -> 2026-10-20T19:06:50+00:00
+Rounds: 15 OK / 1 fail of 17 attempted
+Verdicts: 75, grand mean_p = 0.382
+Bedrock hits (p>=0.70): 22
+Spec clean-rejects (p<0.40): 32
+Adv clean-rejects (p<0.40): 4
+Drift events > 0.05: 0
+Summary -> /tmp/jev_probe/repo/jev_sessions/session_summary.json
