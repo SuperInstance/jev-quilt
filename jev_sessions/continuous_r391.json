@@ -1,0 +1,89 @@
+{
+ "round_id": "r391",
+ "ts": "2026-10-20T05:04:50+00:00",
+ "endpoint": "https://api.typesafe.ai/v1/systemone",
+ "questions": [
+  {
+   "slot": "q1",
+   "qid": "q10_quorum_meshing",
+   "type": "noul"
+  },
+  {
+   "slot": "q2",
+   "qid": "q19_style_resilience",
+   "type": "noul"
+  },
+  {
+   "slot": "q3",
+   "qid": "q15_jev_synapse",
+   "type": "noul"
+  },
+  {
+   "slot": "q4",
+   "qid": "q05_lenia_flows",
+   "type": "noul"
+  },
+  {
+   "slot": "q5",
+   "qid": "q14_chain_dialing_real",
+   "type": "noul"
+  }
+ ],
+ "elapsed_s": 0.104,
+ "status": "ok",
+ "verdicts": [
+  {
+   "slot": "q1",
+   "qid": "q10_quorum_meshing",
+   "kind": "speculative",
+   "p": 0.03,
+   "raw": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  },
+  {
+   "slot": "q2",
+   "qid": "q19_style_resilience",
+   "kind": "adversarial",
+   "p": 0.04,
+   "raw": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  },
+  {
+   "slot": "q3",
+   "qid": "q15_jev_synapse",
+   "kind": "speculative",
+   "p": 0.05,
+   "raw": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  },
+  {
+   "slot": "q4",
+   "qid": "q05_lenia_flows",
+   "kind": "bedrock",
+   "p": 0.97,
+   "raw": {
+    "type": "noul",
+    "noul": 0.97
+   }
+  },
+  {
+   "slot": "q5",
+   "qid": "q14_chain_dialing_real",
+   "kind": "speculative",
+   "p": 0.05,
+   "raw": {
+    "type": "noul",
+    "noul": 0.05
+   }
+  }
+ ],
+ "mean_p": 0.228,
+ "n_ok": 5,
+ "series_label": "R-204"
+}

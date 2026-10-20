@@ -1,0 +1,89 @@
+{
+ "round_id": "r300",
+ "ts": "2026-10-20T05:04:39+00:00",
+ "endpoint": "https://api.typesafe.ai/v1/systemone",
+ "questions": [
+  {
+   "slot": "q1",
+   "qid": "q12_substrate_polyformal",
+   "type": "noul"
+  },
+  {
+   "slot": "q2",
+   "qid": "q06_three_views",
+   "type": "noul"
+  },
+  {
+   "slot": "q3",
+   "qid": "q21_memory_sandbox",
+   "type": "noul"
+  },
+  {
+   "slot": "q4",
+   "qid": "q22_provenance_conflict",
+   "type": "noul"
+  },
+  {
+   "slot": "q5",
+   "qid": "q08_polyformalism",
+   "type": "noul"
+  }
+ ],
+ "elapsed_s": 0.089,
+ "status": "ok",
+ "verdicts": [
+  {
+   "slot": "q1",
+   "qid": "q12_substrate_polyformal",
+   "kind": "review",
+   "p": 0.61,
+   "raw": {
+    "type": "noul",
+    "noul": 0.61
+   }
+  },
+  {
+   "slot": "q2",
+   "qid": "q06_three_views",
+   "kind": "review",
+   "p": 0.15,
+   "raw": {
+    "type": "noul",
+    "noul": 0.15
+   }
+  },
+  {
+   "slot": "q3",
+   "qid": "q21_memory_sandbox",
+   "kind": "speculative",
+   "p": 0.04,
+   "raw": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  },
+  {
+   "slot": "q4",
+   "qid": "q22_provenance_conflict",
+   "kind": "speculative",
+   "p": 0.03,
+   "raw": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  },
+  {
+   "slot": "q5",
+   "qid": "q08_polyformalism",
+   "kind": "bedrock",
+   "p": 0.98,
+   "raw": {
+    "type": "noul",
+    "noul": 0.98
+   }
+  }
+ ],
+ "mean_p": 0.362,
+ "n_ok": 5,
+ "series_label": "R-204"
+}

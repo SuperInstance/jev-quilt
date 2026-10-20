@@ -1,0 +1,89 @@
+{
+ "round_id": "r210",
+ "ts": "2026-10-20T05:04:28+00:00",
+ "endpoint": "https://api.typesafe.ai/v1/systemone",
+ "questions": [
+  {
+   "slot": "q1",
+   "qid": "q17_canary_honesty",
+   "type": "noul"
+  },
+  {
+   "slot": "q2",
+   "qid": "q10_quorum_meshing",
+   "type": "noul"
+  },
+  {
+   "slot": "q3",
+   "qid": "q16_vibecoder_signal_chain",
+   "type": "noul"
+  },
+  {
+   "slot": "q4",
+   "qid": "q22_provenance_conflict",
+   "type": "noul"
+  },
+  {
+   "slot": "q5",
+   "qid": "q19_style_resilience",
+   "type": "noul"
+  }
+ ],
+ "elapsed_s": 0.096,
+ "status": "ok",
+ "verdicts": [
+  {
+   "slot": "q1",
+   "qid": "q17_canary_honesty",
+   "kind": "review",
+   "p": 0.69,
+   "raw": {
+    "type": "noul",
+    "noul": 0.69
+   }
+  },
+  {
+   "slot": "q2",
+   "qid": "q10_quorum_meshing",
+   "kind": "speculative",
+   "p": 0.03,
+   "raw": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  },
+  {
+   "slot": "q3",
+   "qid": "q16_vibecoder_signal_chain",
+   "kind": "speculative",
+   "p": 0.04,
+   "raw": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  },
+  {
+   "slot": "q4",
+   "qid": "q22_provenance_conflict",
+   "kind": "speculative",
+   "p": 0.03,
+   "raw": {
+    "type": "noul",
+    "noul": 0.03
+   }
+  },
+  {
+   "slot": "q5",
+   "qid": "q19_style_resilience",
+   "kind": "adversarial",
+   "p": 0.04,
+   "raw": {
+    "type": "noul",
+    "noul": 0.04
+   }
+  }
+ ],
+ "mean_p": 0.166,
+ "n_ok": 5,
+ "series_label": "R-204"
+}
