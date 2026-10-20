@@ -1,0 +1,88 @@
+{
+  "round_id": "r125",
+  "ts": "2026-10-20T03:03:42+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q12_substrate_polyformal",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q15_jev_synapse",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q10_quorum_meshing",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q06_three_views",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q17_canary_honesty",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.11,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q12_substrate_polyformal",
+      "kind": "review",
+      "p": 0.62,
+      "raw": {
+        "type": "noul",
+        "noul": 0.62
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q15_jev_synapse",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q10_quorum_meshing",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q06_three_views",
+      "kind": "review",
+      "p": 0.13,
+      "raw": {
+        "type": "noul",
+        "noul": 0.13
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q17_canary_honesty",
+      "kind": "review",
+      "p": 0.64,
+      "raw": {
+        "type": "noul",
+        "noul": 0.64
+      }
+    }
+  ],
+  "mean_p": 0.296,
+  "n_ok": 5
+}

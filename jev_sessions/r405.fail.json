@@ -1,0 +1,35 @@
+{
+  "round_id": "r005",
+  "ts": "2026-10-20T03:03:27+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q22_provenance_conflict",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q11_canon_gate_is_chord",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q04_oracle_is_heard",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q10_quorum_meshing",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q13_witness_log_opcode",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 1.535,
+  "status": "fail",
+  "error": "HTTP 503: upstream connect error or disconnect/reset before headers. retried and the latest reset reason: remote connection failure, transport failure reason: TLS_error:|268435581:SSL routines:OPENSSL_internal:"
+}
