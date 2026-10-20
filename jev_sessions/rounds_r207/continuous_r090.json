@@ -1,0 +1,88 @@
+{
+  "round_id": "r207-r090",
+  "ts": "2026-10-20T20:01:35+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q22_provenance_conflict",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q12_substrate_polyformal",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q03_substrate_is_grown",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q06_three_views",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q11_canon_gate_is_chord",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.158,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q22_provenance_conflict",
+      "kind": "speculative",
+      "p": 0.03,
+      "raw": {
+        "type": "noul",
+        "noul": 0.03
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q12_substrate_polyformal",
+      "kind": "review",
+      "p": 0.61,
+      "raw": {
+        "type": "noul",
+        "noul": 0.61
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q03_substrate_is_grown",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q06_three_views",
+      "kind": "review",
+      "p": 0.19,
+      "raw": {
+        "type": "noul",
+        "noul": 0.19
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q11_canon_gate_is_chord",
+      "kind": "review",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    }
+  ],
+  "mean_p": 0.372,
+  "n_ok": 5
+}

@@ -1,0 +1,88 @@
+{
+  "round_id": "r207-r041",
+  "ts": "2026-10-20T20:01:25+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q08_polyformalism",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q16_vibecoder_signal_chain",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q02_witness_log_is_prediction",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q12_substrate_polyformal",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q07_11_opcodes",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.123,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q08_polyformalism",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q16_vibecoder_signal_chain",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q12_substrate_polyformal",
+      "kind": "review",
+      "p": 0.58,
+      "raw": {
+        "type": "noul",
+        "noul": 0.58
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    }
+  ],
+  "mean_p": 0.708,
+  "n_ok": 5
+}
