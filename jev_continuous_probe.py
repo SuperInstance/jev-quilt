@@ -27,6 +27,8 @@ from pathlib import Path
 
 ENDPOINT = "https://api.typesafe.ai/v1/systemone"
 SESSIONS_DIR = Path(__file__).parent / "jev_sessions"
+# R-209: rounds go in a per-session dir, never in the saturated continuous_r*.json series
+SESSION_DIR = SESSIONS_DIR / "rounds_r209"
 HISTORY_PATH = SESSIONS_DIR / "history.jsonl"
 TIMEOUT_S = 4  # R-206: healthy calls complete in ~0.13s; 4s keeps 30x headroom while cutting stall cost 3x
 DRIFT_THRESHOLD = 0.05
@@ -193,7 +195,9 @@ def load_history():
                 rec = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            for v in rec.get("verdicts", []):
+            for v in rec.get("verdicts", []) or []:
+                if not isinstance(v, dict):   # DEFECT C: stray non-dict payload
+                    continue
                 qid = v.get("qid")
                 p = v.get("p")
                 if qid and isinstance(p, (int, float)):
@@ -276,9 +280,22 @@ def main():
         print("ERROR: TYPESAFE_AI_TOKEN (or legacy TYPESAFEAI_KEY) not set.", file=sys.stderr)
         sys.exit(2)
     SESSIONS_DIR.mkdir(parents=True, exist_ok=True)
+    SESSION_DIR.mkdir(parents=True, exist_ok=True)
+    _existing = sorted(SESSION_DIR.glob("round_*.json"))
+    if _existing:
+        print(f"REFUSING TO RUN: {SESSION_DIR} already holds {len(_existing)} round files "
+              f"(would clobber real history). Pick a new session dir.", file=sys.stderr)
+        sys.exit(3)
     HISTORY_PATH.touch(exist_ok=True)
 
     samples = load_history()
+    # DEFECT B guard: an empty baseline makes compute_drift() report a FALSE ALL-CLEAR.
+    n_prior = sum(len(v) for v in samples.values())
+    if n_prior < 20 or len(samples) < 5:
+        print(f"REFUSING TO RUN: drift baseline is {n_prior} samples across "
+              f"{len(samples)} qids. Rebuild history.jsonl from the tracked corpus first.",
+              file=sys.stderr)
+        sys.exit(4)
     rounds_arg = int(sys.argv[1]) if len(sys.argv) > 1 else 200
     deadline = time.time() + 60
     n_ok = 0
@@ -287,7 +304,7 @@ def main():
     drifts_found = []
     start_ts = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
-    print(f"[{start_ts}] JEV continuous probe - 81st wipe rebuild")
+    print(f"[{start_ts}] JEV continuous probe - R-209 (96th wipe)")
     print(f"Endpoint: {ENDPOINT}")
     print(f"API key: {'set' if API_KEY else 'MISSING'}")
     print(f"Target rounds: {rounds_arg}, ceiling 60s")
@@ -299,14 +316,15 @@ def main():
         if time.time() >= deadline:
             print(f"[ceiling] {i-1} rounds in 60s; stopping")
             break
-        rid_str = f"r{i:03d}"
+        rid_str = f"r209-{i:03d}"
         rec = run_one_round(rid_str, samples)
+        rec["session"] = SESSION_DIR.name
         if rec.get("status") != "ok":
             n_fail += 1
-            out = SESSIONS_DIR / f"continuous_{rid_str}.fail.json"
+            out = SESSION_DIR / f"round_{i:03d}.fail.json"
         else:
             n_ok += 1
-            out = SESSIONS_DIR / f"continuous_{rid_str}.json"
+            out = SESSION_DIR / f"round_{i:03d}.json"
             append_history(rec)
             for v in rec.get("verdicts", []):
                 p = v.get("p")
@@ -358,7 +376,7 @@ def main():
         "drift_events": drifts_found,
         "per_qid": qid_summary,
     }
-    summary_path = SESSIONS_DIR / "session_summary.json"
+    summary_path = SESSION_DIR / "session_summary.json"
     with summary_path.open("w") as f:
         json.dump(summary, f, indent=2, default=str)
 

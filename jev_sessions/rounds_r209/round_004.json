@@ -1,0 +1,89 @@
+{
+  "round_id": "r209-004",
+  "ts": "2026-10-21T06:04:24+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q01_cells_are_scars",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q06_three_views",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q11_canon_gate_is_chord",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q17_canary_honesty",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q03_substrate_is_grown",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.15,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q01_cells_are_scars",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q06_three_views",
+      "kind": "review",
+      "p": 0.17,
+      "raw": {
+        "type": "noul",
+        "noul": 0.17
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q11_canon_gate_is_chord",
+      "kind": "review",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q17_canary_honesty",
+      "kind": "review",
+      "p": 0.63,
+      "raw": {
+        "type": "noul",
+        "noul": 0.63
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q03_substrate_is_grown",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    }
+  ],
+  "mean_p": 0.562,
+  "n_ok": 5,
+  "session": "rounds_r209"
+}
