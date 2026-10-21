@@ -28,13 +28,15 @@ from pathlib import Path
 
 ENDPOINT = "https://api.typesafe.ai/v1/systemone"
 SESSIONS_DIR = Path(__file__).parent / "jev_sessions"
-# R-209: rounds go in a per-session dir, never in the saturated continuous_r*.json series
-SESSION_DIR = SESSIONS_DIR / "rounds_r210"
+# R-211: rounds go in a per-session dir, never in the saturated continuous_r*.json series.
+# Derived from the run timestamp BY CONSTRUCTION so a new run can never clobber a prior
+# session's rounds (DEFECT A, 6th occurrence: the r210 hardcode made the guard fire on arrival).
+SESSION_TAG = os.environ.get("JEV_SESSION_TAG") or time.strftime("r%Y%m%dT%H%M%SZ", time.gmtime())
+SESSION_DIR = SESSIONS_DIR / f"rounds_{SESSION_TAG}"
 HISTORY_PATH = SESSIONS_DIR / "history.jsonl"
 TIMEOUT_S = 4  # R-206: healthy calls complete in ~0.13s; 4s keeps 30x headroom while cutting stall cost 3x
 DRIFT_THRESHOLD = 0.05
 QUESTIONS_PER_ROUND = 5
-SESSION_TAG = "r210"  # R-210: per-session round prefix; never reuse a prior session's dir
 # R-210 ask (a): a fixed 0.05 fires drift by chance on a high-variance qid. q17 canary_honesty
 # has sigma=0.0271, so 0.05 is only ~1.8 sigma for it and it manufactured BOTH of R-209's
 # events. Fire on max(0.05, 2*sigma_per_qid) and carry sigma in the alert.

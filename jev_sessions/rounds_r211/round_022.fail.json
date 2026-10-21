@@ -1,0 +1,36 @@
+{
+  "round_id": "r211-022",
+  "ts": "2026-10-21T15:05:45+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q16_vibecoder_signal_chain",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q13_witness_log_opcode",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q21_memory_sandbox",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q07_11_opcodes",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q20_wolffs_law",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 9.118,
+  "status": "fail",
+  "error": "URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>",
+  "session": "rounds_r211"
+}

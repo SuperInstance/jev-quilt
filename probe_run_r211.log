@@ -1,0 +1,38 @@
+[2026-10-21T15:05:01+00:00] JEV continuous probe - R-210 (97th wipe)
+Endpoint: https://api.typesafe.ai/v1/systemone
+API key: set
+Target rounds: 200, ceiling 60s
+History: 4100 prior verdicts across 22 questions
+------------------------------------------------------------
+  r211-001 mean_p=0.412 (5/5) kinds=['speculative', 'bedrock', 'speculative', 'speculative', 'bedrock']
+  r211-002 mean_p=0.802 (5/5) kinds=['review', 'bedrock', 'bedrock', 'bedrock', 'bedrock']
+  r211-003 mean_p=0.384 (5/5) kinds=['review', 'review', 'review', 'bedrock', 'speculative']
+  r211-004 mean_p=0.52 (5/5) kinds=['adversarial', 'review', 'review', 'bedrock', 'bedrock']
+  r211-005 mean_p=0.414 (5/5) kinds=['bedrock', 'speculative', 'bedrock', 'speculative', 'speculative']
+  r211-006 mean_p=0.416 (5/5) kinds=['speculative', 'bedrock', 'bedrock', 'speculative', 'speculative']
+  r211-007 mean_p=0.452 (5/5) kinds=['speculative', 'adversarial', 'speculative', 'bedrock', 'bedrock']
+  r211-008 mean_p=0.454 (5/5) kinds=['bedrock', 'speculative', 'review', 'bedrock', 'speculative']
+  r211-009 mean_p=0.542 (5/5) kinds=['review', 'speculative', 'bedrock', 'bedrock', 'speculative']
+  r211-010 mean_p=0.52 (5/5) kinds=['bedrock', 'speculative', 'speculative', 'bedrock', 'review']
+  r211-011 mean_p=0.308 (5/5) kinds=['speculative', 'bedrock', 'review', 'speculative', 'review']
+  r211-012 mean_p=0.346 (5/5) kinds=['speculative', 'bedrock', 'speculative', 'review', 'review']
+  r211-013 mean_p=0.602 (5/5) kinds=['review', 'bedrock', 'bedrock', 'speculative', 'bedrock']
+  r211-014 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+  r211-015 mean_p=0.346 (5/5) kinds=['speculative', 'speculative', 'review', 'bedrock', 'speculative']
+  r211-016 mean_p=0.038 (5/5) kinds=['speculative', 'speculative', 'speculative', 'adversarial', 'speculative']
+  r211-017 mean_p=0.534 (5/5) kinds=['bedrock', 'speculative', 'review', 'bedrock', 'review']
+  r211-018 mean_p=0.418 (5/5) kinds=['speculative', 'bedrock', 'adversarial', 'speculative', 'bedrock']
+  r211-019 mean_p=0.532 (5/5) kinds=['bedrock', 'adversarial', 'bedrock', 'speculative', 'review']
+  r211-020 mean_p=0.266 (5/5) kinds=['speculative', 'speculative', 'bedrock', 'speculative', 'speculative']
+  r211-021 mean_p=0.528 (5/5) kinds=['bedrock', 'review', 'speculative', 'speculative', 'bedrock']
+  r211-022 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+  r211-023 mean_p=0.604 (5/5) kinds=['bedrock', 'speculative', 'adversarial', 'bedrock', 'bedrock']
+  r211-024 mean_p=0.604 (5/5) kinds=['speculative', 'bedrock', 'bedrock', 'bedrock', 'review']
+  r211-025 mean_p=0.248 (5/5) kinds=['review', 'review', 'speculative', 'speculative', 'bedrock']
+  r211-026 mean_p=0.418 (5/5) kinds=['bedrock', 'speculative', 'bedrock', 'speculative', 'speculative']
+  r211-027 mean_p=0.378 (5/5) kinds=['speculative', 'bedrock', 'speculative', 'review', 'review']
+  r211-028 mean_p=0.446 (5/5) kinds=['speculative', 'speculative', 'speculative', 'bedrock', 'bedrock']
+  r211-029 mean_p=0.43 (5/5) kinds=['speculative', 'review', 'bedrock', 'bedrock', 'speculative']
+  r211-030 mean_p=0.23 (5/5) kinds=['speculative', 'speculative', 'adversarial', 'speculative', 'bedrock']
+  r211-031 mean_p=0.228 (5/5) kinds=['speculative', 'speculative', 'bedrock', 'speculative', 'speculative']
+  r211-032 mean_p=0.904 (5/5) kinds=['bedrock', 'review', 'bedrock', 'bedrock', 'bedrock']
