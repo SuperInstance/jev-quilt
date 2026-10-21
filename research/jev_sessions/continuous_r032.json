@@ -1,0 +1,23 @@
+{
+  "round": 32,
+  "ts": "2026-10-20T13:02:56Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q18_address_is_data",
+    "q15_twentyfour_ports",
+    "q17_canary_honesty",
+    "q01_cells_are_scars",
+    "q20_wolffs_law"
+  ],
+  "verdicts": {
+    "q18_address_is_data": 0.59,
+    "q15_twentyfour_ports": 0.19,
+    "q17_canary_honesty": 0.77,
+    "q01_cells_are_scars": 0.97,
+    "q20_wolffs_law": 0.54
+  },
+  "usage": {
+    "input_tokens": 1411,
+    "output_tokens": 116
+  }
+}

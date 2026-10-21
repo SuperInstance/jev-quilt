@@ -1,0 +1,23 @@
+{
+  "round": 2,
+  "ts": "2026-10-19T08:04:44Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q15_twentyfour_ports",
+    "q02_witness_log_is_prediction",
+    "q07_eleven_opcodes",
+    "q17_canary_honesty",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q15_twentyfour_ports": 0.19,
+    "q02_witness_log_is_prediction": 0.94,
+    "q07_eleven_opcodes": 0.96,
+    "q17_canary_honesty": 0.78,
+    "q09_signal_chain": 0.63
+  },
+  "usage": {
+    "input_tokens": 1440,
+    "output_tokens": 116
+  }
+}

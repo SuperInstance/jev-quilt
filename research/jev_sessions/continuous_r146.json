@@ -1,0 +1,23 @@
+{
+  "round": 146,
+  "ts": "2026-10-18T15:02:35Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q20_wolffs_law",
+    "q11_canon_gate_is_chord",
+    "q08_polyformalism_12_ports",
+    "q05_lenia_flows",
+    "q04_oracle_is_heard"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.55,
+    "q11_canon_gate_is_chord": 0.59,
+    "q08_polyformalism_12_ports": 0.87,
+    "q05_lenia_flows": 0.95,
+    "q04_oracle_is_heard": 0.96
+  },
+  "usage": {
+    "input_tokens": 1406,
+    "output_tokens": 122
+  }
+}

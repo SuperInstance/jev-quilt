@@ -1,0 +1,164 @@
+{
+  "timestamp": 1790003269.0268464,
+  "iso": "2026-09-21T15:07:49Z",
+  "eras": [
+    [
+      "era1_5laws",
+      {
+        "canonical_substrate": {
+          "era": "phase 1",
+          "opcodes": [
+            "BIND",
+            "LINK",
+            "EFFECT",
+            "VIEW",
+            "TICK"
+          ]
+        }
+      },
+      [
+        [
+          "opcodes_count",
+          "choice",
+          "How many base opcodes are there?",
+          {
+            "5": "five",
+            "6": "six",
+            "11": "eleven",
+            "13": "thirteen"
+          }
+        ],
+        [
+          "opcode_BIND",
+          "noul",
+          "Is BIND a substrate opcode in this era?"
+        ],
+        [
+          "opcode_FORGET",
+          "noul",
+          "Is FORGET a substrate opcode in this era?"
+        ]
+      ]
+    ],
+    [
+      "era2_11opcodes",
+      {
+        "canonical_substrate": {
+          "era": "phase 2",
+          "opcodes": [
+            "BIND",
+            "LINK",
+            "EFFECT",
+            "VIEW",
+            "TICK",
+            "FORGET",
+            "PROOF",
+            "ROUTE",
+            "CRDT",
+            "WORLD",
+            "TIME"
+          ]
+        }
+      },
+      [
+        [
+          "opcodes_count",
+          "choice",
+          "How many base opcodes are there?",
+          {
+            "5": "five",
+            "6": "six",
+            "11": "eleven",
+            "13": "thirteen"
+          }
+        ],
+        [
+          "opcode_BIND",
+          "noul",
+          "Is BIND a substrate opcode?"
+        ],
+        [
+          "opcode_FORGET",
+          "noul",
+          "Is FORGET a substrate opcode?"
+        ],
+        [
+          "opcode_TIME",
+          "noul",
+          "Is TIME a substrate opcode?"
+        ]
+      ]
+    ],
+    [
+      "era3_13ports",
+      {
+        "canonical_substrate": {
+          "era": "phase 3",
+          "polyformalism_ports": 13,
+          "languages": [
+            "JS",
+            "Python",
+            "C",
+            "Rust",
+            "Go",
+            "Haskell",
+            "J",
+            "Lua",
+            "Zig",
+            "SubLEQ",
+            "Verilog",
+            "VHDL",
+            "Forth"
+          ]
+        }
+      },
+      [
+        [
+          "ports_count",
+          "choice",
+          "How many polyformalism ports?",
+          {
+            "5": "five",
+            "11": "eleven",
+            "13": "thirteen",
+            "15": "fifteen"
+          }
+        ],
+        [
+          "port_has_forth",
+          "noul",
+          "Is Forth one of the polyformalism languages?"
+        ],
+        [
+          "port_has_python",
+          "noul",
+          "Is Python one of the polyformalism languages?"
+        ],
+        [
+          "port_has_cobol",
+          "noul",
+          "Is Cobol one of the polyformalism languages?"
+        ]
+      ]
+    ]
+  ],
+  "expected": {
+    "era1_5laws": {
+      "opcodes_count": "5",
+      "opcode_BIND": "yes",
+      "opcode_FORGET": "no"
+    },
+    "era2_11opcodes": {
+      "opcodes_count": "11",
+      "opcode_BIND": "yes",
+      "opcode_FORGET": "yes",
+      "opcode_TIME": "yes"
+    },
+    "era3_13ports": {
+      "ports_count": "13",
+      "port_has_forth": "yes",
+      "port_has_python": "yes",
+      "port_has_cobol": "no"
+    }
+  }
+}

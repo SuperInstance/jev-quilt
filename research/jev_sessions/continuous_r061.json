@@ -1,0 +1,23 @@
+{
+  "round": 61,
+  "ts": "2026-10-18T15:02:23Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q06_three_views",
+    "q09_signal_chain",
+    "q04_oracle_is_heard",
+    "q19_pressure_cascade",
+    "q01_cells_are_scars"
+  ],
+  "verdicts": {
+    "q06_three_views": 0.21,
+    "q09_signal_chain": 0.61,
+    "q04_oracle_is_heard": 0.97,
+    "q19_pressure_cascade": 0.26,
+    "q01_cells_are_scars": 0.97
+  },
+  "usage": {
+    "input_tokens": 1398,
+    "output_tokens": 111
+  }
+}

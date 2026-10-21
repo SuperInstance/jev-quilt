@@ -1,0 +1,23 @@
+{
+  "round": 66,
+  "ts": "2026-10-19T08:04:55Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q04_oracle_is_heard",
+    "q10_quorum_meshing",
+    "q08_polyformalism_12_ports",
+    "q03_substrate_is_grown",
+    "q14_canon_equals_speculation"
+  ],
+  "verdicts": {
+    "q04_oracle_is_heard": 0.96,
+    "q10_quorum_meshing": 0.86,
+    "q08_polyformalism_12_ports": 0.88,
+    "q03_substrate_is_grown": 0.97,
+    "q14_canon_equals_speculation": 0.06
+  },
+  "usage": {
+    "input_tokens": 1391,
+    "output_tokens": 124
+  }
+}

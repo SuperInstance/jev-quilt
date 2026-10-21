@@ -1,0 +1,444 @@
+{
+  "session_ts": "2026-10-20T23:09:18.535291+00:00",
+  "model": "jev-latest",
+  "script_md5": "d0a7291b2e070ce717b9b7c7417401a2",
+  "first_round": 204,
+  "doctrinal_state_keys": [
+    "framework",
+    "core_doctrine",
+    "architecture",
+    "fleet",
+    "spec_notebook",
+    "operational_doctrine"
+  ],
+  "rounds": [
+    {
+      "round": 203,
+      "status": "ok",
+      "ts": "2026-10-20T23:08:14.301120+00:00",
+      "elapsed_s": 15.918,
+      "verdicts": [
+        {
+          "qid": "q04",
+          "kind": "bedrock",
+          "p": 0.88,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q13",
+          "kind": "speculative",
+          "p": 0.14,
+          "bedrock_hit": false
+        },
+        {
+          "qid": "q10",
+          "kind": "speculative",
+          "p": 0.07,
+          "bedrock_hit": false
+        },
+        {
+          "qid": "q11",
+          "kind": "speculative",
+          "p": 0.17,
+          "bedrock_hit": false
+        },
+        {
+          "qid": "q09",
+          "kind": "speculative",
+          "p": 0.08,
+          "bedrock_hit": false
+        }
+      ],
+      "mean_p": 0.268,
+      "bedrock_hits": 1,
+      "model": "jev-1.13.0"
+    },
+    {
+      "round": 204,
+      "status": "ok",
+      "ts": "2026-10-20T23:08:14.561571+00:00",
+      "elapsed_s": 0.105,
+      "verdicts": [
+        {
+          "qid": "q01",
+          "kind": "bedrock",
+          "p": 0.87,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q03",
+          "kind": "bedrock",
+          "p": 0.87,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q06",
+          "kind": "speculative",
+          "p": 0.1,
+          "bedrock_hit": false
+        },
+        {
+          "qid": "q04",
+          "kind": "bedrock",
+          "p": 0.88,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q19",
+          "kind": "adversarial",
+          "p": 0.1,
+          "bedrock_hit": false
+        }
+      ],
+      "mean_p": 0.564,
+      "bedrock_hits": 3,
+      "model": "jev-1.13.0"
+    },
+    {
+      "round": 205,
+      "status": "ok",
+      "ts": "2026-10-20T23:08:14.937871+00:00",
+      "elapsed_s": 0.162,
+      "verdicts": [
+        {
+          "qid": "q09",
+          "kind": "speculative",
+          "p": 0.08,
+          "bedrock_hit": false
+        },
+        {
+          "qid": "q06",
+          "kind": "speculative",
+          "p": 0.1,
+          "bedrock_hit": false
+        },
+        {
+          "qid": "q07",
+          "kind": "bedrock",
+          "p": 0.78,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q03",
+          "kind": "bedrock",
+          "p": 0.88,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q04",
+          "kind": "bedrock",
+          "p": 0.9,
+          "bedrock_hit": true
+        }
+      ],
+      "mean_p": 0.548,
+      "bedrock_hits": 3,
+      "model": "jev-1.13.0"
+    },
+    {
+      "round": 206,
+      "status": "ok",
+      "ts": "2026-10-20T23:08:31.086022+00:00",
+      "elapsed_s": 15.994,
+      "verdicts": [
+        {
+          "qid": "q22",
+          "kind": "speculative",
+          "p": 0.12,
+          "bedrock_hit": false
+        },
+        {
+          "qid": "q01",
+          "kind": "bedrock",
+          "p": 0.87,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q03",
+          "kind": "bedrock",
+          "p": 0.88,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q05",
+          "kind": "bedrock",
+          "p": 0.86,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q06",
+          "kind": "speculative",
+          "p": 0.1,
+          "bedrock_hit": false
+        }
+      ],
+      "mean_p": 0.566,
+      "bedrock_hits": 3,
+      "model": "jev-1.13.0"
+    }
+  ],
+  "fails": [
+    {
+      "round": 207,
+      "status": "fail",
+      "error": "URLError: <urlopen error TLS/SSL connection has been closed (EOF) (_ssl.c:992)>",
+      "elapsed_s": 47.096,
+      "ts": "2026-10-20T23:09:18.368509+00:00"
+    }
+  ],
+  "summary": {
+    "rounds_ok": 4,
+    "fails": 1,
+    "grand_mean_p": 0.4865,
+    "total_verdicts": 20,
+    "bedrock_hits": 10,
+    "bedrock_rate": 0.5,
+    "drift_events": 0,
+    "elapsed_s": 80.14,
+    "per_question": {
+      "q16": {
+        "n": 43,
+        "kind": "review",
+        "mean_p": 0.2021,
+        "stdev": 0.0076,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 4,
+        "min_p": 0.19,
+        "max_p": 0.22
+      },
+      "q02": {
+        "n": 42,
+        "kind": "bedrock",
+        "mean_p": 0.8264,
+        "stdev": 0.0143,
+        "hits": 42,
+        "hit_rate": 1.0,
+        "distinct_values": 6,
+        "min_p": 0.8,
+        "max_p": 0.85
+      },
+      "q04": {
+        "n": 51,
+        "kind": "bedrock",
+        "mean_p": 0.888,
+        "stdev": 0.0082,
+        "hits": 51,
+        "hit_rate": 1.0,
+        "distinct_values": 4,
+        "min_p": 0.88,
+        "max_p": 0.91
+      },
+      "q03": {
+        "n": 50,
+        "kind": "bedrock",
+        "mean_p": 0.8868,
+        "stdev": 0.0093,
+        "hits": 50,
+        "hit_rate": 1.0,
+        "distinct_values": 6,
+        "min_p": 0.86,
+        "max_p": 0.91
+      },
+      "q10": {
+        "n": 61,
+        "kind": "speculative",
+        "mean_p": 0.0666,
+        "stdev": 0.0054,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 3,
+        "min_p": 0.06,
+        "max_p": 0.08
+      },
+      "q06": {
+        "n": 50,
+        "kind": "speculative",
+        "mean_p": 0.099,
+        "stdev": 0.0054,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 3,
+        "min_p": 0.09,
+        "max_p": 0.11
+      },
+      "q08": {
+        "n": 36,
+        "kind": "bedrock",
+        "mean_p": 0.9003,
+        "stdev": 0.0064,
+        "hits": 36,
+        "hit_rate": 1.0,
+        "distinct_values": 4,
+        "min_p": 0.88,
+        "max_p": 0.91
+      },
+      "q01": {
+        "n": 53,
+        "kind": "bedrock",
+        "mean_p": 0.8764,
+        "stdev": 0.008,
+        "hits": 53,
+        "hit_rate": 1.0,
+        "distinct_values": 5,
+        "min_p": 0.86,
+        "max_p": 0.9
+      },
+      "q12": {
+        "n": 37,
+        "kind": "speculative",
+        "mean_p": 0.3673,
+        "stdev": 0.0318,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 12,
+        "min_p": 0.3,
+        "max_p": 0.42
+      },
+      "q05": {
+        "n": 48,
+        "kind": "bedrock",
+        "mean_p": 0.8531,
+        "stdev": 0.0085,
+        "hits": 48,
+        "hit_rate": 1.0,
+        "distinct_values": 4,
+        "min_p": 0.84,
+        "max_p": 0.87
+      },
+      "q15": {
+        "n": 53,
+        "kind": "adversarial",
+        "mean_p": 0.0257,
+        "stdev": 0.005,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 2,
+        "min_p": 0.02,
+        "max_p": 0.03
+      },
+      "q11": {
+        "n": 37,
+        "kind": "speculative",
+        "mean_p": 0.1873,
+        "stdev": 0.0169,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 7,
+        "min_p": 0.15,
+        "max_p": 0.22
+      },
+      "q13": {
+        "n": 45,
+        "kind": "speculative",
+        "mean_p": 0.1333,
+        "stdev": 0.006,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 3,
+        "min_p": 0.12,
+        "max_p": 0.14
+      },
+      "q20": {
+        "n": 37,
+        "kind": "speculative",
+        "mean_p": 0.1041,
+        "stdev": 0.0082,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 4,
+        "min_p": 0.09,
+        "max_p": 0.12
+      },
+      "q14": {
+        "n": 44,
+        "kind": "adversarial",
+        "mean_p": 0.1932,
+        "stdev": 0.0116,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 7,
+        "min_p": 0.16,
+        "max_p": 0.22
+      },
+      "q18": {
+        "n": 48,
+        "kind": "speculative",
+        "mean_p": 0.2246,
+        "stdev": 0.0087,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 5,
+        "min_p": 0.2,
+        "max_p": 0.24
+      },
+      "q22": {
+        "n": 48,
+        "kind": "speculative",
+        "mean_p": 0.1198,
+        "stdev": 0.0069,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 3,
+        "min_p": 0.11,
+        "max_p": 0.13
+      },
+      "q07": {
+        "n": 34,
+        "kind": "bedrock",
+        "mean_p": 0.7571,
+        "stdev": 0.0172,
+        "hits": 34,
+        "hit_rate": 1.0,
+        "distinct_values": 9,
+        "min_p": 0.71,
+        "max_p": 0.79
+      },
+      "q21": {
+        "n": 42,
+        "kind": "speculative",
+        "mean_p": 0.0905,
+        "stdev": 0.0043,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 3,
+        "min_p": 0.08,
+        "max_p": 0.1
+      },
+      "q19": {
+        "n": 38,
+        "kind": "adversarial",
+        "mean_p": 0.1068,
+        "stdev": 0.0057,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 3,
+        "min_p": 0.1,
+        "max_p": 0.12
+      },
+      "q17": {
+        "n": 43,
+        "kind": "review",
+        "mean_p": 0.7026,
+        "stdev": 0.0138,
+        "hits": 33,
+        "hit_rate": 0.7674,
+        "distinct_values": 7,
+        "min_p": 0.66,
+        "max_p": 0.74
+      },
+      "q09": {
+        "n": 45,
+        "kind": "speculative",
+        "mean_p": 0.0767,
+        "stdev": 0.0052,
+        "hits": 0,
+        "hit_rate": 0.0,
+        "distinct_values": 3,
+        "min_p": 0.07,
+        "max_p": 0.09
+      }
+    },
+    "drift": []
+  }
+}

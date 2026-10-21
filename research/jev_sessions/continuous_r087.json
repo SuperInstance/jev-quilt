@@ -1,0 +1,23 @@
+{
+  "round": 87,
+  "ts": "2026-10-18T15:02:26Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q04_oracle_is_heard",
+    "q19_pressure_cascade",
+    "q18_address_is_data",
+    "q07_eleven_opcodes",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q04_oracle_is_heard": 0.96,
+    "q19_pressure_cascade": 0.26,
+    "q18_address_is_data": 0.59,
+    "q07_eleven_opcodes": 0.94,
+    "q21_memory_sandbox": 0.28
+  },
+  "usage": {
+    "input_tokens": 1404,
+    "output_tokens": 114
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 161,
+  "ts": "2026-10-18T15:02:37Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q21_memory_sandbox",
+    "q03_substrate_is_grown",
+    "q16_canonicity_score",
+    "q05_lenia_flows",
+    "q17_canary_honesty"
+  ],
+  "verdicts": {
+    "q21_memory_sandbox": 0.28,
+    "q03_substrate_is_grown": 0.97,
+    "q16_canonicity_score": 0.22,
+    "q05_lenia_flows": 0.96,
+    "q17_canary_honesty": 0.77
+  },
+  "usage": {
+    "input_tokens": 1403,
+    "output_tokens": 117
+  }
+}

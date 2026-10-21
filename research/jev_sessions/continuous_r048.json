@@ -1,0 +1,23 @@
+{
+  "round": 48,
+  "ts": "2026-10-20T13:02:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q14_canon_equals_speculation",
+    "q03_substrate_is_grown",
+    "q17_canary_honesty",
+    "q18_address_is_data",
+    "q07_eleven_opcodes"
+  ],
+  "verdicts": {
+    "q14_canon_equals_speculation": 0.07,
+    "q03_substrate_is_grown": 0.97,
+    "q17_canary_honesty": 0.76,
+    "q18_address_is_data": 0.59,
+    "q07_eleven_opcodes": 0.95
+  },
+  "usage": {
+    "input_tokens": 1413,
+    "output_tokens": 119
+  }
+}

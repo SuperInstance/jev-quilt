@@ -1,0 +1,23 @@
+{
+  "round": 26,
+  "ts": "2026-10-19T08:04:49Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q08_polyformalism_12_ports",
+    "q05_lenia_flows",
+    "q10_quorum_meshing",
+    "q12_witness_note_opcode"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q08_polyformalism_12_ports": 0.88,
+    "q05_lenia_flows": 0.95,
+    "q10_quorum_meshing": 0.86,
+    "q12_witness_note_opcode": 0.55
+  },
+  "usage": {
+    "input_tokens": 1439,
+    "output_tokens": 119
+  }
+}

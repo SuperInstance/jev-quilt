@@ -1,0 +1,23 @@
+{
+  "round": 84,
+  "ts": "2026-10-19T08:04:57Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q20_wolffs_law",
+    "q07_eleven_opcodes",
+    "q05_lenia_flows",
+    "q13_chain_dialing"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q20_wolffs_law": 0.52,
+    "q07_eleven_opcodes": 0.95,
+    "q05_lenia_flows": 0.96,
+    "q13_chain_dialing": 0.59
+  },
+  "usage": {
+    "input_tokens": 1405,
+    "output_tokens": 117
+  }
+}

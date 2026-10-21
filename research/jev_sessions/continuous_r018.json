@@ -1,0 +1,23 @@
+{
+  "round": 18,
+  "ts": "2026-10-20T13:02:53Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q08_polyformalism_12_ports",
+    "q04_oracle_is_heard",
+    "q17_canary_honesty",
+    "q20_wolffs_law",
+    "q15_twentyfour_ports"
+  ],
+  "verdicts": {
+    "q08_polyformalism_12_ports": 0.88,
+    "q04_oracle_is_heard": 0.96,
+    "q17_canary_honesty": 0.75,
+    "q20_wolffs_law": 0.53,
+    "q15_twentyfour_ports": 0.2
+  },
+  "usage": {
+    "input_tokens": 1426,
+    "output_tokens": 122
+  }
+}

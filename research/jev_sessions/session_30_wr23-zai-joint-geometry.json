@@ -1,0 +1,24 @@
+{
+  "session": 30,
+  "iso": "2026-09-21T20:40:26Z",
+  "piece": "wr23-zai-joint-geometry",
+  "sections_probed": 1,
+  "mean_p": 0.7142857142857143,
+  "cadence": "Plagal",
+  "verdict": "REVIEW",
+  "section_results": [
+    {
+      "section_idx": 0,
+      "section_size": 3000,
+      "yes": 5,
+      "mean_p": 0.7142857142857143,
+      "mode": "per-section"
+    }
+  ],
+  "dream_pool_entry": {
+    "piece": "wr23-zai-joint-geometry",
+    "p": 0.7142857142857143,
+    "cadence": "Plagal",
+    "success": true
+  }
+}

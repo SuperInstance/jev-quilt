@@ -1,0 +1,24 @@
+{
+  "session": 32,
+  "iso": "2026-09-21T20:45:08Z",
+  "piece": "wr27-zai",
+  "sections_probed": 1,
+  "mean_p": 0.5714285714285714,
+  "cadence": "Deceptive",
+  "verdict": "DISCUSS",
+  "section_results": [
+    {
+      "section_idx": 0,
+      "section_size": 3000,
+      "yes": 4,
+      "mean_p": 0.5714285714285714,
+      "mode": "per-section"
+    }
+  ],
+  "dream_pool_entry": {
+    "piece": "wr27-zai",
+    "p": 0.5714285714285714,
+    "cadence": "Deceptive",
+    "success": false
+  }
+}

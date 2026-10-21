@@ -1,0 +1,23 @@
+{
+  "round": 124,
+  "ts": "2026-10-18T15:02:32Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q12_witness_note_opcode",
+    "q08_polyformalism_12_ports",
+    "q20_wolffs_law",
+    "q01_cells_are_scars",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q12_witness_note_opcode": 0.56,
+    "q08_polyformalism_12_ports": 0.85,
+    "q20_wolffs_law": 0.57,
+    "q01_cells_are_scars": 0.97,
+    "q05_lenia_flows": 0.95
+  },
+  "usage": {
+    "input_tokens": 1412,
+    "output_tokens": 120
+  }
+}

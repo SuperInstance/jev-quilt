@@ -1,0 +1,23 @@
+{
+  "round": 134,
+  "ts": "2026-10-18T15:02:33Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q09_signal_chain",
+    "q21_memory_sandbox",
+    "q12_witness_note_opcode",
+    "q15_twentyfour_ports",
+    "q03_substrate_is_grown"
+  ],
+  "verdicts": {
+    "q09_signal_chain": 0.6,
+    "q21_memory_sandbox": 0.29,
+    "q12_witness_note_opcode": 0.54,
+    "q15_twentyfour_ports": 0.2,
+    "q03_substrate_is_grown": 0.97
+  },
+  "usage": {
+    "input_tokens": 1400,
+    "output_tokens": 116
+  }
+}

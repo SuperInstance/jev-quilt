@@ -1,0 +1,9 @@
+{
+  "session": 51,
+  "piece": "wr-obs-exp2-wr-obs2-missing-primitives",
+  "mean_p": 0.8571428571428571,
+  "yes_count": 6,
+  "total": 7,
+  "cadence": "PerfectAuthentic",
+  "verdict": "ACCEPT"
+}

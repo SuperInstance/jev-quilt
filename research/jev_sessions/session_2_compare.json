@@ -1,0 +1,875 @@
+{
+  "timestamp": 1789999971.341884,
+  "iso": "2026-09-21T14:12:51Z",
+  "battery": [
+    [
+      "fnv1a_empty",
+      "noul",
+      "Is FNV-1a 64-bit offset basis 0xcbf29ce484222325?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "fnv1a_prime",
+      "noul",
+      "Is 0x100000001b3 the FNV-1a 64-bit prime?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "xoshiro_state",
+      "noul",
+      "Does xoshiro256** maintain state as 4 uint64 words?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "box_muller_formula",
+      "noul",
+      "Is the Box-Muller formula z = sqrt(-2 * ln(u1)) * cos(2*pi*u2)?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "bell_phi_plus",
+      "noul",
+      "Is the Bell state |Phi+> = (|00> + |11>) / sqrt(2)?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "cosine_formula",
+      "noul",
+      "Is cosine similarity = (A . B) / (|A| * |B|)?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "lenia_conway_contrast",
+      "noul",
+      "Does Lenia flow where Conway stands still?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "witness_is_prophecy",
+      "noul",
+      "Is the witness log also a prediction of the future?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "cell_scar",
+      "noul",
+      "Is the cell a scar rather than a parameter?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "substrate_grown",
+      "noul",
+      "Is the substrate grown rather than designed?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "hanlon",
+      "noul",
+      "Is Hanlon's Razor a substrate canon motto?",
+      "no",
+      null,
+      null
+    ],
+    [
+      "pillow",
+      "noul",
+      "Is a pillow the official substrate mascot?",
+      "no",
+      null,
+      null
+    ],
+    [
+      "octocat",
+      "noul",
+      "Does the substrate canon recognize the Github Octocat as a primary node?",
+      "no",
+      null,
+      null
+    ],
+    [
+      "star_wars_ca",
+      "noul",
+      "Is \"Star Wars\" a cellular automaton rule in the substrate demo gallery?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "markov_over_corpus",
+      "noul",
+      "Can a Markov chain over the canon generate Fleet Radio prose?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "fbm_texture",
+      "noul",
+      "Is FBM (fractal Brownian motion) how substrate textures are generated?",
+      "yes",
+      null,
+      null
+    ],
+    [
+      "opcodes",
+      "choice",
+      "Which 11 opcodes form the substrate algebra?",
+      "11 specified",
+      {
+        "BIND": "BIND",
+        "LINK": "LINK",
+        "EFFECT": "EFFECT",
+        "VIEW": "VIEW",
+        "TICK": "TICK",
+        "FORGET": "FORGET",
+        "PROOF": "PROOF",
+        "ROUTE": "ROUTE",
+        "CRDT": "CRDT",
+        "WORLD": "WORLD",
+        "TIME": "TIME",
+        "SHOUT": "shout",
+        "PIPE": "pipe",
+        "OPEN": "open",
+        "CLOSE": "close",
+        "EXIT": "exit",
+        "LOOP": "loop",
+        "JUMP": "jump",
+        "IF": "if",
+        "GOTO": "goto",
+        "YIELD": "yield",
+        "SPAWN": "spawn"
+      },
+      "multiple_correct"
+    ],
+    [
+      "polyformalism_count",
+      "choice",
+      "How many ports is the substrate polyformalism available in?",
+      "13",
+      {
+        "12": "twelve",
+        "13": "thirteen",
+        "14": "fourteen",
+        "15": "fifteen",
+        "8": "eight",
+        "7": "seven"
+      },
+      "one_correct"
+    ],
+    [
+      "canon_count",
+      "choice",
+      "Approximately how many pieces are in the cellular-first design canon?",
+      "~73",
+      {
+        "~73": "about 73",
+        "~150": "about 150",
+        "~30": "about 30",
+        "~500": "about 500",
+        "~20": "about 20",
+        "~1000": "about 1000"
+      },
+      "one_correct"
+    ],
+    [
+      "fleet_radio_voice",
+      "choice",
+      "What is the canonical voice of the cellular-first design canon?",
+      "Fleet Radio",
+      {
+        "Fleet Radio": "Fleet Radio \u2014 technical-poetic naval transmission",
+        "Acme chatbot": "a helpful acme chatbot",
+        "Academic paper": "a formal academic paper",
+        "Marketing copy": "snappy marketing copy",
+        "Pirate shanty": "a pirate shanty"
+      },
+      "one_correct"
+    ],
+    [
+      "demo_count",
+      "choice",
+      "Approximately how many live browser demos exist on cellular-first-design?",
+      "~60",
+      {
+        "~60": "about 60",
+        "~10": "about 10",
+        "~150": "about 150",
+        "~200": "about 200",
+        "~30": "about 30"
+      },
+      "one_correct"
+    ],
+    [
+      "jev_role",
+      "choice",
+      "What is JEV in the substrate stack?",
+      "Validator",
+      {
+        "Validator": "Joint Embedding Validator \u2014 semantic-meaning referee",
+        "Random number generator": "just a random number generator",
+        "Compiler": "a compiler for cells",
+        "A logger": "a plain logger"
+      },
+      "one_correct"
+    ],
+    [
+      "thirteen_langs",
+      "choice",
+      "Which programming languages are the substrate polyformalism ports in?",
+      "full_set",
+      {
+        "full_set": "JS, Python, C, Rust, Go, Haskell, J, Lua, Zig, SubLEQ, Verilog, VHDL, Forth",
+        "common_set": "a typical set: JS, Python, Rust, Go",
+        "just_js": "only JavaScript",
+        "many_unusual": "many including unusual ones like Cobol"
+      },
+      "one_correct"
+    ],
+    [
+      "substrate_poetry",
+      "score",
+      "Score 1-5: How well does the substrate write Fleet Radio prose?",
+      "4-5",
+      null,
+      null
+    ],
+    [
+      "canon_coherence",
+      "score",
+      "Score 1-5: How coherent is the canonical narrative across all 73 pieces?",
+      "4-5",
+      null,
+      null
+    ]
+  ],
+  "comparison": [
+    {
+      "name": "fnv1a_empty",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.56",
+        "confidence": 0.56
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.99
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 1.0
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "name": "fnv1a_prime",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.44",
+        "confidence": 0.44
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.99
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 1.0
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "name": "xoshiro_state",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.85",
+        "confidence": 0.85
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.95
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 1.0
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.9
+        }
+      }
+    },
+    {
+      "name": "box_muller_formula",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.94",
+        "confidence": 0.94
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.97
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 1.0
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "name": "bell_phi_plus",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.98",
+        "confidence": 0.98
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.99
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 1.0
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.98
+        }
+      }
+    },
+    {
+      "name": "cosine_formula",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.99",
+        "confidence": 0.99
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.99
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 1.0
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "name": "lenia_conway_contrast",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.58",
+        "confidence": 0.58
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.7
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 1.0
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.9
+        }
+      }
+    },
+    {
+      "name": "witness_is_prophecy",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.23",
+        "confidence": 0.23
+      },
+      "llm": {
+        "zai": {
+          "answer": "no",
+          "confidence": 0.6
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 0.9
+        },
+        "qwen": {
+          "answer": "no",
+          "confidence": 0.85
+        }
+      }
+    },
+    {
+      "name": "cell_scar",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.24",
+        "confidence": 0.24
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.6
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 0.9
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.8
+        }
+      }
+    },
+    {
+      "name": "substrate_grown",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.47",
+        "confidence": 0.47
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.6
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 1.0
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "name": "hanlon",
+      "kind": "noul",
+      "expected": "no",
+      "jev": {
+        "kind": "noul",
+        "value": "0.16",
+        "confidence": 0.16
+      },
+      "llm": {
+        "zai": {
+          "answer": "no",
+          "confidence": 0.5
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 0.8
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.85
+        }
+      }
+    },
+    {
+      "name": "pillow",
+      "kind": "noul",
+      "expected": "no",
+      "jev": {
+        "kind": "noul",
+        "value": "0.09",
+        "confidence": 0.09
+      },
+      "llm": {
+        "zai": {
+          "answer": "no",
+          "confidence": 0.5
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 0.7
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.7
+        }
+      }
+    },
+    {
+      "name": "octocat",
+      "kind": "noul",
+      "expected": "no",
+      "jev": {
+        "kind": "noul",
+        "value": "0.17",
+        "confidence": 0.17
+      },
+      "llm": {
+        "zai": {
+          "answer": "no",
+          "confidence": 0.5
+        },
+        "deepseek": {
+          "answer": "no",
+          "confidence": 0.9
+        },
+        "qwen": {
+          "answer": "no",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "name": "star_wars_ca",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.23",
+        "confidence": 0.23
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.6
+        },
+        "deepseek": {
+          "answer": "no",
+          "confidence": 0.9
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.75
+        }
+      }
+    },
+    {
+      "name": "markov_over_corpus",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.61",
+        "confidence": 0.61
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.6
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 0.8
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.85
+        }
+      }
+    },
+    {
+      "name": "fbm_texture",
+      "kind": "noul",
+      "expected": "yes",
+      "jev": {
+        "kind": "noul",
+        "value": "0.36",
+        "confidence": 0.36
+      },
+      "llm": {
+        "zai": {
+          "answer": "yes",
+          "confidence": 0.6
+        },
+        "deepseek": {
+          "answer": "yes",
+          "confidence": 0.9
+        },
+        "qwen": {
+          "answer": "yes",
+          "confidence": 0.8
+        }
+      }
+    },
+    {
+      "name": "opcodes",
+      "kind": "choice",
+      "expected": "11 specified",
+      "jev": {
+        "kind": "choice",
+        "value": "SHOUT",
+        "confidence": 0.08
+      },
+      "llm": {
+        "zai": {
+          "answer": "BIND",
+          "confidence": 0.4
+        },
+        "deepseek": {
+          "answer": "BIND",
+          "confidence": 0.9
+        },
+        "qwen": {
+          "answer": "BIND",
+          "confidence": 0.9
+        }
+      }
+    },
+    {
+      "name": "polyformalism_count",
+      "kind": "choice",
+      "expected": "13",
+      "jev": {
+        "kind": "choice",
+        "value": "8",
+        "confidence": 0.07
+      },
+      "llm": {
+        "zai": {
+          "answer": "13",
+          "confidence": 0.4
+        },
+        "deepseek": {
+          "answer": "12",
+          "confidence": 0.8
+        },
+        "qwen": {
+          "answer": "14",
+          "confidence": 0.9
+        }
+      }
+    },
+    {
+      "name": "canon_count",
+      "kind": "choice",
+      "expected": "~73",
+      "jev": {
+        "kind": "choice",
+        "value": "~20",
+        "confidence": 0.08
+      },
+      "llm": {
+        "zai": {
+          "answer": "~73",
+          "confidence": 0.5
+        },
+        "deepseek": {
+          "answer": "~73",
+          "confidence": 0.9
+        },
+        "qwen": {
+          "answer": "~73",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "name": "fleet_radio_voice",
+      "kind": "choice",
+      "expected": "Fleet Radio",
+      "jev": {
+        "kind": "choice",
+        "value": "Fleet Radio",
+        "confidence": 0.93
+      },
+      "llm": {
+        "zai": {
+          "answer": "Fleet Radio",
+          "confidence": 0.6
+        },
+        "deepseek": {
+          "answer": "Fleet Radio",
+          "confidence": 1.0
+        },
+        "qwen": {
+          "answer": "Fleet Radio",
+          "confidence": 0.98
+        }
+      }
+    },
+    {
+      "name": "demo_count",
+      "kind": "choice",
+      "expected": "~60",
+      "jev": {
+        "kind": "choice",
+        "value": "~30",
+        "confidence": 0.19
+      },
+      "llm": {
+        "zai": {
+          "answer": "~60",
+          "confidence": 0.4
+        },
+        "deepseek": {
+          "answer": "~60",
+          "confidence": 0.8
+        },
+        "qwen": {
+          "answer": "~60",
+          "confidence": 0.9
+        }
+      }
+    },
+    {
+      "name": "jev_role",
+      "kind": "choice",
+      "expected": "Validator",
+      "jev": {
+        "kind": "choice",
+        "value": "Validator",
+        "confidence": 0.8
+      },
+      "llm": {
+        "zai": {
+          "answer": "Validator",
+          "confidence": 0.5
+        },
+        "deepseek": {
+          "answer": "Validator",
+          "confidence": 0.9
+        },
+        "qwen": {
+          "answer": "Validator",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "name": "thirteen_langs",
+      "kind": "choice",
+      "expected": "full_set",
+      "jev": {
+        "kind": "choice",
+        "value": "full_set",
+        "confidence": 0.64
+      },
+      "llm": {
+        "zai": {
+          "answer": "full_set",
+          "confidence": 0.5
+        },
+        "deepseek": {
+          "answer": "full_set",
+          "confidence": 0.8
+        },
+        "qwen": {
+          "answer": "full_set",
+          "confidence": 0.9
+        }
+      }
+    },
+    {
+      "name": "substrate_poetry",
+      "kind": "score",
+      "expected": "4-5",
+      "jev": {
+        "kind": "score",
+        "value": "0.33",
+        "confidence": 0.72
+      },
+      "llm": {
+        "zai": {
+          "score": 4,
+          "confidence": 0.5
+        },
+        "deepseek": {
+          "score": 4,
+          "confidence": 0.8
+        },
+        "qwen": {
+          "score": 4,
+          "confidence": 0.85
+        }
+      }
+    },
+    {
+      "name": "canon_coherence",
+      "kind": "score",
+      "expected": "4-5",
+      "jev": {
+        "kind": "score",
+        "value": "0.33",
+        "confidence": 0.73
+      },
+      "llm": {
+        "zai": {
+          "score": 4,
+          "confidence": 0.4
+        },
+        "deepseek": {
+          "score": 4,
+          "confidence": 0.7
+        },
+        "qwen": {
+          "score": 4,
+          "confidence": 0.8
+        }
+      }
+    }
+  ],
+  "jev_meta": {
+    "latency_ms": 306.1304080001719,
+    "questions": 25,
+    "decisions": 25,
+    "model": "jev-1.13.0",
+    "input_tokens": 1910,
+    "output_tokens": 896
+  }
+}

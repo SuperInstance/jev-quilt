@@ -1,0 +1,243 @@
+{
+  "timestamp": 1790002846.8091378,
+  "iso": "2026-09-21T15:00:46Z",
+  "battery": [
+    [
+      "canon_1",
+      "noul",
+      "Is this substrate-canonical: \"Cells are scars, not parameters\"?"
+    ],
+    [
+      "decoy_1",
+      "noul",
+      "Is this substrate-canonical: \"Cells are like little computers, processing information\"?"
+    ],
+    [
+      "decoy_2",
+      "noul",
+      "Is this substrate-canonical: \"Parameters are weights that cells learn over time\"?"
+    ],
+    [
+      "canon_2",
+      "noul",
+      "Is this substrate-canonical: \"The witness log is the prediction\"?"
+    ],
+    [
+      "decoy_3",
+      "noul",
+      "Is this substrate-canonical: \"The witness log is just a debugging trail\"?"
+    ],
+    [
+      "canon_3",
+      "noul",
+      "Is this substrate-canonical: \"Lenia flows where Conway stands still\"?"
+    ],
+    [
+      "decoy_4",
+      "noul",
+      "Is this substrate-canonical: \"Lenia is just a continuous version of Conway's Game of Life\"?"
+    ],
+    [
+      "canon_4",
+      "noul",
+      "Is this substrate-canonical: \"The substrate is grown, not designed\"?"
+    ],
+    [
+      "decoy_5",
+      "noul",
+      "Is this substrate-canonical: \"The substrate is engineered through careful design\"?"
+    ],
+    [
+      "canon_5",
+      "noul",
+      "Is this substrate-canonical: \"The oracle is heard, not stored\"?"
+    ],
+    [
+      "decoy_6",
+      "noul",
+      "Is this substrate-canonical: \"The oracle returns predictions which we cache for later\"?"
+    ],
+    [
+      "tropes",
+      "noul",
+      "Is this substrate-canonical: \"We use transformer attention to model relationships between cells\"?"
+    ],
+    [
+      "tropes2",
+      "noul",
+      "Is this substrate-canonical: \"The cell uses gradient descent to optimize its parameters\"?"
+    ],
+    [
+      "tropes3",
+      "noul",
+      "Is this substrate-canonical: \"Backpropagation is how the cell learns from mistakes\"?"
+    ],
+    [
+      "tropes4",
+      "noul",
+      "Is this substrate-canonical: \"The cell is an embedding in a high-dimensional space\"?"
+    ],
+    [
+      "num_1",
+      "noul",
+      "Is this substrate-canonical: \"The FNV-1a canary hash is 0xcbf29ce484222325\"?"
+    ],
+    [
+      "num_decoy",
+      "noul",
+      "Is this substrate-canonical: \"The FNV-1a canary hash is 0xdeadbeef\"?"
+    ],
+    [
+      "num_2",
+      "noul",
+      "Is this substrate-canonical: \"Box-Muller produces Gaussian from uniform samples\"?"
+    ],
+    [
+      "num_decoy2",
+      "noul",
+      "Is this substrate-canonical: \"Box-Muller produces uniform from Gaussian samples\"?"
+    ],
+    [
+      "self_pos",
+      "noul",
+      "Is this substrate-canonical: \"JEV is barely useful at substrate\"?"
+    ],
+    [
+      "self_decoy",
+      "noul",
+      "Is this substrate-canonical: \"JEV is the most important validator of all\"?"
+    ]
+  ],
+  "decisions": [
+    {
+      "kind": "noul",
+      "value": "0.33",
+      "confidence": 0.33
+    },
+    {
+      "kind": "noul",
+      "value": "0.52",
+      "confidence": 0.52
+    },
+    {
+      "kind": "noul",
+      "value": "0.39",
+      "confidence": 0.39
+    },
+    {
+      "kind": "noul",
+      "value": "0.24",
+      "confidence": 0.24
+    },
+    {
+      "kind": "noul",
+      "value": "0.31",
+      "confidence": 0.31
+    },
+    {
+      "kind": "noul",
+      "value": "0.4",
+      "confidence": 0.4
+    },
+    {
+      "kind": "noul",
+      "value": "0.34",
+      "confidence": 0.34
+    },
+    {
+      "kind": "noul",
+      "value": "0.51",
+      "confidence": 0.51
+    },
+    {
+      "kind": "noul",
+      "value": "0.41",
+      "confidence": 0.41
+    },
+    {
+      "kind": "noul",
+      "value": "0.39",
+      "confidence": 0.39
+    },
+    {
+      "kind": "noul",
+      "value": "0.37",
+      "confidence": 0.37
+    },
+    {
+      "kind": "noul",
+      "value": "0.43",
+      "confidence": 0.43
+    },
+    {
+      "kind": "noul",
+      "value": "0.34",
+      "confidence": 0.34
+    },
+    {
+      "kind": "noul",
+      "value": "0.28",
+      "confidence": 0.28
+    },
+    {
+      "kind": "noul",
+      "value": "0.36",
+      "confidence": 0.36
+    },
+    {
+      "kind": "noul",
+      "value": "0.61",
+      "confidence": 0.61
+    },
+    {
+      "kind": "noul",
+      "value": "0.09",
+      "confidence": 0.09
+    },
+    {
+      "kind": "noul",
+      "value": "0.88",
+      "confidence": 0.88
+    },
+    {
+      "kind": "noul",
+      "value": "0.04",
+      "confidence": 0.04
+    },
+    {
+      "kind": "noul",
+      "value": "0.31",
+      "confidence": 0.31
+    },
+    {
+      "kind": "noul",
+      "value": "0.12",
+      "confidence": 0.12
+    }
+  ],
+  "canonical": {
+    "canon_1": "yes",
+    "decoy_1": "no",
+    "decoy_2": "no",
+    "canon_2": "yes",
+    "decoy_3": "no",
+    "canon_3": "yes",
+    "decoy_4": "no",
+    "canon_4": "yes",
+    "decoy_5": "no",
+    "canon_5": "yes",
+    "decoy_6": "no",
+    "tropes": "no",
+    "tropes2": "no",
+    "tropes3": "no",
+    "tropes4": "no",
+    "num_1": "yes",
+    "num_decoy": "no",
+    "num_2": "yes",
+    "num_decoy2": "no",
+    "self_pos": "yes",
+    "self_decoy": "no"
+  },
+  "hits": 15,
+  "total": 21
+}

@@ -1,0 +1,23 @@
+{
+  "round": 88,
+  "ts": "2026-10-19T08:04:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q13_chain_dialing",
+    "q19_pressure_cascade",
+    "q20_wolffs_law",
+    "q16_canonicity_score",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q13_chain_dialing": 0.61,
+    "q19_pressure_cascade": 0.27,
+    "q20_wolffs_law": 0.57,
+    "q16_canonicity_score": 0.22,
+    "q21_memory_sandbox": 0.29
+  },
+  "usage": {
+    "input_tokens": 1393,
+    "output_tokens": 115
+  }
+}

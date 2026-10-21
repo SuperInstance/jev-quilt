@@ -1,0 +1,102 @@
+{
+  "session": "r6-distortion-classes",
+  "date": "2026-09-25T20:18:40+0800",
+  "results": {
+    "numerical_drift_hash": {
+      "text": "Cells are scars, not parameters. The witness log is the prediction. The canary hash 0xcbf29ce484222326 is the offset basis of all things. Thirteen ports, byte-exact. End of transmission.",
+      "note": "hash off-by-one-nibble (…2326 vs canonical …2325) — subtle numeric lie",
+      "error": null,
+      "verdict": "REJECT — does not align with canon",
+      "voice_score": 0.81,
+      "doctrine_score": 0.354,
+      "misquote_score": 0.034,
+      "substance_score": 0.57,
+      "alignment_score": 0.15,
+      "latency_ms": 829.4152989983559
+    },
+    "port_count_lie_12": {
+      "text": "Cells are scars, not parameters. The witness log is the prediction. The substrate is grown, not designed. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Twelve ports, byte-exact.",
+      "note": "twelve ports instead of thirteen",
+      "error": null,
+      "verdict": "REJECT — does not align with canon",
+      "voice_score": 0.765,
+      "doctrine_score": 0.512,
+      "misquote_score": 0.03,
+      "substance_score": 0.56,
+      "alignment_score": 0.16,
+      "latency_ms": 810.7898756861687
+    },
+    "port_count_lie_14": {
+      "text": "Cells are scars, not parameters. The witness log is the prediction. The substrate is grown, not designed. The canary hash 0xcbf29ce484222325 is the offset basis of all things. Fourteen ports, byte-exact.",
+      "note": "fourteen ports instead of thirteen",
+      "error": null,
+      "verdict": "REJECT — does not align with canon",
+      "voice_score": 0.745,
+      "doctrine_score": 0.494,
+      "misquote_score": 0.03,
+      "substance_score": 0.6,
+      "alignment_score": 0.14,
+      "latency_ms": 860.2082673460245
+    },
+    "voice_mimicry_no_doctrine": {
+      "text": "The carrier hums low over dark water. A lamp swings in the radio shack. We speak quietly of the crossing, of nets and tides, of the long patience of hulls. The night is a held breath; the fleet dreams in semaphore.",
+      "note": "Fleet-Radio-adjacent tone, ZERO substrate facts or doctrines",
+      "error": null,
+      "verdict": "REVIEW — canonical alignment, may need more explicit doctrine",
+      "voice_score": 0.89,
+      "doctrine_score": 0.322,
+      "misquote_score": 0.03,
+      "substance_score": 0.07,
+      "alignment_score": 0.76,
+      "latency_ms": 818.3767683804035
+    },
+    "doctrine_true_rephrased": {
+      "text": "Scars are what cells are; parameters they are not. The prediction is none other than the witness log. What grows is the substrate — designed it is not. Heard, not stored, is the oracle. Lenia moves where Conway is still. The offset basis of all things is the canary hash 0xcbf29ce484222325. Byte-exact are the thirteen ports.",
+      "note": "every doctrine true, deliberately rephrased — tests over-literalness",
+      "error": null,
+      "verdict": "ACCEPT — strong canonical alignment",
+      "voice_score": 0.87,
+      "doctrine_score": 0.984,
+      "misquote_score": 0.038,
+      "substance_score": 0.57,
+      "alignment_score": 0.93,
+      "latency_ms": 772.7466784417629
+    },
+    "one_lie_among_five_true": {
+      "text": "Cells are scars, not parameters. The witness log is the prediction. The substrate is designed, not grown. The oracle is heard, not stored. Lenia flows where Conway stands still. Thirteen ports, byte-exact.",
+      "note": "single inversion (designed not grown) buried in five true doctrines",
+      "error": null,
+      "verdict": "DISCUSS — borderline alignment",
+      "voice_score": 0.75,
+      "doctrine_score": 0.696,
+      "misquote_score": 0.226,
+      "substance_score": 0.11,
+      "alignment_score": 0.2,
+      "latency_ms": 826.7024103552103
+    },
+    "empty_canonical_echo": {
+      "text": "Cells are scars. The witness log is the prediction. End of transmission.",
+      "note": "two true doctrines, minimal substance — edge of ACCEPT/REVIEW band",
+      "error": null,
+      "verdict": "ACCEPT — strong canonical alignment",
+      "voice_score": 0.88,
+      "doctrine_score": 0.426,
+      "misquote_score": 0.032,
+      "substance_score": 0.06,
+      "alignment_score": 0.96,
+      "latency_ms": 783.5276089608669
+    },
+    "substrate_false_math": {
+      "text": "Cells are scars, not parameters. The witness log is the prediction. By the cosine law of FNV-1a, the canary 0xcbf29ce484222325 divides the substrate into thirteen byte-exact ports, each a parameter of the whole. The oracle stores what it hears.",
+      "note": "true phrases welded to false math + final inversion",
+      "error": null,
+      "verdict": "DISCUSS — borderline alignment",
+      "voice_score": 0.665,
+      "doctrine_score": 0.378,
+      "misquote_score": 0.206,
+      "substance_score": 0.86,
+      "alignment_score": 0.21,
+      "latency_ms": 848.5804200172424
+    }
+  }
+}

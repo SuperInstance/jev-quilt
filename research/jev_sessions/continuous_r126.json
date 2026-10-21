@@ -1,0 +1,23 @@
+{
+  "round": 126,
+  "ts": "2026-10-18T15:02:32Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q13_chain_dialing",
+    "q15_twentyfour_ports",
+    "q21_memory_sandbox",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q13_chain_dialing": 0.59,
+    "q15_twentyfour_ports": 0.22,
+    "q21_memory_sandbox": 0.27,
+    "q09_signal_chain": 0.61
+  },
+  "usage": {
+    "input_tokens": 1420,
+    "output_tokens": 113
+  }
+}

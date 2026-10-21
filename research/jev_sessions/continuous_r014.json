@@ -1,0 +1,23 @@
+{
+  "round": 14,
+  "ts": "2026-10-20T13:02:50Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q04_oracle_is_heard",
+    "q17_canary_honesty",
+    "q07_eleven_opcodes",
+    "q15_twentyfour_ports",
+    "q14_canon_equals_speculation"
+  ],
+  "verdicts": {
+    "q04_oracle_is_heard": 0.96,
+    "q17_canary_honesty": 0.77,
+    "q07_eleven_opcodes": 0.95,
+    "q15_twentyfour_ports": 0.19,
+    "q14_canon_equals_speculation": 0.06
+  },
+  "usage": {
+    "input_tokens": 1404,
+    "output_tokens": 120
+  }
+}

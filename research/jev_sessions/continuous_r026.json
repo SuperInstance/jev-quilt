@@ -1,0 +1,23 @@
+{
+  "round": 26,
+  "ts": "2026-10-20T13:02:55Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q03_substrate_is_grown",
+    "q08_polyformalism_12_ports",
+    "q17_canary_honesty",
+    "q15_twentyfour_ports",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q03_substrate_is_grown": 0.97,
+    "q08_polyformalism_12_ports": 0.88,
+    "q17_canary_honesty": 0.76,
+    "q15_twentyfour_ports": 0.18,
+    "q10_quorum_meshing": 0.87
+  },
+  "usage": {
+    "input_tokens": 1431,
+    "output_tokens": 122
+  }
+}

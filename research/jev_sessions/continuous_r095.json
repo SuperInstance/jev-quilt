@@ -1,0 +1,23 @@
+{
+  "round": 95,
+  "ts": "2026-10-18T15:02:27Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q18_address_is_data",
+    "q21_memory_sandbox",
+    "q11_canon_gate_is_chord",
+    "q12_witness_note_opcode",
+    "q15_twentyfour_ports"
+  ],
+  "verdicts": {
+    "q18_address_is_data": 0.57,
+    "q21_memory_sandbox": 0.28,
+    "q11_canon_gate_is_chord": 0.57,
+    "q12_witness_note_opcode": 0.56,
+    "q15_twentyfour_ports": 0.2
+  },
+  "usage": {
+    "input_tokens": 1401,
+    "output_tokens": 117
+  }
+}

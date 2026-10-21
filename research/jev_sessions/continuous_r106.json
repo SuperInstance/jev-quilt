@@ -1,0 +1,23 @@
+{
+  "round": 106,
+  "ts": "2026-10-18T15:02:29Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q05_lenia_flows",
+    "q18_address_is_data",
+    "q19_pressure_cascade",
+    "q21_memory_sandbox"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.22,
+    "q05_lenia_flows": 0.96,
+    "q18_address_is_data": 0.57,
+    "q19_pressure_cascade": 0.25,
+    "q21_memory_sandbox": 0.28
+  },
+  "usage": {
+    "input_tokens": 1391,
+    "output_tokens": 113
+  }
+}

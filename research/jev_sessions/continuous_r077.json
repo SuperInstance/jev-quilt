@@ -1,0 +1,23 @@
+{
+  "round": 77,
+  "ts": "2026-10-18T15:02:25Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q12_witness_note_opcode",
+    "q21_memory_sandbox",
+    "q20_wolffs_law",
+    "q19_pressure_cascade"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.97,
+    "q12_witness_note_opcode": 0.56,
+    "q21_memory_sandbox": 0.28,
+    "q20_wolffs_law": 0.55,
+    "q19_pressure_cascade": 0.26
+  },
+  "usage": {
+    "input_tokens": 1388,
+    "output_tokens": 116
+  }
+}

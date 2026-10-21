@@ -1,0 +1,23 @@
+{
+  "round": 56,
+  "ts": "2026-10-19T08:04:53Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q11_canon_gate_is_chord",
+    "q18_address_is_data",
+    "q07_eleven_opcodes",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.97,
+    "q11_canon_gate_is_chord": 0.61,
+    "q18_address_is_data": 0.55,
+    "q07_eleven_opcodes": 0.95,
+    "q10_quorum_meshing": 0.86
+  },
+  "usage": {
+    "input_tokens": 1417,
+    "output_tokens": 115
+  }
+}

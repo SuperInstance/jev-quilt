@@ -1,0 +1,23 @@
+{
+  "round": 47,
+  "ts": "2026-10-20T13:02:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q21_memory_sandbox",
+    "q17_canary_honesty",
+    "q08_polyformalism_12_ports",
+    "q15_twentyfour_ports",
+    "q20_wolffs_law"
+  ],
+  "verdicts": {
+    "q21_memory_sandbox": 0.3,
+    "q17_canary_honesty": 0.76,
+    "q08_polyformalism_12_ports": 0.89,
+    "q15_twentyfour_ports": 0.18,
+    "q20_wolffs_law": 0.58
+  },
+  "usage": {
+    "input_tokens": 1430,
+    "output_tokens": 121
+  }
+}

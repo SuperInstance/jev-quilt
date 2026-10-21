@@ -1,0 +1,23 @@
+{
+  "round": 109,
+  "ts": "2026-10-18T15:02:29Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q02_witness_log_is_prediction",
+    "q20_wolffs_law",
+    "q19_pressure_cascade",
+    "q15_twentyfour_ports"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q02_witness_log_is_prediction": 0.94,
+    "q20_wolffs_law": 0.59,
+    "q19_pressure_cascade": 0.24,
+    "q15_twentyfour_ports": 0.19
+  },
+  "usage": {
+    "input_tokens": 1407,
+    "output_tokens": 118
+  }
+}

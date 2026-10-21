@@ -1,0 +1,23 @@
+{
+  "round": 91,
+  "ts": "2026-10-19T08:04:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q20_wolffs_law",
+    "q07_eleven_opcodes",
+    "q09_signal_chain",
+    "q10_quorum_meshing",
+    "q04_oracle_is_heard"
+  ],
+  "verdicts": {
+    "q20_wolffs_law": 0.55,
+    "q07_eleven_opcodes": 0.95,
+    "q09_signal_chain": 0.59,
+    "q10_quorum_meshing": 0.85,
+    "q04_oracle_is_heard": 0.96
+  },
+  "usage": {
+    "input_tokens": 1421,
+    "output_tokens": 114
+  }
+}

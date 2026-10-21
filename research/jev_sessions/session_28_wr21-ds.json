@@ -1,0 +1,24 @@
+{
+  "session": 28,
+  "iso": "2026-09-21T20:24:54Z",
+  "piece": "wr21-ds",
+  "sections_probed": 1,
+  "mean_p": 0.5714285714285714,
+  "cadence": "Deceptive",
+  "verdict": "DISCUSS",
+  "section_results": [
+    {
+      "section_idx": 0,
+      "section_size": 1882,
+      "yes": 4,
+      "mean_p": 0.5714285714285714,
+      "mode": "per-section"
+    }
+  ],
+  "dream_pool_entry": {
+    "piece": "wr21-ds",
+    "p": 0.5714285714285714,
+    "cadence": "Deceptive",
+    "success": false
+  }
+}

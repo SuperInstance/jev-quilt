@@ -1,0 +1,23 @@
+{
+  "round": 158,
+  "ts": "2026-10-18T15:02:36Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q18_address_is_data",
+    "q01_cells_are_scars",
+    "q05_lenia_flows",
+    "q08_polyformalism_12_ports",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q18_address_is_data": 0.6,
+    "q01_cells_are_scars": 0.97,
+    "q05_lenia_flows": 0.96,
+    "q08_polyformalism_12_ports": 0.9,
+    "q10_quorum_meshing": 0.86
+  },
+  "usage": {
+    "input_tokens": 1416,
+    "output_tokens": 117
+  }
+}

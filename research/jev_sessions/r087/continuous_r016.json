@@ -1,0 +1,23 @@
+{
+  "round": 16,
+  "ts": "2026-10-19T08:04:47Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q02_witness_log_is_prediction",
+    "q05_lenia_flows",
+    "q13_chain_dialing",
+    "q01_cells_are_scars",
+    "q11_canon_gate_is_chord"
+  ],
+  "verdicts": {
+    "q02_witness_log_is_prediction": 0.93,
+    "q05_lenia_flows": 0.95,
+    "q13_chain_dialing": 0.62,
+    "q01_cells_are_scars": 0.97,
+    "q11_canon_gate_is_chord": 0.6
+  },
+  "usage": {
+    "input_tokens": 1389,
+    "output_tokens": 118
+  }
+}

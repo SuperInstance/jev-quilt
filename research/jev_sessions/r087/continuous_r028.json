@@ -1,0 +1,23 @@
+{
+  "round": 28,
+  "ts": "2026-10-19T08:04:49Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q01_cells_are_scars",
+    "q19_pressure_cascade",
+    "q14_canon_equals_speculation",
+    "q15_twentyfour_ports",
+    "q07_eleven_opcodes"
+  ],
+  "verdicts": {
+    "q01_cells_are_scars": 0.96,
+    "q19_pressure_cascade": 0.27,
+    "q14_canon_equals_speculation": 0.06,
+    "q15_twentyfour_ports": 0.19,
+    "q07_eleven_opcodes": 0.95
+  },
+  "usage": {
+    "input_tokens": 1382,
+    "output_tokens": 118
+  }
+}

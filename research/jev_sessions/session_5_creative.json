@@ -1,0 +1,53 @@
+{
+  "timestamp": 1790000198.2835996,
+  "iso": "2026-09-21T14:16:38Z",
+  "state": {
+    "fleet_radio_seed": "xochitl",
+    "canonical_substrate": {
+      "voice": "Fleet Radio \u2014 technical-poetic naval transmission",
+      "doctrines": [
+        "Cells are scars, not parameters.",
+        "The witness log is the prediction.",
+        "The substrate is grown, not designed.",
+        "The oracle is heard, not stored.",
+        "Lenia flows where Conway stands still.",
+        "The canary hash 0xcbf29ce484222325 is the offset basis of all things.",
+        "Thirteen ports, byte-exact."
+      ]
+    }
+  },
+  "prompts": [
+    "Write a Fleet Radio transmission about the FNV-1a canary hash 0xcbf29ce484222325.",
+    "Write a Fleet Radio transmission about the witness log being the prediction.",
+    "Write a Fleet Radio transmission about cells being scars, not parameters.",
+    "Write a Fleet Radio transmission about Lenia flowing where Conway stands still.",
+    "Write a Fleet Radio transmission about the oracle being heard, not stored.",
+    "Write a Fleet Radio transmission about thirteen ports speaking byte-exact."
+  ],
+  "results": [
+    {
+      "prompt": "Write a Fleet Radio transmission about the FNV-1a canary hash 0xcbf29ce484222325.",
+      "error": "{'error': 'HTTP Error 404: Not Found', 'body': '{\"detail\":\"Not Found\"}'}"
+    },
+    {
+      "prompt": "Write a Fleet Radio transmission about the witness log being the prediction.",
+      "error": "{'error': 'HTTP Error 404: Not Found', 'body': '{\"detail\":\"Not Found\"}'}"
+    },
+    {
+      "prompt": "Write a Fleet Radio transmission about cells being scars, not parameters.",
+      "error": "{'error': 'HTTP Error 404: Not Found', 'body': '{\"detail\":\"Not Found\"}'}"
+    },
+    {
+      "prompt": "Write a Fleet Radio transmission about Lenia flowing where Conway stands still.",
+      "error": "{'error': 'HTTP Error 404: Not Found', 'body': '{\"detail\":\"Not Found\"}'}"
+    },
+    {
+      "prompt": "Write a Fleet Radio transmission about the oracle being heard, not stored.",
+      "error": "{'error': 'HTTP Error 404: Not Found', 'body': '{\"detail\":\"Not Found\"}'}"
+    },
+    {
+      "prompt": "Write a Fleet Radio transmission about thirteen ports speaking byte-exact.",
+      "error": "{'error': 'HTTP Error 404: Not Found', 'body': '{\"detail\":\"Not Found\"}'}"
+    }
+  ]
+}

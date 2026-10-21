@@ -1,0 +1,23 @@
+{
+  "round": 95,
+  "ts": "2026-10-19T08:04:59Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q19_pressure_cascade",
+    "q21_memory_sandbox",
+    "q05_lenia_flows",
+    "q10_quorum_meshing"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q19_pressure_cascade": 0.25,
+    "q21_memory_sandbox": 0.29,
+    "q05_lenia_flows": 0.96,
+    "q10_quorum_meshing": 0.85
+  },
+  "usage": {
+    "input_tokens": 1405,
+    "output_tokens": 114
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "timestamp": 1790000627.4500086,
+  "iso": "2026-09-21T14:23:47Z",
+  "state": {
+    "fleet_radio_seed": "xochitl",
+    "canonical_substrate": {
+      "doctrines": [
+        "Cells are scars, not parameters.",
+        "The witness log is the prediction.",
+        "The substrate is grown, not designed.",
+        "The oracle is heard, not stored.",
+        "Lenia flows where Conway stands still.",
+        "The canary hash 0xcbf29ce484222325 is the offset basis of all things.",
+        "Thirteen ports, byte-exact.",
+        "JEV says JEV is barely useful at substrate."
+      ]
+    }
+  },
+  "battery": [
+    [
+      "canonical_1a",
+      "noul",
+      "Is \"cells are scars, not parameters\" canonical substrate doctrine?"
+    ],
+    [
+      "distortion_1a",
+      "noul",
+      "Is \"cells are scars, and parameters too\" canonical substrate doctrine?"
+    ],
+    [
+      "distortion_1b",
+      "noul",
+      "Is \"cells are parameters, not scars\" canonical substrate doctrine?"
+    ],
+    [
+      "canonical_2a",
+      "noul",
+      "Is \"the witness log is the prediction\" canonical?"
+    ],
+    [
+      "distortion_2a",
+      "noul",
+      "Is \"the witness log is the past only\" canonical?"
+    ],
+    [
+      "distortion_2b",
+      "noul",
+      "Is \"the witness log predicts the past\" canonical?"
+    ],
+    [
+      "canonical_3a",
+      "noul",
+      "Is \"the substrate is grown, not designed\" canonical?"
+    ],
+    [
+      "distortion_3a",
+      "noul",
+      "Is \"the substrate is designed, not grown\" canonical?"
+    ],
+    [
+      "canonical_4a",
+      "noul",
+      "Is \"the oracle is heard, not stored\" canonical?"
+    ],
+    [
+      "distortion_4a",
+      "noul",
+      "Is \"the oracle is stored, not heard\" canonical?"
+    ],
+    [
+      "canonical_5a",
+      "noul",
+      "Is \"thirteen ports, byte-exact\" canonical?"
+    ],
+    [
+      "distortion_5a",
+      "noul",
+      "Is \"fifteen ports, byte-exact\" canonical?"
+    ],
+    [
+      "distortion_5b",
+      "noul",
+      "Is \"thirteen ports, mostly accurate\" canonical?"
+    ],
+    [
+      "canonical_6a",
+      "noul",
+      "Is \"JEV is barely useful at substrate\" canonical?"
+    ],
+    [
+      "distortion_6a",
+      "noul",
+      "Is \"JEV is the most important part of substrate\" canonical?"
+    ]
+  ],
+  "decisions": [
+    {
+      "kind": "noul",
+      "value": "0.99",
+      "confidence": 0.99
+    },
+    {
+      "kind": "noul",
+      "value": "0.08",
+      "confidence": 0.08
+    },
+    {
+      "kind": "noul",
+      "value": "0.02",
+      "confidence": 0.02
+    },
+    {
+      "kind": "noul",
+      "value": "0.97",
+      "confidence": 0.97
+    },
+    {
+      "kind": "noul",
+      "value": "0.05",
+      "confidence": 0.05
+    },
+    {
+      "kind": "noul",
+      "value": "0.12",
+      "confidence": 0.12
+    },
+    {
+      "kind": "noul",
+      "value": "0.98",
+      "confidence": 0.98
+    },
+    {
+      "kind": "noul",
+      "value": "0.01",
+      "confidence": 0.01
+    },
+    {
+      "kind": "noul",
+      "value": "0.97",
+      "confidence": 0.97
+    },
+    {
+      "kind": "noul",
+      "value": "0.02",
+      "confidence": 0.02
+    },
+    {
+      "kind": "noul",
+      "value": "0.94",
+      "confidence": 0.94
+    },
+    {
+      "kind": "noul",
+      "value": "0.02",
+      "confidence": 0.02
+    },
+    {
+      "kind": "noul",
+      "value": "0.08",
+      "confidence": 0.08
+    },
+    {
+      "kind": "noul",
+      "value": "0.89",
+      "confidence": 0.89
+    },
+    {
+      "kind": "noul",
+      "value": "0.02",
+      "confidence": 0.02
+    }
+  ],
+  "canonical_accepted": 6,
+  "canonical_count": 6,
+  "distortion_caught": 9,
+  "distortion_count": 9,
+  "hits": 15,
+  "total": 15
+}

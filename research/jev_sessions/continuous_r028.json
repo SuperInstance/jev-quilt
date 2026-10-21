@@ -1,0 +1,23 @@
+{
+  "round": 28,
+  "ts": "2026-10-20T13:02:55Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q21_memory_sandbox",
+    "q11_canon_gate_is_chord",
+    "q01_cells_are_scars",
+    "q18_address_is_data",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q21_memory_sandbox": 0.3,
+    "q11_canon_gate_is_chord": 0.61,
+    "q01_cells_are_scars": 0.97,
+    "q18_address_is_data": 0.6,
+    "q16_canonicity_score": 0.23
+  },
+  "usage": {
+    "input_tokens": 1395,
+    "output_tokens": 115
+  }
+}

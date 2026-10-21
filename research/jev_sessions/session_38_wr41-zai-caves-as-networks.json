@@ -1,0 +1,24 @@
+{
+  "session": 38,
+  "iso": "2026-09-21T21:05:08Z",
+  "piece": "wr41-zai-caves-as-networks",
+  "sections_probed": 1,
+  "mean_p": 0.8571428571428571,
+  "cadence": "PerfectAuthentic",
+  "verdict": "ACCEPT",
+  "section_results": [
+    {
+      "section_idx": 0,
+      "section_size": 3000,
+      "yes": 6,
+      "mean_p": 0.8571428571428571,
+      "mode": "per-section"
+    }
+  ],
+  "dream_pool_entry": {
+    "piece": "wr41-zai-caves-as-networks",
+    "p": 0.8571428571428571,
+    "cadence": "PerfectAuthentic",
+    "success": true
+  }
+}

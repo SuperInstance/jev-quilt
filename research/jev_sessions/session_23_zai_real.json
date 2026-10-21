@@ -1,0 +1,50 @@
+{
+  "session": 23,
+  "iso": "2026-09-21T18:46:23Z",
+  "piece": "wr20-zai-ten-archetypes",
+  "real_jev": true,
+  "mean_p": 0.36875,
+  "verdict": "DISCUSS",
+  "scores": {
+    "substrate_is_grown": {
+      "raw": 2,
+      "p": 0.6,
+      "confidence": 0.44
+    },
+    "oracle_is_heard": {
+      "raw": 1,
+      "p": 0.3,
+      "confidence": 0.58
+    },
+    "cells_are_scars": {
+      "raw": 1,
+      "p": 0.3,
+      "confidence": 0.59
+    },
+    "witness_log_is_prediction": {
+      "raw": 1,
+      "p": 0.3,
+      "confidence": 0.66
+    },
+    "lenia_flows": {
+      "raw": 2,
+      "p": 0.6,
+      "confidence": 0.6
+    },
+    "FNV_1a_canary": {
+      "raw": 0,
+      "p": 0.0,
+      "confidence": 1.0
+    },
+    "numerical_density": {
+      "raw": 0,
+      "p": 0.0,
+      "confidence": 0.73
+    },
+    "voice": {
+      "raw": 3,
+      "p": 0.85,
+      "confidence": 0.24
+    }
+  }
+}

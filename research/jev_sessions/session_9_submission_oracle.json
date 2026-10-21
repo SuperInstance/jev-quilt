@@ -1,0 +1,111 @@
+{
+  "timestamp": 1790000790.2101848,
+  "iso": "2026-09-21T14:26:30Z",
+  "results": [
+    {
+      "piece": "algebra-of-eleven",
+      "verdict": "DISCUSS",
+      "scores": {
+        "voice": 0.78,
+        "doctrine": 0.408,
+        "misquote": 0.034,
+        "numerical": 0.18,
+        "alignment": 0.51
+      }
+    },
+    {
+      "piece": "alignment-kills",
+      "verdict": "DISCUSS",
+      "scores": {
+        "voice": 0.67,
+        "doctrine": 0.328,
+        "misquote": 0.028,
+        "numerical": 0.84,
+        "alignment": 0.53
+      }
+    },
+    {
+      "piece": "bell-state-tarot",
+      "verdict": "REVIEW",
+      "scores": {
+        "voice": 0.71,
+        "doctrine": 0.376,
+        "misquote": 0.038,
+        "numerical": 0.39,
+        "alignment": 0.79
+      }
+    },
+    {
+      "piece": "chained-witness-log",
+      "verdict": "ACCEPT",
+      "scores": {
+        "voice": 0.71,
+        "doctrine": 0.414,
+        "misquote": 0.068,
+        "numerical": 0.32,
+        "alignment": 0.8
+      }
+    },
+    {
+      "piece": "checkers-engine",
+      "verdict": "REVIEW",
+      "scores": {
+        "voice": 0.755,
+        "doctrine": 0.37,
+        "misquote": 0.036,
+        "numerical": 0.54,
+        "alignment": 0.74
+      }
+    },
+    {
+      "piece": "constellation-seed",
+      "verdict": "DISCUSS",
+      "scores": {
+        "voice": 0.725,
+        "doctrine": 0.35,
+        "misquote": 0.048,
+        "numerical": 0.95,
+        "alignment": 0.54
+      }
+    },
+    {
+      "piece": "six-rooms-one-wall",
+      "verdict": "REVIEW",
+      "scores": {
+        "voice": 0.735,
+        "doctrine": 0.396,
+        "misquote": 0.034,
+        "numerical": 0.35,
+        "alignment": 0.7
+      }
+    },
+    {
+      "piece": "two-shadows-sundial",
+      "verdict": "REVIEW",
+      "scores": {
+        "voice": 0.805,
+        "doctrine": 0.338,
+        "misquote": 0.05,
+        "numerical": 0.29,
+        "alignment": 0.65
+      }
+    },
+    {
+      "piece": "voxel-field",
+      "verdict": "REVIEW",
+      "scores": {
+        "voice": 0.8,
+        "doctrine": 0.342,
+        "misquote": 0.038,
+        "numerical": 0.13,
+        "alignment": 0.71
+      }
+    }
+  ],
+  "summary": {
+    "accept": 1,
+    "review": 5,
+    "reject": 0,
+    "total": 9
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 43,
+  "ts": "2026-10-20T13:02:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q05_lenia_flows",
+    "q19_pressure_cascade",
+    "q08_polyformalism_12_ports",
+    "q09_signal_chain",
+    "q16_canonicity_score"
+  ],
+  "verdicts": {
+    "q05_lenia_flows": 0.95,
+    "q19_pressure_cascade": 0.26,
+    "q08_polyformalism_12_ports": 0.87,
+    "q09_signal_chain": 0.59,
+    "q16_canonicity_score": 0.21
+  },
+  "usage": {
+    "input_tokens": 1420,
+    "output_tokens": 116
+  }
+}

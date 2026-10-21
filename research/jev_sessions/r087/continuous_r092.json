@@ -1,0 +1,23 @@
+{
+  "round": 92,
+  "ts": "2026-10-19T08:04:58Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q07_eleven_opcodes",
+    "q04_oracle_is_heard",
+    "q21_memory_sandbox",
+    "q06_three_views",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q07_eleven_opcodes": 0.95,
+    "q04_oracle_is_heard": 0.96,
+    "q21_memory_sandbox": 0.28,
+    "q06_three_views": 0.22,
+    "q09_signal_chain": 0.57
+  },
+  "usage": {
+    "input_tokens": 1423,
+    "output_tokens": 111
+  }
+}

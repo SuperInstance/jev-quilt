@@ -1,0 +1,23 @@
+{
+  "round": 194,
+  "ts": "2026-10-18T15:02:42Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q11_canon_gate_is_chord",
+    "q20_wolffs_law",
+    "q19_pressure_cascade",
+    "q01_cells_are_scars",
+    "q09_signal_chain"
+  ],
+  "verdicts": {
+    "q11_canon_gate_is_chord": 0.59,
+    "q20_wolffs_law": 0.53,
+    "q19_pressure_cascade": 0.26,
+    "q01_cells_are_scars": 0.97,
+    "q09_signal_chain": 0.58
+  },
+  "usage": {
+    "input_tokens": 1396,
+    "output_tokens": 115
+  }
+}

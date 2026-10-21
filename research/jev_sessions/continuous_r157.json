@@ -1,0 +1,23 @@
+{
+  "round": 157,
+  "ts": "2026-10-18T15:02:36Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q10_quorum_meshing",
+    "q09_signal_chain",
+    "q13_chain_dialing",
+    "q18_address_is_data",
+    "q05_lenia_flows"
+  ],
+  "verdicts": {
+    "q10_quorum_meshing": 0.86,
+    "q09_signal_chain": 0.61,
+    "q13_chain_dialing": 0.61,
+    "q18_address_is_data": 0.6,
+    "q05_lenia_flows": 0.96
+  },
+  "usage": {
+    "input_tokens": 1413,
+    "output_tokens": 111
+  }
+}

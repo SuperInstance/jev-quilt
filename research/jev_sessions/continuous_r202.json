@@ -1,0 +1,23 @@
+{
+  "round": 1,
+  "ts": "2026-10-20T02:04:47Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q17_canary_honesty",
+    "q20_wolffs_law",
+    "q10_quorum_meshing",
+    "q18_address_is_data",
+    "q02_witness_log_is_prediction"
+  ],
+  "verdicts": {
+    "q17_canary_honesty": 0.78,
+    "q20_wolffs_law": 0.57,
+    "q10_quorum_meshing": 0.87,
+    "q18_address_is_data": 0.59,
+    "q02_witness_log_is_prediction": 0.93
+  },
+  "usage": {
+    "input_tokens": 1425,
+    "output_tokens": 117
+  }
+}

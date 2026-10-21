@@ -1,0 +1,23 @@
+{
+  "round": 36,
+  "ts": "2026-10-19T08:04:50Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q10_quorum_meshing",
+    "q09_signal_chain",
+    "q18_address_is_data",
+    "q21_memory_sandbox",
+    "q20_wolffs_law"
+  ],
+  "verdicts": {
+    "q10_quorum_meshing": 0.87,
+    "q09_signal_chain": 0.6,
+    "q18_address_is_data": 0.57,
+    "q21_memory_sandbox": 0.29,
+    "q20_wolffs_law": 0.56
+  },
+  "usage": {
+    "input_tokens": 1413,
+    "output_tokens": 112
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "round": 22,
+  "ts": "2026-10-19T08:04:48Z",
+  "status": "ok",
+  "sampled_qids": [
+    "q16_canonicity_score",
+    "q10_quorum_meshing",
+    "q19_pressure_cascade",
+    "q01_cells_are_scars",
+    "q14_canon_equals_speculation"
+  ],
+  "verdicts": {
+    "q16_canonicity_score": 0.23,
+    "q10_quorum_meshing": 0.86,
+    "q19_pressure_cascade": 0.26,
+    "q01_cells_are_scars": 0.96,
+    "q14_canon_equals_speculation": 0.07
+  },
+  "usage": {
+    "input_tokens": 1374,
+    "output_tokens": 117
+  }
+}

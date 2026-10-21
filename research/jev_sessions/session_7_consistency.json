@@ -1,0 +1,132 @@
+{
+  "timestamp": 1790000539.3899622,
+  "iso": "2026-09-21T14:22:19Z",
+  "state": {
+    "fleet_radio_seed": "xochitl",
+    "canonical_substrate": {
+      "fnv1a_64bit": {
+        "offset_basis": "0xcbf29ce484222325",
+        "prime": "0x100000001b3"
+      },
+      "doctrines": [
+        "Cells are scars, not parameters.",
+        "The witness log is the prediction.",
+        "The substrate is grown, not designed."
+      ]
+    }
+  },
+  "questions": [
+    [
+      "fnv1a_offset",
+      "noul",
+      "Is 0xcbf29ce484222325 the FNV-1a 64-bit offset basis?"
+    ],
+    [
+      "fnv1a_prime",
+      "noul",
+      "Is 0x100000001b3 the FNV-1a 64-bit prime?"
+    ],
+    [
+      "scar",
+      "noul",
+      "Are cells scars rather than parameters?"
+    ],
+    [
+      "witness",
+      "noul",
+      "Is the witness log also the prediction?"
+    ],
+    [
+      "grown",
+      "noul",
+      "Is the substrate grown rather than designed?"
+    ],
+    [
+      "oracle",
+      "noul",
+      "Is the oracle heard rather than stored?"
+    ],
+    [
+      "lenia",
+      "noul",
+      "Does Lenia flow where Conway stands still?"
+    ],
+    [
+      "13ports",
+      "noul",
+      "Does the substrate have 13 polyformalism ports?"
+    ],
+    [
+      "cosine",
+      "noul",
+      "Is cosine similarity = (A.B)/(||A||*||B||)?"
+    ],
+    [
+      "boxmuller",
+      "noul",
+      "Is Box-Muller the bridge from uniform to Gaussian?"
+    ]
+  ],
+  "iterations": [
+    [
+      0.99,
+      0.96,
+      0.76,
+      0.91,
+      0.92,
+      0.47,
+      0.61,
+      0.12,
+      0.98,
+      0.89
+    ],
+    [
+      0.99,
+      0.96,
+      0.78,
+      0.92,
+      0.93,
+      0.46,
+      0.59,
+      0.12,
+      0.98,
+      0.9
+    ],
+    [
+      0.99,
+      0.96,
+      0.76,
+      0.91,
+      0.92,
+      0.49,
+      0.6,
+      0.12,
+      0.98,
+      0.89
+    ],
+    [
+      0.99,
+      0.97,
+      0.78,
+      0.91,
+      0.92,
+      0.47,
+      0.6,
+      0.12,
+      0.97,
+      0.9
+    ],
+    [
+      0.99,
+      0.96,
+      0.79,
+      0.91,
+      0.92,
+      0.49,
+      0.61,
+      0.12,
+      0.98,
+      0.9
+    ]
+  ]
+}
