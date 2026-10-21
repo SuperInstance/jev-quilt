@@ -1,0 +1,51 @@
+[2026-10-21T18:04:50+00:00] JEV continuous probe - R-210 (97th wipe)
+Endpoint: https://api.typesafe.ai/v1/systemone
+API key: set
+Target rounds: 200, ceiling 60s
+History: 2355 prior verdicts across 22 questions
+------------------------------------------------------------
+  r214-001 mean_p=0.616 (5/5) kinds=['bedrock', 'review', 'bedrock', 'review', 'bedrock']
+  r214-002 mean_p=0.232 (5/5) kinds=['speculative', 'bedrock', 'speculative', 'review', 'speculative']
+  r214-003 mean_p=0.536 (5/5) kinds=['speculative', 'bedrock', 'bedrock', 'speculative', 'review']
+  r214-004 mean_p=0.52 (5/5) kinds=['review', 'bedrock', 'adversarial', 'bedrock', 'speculative']
+  r214-005 mean_p=0.26 (5/5) kinds=['speculative', 'speculative', 'speculative', 'bedrock', 'speculative']
+  r214-006 mean_p=0.292 (5/5) kinds=['bedrock', 'adversarial', 'speculative', 'speculative', 'review']
+  r214-007 mean_p=0.546 (5/5) kinds=['review', 'review', 'speculative', 'bedrock', 'bedrock']
+  r214-008 mean_p=0.382 (5/5) kinds=['speculative', 'speculative', 'review', 'bedrock', 'speculative']
+  r214-009 mean_p=0.79 (5/5) kinds=['bedrock', 'speculative', 'bedrock', 'bedrock', 'bedrock']
+  r214-010 mean_p=0.524 (5/5) kinds=['bedrock', 'review', 'bedrock', 'adversarial', 'speculative']
+  r214-011 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+  r214-012 mean_p=0.616 (5/5) kinds=['bedrock', 'bedrock', 'review', 'bedrock', 'speculative']
+  r214-013 mean_p=0.386 (5/5) kinds=['speculative', 'speculative', 'speculative', 'review', 'bedrock']
+  r214-014 mean_p=0.488 (5/5) kinds=['review', 'adversarial', 'bedrock', 'review', 'review']
+  r214-015 mean_p=0.35 (5/5) kinds=['review', 'speculative', 'speculative', 'bedrock', 'speculative']
+  r214-016 mean_p=0.236 (5/5) kinds=['speculative', 'speculative', 'adversarial', 'review', 'bedrock']
+  r214-017 mean_p=0.158 (5/5) kinds=['speculative', 'speculative', 'review', 'review', 'speculative']
+  r214-018 mean_p=0.6 (5/5) kinds=['speculative', 'bedrock', 'bedrock', 'speculative', 'bedrock']
+  r214-019 mean_p=0.068 (5/5) kinds=['speculative', 'speculative', 'review', 'review', 'speculative']
+  r214-020 mean_p=0.416 (5/5) kinds=['adversarial', 'bedrock', 'bedrock', 'review', 'speculative']
+  r214-021 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+  r214-022 mean_p=0.252 (5/5) kinds=['bedrock', 'speculative', 'speculative', 'adversarial', 'review']
+  r214-023 mean_p=0.164 (5/5) kinds=['speculative', 'review', 'speculative', 'review', 'speculative']
+  r214-024 mean_p=0.278 (5/5) kinds=['speculative', 'review', 'review', 'bedrock', 'review']
+  r214-025 mean_p=0.466 (5/5) kinds=['speculative', 'speculative', 'bedrock', 'review', 'bedrock']
+  r214-026 mean_p=0.654 (5/5) kinds=['bedrock', 'bedrock', 'speculative', 'review', 'bedrock']
+  r214-027 mean_p=0.056 (5/5) kinds=['speculative', 'speculative', 'speculative', 'review', 'speculative']
+  r214-028 mean_p=0.446 (5/5) kinds=['speculative', 'bedrock', 'speculative', 'review', 'bedrock']
+  r214-029 mean_p=0.244 (5/5) kinds=['speculative', 'speculative', 'bedrock', 'speculative', 'review']
+  r214-030 mean_p=0.35 (5/5) kinds=['review', 'bedrock', 'review', 'speculative', 'review']
+  r214-031 mean_p=0.154 (5/5) kinds=['speculative', 'speculative', 'adversarial', 'speculative', 'review']
+  r214-032 mean_p=0.516 (5/5) kinds=['review', 'speculative', 'review', 'bedrock', 'review']
+  r214-033 mean_p=0.42 (5/5) kinds=['speculative', 'review', 'bedrock', 'review', 'speculative']
+  r214-034 mean_p=0.348 (5/5) kinds=['speculative', 'speculative', 'review', 'bedrock', 'speculative']
+  r214-035 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+[ceiling] 35 rounds in 60s; stopping
+------------------------------------------------------------
+Session: 2026-10-21T18:04:50+00:00 -> 2026-10-21T18:05:51+00:00
+Rounds: 32 OK / 3 fail of 36 attempted
+Verdicts: 160, grand mean_p = 0.3864
+Bedrock hits (p>=0.70): 45
+Spec clean-rejects (p<0.40): 64
+Adv clean-rejects (p<0.40): 8
+Drift events > 0.05: 1
+Summary -> /run/csi/mount-root/nas/eab0d61a99b6696edb3d2aff87b585e8/research/jev_sessions/rounds_r214/session_summary.json

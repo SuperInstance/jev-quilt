@@ -1,0 +1,36 @@
+{
+  "round_id": "r214-035",
+  "ts": "2026-10-21T18:05:51+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q06_three_views",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q02_witness_log_is_prediction",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q08_polyformalism",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q22_provenance_conflict",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q09_signal_chain_canon",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 9.093,
+  "status": "fail",
+  "error": "URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>",
+  "session": "rounds_r214"
+}

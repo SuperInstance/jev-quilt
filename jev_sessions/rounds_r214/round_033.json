@@ -1,0 +1,89 @@
+{
+  "round_id": "r214-033",
+  "ts": "2026-10-21T18:05:41+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q18_address_is_data",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q17_canary_honesty",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q07_11_opcodes",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q06_three_views",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q09_signal_chain_canon",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.168,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q18_address_is_data",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q17_canary_honesty",
+      "kind": "review",
+      "p": 0.69,
+      "raw": {
+        "type": "noul",
+        "noul": 0.69
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q06_three_views",
+      "kind": "review",
+      "p": 0.18,
+      "raw": {
+        "type": "noul",
+        "noul": 0.18
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q09_signal_chain_canon",
+      "kind": "speculative",
+      "p": 0.21,
+      "raw": {
+        "type": "noul",
+        "noul": 0.21
+      }
+    }
+  ],
+  "mean_p": 0.42,
+  "n_ok": 5,
+  "session": "rounds_r214"
+}

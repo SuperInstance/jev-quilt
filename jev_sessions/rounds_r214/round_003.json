@@ -1,0 +1,89 @@
+{
+  "round_id": "r214-003",
+  "ts": "2026-10-21T18:04:56+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q18_address_is_data",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q08_polyformalism",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q02_witness_log_is_prediction",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q15_jev_synapse",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q12_substrate_polyformal",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 5.474,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q18_address_is_data",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q08_polyformalism",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q15_jev_synapse",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q12_substrate_polyformal",
+      "kind": "review",
+      "p": 0.62,
+      "raw": {
+        "type": "noul",
+        "noul": 0.62
+      }
+    }
+  ],
+  "mean_p": 0.536,
+  "n_ok": 5,
+  "session": "rounds_r214"
+}
