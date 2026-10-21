@@ -22,17 +22,23 @@ import random
 import urllib.request
 import urllib.error
 import re
+import math
 from datetime import datetime, timezone
 from pathlib import Path
 
 ENDPOINT = "https://api.typesafe.ai/v1/systemone"
 SESSIONS_DIR = Path(__file__).parent / "jev_sessions"
 # R-209: rounds go in a per-session dir, never in the saturated continuous_r*.json series
-SESSION_DIR = SESSIONS_DIR / "rounds_r209"
+SESSION_DIR = SESSIONS_DIR / "rounds_r210"
 HISTORY_PATH = SESSIONS_DIR / "history.jsonl"
 TIMEOUT_S = 4  # R-206: healthy calls complete in ~0.13s; 4s keeps 30x headroom while cutting stall cost 3x
 DRIFT_THRESHOLD = 0.05
 QUESTIONS_PER_ROUND = 5
+SESSION_TAG = "r210"  # R-210: per-session round prefix; never reuse a prior session's dir
+# R-210 ask (a): a fixed 0.05 fires drift by chance on a high-variance qid. q17 canary_honesty
+# has sigma=0.0271, so 0.05 is only ~1.8 sigma for it and it manufactured BOTH of R-209's
+# events. Fire on max(0.05, 2*sigma_per_qid) and carry sigma in the alert.
+DRIFT_SIGMA_MULT = 2.0
 
 # Env var: this session uses TYPESAFE_AI_TOKEN; legacy scripts used TYPESAFEAI_KEY
 API_KEY = (
@@ -263,16 +269,28 @@ def compute_drift(samples, current_round):
         history = samples.get(qid, [])
         if len(history) < 3:
             continue
-        recent = history[-5:]
-        med = sorted(recent)[len(recent) // 2]
-        delta = p - med
-        if abs(delta) > DRIFT_THRESHOLD:
+        # R-210: judge drift against the FULL-history mean, not a 5-sample median.
+        # The local median is itself noisy: for q17 it amplified a 0.0677 true
+        # excursion into 0.0700, which is what made R-209 fire both of its events.
+        # The full-history mean is the stable estimator; sigma is computed on PRIOR
+        # history only (the current sample is appended after this call).
+        n = len(history)
+        mu = sum(history) / n
+        sigma = math.sqrt(sum((x - mu) ** 2 for x in history) / n)
+        med = mu
+        delta = p - mu
+        thr = max(DRIFT_THRESHOLD, DRIFT_SIGMA_MULT * sigma)
+        if abs(delta) > thr:
             drifts.append({
                 "qid": qid, "current_p": p,
-                "median_p": round(med, 4), "delta": round(delta, 4),
+                "median_p": round(med, 4), "baseline_mean": round(mu, 4),
+                "delta": round(delta, 4),
+                "sigma": round(sigma, 4), "threshold": round(thr, 4),
                 "n_history": len(history),
             })
-        by_qid[qid] = {"current": p, "median": round(med, 4), "n": len(history)}
+        by_qid[qid] = {"current": p, "median": round(med, 4), "n": len(history),
+                       "sigma": round(sigma, 4), "threshold": round(thr, 4),
+                       "delta": round(delta, 4)}
     return drifts, by_qid
 
 def main():
@@ -304,7 +322,7 @@ def main():
     drifts_found = []
     start_ts = datetime.now(timezone.utc).isoformat(timespec="seconds")
 
-    print(f"[{start_ts}] JEV continuous probe - R-209 (96th wipe)")
+    print(f"[{start_ts}] JEV continuous probe - R-210 (97th wipe)")
     print(f"Endpoint: {ENDPOINT}")
     print(f"API key: {'set' if API_KEY else 'MISSING'}")
     print(f"Target rounds: {rounds_arg}, ceiling 60s")
@@ -316,7 +334,7 @@ def main():
         if time.time() >= deadline:
             print(f"[ceiling] {i-1} rounds in 60s; stopping")
             break
-        rid_str = f"r209-{i:03d}"
+        rid_str = f"{SESSION_TAG}-{i:03d}"
         rec = run_one_round(rid_str, samples)
         rec["session"] = SESSION_DIR.name
         if rec.get("status") != "ok":
