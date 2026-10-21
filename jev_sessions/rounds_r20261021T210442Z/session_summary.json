@@ -1,0 +1,148 @@
+{
+  "session_start": "2026-10-21T21:04:42+00:00",
+  "session_end": "2026-10-21T21:05:44+00:00",
+  "rounds_attempted": 24,
+  "rounds_ok": 21,
+  "rounds_fail": 2,
+  "verdicts_total": 105,
+  "grand_mean_p": 0.4767,
+  "bedrock_hits_count": 40,
+  "bedrock_hit_rate": 0.381,
+  "spec_rejects_count": 31,
+  "adv_rejects_count": 7,
+  "drift_events": [],
+  "per_qid": {
+    "q06_three_views": {
+      "kind": "review",
+      "n": 6,
+      "mean": 0.1617,
+      "hit_p70": 0
+    },
+    "q07_11_opcodes": {
+      "kind": "bedrock",
+      "n": 6,
+      "mean": 0.97,
+      "hit_p70": 6
+    },
+    "q15_jev_synapse": {
+      "kind": "speculative",
+      "n": 2,
+      "mean": 0.05,
+      "hit_p70": 0
+    },
+    "q18_address_is_data": {
+      "kind": "speculative",
+      "n": 4,
+      "mean": 0.05,
+      "hit_p70": 0
+    },
+    "q10_quorum_meshing": {
+      "kind": "speculative",
+      "n": 3,
+      "mean": 0.03,
+      "hit_p70": 0
+    },
+    "q01_cells_are_scars": {
+      "kind": "bedrock",
+      "n": 7,
+      "mean": 0.98,
+      "hit_p70": 7
+    },
+    "q04_oracle_is_heard": {
+      "kind": "bedrock",
+      "n": 8,
+      "mean": 0.9737,
+      "hit_p70": 8
+    },
+    "q17_canary_honesty": {
+      "kind": "review",
+      "n": 6,
+      "mean": 0.645,
+      "hit_p70": 1
+    },
+    "q05_lenia_flows": {
+      "kind": "bedrock",
+      "n": 5,
+      "mean": 0.97,
+      "hit_p70": 5
+    },
+    "q19_style_resilience": {
+      "kind": "adversarial",
+      "n": 7,
+      "mean": 0.0386,
+      "hit_p70": 0
+    },
+    "q14_chain_dialing_real": {
+      "kind": "speculative",
+      "n": 7,
+      "mean": 0.05,
+      "hit_p70": 0
+    },
+    "q16_vibecoder_signal_chain": {
+      "kind": "speculative",
+      "n": 2,
+      "mean": 0.04,
+      "hit_p70": 0
+    },
+    "q20_wolffs_law": {
+      "kind": "speculative",
+      "n": 2,
+      "mean": 0.05,
+      "hit_p70": 0
+    },
+    "q03_substrate_is_grown": {
+      "kind": "bedrock",
+      "n": 4,
+      "mean": 0.98,
+      "hit_p70": 4
+    },
+    "q02_witness_log_is_prediction": {
+      "kind": "bedrock",
+      "n": 4,
+      "mean": 0.975,
+      "hit_p70": 4
+    },
+    "q11_canon_gate_is_chord": {
+      "kind": "review",
+      "n": 8,
+      "mean": 0.05,
+      "hit_p70": 0
+    },
+    "q12_substrate_polyformal": {
+      "kind": "review",
+      "n": 6,
+      "mean": 0.6067,
+      "hit_p70": 0
+    },
+    "q21_memory_sandbox": {
+      "kind": "speculative",
+      "n": 3,
+      "mean": 0.04,
+      "hit_p70": 0
+    },
+    "q22_provenance_conflict": {
+      "kind": "speculative",
+      "n": 5,
+      "mean": 0.03,
+      "hit_p70": 0
+    },
+    "q08_polyformalism": {
+      "kind": "bedrock",
+      "n": 6,
+      "mean": 0.98,
+      "hit_p70": 6
+    },
+    "q13_witness_log_opcode": {
+      "kind": "review",
+      "n": 1,
+      "mean": 0.1,
+      "hit_p70": 0
+    },
+    "q09_signal_chain_canon": {
+      "kind": "speculative",
+      "n": 3,
+      "mean": 0.1967,
+      "hit_p70": 0
+    }
+  }
+}

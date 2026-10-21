@@ -1,0 +1,39 @@
+[2026-10-21T21:04:42+00:00] JEV continuous probe - R-210 (97th wipe)
+Endpoint: https://api.typesafe.ai/v1/systemone
+API key: set
+Target rounds: 200, ceiling 60s
+History: 2680 prior verdicts across 22 questions
+------------------------------------------------------------
+  r20261021T210442Z-001 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+  r20261021T210442Z-002 mean_p=0.25 (5/5) kinds=['review', 'bedrock', 'speculative', 'speculative', 'speculative']
+  r20261021T210442Z-003 mean_p=0.914 (5/5) kinds=['bedrock', 'bedrock', 'bedrock', 'review', 'bedrock']
+  r20261021T210442Z-004 mean_p=0.256 (5/5) kinds=['adversarial', 'speculative', 'bedrock', 'review', 'speculative']
+  r20261021T210442Z-005 mean_p=0.344 (5/5) kinds=['speculative', 'adversarial', 'review', 'speculative', 'bedrock']
+  r20261021T210442Z-006 mean_p=0.714 (5/5) kinds=['bedrock', 'bedrock', 'review', 'bedrock', 'review']
+  r20261021T210442Z-007 mean_p=0.534 (5/5) kinds=['review', 'review', 'speculative', 'bedrock', 'bedrock']
+  r20261021T210442Z-008 mean_p=0.342 (5/5) kinds=['bedrock', 'speculative', 'review', 'review', 'speculative']
+  r20261021T210442Z-009 mean_p=0.418 (5/5) kinds=['speculative', 'bedrock', 'bedrock', 'review', 'speculative']
+  r20261021T210442Z-010 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+  r20261021T210442Z-011 mean_p=0.79 (5/5) kinds=['bedrock', 'bedrock', 'speculative', 'bedrock', 'bedrock']
+  r20261021T210442Z-012 mean_p=0.436 (5/5) kinds=['speculative', 'review', 'review', 'bedrock', 'bedrock']
+  r20261021T210442Z-013 mean_p=0.54 (5/5) kinds=['bedrock', 'review', 'adversarial', 'bedrock', 'review']
+  r20261021T210442Z-014 mean_p=0.224 (5/5) kinds=['adversarial', 'speculative', 'bedrock', 'speculative', 'speculative']
+  r20261021T210442Z-015 mean_p=0.634 (5/5) kinds=['speculative', 'review', 'bedrock', 'bedrock', 'bedrock']
+  r20261021T210442Z-016 mean_p=0.46 (5/5) kinds=['review', 'adversarial', 'speculative', 'bedrock', 'review']
+  r20261021T210442Z-017 mean_p=0.414 (5/5) kinds=['speculative', 'review', 'adversarial', 'bedrock', 'bedrock']
+  r20261021T210442Z-018 mean_p=0.286 (5/5) kinds=['bedrock', 'speculative', 'review', 'speculative', 'review']
+  r20261021T210442Z-019 mean_p=0.37 (5/5) kinds=['speculative', 'review', 'bedrock', 'speculative', 'review']
+  r20261021T210442Z-020 mean_p=0.794 (5/5) kinds=['bedrock', 'bedrock', 'bedrock', 'bedrock', 'speculative']
+  r20261021T210442Z-021 mean_p=0.366 (5/5) kinds=['review', 'bedrock', 'speculative', 'speculative', 'review']
+  r20261021T210442Z-022 mean_p=0.578 (5/5) kinds=['speculative', 'speculative', 'bedrock', 'bedrock', 'review']
+  r20261021T210442Z-023 mean_p=0.346 (5/5) kinds=['bedrock', 'speculative', 'review', 'speculative', 'adversarial']
+[ceiling] 23 rounds in 60s; stopping
+------------------------------------------------------------
+Session: 2026-10-21T21:04:42+00:00 -> 2026-10-21T21:05:44+00:00
+Rounds: 21 OK / 2 fail of 24 attempted
+Verdicts: 105, grand mean_p = 0.4767
+Bedrock hits (p>=0.70): 40
+Spec clean-rejects (p<0.40): 31
+Adv clean-rejects (p<0.40): 7
+Drift events > 0.05: 0
+Summary -> /tmp/jev_probe/jev_sessions/rounds_r20261021T210442Z/session_summary.json

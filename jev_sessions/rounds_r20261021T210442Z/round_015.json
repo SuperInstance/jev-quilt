@@ -1,0 +1,89 @@
+{
+  "round_id": "r20261021T210442Z-015",
+  "ts": "2026-10-21T21:05:21+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q09_signal_chain_canon",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q11_canon_gate_is_chord",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q07_11_opcodes",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q08_polyformalism",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q04_oracle_is_heard",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.195,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q09_signal_chain_canon",
+      "kind": "speculative",
+      "p": 0.2,
+      "raw": {
+        "type": "noul",
+        "noul": 0.2
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q11_canon_gate_is_chord",
+      "kind": "review",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q08_polyformalism",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q04_oracle_is_heard",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    }
+  ],
+  "mean_p": 0.634,
+  "n_ok": 5,
+  "session": "rounds_r20261021T210442Z"
+}
