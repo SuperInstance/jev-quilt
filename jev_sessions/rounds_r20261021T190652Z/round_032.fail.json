@@ -1,0 +1,36 @@
+{
+  "round_id": "r20261021T190652Z-032",
+  "ts": "2026-10-21T19:07:37+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q03_substrate_is_grown",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q15_jev_synapse",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q10_quorum_meshing",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q11_canon_gate_is_chord",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q17_canary_honesty",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 9.186,
+  "status": "fail",
+  "error": "URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>",
+  "session": "rounds_r20261021T190652Z"
+}

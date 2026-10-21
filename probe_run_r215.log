@@ -1,0 +1,53 @@
+[2026-10-21T19:06:52+00:00] JEV continuous probe - R-210 (97th wipe)
+Endpoint: https://api.typesafe.ai/v1/systemone
+API key: set
+Target rounds: 200, ceiling 60s
+History: 2515 prior verdicts across 22 questions
+------------------------------------------------------------
+  r20261021T190652Z-001 mean_p=0.62 (5/5) kinds=['bedrock', 'bedrock', 'bedrock', 'review', 'review']
+  r20261021T190652Z-002 mean_p=0.44 (5/5) kinds=['bedrock', 'bedrock', 'adversarial', 'review', 'speculative']
+  r20261021T190652Z-003 mean_p=0.414 (5/5) kinds=['bedrock', 'speculative', 'speculative', 'bedrock', 'speculative']
+  r20261021T190652Z-004 mean_p=0.424 (5/5) kinds=['review', 'bedrock', 'speculative', 'adversarial', 'bedrock']
+  r20261021T190652Z-005 mean_p=0.648 (5/5) kinds=['speculative', 'bedrock', 'review', 'bedrock', 'bedrock']
+  r20261021T190652Z-006 mean_p=0.462 (5/5) kinds=['speculative', 'review', 'speculative', 'bedrock', 'bedrock']
+  r20261021T190652Z-007 mean_p=0.19 (5/5) kinds=['speculative', 'review', 'speculative', 'speculative', 'review']
+  r20261021T190652Z-008 mean_p=0.43 (5/5) kinds=['speculative', 'review', 'bedrock', 'speculative', 'bedrock']
+  r20261021T190652Z-009 mean_p=0.41 (5/5) kinds=['speculative', 'bedrock', 'speculative', 'speculative', 'bedrock']
+  r20261021T190652Z-010 mean_p=0.634 (5/5) kinds=['bedrock', 'bedrock', 'bedrock', 'speculative', 'adversarial']
+  r20261021T190652Z-011 mean_p=0.418 (5/5) kinds=['speculative', 'speculative', 'bedrock', 'speculative', 'bedrock']
+  r20261021T190652Z-012 mean_p=0.452 (5/5) kinds=['bedrock', 'bedrock', 'speculative', 'speculative', 'review']
+  r20261021T190652Z-013 mean_p=0.6 (5/5) kinds=['speculative', 'bedrock', 'bedrock', 'bedrock', 'speculative']
+  r20261021T190652Z-014 mean_p=0.23 (5/5) kinds=['bedrock', 'speculative', 'adversarial', 'speculative', 'speculative']
+  r20261021T190652Z-015 mean_p=0.626 (5/5) kinds=['bedrock', 'review', 'bedrock', 'speculative', 'bedrock']
+  r20261021T190652Z-016 mean_p=0.068 (5/5) kinds=['speculative', 'speculative', 'speculative', 'review', 'speculative']
+  r20261021T190652Z-017 mean_p=0.532 (5/5) kinds=['review', 'speculative', 'bedrock', 'bedrock', 'review']
+  r20261021T190652Z-018 mean_p=0.418 (5/5) kinds=['bedrock', 'speculative', 'speculative', 'speculative', 'bedrock']
+  r20261021T190652Z-019 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+  r20261021T190652Z-020 mean_p=0.346 (5/5) kinds=['review', 'speculative', 'speculative', 'bedrock', 'review']
+  r20261021T190652Z-021 mean_p=0.472 (5/5) kinds=['speculative', 'bedrock', 'speculative', 'review', 'bedrock']
+  r20261021T190652Z-022 mean_p=0.44 (5/5) kinds=['speculative', 'review', 'bedrock', 'bedrock', 'speculative']
+  r20261021T190652Z-023 mean_p=0.236 (5/5) kinds=['review', 'speculative', 'speculative', 'bedrock', 'speculative']
+  r20261021T190652Z-024 mean_p=0.436 (5/5) kinds=['bedrock', 'speculative', 'speculative', 'review', 'bedrock']
+  r20261021T190652Z-025 mean_p=0.228 (5/5) kinds=['bedrock', 'speculative', 'speculative', 'speculative', 'speculative']
+  r20261021T190652Z-026 mean_p=0.176 (5/5) kinds=['review', 'review', 'adversarial', 'review', 'speculative']
+  r20261021T190652Z-027 mean_p=0.256 (5/5) kinds=['speculative', 'speculative', 'bedrock', 'speculative', 'review']
+  r20261021T190652Z-028 mean_p=0.602 (5/5) kinds=['bedrock', 'speculative', 'bedrock', 'speculative', 'bedrock']
+  r20261021T190652Z-029 mean_p=0.416 (5/5) kinds=['speculative', 'bedrock', 'bedrock', 'speculative', 'speculative']
+  r20261021T190652Z-030 mean_p=0.25 (5/5) kinds=['speculative', 'bedrock', 'adversarial', 'speculative', 'review']
+  r20261021T190652Z-031 mean_p=0.418 (5/5) kinds=['bedrock', 'review', 'speculative', 'bedrock', 'speculative']
+  r20261021T190652Z-032 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+  r20261021T190652Z-033 mean_p=0.554 (5/5) kinds=['review', 'review', 'bedrock', 'speculative', 'bedrock']
+  r20261021T190652Z-034 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+  r20261021T190652Z-035 mean_p=0.358 (5/5) kinds=['review', 'adversarial', 'review', 'speculative', 'bedrock']
+  r20261021T190652Z-036 mean_p=0.27 (5/5) kinds=['speculative', 'speculative', 'bedrock', 'review', 'review']
+  r20261021T190652Z-037 FAIL: URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>
+[ceiling] 37 rounds in 60s; stopping
+------------------------------------------------------------
+Session: 2026-10-21T19:06:52+00:00 -> 2026-10-21T19:07:57+00:00
+Rounds: 33 OK / 4 fail of 38 attempted
+Verdicts: 165, grand mean_p = 0.4083
+Bedrock hits (p>=0.70): 58
+Spec clean-rejects (p<0.40): 68
+Adv clean-rejects (p<0.40): 7
+Drift events > 0.05: 0
+Summary -> /run/csi/mount-root/nas/eab0d61a99b6696edb3d2aff87b585e8/research/jev-quilt/jev_sessions/rounds_r20261021T190652Z/session_summary.json
