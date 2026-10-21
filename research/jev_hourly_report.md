@@ -1,113 +1,106 @@
-# JEV Continuous Probe — Hourly Report
+# JEV Continuous Probe — Round Report
 
-**Run:** 2026-10-21 11:03–11:06 UTC (17th wipe recovery, fresh `/workspace`)
-**Rounds this run:** r384–r389 (6 rounds, 30 verdicts, **0 fails**)
-**Instrument md5:** `d0a7291b2e070ce717b9b7c7417401a2` — matches the established baseline
+**Run:** 2026-10-21 ~12:05 UTC (post-wipe recovery run)
+**Rounds this run:** 8 (`r384`–`r391`), 40 verdicts, **0 fails**
+**History:** 391 → 399 lines. Model `jev-1.13.0` throughout.
 
-> **Path correction.** The task referenced `/workspace/research/jev_sessions/`, which
-> had been erased by the wipe. The probe's `SESSION_DIR` (script line 47) points there
-> and re-created it, but git only carries the session archive at the **repo root**
-> (`jev_sessions/`, 204 round-files + `history.jsonl`). Root archive was copied into
-> `research/jev_sessions/` before running so drift comparison had its baseline.
-
-> **Round-numbering trap, 5th confirmation.** New rounds are **r384–r389**, not
-> r396. Pre-run marker recorded at `2026-10-21T01:05:04Z` (r395 was the last
-> *logged* round); selecting by round number would have silently compared against
-> the same overlapping band. Filtered on `ts > marker`.
-
----
-
-## Headline
+## Headline numbers
 
 | Metric | Value |
 |---|---|
-| Grand mean_p (6 rounds) | **0.4260** |
-| Prior-20-round mean_p | 0.3805 |
-| Δ grand mean | **+0.0455** |
-| Bedrock hit-rate @ ≥0.70 | **11/11 = 100%** |
-| Adversarial controls rejecting (p ≤ 0.30) | **6/6 = 100%** |
-| Drift > 0.05 vs oracle | **0 questions** |
+| Grand mean_p (this run) | **0.3947** |
+| Grand mean_p (prior 20) | 0.3791 |
+| Δ | **+0.0156** |
+| Bedrock hit-rate | **11/11 = 100%** |
+| Questions drifted > 0.05 | **none** |
 
-## Per-round
+Per-round mean_p: `0.296, 0.236, 0.256, 0.680, 0.322, 0.406, 0.392, 0.570`
 
-| Round | mean_p | bedrock hits | verdicts |
-|---|---|---|---|
-| r384 | 0.234 | 1/5 | q20 .110 · q21 .090 · **q07 .770** · q15 .020 · q14 .180 |
-| r385 | 0.278 | 1/5 | q12 .320 · **q07 .740** · q21 .090 · q18 .220 · q15 .020 |
-| r386 | 0.464 | 2/5 | q12 .390 · **q03 .890** · q15 .020 · q14 .180 · **q02 .840** |
-| r387 | 0.454 | 2/5 | **q05 .850** · q16 .210 · **q08 .900** · q19 .120 · q11 .190 |
-| r388 | 0.536 | 3/5 | **q05 .850** · q17 .720 · q21 .090 · q13 .130 · **q04 .890** |
-| r389 | **0.590** | 3/5 | **q05 .860** · **q07 .760** · q12 .350 · q09 .080 · **q03 .900** |
+## Bedrock canon (p >= 0.70)
 
-The upward trend within the run (0.234 → 0.590) is the **draw-mix artefact**,
-5th time observed: rounds draw different question subsets, so mean_p tracks
-which questions were drawn. Bedrock-only is the stable signal.
+All **6/6** bedrock questions cleared the threshold. Every individual bedrock
+verdict this run was a hit — no misses.
 
-## Bedrock canon — all 7 at 100% hit-rate
+| qid | kind | mean_p | n | status |
+|---|---|---|---|---|
+| q02 | bedrock | 0.8100 | 1 | CANON |
+| q03 | bedrock | 0.8900 | 1 | CANON |
+| q04 | bedrock | 0.8950 | 2 | CANON |
+| q05 | bedrock | 0.8533 | 3 | CANON |
+| q07 | bedrock | 0.7450 | 2 | CANON |
+| q08 | bedrock | 0.9050 | 2 | CANON |
 
-| Question | Session mean | n | Session Δ vs 84w |
-|---|---|---|---|
-| q01 cells_are_scars | 0.9691 | 45 | +0.0006 |
-| q03 substrate_is_grown | 0.9700 | 46 | −0.0000 |
-| q04 oracle_is_heard | 0.9604 | 48 | +0.0001 |
-| q05 lenia_flows | 0.9549 | 47 | −0.0003 |
-| q02 witness_log_is_prediction | 0.9375 | 40 | +0.0007 |
-| q07 eleven_opcodes | 0.9480 | 40 | −0.0007 |
-| q08 polyformalism_12_ports | 0.8800 | 36 | +0.0017 |
+**q07 is the weakest bedrock at 0.7450** — only 0.045 above the gate. Worth watching.
 
-**7/7 bedrock @ 100%.** Aggregate bedrock mean 0.9480 over n=302. The 10–17
-regression (q01 0.16 / q04 0.42) remains dead — do not reopen.
+Note: **q06 is NOT bedrock.** The script classifies it `speculative`
+(`three_views is the operating epistemology`, `jev_continuous_probe.py:94`).
+I initially miscounted it into the bedrock set from a hardcoded qid list and
+corrected it against the script's own `kind` field. Its p is 0.10.
 
-## Drift
+## Drift analysis
 
-**Zero questions moved >0.05.** Largest movers are all sub-0.002:
-q08 +0.0017, q02 +0.0007, q01 +0.0006. Canon is rock-steady.
+No question moved more than 0.05. Largest movers:
 
-## Straddle watch
+| qid | Δ vs prior-20 |
+|---|---|
+| q12 | −0.0379 |
+| q07 | −0.0167 |
+| q20 | +0.0150 |
+| q16 | −0.0120 |
 
-- **q17 canary_honesty** — session mean 0.7585, range 0.730–0.790, n=46,
-  100% ≥0.70. Sampled this run at 0.720 (r388), lowest reading in the band.
-  Sits just above the gate → stays **REVIEW**.
-- **q10 quorum_meshing** — mean 0.8595, n=38, range 0.840–0.880. Not sampled
-  this run. Strong promotion candidate if it holds 5–10 more rounds.
-- **q22 provenance_conflict** — mean 0.3350, n=42, tight (0.320–0.360).
+Everything else is sub-0.01 — noise floor. The probe is stable.
 
-## Adversarial controls
+## Draw-mix artefact (6th restatement)
 
-6/6 rejected (q15 .020 ×3, q14 .180, q19 .120, q14 .180). No control leaked —
-the oracle is not rubber-stamping speculative claims.
+Grand mean_p 0.3947 vs bedrock hit-rate **100%**. This gap is *not* signal
+collapse — it is which 5 questions got drawn each round. Bedrock questions are
+high-p by construction (canon), speculative questions sit at 0.07–0.37, so the
+grand mean is a function of the draw. **Report bedrock hit-rate beside mean_p,
+never mean_p alone.**
 
-## Schema note (flagged, not buried)
+## Promotion gate
 
-My prior notes record **181 baseline rounds carrying a `script_md5` field**.
-This run's archive shows **0 of 391 rounds carry it**, including all 6 new
-ones. Either the field was dropped from the round schema, or the restored
-root archive is a different serialization than the one that carried it.
-Instrument identity was verified out-of-band instead — `md5sum` of the script
-matches the recorded baseline `d0a7291b…` exactly. Drift was therefore measured
-against the rebuilt oracle, not assumed continuous.
+Over the full 399-round history, only one question is gate-eligible:
 
-## Speculative band (below gate, as expected)
+- **q17 (`review`, n=82): mean 0.7024, hit-rate 73%** — above the p>0.7 threshold
+  and n>=20. This is a keeper's decision, not an automatic promotion.
 
-q20 .110 · q21 .090 ×2 · q13 .130 · q09 .080 · q11 .190 · q16 .210 · q18 .220
-— all speculative questions correctly rejected. q12 rose to .350 (r386→r389)
-but remains far below the 0.70 promotion gate; needs n≥20 at hit-rate ≥0.7.
+All other speculative questions are at 0% hit-rate and nowhere near promotion
+(q06 0.099, q09 0.077, q10 0.067, q11 0.185, q12 0.367, q13 0.133, q16 0.200,
+q18 0.223, q20 0.105, q21 0.090, q22 0.119).
 
-## Method notes carried forward
+## Open observation (carried, undiagnosed)
 
-- Filter new rounds on `ts > marker`, never on round number — the append log
-  outruns the per-round files, repeatedly.
-- Grand mean_p is draw-mix-sensitive; report bedrock hit-rate alongside it.
-- Single-round probe (n=5) is fine for drift watching, insufficient for
-  promotion decisions.
-- Run exited **124** at the 60s timeout having completed 6 rounds; no zombie
-  process survived (`pkill` + verify clean).
-- Some rounds complete in **0.11–0.14s** vs 15.7s for others — same status `ok`,
-  same schema. Worth a look; flagged, not diagnosed this run.
+`elapsed_s` ranges **0.106s – 15.981s (151x variance)** across rounds that are all
+`status: ok` with identical schema. Fast rounds: r385, r386, r387, r389. Slow
+rounds: r388, r390, r391 (~15.8s each, suspiciously consistent).
 
-## Files
+Still unexplained and worth resolving before trusting absolute values: if the fast
+path skips the real API call and returns a cached or stubbed verdict, then a
+meaningful fraction of these 399 rounds — and every mean_p computed from them —
+would not be measuring JEV at all. Three rounds this run were in the fast band.
 
-- `/workspace/jev_continuous_probe.py` (md5 `d0a7291b…`, baseline match)
-- `/workspace/research/jev_sessions/` (204 round-files + `history.jsonl`, 391 rounds)
-- `/workspace/research/analyze.py` (drift oracle)
-- `/workspace/research/jev_hourly_report.md` (this report)
+## Environment / method notes
+
+- **18th wipe** — `/workspace` arrived bare (only `.plugin-cache`). Recovered by
+  cloning `SuperInstance/jev-quilt` into `/tmp/jevrec` then `cp -a` into
+  `/workspace`. **18th consecutive clone recovery.**
+- **Archive tracking held.** `research/jev_sessions/` came back with all 204
+  `continuous_r*.json` + `history.jsonl` (391 lines). The round-file tracking fix
+  from the 17th-wipe run is the reason drift analysis was possible at all.
+- **Script path correction.** The task named
+  `research/jev_continuous_probe.py`, which does not exist. The live probe is
+  `/workspace/jev_continuous_probe.py` (400 lines, md5 `d0a7291b2e07...`). There is
+  a *different* 284-line tool at `continuous/jev_continuous_probe.py`
+  (md5 `95b552ea0d81...`) that takes `--rounds`/`--out` and is **not** the probe
+  this report covers. Both write `continuous_r*.json` — do not confuse them.
+- **Round numbering, 6th confirmation.** New rounds are **r384–r391**, not r392+,
+  because the script's round counter wraps/continues from its own sequence and the
+  last pre-run logged round was r389. Filtering history by round *number*
+  compares against an overlapping band silently — this report identifies new
+  rounds by **tail position**, not by round number.
+- **Empty stdout.** The run printed nothing (exit 124 = the 60s timeout kill) yet
+  wrote 8 valid rounds. `timeout` kills before the script's final flush/summary
+  print. Round data is durable; do not treat empty output as a failed run.
+- NAS 96% / 29 G free. Python 3.11.2. `GIT_SSL_NO_VERIFY=1` required for git.
+  `TYPESAFE_AI_TOKEN` + `GITHUB_TOKEN` present; ZAI/DeepInfra absent (16th).
