@@ -46,7 +46,7 @@ if not API_KEY:
     raise SystemExit("FATAL: no JEV API key in TYPESAFEAI_KEY or TYPESAFE_AI_TOKEN")
 MODEL = "jev-latest"
 USER_AGENT = "jev-continuous-probe/1.0 (+Quilt)"
-SESSION_DIR = Path("/workspace/research/jev_sessions")
+SESSION_DIR = Path("/tmp/jev_probe/jev_sessions")
 SESSION_DIR.mkdir(parents=True, exist_ok=True)
 HISTORY_PATH = SESSION_DIR / "history.jsonl"
 
@@ -136,6 +136,13 @@ def call_jev(state, questions, retries=3):
         try:
             req = urllib.request.Request(JEV_URL, data=raw, headers=headers, method="POST")
             ctx = ssl.create_default_context()
+            # EXPURIMENTAL escape hatch: this sandbox's egress is a MITM proxy
+            # re-signing with a ~24h-TTL leaf. When that leaf expires, strict
+            # verification can never succeed. Opt-in ONLY, never the default,
+            # so the normal path keeps full cert validation.
+            if os.environ.get("JEV_INSECURE_TLS") == "1":
+                ctx.check_hostname = False
+                ctx.verify_mode = ssl.CERT_NONE
             with urllib.request.urlopen(req, context=ctx, timeout=20) as resp:
                 payload = json.loads(resp.read().decode("utf-8"))
                 return {"ok": True, "payload": payload}
