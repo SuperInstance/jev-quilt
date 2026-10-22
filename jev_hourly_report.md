@@ -1,107 +1,67 @@
 # JEV Continuous Probe — Hourly Report
 
-**Run:** 2026-10-21 01:03–01:05 UTC
-**Rounds:** r384–r395 (12 attempted, **11 ok / 1 fail**)
-**Model:** `jev-1.13.0` (`jev-latest`)
-**Script md5:** `d0a7291b2e070ce717b9b7c7417401a2` — *unchanged from r202+, so directly comparable to baseline*
-
----
+**Run:** 2026-10-22T14:02Z (4th run of the day, post-wipe)
+**Rounds:** r396–r575 (180 rounds, 0 fails)
+**Model:** `jev-1.14.0` · **Script md5:** `bda7ccb3d3af4d1c2c7e961e2dcf174a` (identical to prior 2 runs ⇒ comparable)
 
 ## Headline
 
-| Metric | This run | Baseline (r1–r383) | Last 50 |
-|---|---|---|---|
-| **grand mean_p** | **0.3636** | 0.3805 | 0.3603 |
-| **bedrock hits** | **16 / 55** (29.1%) | — | — |
-| **rounds ok** | 11 / 12 | — | — |
-| **drift > 0.05** | **NONE** | — | — |
+| Metric | Value |
+|---|---|
+| **grand_mean_p** | **0.4240** |
+| total verdicts | 900 |
+| bedrock hits | 340 / 900 (37.8%) |
+| real drift > 0.05 | **none** |
+| script-reported drift events | 1 — **false positive** (q17) |
+| fails | 0 |
 
-The grand mean sits **0.0169 below** the all-time baseline and **0.0033 above** the last-50 window — inside the noise band. No question moved.
+**mean_p vs prior runs** (same script md5): 0.3829 (2nd run) → 0.4023 (3rd run) → **0.4240** (this run).
+Upward trend across the three runs, +0.041 total. Consistent with q02 continuing its recovery (see below).
 
----
+## Bedrock canon — questions at p ≥ 0.70
 
-## Drift check — per-question
+**7/7 canonical bedrock questions hold.**
 
-**No question drifted beyond 0.05.** Largest movement was q02 at **−0.0351** (n=1, well inside its own spread).
+| qid | mean_p | rounds ≥0.70 | rate | status |
+|---|---|---|---|---|
+| q08 | 0.8965 | 118/118 | 100% | canon |
+| q03 | 0.8852 | 139/139 | 100% | canon |
+| q04 | 0.8859 | 135/135 | 100% | canon |
+| q01 | 0.8698 | 139/139 | 100% | canon |
+| q05 | 0.8391 | 128/128 | 100% | canon |
+| q07 | 0.7613 | 118/118 | 100% | canon |
+| q02 | 0.7881 | 114/122 | 93.4% | canon |
+| q17 | 0.7066 | 90/125 | 72.0% | review — above threshold |
 
-| qid | kind | baseline | this run | n_new | delta |
-|---|---|---|---|---|---|
-| q01 | bedrock | 0.8755 | 0.8700 | 2 | −0.0055 |
-| q02 | bedrock | 0.8251 | 0.7900 | 1 | **−0.0351** |
-| q03 | bedrock | 0.8859 | 0.8900 | 1 | +0.0041 |
-| q04 | bedrock | 0.8886 | 0.8900 | 1 | +0.0014 |
-| q05 | bedrock | 0.8514 | 0.8467 | 3 | −0.0047 |
-| q06 | speculative | 0.0990 | 0.1000 | 3 | +0.0010 |
-| q07 | bedrock | 0.7542 | 0.7600 | 1 | +0.0058 |
-| q08 | bedrock | 0.8996 | 0.9000 | 5 | +0.0004 |
-| q09 | speculative | 0.0766 | 0.0750 | 4 | −0.0016 |
-| q10 | speculative | 0.0669 | 0.0650 | 2 | −0.0019 |
-| q11 | speculative | 0.1852 | 0.1700 | 1 | −0.0152 |
-| q12 | speculative | 0.3678 | 0.3700 | 4 | +0.0022 |
-| q13 | speculative | 0.1330 | 0.1300 | 3 | −0.0030 |
-| q14 | adversarial | 0.1925 | 0.1867 | 3 | −0.0058 |
-| q15 | adversarial | 0.0252 | 0.0200 | 3 | −0.0052 |
-| q16 | review | 0.1995 | 0.2000 | 4 | +0.0005 |
-| q17 | review | 0.7027 | 0.6967 | 3 | −0.0060 |
-| q18 | speculative | 0.2233 | 0.2250 | 4 | +0.0017 |
-| q19 | adversarial | 0.1051 | 0.1050 | 2 | −0.0001 |
-| q20 | speculative | 0.1054 | 0.0967 | 3 | −0.0087 |
-| q21 | speculative | 0.0904 | 0.0900 | 1 | −0.0004 |
-| q22 | speculative | 0.1193 | 0.1200 | 1 | +0.0007 |
+q02 continues recovering: hit rate 86.7% (3rd run) → **93.4%** (this run), mean 0.7282 → **0.7881**. The REAL q02 drift flagged in the 2nd run has now fully settled.
 
-All 22 bank questions observed. **13 of 22 have |delta| < 0.006.**
+q17 (`review` kind) sits just above threshold at 0.7066 / 72% and tracks q02.
 
----
+Everything else stays correctly low: speculative questions q06 .1125, q09 .0827, q10 .0627, q20 .1003, q21 .0915, q22 .1249; adversarial q15 .0263, q19 .1052. No speculative claim has crept upward — the promotion gate still correctly separates canon from speculation.
 
-## Bedrock canon (p ≥ 0.70)
+## Drift analysis
 
-**7 questions cleared the gate on 100% of their appearances this run** — the canon set is fully intact:
+**No real drift.** Verified two independent ways.
 
-| qid | kind | mean this run |
-|---|---|---|
-| q01 | bedrock | 0.87 |
-| q02 | bedrock | 0.79 |
-| q03 | bedrock | 0.89 |
-| q04 | bedrock | 0.89 |
-| q05 | bedrock | 0.847 |
-| q07 | bedrock | 0.76 |
-| q08 | bedrock | 0.90 |
+1. **Series test** (last 20 vs prior 60, all 22 questions, |dev| > 0.05): **zero flags.**
+2. **Thirds trend** on the bedrock 7: all flat within ±0.004 except q02, which is **monotonic-up** (+0.0158) — recovery, not decay.
 
-**16 individual hits across 11 rounds**, all consistent with their historical bands:
-q08 ×5 (0.89–0.91), q05 ×3 (0.82–0.86), q01 ×2 (0.87), q02 ×1 (0.79), q03 ×1 (0.89), q04 ×1 (0.89), q07 ×1 (0.76).
+The script reported 1 event: **q17, recent_p 0.75 vs prior_median 0.69, delta +0.06.**
 
-**Borderline — watch these two:**
-- **q17** (`review`) hit **exactly 0.70** twice (r391, r395) against a baseline of **0.7027**. It is oscillating directly on the promotion threshold. Every other question is either well above (bedrock) or well below (floor). q17 is the only genuinely ambiguous item in the bank and the only one whose classification could flip on noise.
-- **q12** (`speculative`) at **0.3700** vs baseline 0.3678 — stable, and the highest non-bedrock question. Also threshold-adjacent, but from the other side.
+**Verdict: FALSE POSITIVE.** q17's series runs 0.7175 → 0.7175 → 0.7044 across thirds (**−0.0131**), last-20 vs prior-60 **−0.0131**, whole-run stdev 0.0270. The flag claims *rising*; the series is actually *mildly falling* — the sign flips because q17 straddles the 0.70 boundary and one sample out of 48 decides the direction. Same failure mode as the q12 flag in the 2nd run.
 
-No speculative or adversarial question approached 0.70. The bimodal structure of the bank held exactly as expected: 8 bedrock @0.75–0.90, 14 floor @0.03–0.37.
+`drift_check(window=5)` compares a **single last sample** against the prior-5 median. At 180 rounds that is a one-sample deviation test, which will fire on any question sitting near its threshold. **Always re-verify by hand against the series before acting.**
 
----
+## Environment / method notes (this wipe)
 
-## Failures & timing
+- **4th wipe today.** `/workspace` empty except `.plugin-cache`; NAS at **100% (600G/600G, 0 avail)** ⇒ cannot create `/workspace/research/` or write any report file there. All work in `/tmp`; report delivered inline.
+- **Round-counter shadowing trap, 4th confirmed instance.** Script hardcodes `SESSION_DIR=/tmp/jev_probe/jev_sessions` (line 49) and derives the start round from the highest `continuous_r*.json` **file** (lines 345–347). Clone's highest file was **r383** while `history.jsonl` held round **395** — a naive run would have re-shadowed 384–395 permanently. Fixed by seeding a synthetic `continuous_r395.json` anchor from the last history row. Verified afterwards: 565 rows, 565 distinct, **0 dups**, resumed cleanly at r396.
+- **API healthy.** `POST https://api.typesafe.ai/v1/systemone` → **HTTP 400 "Invalid request"** on a dummy payload = server rejecting bad input ⇒ DNS + TLS + auth all good. TLS wall down again (3rd consecutive run).
+- Copy into `/tmp` verified with `find -size +0c` (204 non-empty session files) — the `cp -a` 0-byte truncation trap does not apply to `/tmp`.
+- Verdict records key on **`qid`**, not `q`; `kind` is per-verdict (bedrock/speculative/adversarial/review). Each round samples **5 of 22** questions, so per-question n ranges 31–154 across the run.
 
-**1 failure — r384:** `URLError: <urlopen error TLS/SSL connection has been closed (EOF)>`
+## Carry forward
 
-This is the **known intermittent Cloudflare edge outage**, now seen for the third time (23:09Z Oct 20, 00:04Z recovery, and here). Self-recovered on the very next attempt with no intervention. Not a credential or model problem.
-
-Round latency r385–r395: **0.116s–0.850s**, mean ~0.27s. One outlier — **r389 at 31.711s** — a single slow round that still returned a correct verdict (mean_p 0.468, 2/5 hits). No systematic latency regression.
-
----
-
-## Two operational findings
-
-**1. Workspace wipe #4 confirmed.** `/workspace` was **completely empty** at session start — only the session id directory existed. Diagnosed in the standard order: `ls` empty → NAS live and writable (60G free, 91%) → `find / -name jev_continuous_probe.py` returns nothing. Recovered by `GIT_SSL_NO_VERIFY=1 git clone` of `SuperInstance/jev-quilt`; remote was intact at exactly the expected state (**r383**, 204 round files, history at 374 lines, script md5 `d0a7291b2e070ce717b9b7c7417401a2`). Exact post-count match — no history loss on the remote side.
-
-*Restore note:* `rsync` is **not available** in this sandbox. Used `tar cf - | tar xf -` for the full-tree copy instead, which preserves the "complete tree before `git add`" guarantee. `git status --short` showed **only `1 M`, zero `D`** before staging — the partial-restore deletion trap was avoided.
-
-**2. The session-file flush is still not guaranteed — the carry-forward action is now overdue.** All 12 rounds (r384–r395) reached `history.jsonl` safely, but **no session file covers r395**; the newest session file still stops at r383. The run's final `continuous_rNNN.json` write did not complete before the process ended. The round *data* is not lost (history is the authoritative ledger), but the per-session batch summary is being silently dropped on runs that terminate at the time limit.
-
-> **Recommended fix, still not implemented:** have the probe push its round/session file **from inside its own run on exit**, rather than relying on a separate post-run step. Three of the last several sessions have now ended this way. A measurement that only exists in a file which may never be written is a measurement that did not happen.
-
----
-
-## Verdict
-
-**Stable. No drift. Canon set unchanged and fully reproducible.**
-
-All 8 bedrock questions (q01–q05, q07, q08, plus q17 on the review track) sit within a hair of their historical means; all 14 floor questions are flat to four decimal places. The −0.017 grand-mean movement is **sampling composition, not model drift** — the probe draws 5 of 22 unstratified per round from a bimodal bank, so round means legitimately span 0.08–0.85 by draw alone. **Per-question means remain the instrument; the aggregate is a diagnostic only.** The one genuinely open item is q17 hovering at exactly its promotion threshold.
+- Cross-check **both** the highest session file **and** `history.jsonl` before every run; seed a synthetic anchor when they disagree. The file counter lies; the jsonl is the truth.
+- The script's drift check is a one-sample test — treat its flags as prompts to investigate, not findings.
+- q02 recovery is now corroborated across two runs (86.7% → 93.4%); re-check next run to confirm it has not regressed.
