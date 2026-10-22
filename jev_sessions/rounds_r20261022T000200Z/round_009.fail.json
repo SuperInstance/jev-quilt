@@ -1,0 +1,36 @@
+{
+  "round_id": "r20261022T000200Z-009",
+  "ts": "2026-10-22T00:02:57+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q10_quorum_meshing",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q22_provenance_conflict",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q14_chain_dialing_real",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q06_three_views",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q20_wolffs_law",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 1.242,
+  "status": "fail",
+  "error": "URL/conn: URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:992)>",
+  "session": "rounds_r20261022T000200Z"
+}

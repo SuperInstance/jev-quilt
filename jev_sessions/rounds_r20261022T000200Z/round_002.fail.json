@@ -1,0 +1,36 @@
+{
+  "round_id": "r20261022T000200Z-002",
+  "ts": "2026-10-22T00:02:28+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q04_oracle_is_heard",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q18_address_is_data",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q05_lenia_flows",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q10_quorum_meshing",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q06_three_views",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 5.384,
+  "status": "fail",
+  "error": "URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>",
+  "session": "rounds_r20261022T000200Z"
+}
