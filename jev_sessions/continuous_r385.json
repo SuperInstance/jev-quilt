@@ -1,0 +1,46 @@
+{
+  "round": 385,
+  "status": "ok",
+  "ts": "2026-10-23T09:04:17.907471+00:00",
+  "elapsed_s": 0.142,
+  "verdicts": [
+    {
+      "qid": "q07",
+      "kind": "bedrock",
+      "p": 0.78,
+      "bedrock_hit": true,
+      "script_md5": "bda7ccb3d3af4d1c2c7e961e2dcf174a"
+    },
+    {
+      "qid": "q11",
+      "kind": "speculative",
+      "p": 0.18,
+      "bedrock_hit": false,
+      "script_md5": "bda7ccb3d3af4d1c2c7e961e2dcf174a"
+    },
+    {
+      "qid": "q13",
+      "kind": "speculative",
+      "p": 0.16,
+      "bedrock_hit": false,
+      "script_md5": "bda7ccb3d3af4d1c2c7e961e2dcf174a"
+    },
+    {
+      "qid": "q09",
+      "kind": "speculative",
+      "p": 0.09,
+      "bedrock_hit": false,
+      "script_md5": "bda7ccb3d3af4d1c2c7e961e2dcf174a"
+    },
+    {
+      "qid": "q20",
+      "kind": "speculative",
+      "p": 0.08,
+      "bedrock_hit": false,
+      "script_md5": "bda7ccb3d3af4d1c2c7e961e2dcf174a"
+    }
+  ],
+  "mean_p": 0.258,
+  "bedrock_hits": 1,
+  "model": "jev-1.14.0"
+}
