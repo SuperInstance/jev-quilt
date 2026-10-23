@@ -1,0 +1,57 @@
+{
+  "session_ts": "2026-10-23T08:03:58Z",
+  "script_md5": "bda7ccb3d3af4d1c2c7e961e2dcf174a",
+  "first_round": 1,
+  "rounds": [
+    {
+      "round": 1,
+      "status": "ok",
+      "ts": "2026-10-23T08:03:58.997350+00:00",
+      "elapsed_s": 0.177,
+      "verdicts": [
+        {
+          "qid": "q15",
+          "kind": "adversarial",
+          "p": 0.03,
+          "bedrock_hit": false
+        },
+        {
+          "qid": "q08",
+          "kind": "bedrock",
+          "p": 0.88,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q10",
+          "kind": "speculative",
+          "p": 0.05,
+          "bedrock_hit": false
+        },
+        {
+          "qid": "q05",
+          "kind": "bedrock",
+          "p": 0.81,
+          "bedrock_hit": true
+        },
+        {
+          "qid": "q20",
+          "kind": "speculative",
+          "p": 0.08,
+          "bedrock_hit": false
+        }
+      ],
+      "mean_p": 0.37,
+      "bedrock_hits": 2,
+      "model": "jev-1.14.0"
+    }
+  ],
+  "fails": [],
+  "doctrinal_state_keys": [
+    "framework",
+    "core_doctrine",
+    "architecture",
+    "fleet",
+    "spec_notebook",
+    "operational_doctrine"
+  ]
+}
