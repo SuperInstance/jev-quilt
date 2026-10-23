@@ -1,67 +1,113 @@
-# JEV Continuous Probe — Hourly Report
+# JEV Continuous Probe — Hourly Report (2026-10-23T05:04Z)
 
-**Run:** 2026-10-22T14:02Z (4th run of the day, post-wipe)
-**Rounds:** r396–r575 (180 rounds, 0 fails)
-**Model:** `jev-1.14.0` · **Script md5:** `bda7ccb3d3af4d1c2c7e961e2dcf174a` (identical to prior 2 runs ⇒ comparable)
+**Round:** 1 round × 5 questions = 5 verdicts · 1 ok / 0 fail · 0.2s
+**Baseline:** 385 rounds · 1,925 verdicts · 22 qids · grand mean_p 0.3801
+**Script:** `continuous/jev_continuous_probe.py` md5 `95b552ea0d81af21d24138deda605fee`
 
-## Headline
+## Round mean_p
 
-| Metric | Value |
+| | |
 |---|---|
-| **grand_mean_p** | **0.4240** |
-| total verdicts | 900 |
-| bedrock hits | 340 / 900 (37.8%) |
-| real drift > 0.05 | **none** |
-| script-reported drift events | 1 — **false positive** (q17) |
-| fails | 0 |
+| Round mean_p (5 verdicts) | **0.6380** |
+| Baseline grand mean_p (385 rounds) | 0.3801 |
 
-**mean_p vs prior runs** (same script md5): 0.3829 (2nd run) → 0.4023 (3rd run) → **0.4240** (this run).
-Upward trend across the three runs, +0.041 total. Consistent with q02 continuing its recovery (see below).
+⚠️ **These two numbers are NOT comparable.** 0.6380 is a 5-sample draw-mix from one round; 0.3801 is a 1,925-verdict census. Only 3 of 5 sampled qids were bedrock (q01, q05) — a single round is not a distribution. Per-qid means remain the instrument.
 
-## Bedrock canon — questions at p ≥ 0.70
+## Questions hitting p ≥ 0.70
 
-**7/7 canonical bedrock questions hold.**
+| qid | kind | p | bedrock? |
+|---|---|---|---|
+| q05_lenia_flows | bedrock | **0.97** | ✅ yes |
+| q01_cells_are_scars | bedrock | **0.95** | ✅ yes |
+| q11_canon_gate_is_chord | speculative | **0.74** | ❌ **NOT bedrock** |
 
-| qid | mean_p | rounds ≥0.70 | rate | status |
-|---|---|---|---|---|
-| q08 | 0.8965 | 118/118 | 100% | canon |
-| q03 | 0.8852 | 139/139 | 100% | canon |
-| q04 | 0.8859 | 135/135 | 100% | canon |
-| q01 | 0.8698 | 139/139 | 100% | canon |
-| q05 | 0.8391 | 128/128 | 100% | canon |
-| q07 | 0.7613 | 118/118 | 100% | canon |
-| q02 | 0.7881 | 114/122 | 93.4% | canon |
-| q17 | 0.7066 | 90/125 | 72.0% | review — above threshold |
+- **Bedrock canon confirmed: 2/2** sampled bedrock questions cleared 0.70 (q01, q05).
+- ⚠️ **q11 (speculative) read 0.74 — above the 0.70 canon line.** Per the promotion gate this must NOT be promoted to canon. See below.
 
-q02 continues recovering: hit rate 86.7% (3rd run) → **93.4%** (this run), mean 0.7282 → **0.7881**. The REAL q02 drift flagged in the 2nd run has now fully settled.
+Non-bedrock below the line: q22_provenance_conflict 0.29, q19_pressure_cascade 0.24 (adversarial, correctly rejected).
 
-q17 (`review` kind) sits just above threshold at 0.7066 / 72% and tracks q02.
+## Drift > 0.05 — ALL 5 verdicts drifted, all outside historical range
 
-Everything else stays correctly low: speculative questions q06 .1125, q09 .0827, q10 .0627, q20 .1003, q21 .0915, q22 .1249; adversarial q15 .0263, q19 .1052. No speculative claim has crept upward — the promotion gate still correctly separates canon from speculation.
+| qid | kind | p | base mean | dev | base range | p in range? |
+|---|---|---|---|---|---|---|
+| q11_canon_gate_is_chord | speculative | 0.74 | 0.1850 | **+0.5550** | 0.15–0.22 | ❌ |
+| q05_lenia_flows | bedrock | 0.97 | 0.8512 | **+0.1188** | 0.82–0.87 | ❌ |
+| q22_provenance_conflict | speculative | 0.29 | 0.1193 | **+0.1707** | 0.11–0.13 | ❌ |
+| q19_pressure_cascade | adversarial | 0.24 | 0.1051 | **+0.1349** | 0.09–0.12 | ❌ |
+| q01_cells_are_scars | bedrock | 0.95 | 0.8754 | **+0.0746** | 0.86–0.90 | ❌ |
 
-## Drift analysis
+**5/5 outside their own historical min–max is not a stability result — it is the signature of a changed instrument.** Confirmed cause below.
 
-**No real drift.** Verified two independent ways.
+## Root cause: the instrument changed, and the baseline's script is not in git
 
-1. **Series test** (last 20 vs prior 60, all 22 questions, |dev| > 0.05): **zero flags.**
-2. **Thirds trend** on the bedrock 7: all flat within ±0.004 except q02, which is **monotonic-up** (+0.0158) — recovery, not decay.
+The batches that produced the 385-round baseline record:
 
-The script reported 1 event: **q17, recent_p 0.75 vs prior_median 0.69, delta +0.06.**
+```
+script_md5 = d0a7291b2e070ce717b9b7c7417401a2   ← NOT a git object in this repo
+doctrinal_state_keys = 6: framework, core_doctrine, architecture,
+                          fleet, spec_notebook, operational_doctrine
+```
 
-**Verdict: FALSE POSITIVE.** q17's series runs 0.7175 → 0.7175 → 0.7044 across thirds (**−0.0131**), last-20 vs prior-60 **−0.0131**, whole-run stdev 0.0270. The flag claims *rising*; the series is actually *mildly falling* — the sign flips because q17 straddles the 0.70 boundary and one sample out of 48 decides the direction. Same failure mode as the q12 flag in the 2nd run.
+The script on HEAD is md5 `95b552ea…` with **5** sections:
+`doctrines, architecture, fleet, spec_notebook, q17_canary_honesty`.
 
-`drift_check(window=5)` compares a **single last sample** against the prior-5 median. At 180 rounds that is a one-sample deviation test, which will fire on any question sitting near its threshold. **Always re-verify by hand against the series before acting.**
+`git cat-file -t d0a7291b…` → *not a valid object*. The baseline-producing
+script **cannot be recovered from this repo**, so the 6-section state is lost.
+⇒ **The 1,925-verdict baseline is not reproducible from committed code.**
 
-## Environment / method notes (this wipe)
+## Mechanism for q11 specifically (verified, repeatable)
 
-- **4th wipe today.** `/workspace` empty except `.plugin-cache`; NAS at **100% (600G/600G, 0 avail)** ⇒ cannot create `/workspace/research/` or write any report file there. All work in `/tmp`; report delivered inline.
-- **Round-counter shadowing trap, 4th confirmed instance.** Script hardcodes `SESSION_DIR=/tmp/jev_probe/jev_sessions` (line 49) and derives the start round from the highest `continuous_r*.json` **file** (lines 345–347). Clone's highest file was **r383** while `history.jsonl` held round **395** — a naive run would have re-shadowed 384–395 permanently. Fixed by seeding a synthetic `continuous_r395.json` anchor from the last history row. Verified afterwards: 565 rows, 565 distinct, **0 dups**, resumed cleanly at r396.
-- **API healthy.** `POST https://api.typesafe.ai/v1/systemone` → **HTTP 400 "Invalid request"** on a dummy payload = server rejecting bad input ⇒ DNS + TLS + auth all good. TLS wall down again (3rd consecutive run).
-- Copy into `/tmp` verified with `find -size +0c` (204 non-empty session files) — the `cp -a` 0-byte truncation trap does not apply to `/tmp`.
-- Verdict records key on **`qid`**, not `q`; `kind` is per-verdict (bedrock/speculative/adversarial/review). Each round samples **5 of 22** questions, so per-question n ranges 31–154 across the run.
+q11's actual claim: *"A canon-promotion requires a **unanimous vote across 5
+different models**."* The `spec_notebook` dampener names `canon_gate_as_chord`
+— a **different proposition** — and never mentions unanimity or the 5-model
+requirement. Grep of the built state for `vote|unanim` → **0 keys**.
 
-## Carry forward
+So with the current state nothing pushes q11 down, and it reads 0.72–0.74.
+Repeat test, verbatim bank text, 3 reps: **q11 = [0.74, 0.74, 0.69],
+mean 0.7233, sd 0.0289** vs historical 0.1850 ± 0.0176. Reproducible ⇒ real
+shift for this instrument, not variance.
 
-- Cross-check **both** the highest session file **and** `history.jsonl` before every run; seed a synthetic anchor when they disagree. The file counter lies; the jsonl is the truth.
-- The script's drift check is a one-sample test — treat its flags as prompts to investigate, not findings.
-- q02 recovery is now corroborated across two runs (86.7% → 93.4%); re-check next run to confirm it has not regressed.
+This is the script's own rule biting in practice: *"Read the question's claim,
+not its vocabulary overlap."* The lever was matching keywords, not claims.
+
+## Defects found
+
+1. **Schema split in `history.jsonl`.** All 385 committed rows use
+   `verdicts` as a **list** + `mean_p`/`bedrock_hits`/`elapsed_s`. The current
+   script writes `verdicts` as a **dict** with no `mean_p`. 0/385 committed rows
+   match the current writer ⇒ `analyze_jev.py` and any mean_p aggregation break
+   on the new rows.
+2. **Round-counter collision ⇒ silent data loss.** The script numbers rounds
+   from 1 every run, so `--rounds 1` **overwrote the committed
+   `continuous_r001.json`** (2026-10-20T13:02:41Z, 5 verdicts). Recovered via
+   `git checkout`. Any short run against a populated `--out` dir destroys the
+   matching `continuous_rNNN.json`. Filenames must be session-stamped
+   (per-wipe run id), not round-indexed.
+3. **Lost baseline instrument** (above) — the single worst defect; makes the
+   baseline unverifiable.
+
+## Verdict
+
+- Bedrock canon: **healthy** — q01 and q05 both ≥ 0.95, 2/2 sampled bedrock hit.
+- Adversarial: **healthy** — q19 0.24, correctly rejected.
+- **q11 must NOT be promoted.** 0.74 is above the line but is an artifact of a
+  state that lost its dampener, not evidence of canon. Promotion gate unchanged:
+  ACCEPT p>0.7 on canon **+ sustained hit_rate ≥70% over ≥20 sessions**.
+  q11 is n=91 historical at 0/91 ≥ 0.70. **REJECT promotion.**
+- Drift verdict: **INSTRUMENT CHANGE, not JEV instability.** No JEV regression
+  is evidenced.
+
+## Next actions
+
+1. Re-pin the probe: record `script_md5` per row in the **new** schema too, and
+   refuse to append rows whose `script_md5` differs from the batch's.
+2. Stamp out-dir per session (`jev_sessions/<run_id>/`) to kill defect 2.
+3. Recover or re-baseline `d0a7291b…` state; until then treat the 0.3801
+   baseline as legacy-instrument only and compare **within** `95b552ea…` runs.
+4. Add `unanimous vote / 5 models` to the `spec_notebook` dampener by **claim**,
+   not keyword — then re-measure q11 and expect it to fall back to ~0.18.
+
+---
+*Env: 109th wipe; both mirror homes empty again (7th consecutive); NAS 100%
+(600G/600G) so report authored under /tmp and delivered via git. `TYPESAFE_AI_TOKEN`
+exported as `TYPESAFEAI_KEY`. API healthy, `usage` present, no retry failures.*
