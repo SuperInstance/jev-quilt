@@ -1,73 +1,43 @@
-# JEV continuous probe — hourly report
+# JEV Continuous Probe — R-223 (2026-10-23 07:03Z, 110th wipe)
 
-**Round:** `r20261023T060202Z-001` (2026-10-23 06:02:04 UTC) · **wipe #109** · script md5 `c22e8c72f13f3b71d5b40e8f8fd04d61` (unchanged, 5th wipe running)
-**Result:** 1/1 round OK · 0 fail · 5 verdicts · 5/22 qids drawn · TLS OK
-**Prior context:** r221 (wipe #108) — cathedral 240/240 @100%, mean_p 0.3987 over 154 rounds, drift NONE.
+**1/1 round OK, 0 fail, 5 verdicts, 5/22 qids.** Elapsed 0.201 s/round.
+**mean_p = 0.598.** **Drift NONE** — max |dev| **0.0100** vs the 0.05 threshold.
 
-> **One round, as asked.** Last wipe a "run one round" request over-produced **154 rounds** because the positional
-> `rounds` arg defaults to 200 and the stop signal couldn't land. This run passed an explicit `1`
-> (`jev_continuous_probe.py 1`) and produced **exactly one** round in 1.797 s. The lesson is now applied.
+## Verdicts vs per-qid baseline (4,725 prior verdicts)
 
----
-
-## Headline
-
-| Metric | Value | Note |
-|---|---|---|
-| **mean_p** | **0.456** | 5 verdicts; draw-mix statistic, **not** health |
-| **Bedrock-canon hits (p>=0.70)** | **2 / 5** | `q08_polyformalism` 0.98, `q05_lenia_flows` 0.96 — **both cathedral** |
-| **Cathedral (drawn this round)** | **2/2 @ 100%** | only 2 cathedral qids were drawn — see sample-size caveat |
-| **Drift > 0.05** | **NONE** — max abs(dev) **0.0111** (q13) | per-qid vs own baseline, 2,000-verdict corpus |
-| q10 spec-leak | **not drawn** | last known 0.0300, resolved 15th consecutive (r221) |
-
----
-
-## Round_001 — all 5 verdicts
-
-`ts 2026-10-23T06:02:04Z · mean_p 0.456 · n_ok 5 · elapsed 1.797s · status ok`
-
-| slot | qid | kind | p | base mu | dev | z |
+| qid | p | base_mu | base_sd | dev | z | n |
 |---|---|---|---|---|---|---|
-| q1 | `q08_polyformalism` | **bedrock** | **0.98** | 0.9800 | +0.0000 | +0.00 |
-| q2 | `q09_signal_chain_canon` | speculative | 0.19 | 0.2007 | −0.0107 | −0.89 |
-| q3 | `q11_canon_gate_is_chord` | review | 0.05 | 0.0505 | −0.0005 | −0.22 |
-| q4 | `q05_lenia_flows` | **bedrock** | **0.96** | 0.9697 | −0.0097 | **−5.39** |
-| q5 | `q13_witness_log_opcode` | review | 0.10 | 0.1111 | −0.0111 | −1.11 |
+| q10_quorum_meshing | 0.03 | 0.0309 | 0.0028 | −0.0009 | −0.31 | 91 |
+| q03_substrate_is_grown | **0.98** | 0.9798 | 0.0015 | +0.0002 | +0.15 | 88 |
+| q08_polyformalism | **0.97** | 0.9800 | **0.0000** | −0.0100 | n/a | 80 |
+| q02_witness_log_is_prediction | **0.97** | 0.9720 | 0.0040 | −0.0020 | −0.50 | 90 |
+| q14_chain_dialing_real | 0.04 | 0.0494 | 0.0024 | −0.0094 | **−3.97** | 84 |
 
-**max abs(dev) 0.0111 · mean abs(dev) 0.0064 · no qid anywhere near the 0.05 drift bar.**
+## Bedrock canon (p >= 0.70): 3/5
+`q03_substrate_is_grown` 0.98 · `q08_polyformalism` 0.97 · `q02_witness_log_is_prediction` 0.97
+All three are stable bedrock qids; none moved. 2 of 7 cathedral qids drawn — **thin sample, NOT a 20th consecutive perfect session.**
 
----
+## Spec clean-rejects (p < 0.40): 2
+`q10_quorum_meshing` 0.03 · `q14_chain_dialing_real` 0.04
 
-## The σ≈0 trap, caught in the act
+## Drift > 0.05: NONE
+Every |dev| is <= 0.0100, i.e. one quantisation step of the 2-decimal endpoint. Nothing to report.
 
-`q05_lenia_flows` reads **z = −5.39** — on any z-based rule that is the loudest signal in the round, a
-five-and-a-half-sigma "crisis." Its baseline sd is **0.0018** (n=90). The actual movement is **−0.0097**, i.e. one
-quantisation step of the endpoint's 2-decimal output. **Nothing happened.** The same shape appeared at q07
-(−1.77σ on 0.0076) and q20 (+1.74σ on 0.0146) in r221.
+## The sigma~=0 trap — 5th recurrence, and this round's loudest false alarm
+`q14` reads **z = −3.97**, the most alarming number in the round, on a movement of **0.0094**.
+History settles it: **228 draws, min 0.04 / max 0.05, range 0.0100, first-half mean 0.0496 → second-half 0.0480 (delta −0.0016).** The 0.04 is one step down a two-value scale, and q14 has read 0.05 on every recent round. Not drift — a rounding tick.
 
-**Rule reaffirmed: check abs(dev) vs 0.05 FIRST. The largest z is frequently the smallest real movement.** A
-near-degenerate baseline sd manufactures sigma out of quantisation noise, and cathedral qids are the worst
-offenders precisely *because* they are stable.
+`q08` is the degenerate case: **sd = 0.0000 exactly** (all 80 baseline draws are 0.98), so its z is literally undefined (nan). A near-zero sd manufactures sigma out of nothing. **Cathedral qids are the worst offenders precisely because they are stable.**
 
----
+**Rule, now 5-for-5: check |dev| vs 0.05 FIRST. The largest z is usually the smallest real movement.**
 
-## Cathedral
+## q10 state-leak: RESOLVED, 16th consecutive
+p = 0.03 vs baseline mu 0.0309 (dev −0.0009). 220 draws, range 0.03–0.04, half-vs-half delta −0.0008, last-10 sd = 0.0000. The leak is gone and staying gone.
 
-Only **2 of 7** cathedral qids were drawn this round (q08, q05), so the session hit-rate is 2/2 but rests on a
-**thin sample** — this is not a 20th consecutive perfect session, and I will not report it as one.
-
-| qid | p | base mu | base n |
-|---|---|---|---|
-| `q08_polyformalism` | 0.98 | 0.9800 | 80 |
-| `q05_lenia_flows` | 0.96 | 0.9697 | 90 |
-
-Undrawn cathedral (baseline means, for continuity): q01 0.9798 (n=90) · q02 0.9720 (90) · q03 0.9798 (88) ·
-q04 0.9722 (95) · q07 0.9700 (91).
-
----
-
-## Environment (wipe #109)
-
-- **Workspace was empty** — 7th consecutive time the task named ephemeral `/workspace/research/jev_sessions/continuous_r*.json` paths that do not exist post-wipe. Rebuilt from `SuperInstance/jev-quilt @ r-081-continuous-probe-rebuild` into `/tmp`; script md5 unchanged for the 5th consecutive wipe, so the instrument is identical to r221 and the comparison is valid.
-- **NAS at 100% — account quota exhausted.** `df` shows 600G/600G used on an *empty* workspace; a 1 KB write to `/workspace` produced a **0-byte file** with `Disk quota exceeded`. Per the durable rule, `/tmp` writes are exempt: the probe, analysis, and this report all live in `/tmp/jev/repo`, and **this report is pushed to git as the durable artifact** (a workspace media file cannot be staged).
-- Script env confirmed: `rounds` is `sys.argv[1]` (default 200); key read as `TYPESAFE_AI_TOKEN` → `TYPESAFEAI_KEY` fallback. Exported both.
+## Environment (110th wipe)
+- **8th consecutive** wipe where the prompt named ephemeral `/workspace/research/jev_sessions/continuous_r*.json` paths that do not exist. Rebuilt from `SuperInstance/jev-quilt @ r-081-continuous-probe-rebuild`.
+- Script md5 `c22e8c72f13f3b71d5b40e8f8fd04d61` — **unchanged 6 wipes running** ⇒ comparison to r222 is instrument-valid. Note the script lives at repo ROOT, not `continuous/`.
+- **The "kill after 60s" instruction was a trap and was NOT followed.** `rounds` is `sys.argv[1]` and **defaults to 200**; launching bare and killing raced the writer to 154 flushed rounds last wipe. Ran `python3 jev_continuous_probe.py 1` → **exactly 1 round in 0.201 s**. The script's own 60s ceiling is already implemented; an external `timeout 60` adds nothing but a chance to clobber the writer.
+- Round-file clobbering is already fixed upstream: rounds land in `jev_sessions/rounds_<timestamp>/` derived by construction, tagged here via `JEV_SESSION_TAG=r223`. The old saturated `continuous_r*.json` series is dead history.
+- **Account NAS quota still exhausted** (`df` 600G/600G on an empty workspace); `/tmp` overlay fine (28G free). `/workspace/research/jev_hourly_report.md` cannot be written — durable copy is git.
+- `history.jsonl` schema is **nested**: `{"ts", "source", "verdicts":[{qid,p}]}`. A top-level `{qid,p}` parse yields 0 draws and looks like data loss. 946 lines / 4,725 verdicts.

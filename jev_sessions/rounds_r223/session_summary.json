@@ -1,0 +1,46 @@
+{
+  "session_start": "2026-10-23T07:03:34+00:00",
+  "session_end": "2026-10-23T07:03:35+00:00",
+  "rounds_attempted": 1,
+  "rounds_ok": 1,
+  "rounds_fail": 0,
+  "verdicts_total": 5,
+  "grand_mean_p": 0.598,
+  "bedrock_hits_count": 3,
+  "bedrock_hit_rate": 0.6,
+  "spec_rejects_count": 2,
+  "adv_rejects_count": 0,
+  "drift_events": [],
+  "per_qid": {
+    "q10_quorum_meshing": {
+      "kind": "speculative",
+      "n": 1,
+      "mean": 0.03,
+      "hit_p70": 0
+    },
+    "q03_substrate_is_grown": {
+      "kind": "bedrock",
+      "n": 1,
+      "mean": 0.98,
+      "hit_p70": 1
+    },
+    "q08_polyformalism": {
+      "kind": "bedrock",
+      "n": 1,
+      "mean": 0.97,
+      "hit_p70": 1
+    },
+    "q02_witness_log_is_prediction": {
+      "kind": "bedrock",
+      "n": 1,
+      "mean": 0.97,
+      "hit_p70": 1
+    },
+    "q14_chain_dialing_real": {
+      "kind": "speculative",
+      "n": 1,
+      "mean": 0.04,
+      "hit_p70": 0
+    }
+  }
+}
