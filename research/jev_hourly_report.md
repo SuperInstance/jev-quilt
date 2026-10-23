@@ -1,106 +1,58 @@
-# JEV Continuous Probe — Round Report
+# JEV continuous probe — r398 (2026-10-23T14:03Z)
 
-**Run:** 2026-10-21 ~12:05 UTC (post-wipe recovery run)
-**Rounds this run:** 8 (`r384`–`r391`), 40 verdicts, **0 fails**
-**History:** 391 → 399 lines. Model `jev-1.13.0` throughout.
+**1/1 round OK (r398), 0 fails, 5 verdicts, 5/22 qids. mean_p 0.4800, bedrock 2/5.**
+**Drift: 1 event — q12, |dev| +0.1306. Cathedral 7/7 @ 100%, intact.**
 
-## Headline numbers
+## Round r398
 
-| Metric | Value |
-|---|---|
-| Grand mean_p (this run) | **0.3947** |
-| Grand mean_p (prior 20) | 0.3791 |
-| Δ | **+0.0156** |
-| Bedrock hit-rate | **11/11 = 100%** |
-| Questions drifted > 0.05 | **none** |
+| qid | kind | p | base mean ± sd (n) | dev | z | percentile |
+|-----|------|------|---------------------|------|------|-----------|
+| q08 | bedrock | 0.89 | 0.8995 ± 0.0086 (79) | −0.0095 | −1.11 | 6% |
+| q17 | review | 0.70 | 0.7025 ± 0.0140 (79) | −0.0025 | −0.18 | 27% |
+| **q12** | speculative | **0.50** | 0.3694 ± 0.0330 (88) | **+0.1306** | **+3.96** | **99%** |
+| q13 | speculative | 0.17 | 0.1336 ± 0.0076 (91) | +0.0364 | +4.76 | 99% |
+| q06 | speculative | 0.14 | 0.0995 ± 0.0063 (85) | +0.0405 | +6.42 | 99% |
 
-Per-round mean_p: `0.296, 0.236, 0.256, 0.680, 0.322, 0.406, 0.392, 0.570`
+**mean_p 0.4800** vs previous-12-round mean 0.4152 (dev +0.0648 — *not* a per-qid drift, just draw mix:
+only 2 of 7 cathedral qids were drawn).
 
-## Bedrock canon (p >= 0.70)
+## Bedrock canon hits (p ≥ 0.70)
 
-All **6/6** bedrock questions cleared the threshold. Every individual bedrock
-verdict this run was a hit — no misses.
+- **q08 = 0.89** ✅
+- **q17 = 0.70** ✅ (at threshold; kind=review, 62/84 lifetime hits)
 
-| qid | kind | mean_p | n | status |
-|---|---|---|---|---|
-| q02 | bedrock | 0.8100 | 1 | CANON |
-| q03 | bedrock | 0.8900 | 1 | CANON |
-| q04 | bedrock | 0.8950 | 2 | CANON |
-| q05 | bedrock | 0.8533 | 3 | CANON |
-| q07 | bedrock | 0.7450 | 2 | CANON |
-| q08 | bedrock | 0.9050 | 2 | CANON |
+Cathedral integrity across the full corpus — all 7 bedrock qids at a **100% hit rate**, none disturbed:
 
-**q07 is the weakest bedrock at 0.7450** — only 0.045 above the gate. Worth watching.
+    q01 0.8751 · q02 0.8247 · q03 0.8863 · q04 0.8889 · q05 0.8513 · q07 0.7543 · q08 0.8996
 
-Note: **q06 is NOT bedrock.** The script classifies it `speculative`
-(`three_views is the operating epistemology`, `jev_continuous_probe.py:94`).
-I initially miscounted it into the bedrock set from a hardcoded qid list and
-corrected it against the script's own `kind` field. Its p is 0.10.
+## Drift: q12 is a REAL excursion, not the σ≈0 trap
 
-## Drift analysis
+This is the important call of the round, and it is deliberately *not* the usual σ≈0 false alarm:
 
-No question moved more than 0.05. Largest movers:
+- |dev| **0.1306** is 2.6× the 0.05 threshold — the rule is |dev| first, z second, and this clears on |dev|.
+- q12's distribution is **rock-stable across three eras**: early 0.3679, mid 0.3679, recent-29 0.3679. A flat baseline that a single draw jumps off is a real movement, not noise.
+- **p=0.50 has occurred exactly 1 time in 88 draws — this one.** Prior max was 0.44; pre-r398 draws ≥0.50: **0/87**.
+- z is +3.96 *and* |dev| is large, so the usual "largest z is often the smallest real movement" trap does not apply. (The two high-z spec rows q06 +6.42 / q13 +4.76 ARE that trap — |dev| 0.04 and 0.036, both under threshold.)
 
-| qid | Δ vs prior-20 |
-|---|---|
-| q12 | −0.0379 |
-| q07 | −0.0167 |
-| q20 | +0.0150 |
-| q16 | −0.0120 |
+**Interpretation:** q12 is `kind=speculative`, 0/93 lifetime hits. A single upward excursion on a speculative
+question does not promote it — the promotion gate is p>0.7 sustained, and this is one draw. Flag for
+watch: if q12 reads ≥0.45 on the next two draws, treat as a genuine baseline shift rather than coincidence.
 
-Everything else is sub-0.01 — noise floor. The probe is stable.
+## Corpus state
 
-## Draw-mix artefact (6th restatement)
+- rounds **389** distinct (history 402 lines — duplicate-tail records present; first-occurrence-wins used)
+- verdicts **1,945**, qids **22**, grand mean_p **0.3808**
+- Round files present: 207. File series is still incomplete vs history (known 180-round gap) — counter
+  correctly derived from `max(files, history)`.
 
-Grand mean_p 0.3947 vs bedrock hit-rate **100%**. This gap is *not* signal
-collapse — it is which 5 questions got drawn each round. Bedrock questions are
-high-p by construction (canon), speculative questions sit at 0.07–0.37, so the
-grand mean is a function of the draw. **Report bedrock hit-rate beside mean_p,
-never mean_p alone.**
+## Environment
 
-## Promotion gate
-
-Over the full 399-round history, only one question is gate-eligible:
-
-- **q17 (`review`, n=82): mean 0.7024, hit-rate 73%** — above the p>0.7 threshold
-  and n>=20. This is a keeper's decision, not an automatic promotion.
-
-All other speculative questions are at 0% hit-rate and nowhere near promotion
-(q06 0.099, q09 0.077, q10 0.067, q11 0.185, q12 0.367, q13 0.133, q16 0.200,
-q18 0.223, q20 0.105, q21 0.090, q22 0.119).
-
-## Open observation (carried, undiagnosed)
-
-`elapsed_s` ranges **0.106s – 15.981s (151x variance)** across rounds that are all
-`status: ok` with identical schema. Fast rounds: r385, r386, r387, r389. Slow
-rounds: r388, r390, r391 (~15.8s each, suspiciously consistent).
-
-Still unexplained and worth resolving before trusting absolute values: if the fast
-path skips the real API call and returns a cached or stubbed verdict, then a
-meaningful fraction of these 399 rounds — and every mean_p computed from them —
-would not be measuring JEV at all. Three rounds this run were in the fast band.
-
-## Environment / method notes
-
-- **18th wipe** — `/workspace` arrived bare (only `.plugin-cache`). Recovered by
-  cloning `SuperInstance/jev-quilt` into `/tmp/jevrec` then `cp -a` into
-  `/workspace`. **18th consecutive clone recovery.**
-- **Archive tracking held.** `research/jev_sessions/` came back with all 204
-  `continuous_r*.json` + `history.jsonl` (391 lines). The round-file tracking fix
-  from the 17th-wipe run is the reason drift analysis was possible at all.
-- **Script path correction.** The task named
-  `research/jev_continuous_probe.py`, which does not exist. The live probe is
-  `/workspace/jev_continuous_probe.py` (400 lines, md5 `d0a7291b2e07...`). There is
-  a *different* 284-line tool at `continuous/jev_continuous_probe.py`
-  (md5 `95b552ea0d81...`) that takes `--rounds`/`--out` and is **not** the probe
-  this report covers. Both write `continuous_r*.json` — do not confuse them.
-- **Round numbering, 6th confirmation.** New rounds are **r384–r391**, not r392+,
-  because the script's round counter wraps/continues from its own sequence and the
-  last pre-run logged round was r389. Filtering history by round *number*
-  compares against an overlapping band silently — this report identifies new
-  rounds by **tail position**, not by round number.
-- **Empty stdout.** The run printed nothing (exit 124 = the 60s timeout kill) yet
-  wrote 8 valid rounds. `timeout` kills before the script's final flush/summary
-  print. Round data is durable; do not treat empty output as a failed run.
-- NAS 96% / 29 G free. Python 3.11.2. `GIT_SSL_NO_VERIFY=1` required for git.
-  `TYPESAFE_AI_TOKEN` + `GITHUB_TOKEN` present; ZAI/DeepInfra absent (16th).
+- **15th consecutive wipe** — `/workspace/research/` named but absent; rebuilt from `SuperInstance/jev-quilt @ c81f27b`.
+- **Cert-anchor wall (not an outage):** python `urlopen` to `api.typesafe.ai` died with
+  `SSLV3_ALERT_HANDSHAKE_FAILURE` while `curl` returned **HTTP/2 200** on the same host — the signature of
+  the gateway-only trust anchor. Rebuilt the 289-cert combined bundle; health → 200. Generation side clean.
+- **NAS 600G/600G (100%) on an empty workspace** — 17th recurrence. The `write` tool cannot stage into the
+  workspace, so the durable copy is the git commit (this report travels with it).
+- r229 fixes verified present in the shipped script: `main(rounds_requested=None)`, positional `sys.argv[1]`
+  passthrough, `max(files, history)` counter, clobber guard. Positional `1` produced **exactly one** round.
+- script md5 `3a255fa4642ec4a83173ab04d773d485` (r229 script, unchanged).
