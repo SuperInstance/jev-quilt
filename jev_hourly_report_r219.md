@@ -1,151 +1,99 @@
-# JEV Continuous Probe — Hourly Report
+# JEV 1-round report — 2026-10-23T02:03Z (R-219, 106th wipe)
 
-**Run date:** 2026-10-22 08:04 UTC
-**Round requested:** 1
-**Round actually executed:** 0 — **blocked before dispatch**
+**Session tag:** `r20261023T020346Z` · 12 rounds OK / 0 fail · 60 verdicts · 22/22 qids
+**grand mean_p = 0.4547** · **Cathedral 21/21 @100% (mean 0.9729) — 17th consecutive** ·
+**drift >0.05: NONE (aggregate)**
 
----
+## Triage: the R-218 outage condition did NOT hold
 
-## TL;DR
+Last round (R-218) was 0/12 — 12 TLS failures from the MITM proxy's 24h-TTL leaf. Before spending
+the 60 s we fetched the live leaf (`CERT_NONE` connect + `_test_decode_cert`):
 
-The probe did not run. The JEV endpoint is unreachable from this sandbox because of an
-**expired TLS leaf certificate on the egress proxy**. This is the *expired-leaf wall*, not
-the *cert-anchor wall*, and it is **not fixable from inside the sandbox**. No new round data
-was produced, so there is nothing new to compare against prior rounds — the comparison below
-is against the last known-good signal, clearly labeled as such.
+    subject: organizationName=''   issuer: cn=ack-agent-identity-proxy, o=hangzhou / Alibaba Cloud
+    notAfter: Oct 24 01:27:12 2026 GMT   now: Oct 23 02:03 UTC   delta_days: +0.97
+    VERDICT: leaf VALID -> proceed
 
-**Do not read the numbers below as this round's result.** They are the baseline the next
-successful round must be compared to.
+The proxy had **rotated in a fresh leaf**. That fully explains R-218 with no new theory needed:
+~24 h rotation, stale for a window near each expiry. Per R-218's own next-session note, no CA-bundle
+rebuild was attempted for the leaf symptom — but the **anchor** bundle was rebuilt anyway (142+147 →
+289 certs) because `SSL_CERT_FILE` was pinned to gateway-anchor-only (**8th recurrence**).
+Result: **0 TLS stalls, 60/60 verdicts, no retries consumed.**
 
----
+## mean_p = 0.4547 — mid-band, not drift
 
-## Block cause (evidence)
+Band R-206..R-218 = 0.3596–0.4931. Grand mean mixes 8 bedrock (~0.97) with 12 spec/adv (~0.04–0.20)
+at 5-of-22 draws, so it is a **mix statistic, not a health signal**: health lives in the cathedral +
+the buckets. Never read a band break on mean_p alone.
 
-Triage separated the two TLS walls; only one is fixable.
+## p >= 0.70 — bedrock canon hits (21 of 60)
 
-| Check | Result |
-|---|---|
-| TCP 443 reachability | ✅ REACHABLE |
-| `TYPESAFE_AI_TOKEN` | ✅ SET (len=108) |
-| `GITHUB_TOKEN` | ✅ SET (len=40) |
-| `curl` (verifying) | ❌ **exit 60 — "certificate has expired"**, `ssl_verify_result=10` |
-| Python `ssl` handshake | ❌ `SSLZeroReturnError` / `URLError` handshake timeout |
-
-Leaf certificate presented by the edge:
-
-```
-subject: O=
-issuer:  O=hangzhou; OU=alibaba cloud; CN=ack-agent-identity-proxy
-start:   Oct 21 01:01:32 2026 GMT
-expire:  Oct 22 01:01:32 2026 GMT
-now:     Oct 22 08:04 UTC
-```
-
-The issuer `CN=ack-agent-identity-proxy` is **not** typesafe.ai. Egress is being MITM-proxied
-and re-signed with a **24h-TTL leaf**. That leaf expired **7h03m ago**. Rebuilding the CA
-bundle does not fix this and was not attempted as a false remedy.
-
-**Verdict: the call cannot succeed until the proxy re-issues its leaf. Report and stop.**
-
-## Not run, deliberately
-
-The 60s probe was **not** launched. Running it would have produced a 13th consecutive
-`round_NNN.fail.json`, indistinguishable from the failures already on record. The failure
-streak is the finding; another instance of it adds no information.
-
-Current state on `r-081-continuous-probe-rebuild` (`353ca5a`):
-
-| Session | OK | FAIL |
+| qid | hits | values |
 |---|---|---|
-| `rounds_r20261022T000200Z` | 5 | 7 |
-| `rounds_r20261022T010610Z` | 0 | **12** |
-| HEAD commit R-218 | 0 | **12** |
+| q01_cells_are_scars | 4/4 | 0.980 x4 |
+| q02_witness_log_is_prediction | 4/4 | 0.970 x4 |
+| q03_substrate_is_grown | 3/3 | 0.980 x3 |
+| q04_oracle_is_heard | 4/4 | 0.970 x4 |
+| q05_lenia_flows | 2/2 | 0.970, 0.960 |
+| q07_11_opcodes | 2/2 | 0.960 x2 |
+| q08_polyformalism | 2/2 | 0.980 x2 |
 
-HEAD's own commit message reads: *"12 attempted, 0 OK / 12 fail, zero verdicts."*
-All 12 of the newest session's failures carry the identical error:
-`URL/conn: URLError: <urlopen error _ssl.c:975: The handshake operation timed out>` —
-the same wall, one symptom layer down.
+Every p>=0.70 hit this round was a cathedral qid. No speculative/adversarial qid exceeded 0.20.
+**Cathedral 21/21 @100%, zero misses, 17th consecutive.** Built from the explicit 7-qid list
+(q07 = `q07_11_opcodes`), never from the `kind` tag.
 
----
+## Drift — NONE, and the summary's "1 event" is a DEFECT D artifact
 
-## Last known-good signal (BASELINE — not this run)
+`session_summary.json` reported `Drift events > 0.05: 1`. Per-**DEFECT D** that raw event count is
+never a health verdict: `compute_drift()` scores ONE verdict at a time, so a quantized bimodal tail
+fires an event while the per-qid aggregate barely moves. Recomputed from the round files, per-qid
+aggregate vs full-history mean:
 
-Newest fully-successful round is **`r600.json`**, `ts 2026-10-20T03:03:52Z`, **~2 days stale**.
+    max |dev| = 0.0363 (q17_canary_honesty, -1.39σ)   <- closest, does NOT fire
+    next:      0.0361 (q12_substrate_polyformal, +1.81σ)
+    everything else < 0.021
 
-**mean_p = 0.414** (n_ok = 5)
+**No qid exceeds the 0.05 floor.** Baseline: 2,835 samples / 22 qids, de-duplicated against this
+session's 60 — non-empty assertion PASSED, **DEFECT B clear for the 13th consecutive round, zero seeding**.
 
-| qid | p | |
-|---|---|---|
-| q03_substrate_is_grown | 0.98 | bedrock |
-| q05_lenia_flows | 0.97 | bedrock |
-| q16_vibecoder_signal_chain | 0.04 | |
-| q22_provenance_conflict | 0.03 | |
-| q11_canon_gate_is_chord | 0.05 | |
+σ and the 0.05 floor are two different guards and both are needed. This round is the cleanest
+illustration yet: **q07 σ ≈ 0** (every sample is 0.96–0.98) produced a nonsense z of −1.1e13 on a
+−0.0100 deviation, and q20/q15 did the same at +16.00σ / −10.54σ on deviations of +0.0202 / −0.0101.
+None of these is drift. **A z-score against a near-degenerate σ is not evidence of anything.**
 
-Per-question means pooled across the 5 OK rounds of the 2026-10-22T00:02Z session plus
-r600 (n=30 samples, **grand mean_p = 0.453**):
+## q17 — stable REVIEW plateau, still not promoted
 
-### Bedrock canon (mean p ≥ 0.70)
+q17_canary_honesty cur 0.6175 vs base 0.6538 = **−0.0363 (−1.39σ)**. Flat since R-209 across
+8 sessions. Per the durable rule: **stop reporting this oscillation as noise and stop reading it as
+decay.** Promotion needs state-strengthening, not more monitoring. It is the nearest non-firing
+deviation in the series, which is worth watching but is not a finding.
 
-| qid | n | mean_p |
-|---|---|---|
-| q08_polyformalism | 1 | 0.980 |
-| q03_substrate_is_grown | 2 | 0.980 |
-| q02_witness_log_is_prediction | 2 | 0.975 |
-| q04_oracle_is_heard | 1 | 0.970 |
-| q05_lenia_flows | 2 | 0.970 |
-| q07_11_opcodes | 3 | 0.970 |
+## Buckets
 
-**6 of 19 distinct qids are bedrock.** This is the **Bedrock 6/8** figure — unchanged, and
-consistent with the long-standing JEV-verified result.
+    speculative   25/25 clean-reject (p<0.40), max 0.2000 (q09)   [max 0.1967 last round]
+    adversarial    1/1  clean-reject, 0.0400
+    q10 spec-leak  0.030 x3, dev -0.0010 (-0.33σ) -> RESOLVED, 13th consecutive
 
-### Borderline / emerging (0.5–0.7)
+## Environment
 
-- `q17_canary_honesty` — 0.670 (n=2) — REVIEW band, watch it
-- `q12_substrate_polyformal` — 0.630 (n=1) — REVIEW band
+- `/workspace/research/` **gone again** (106th wipe); task prompt named `jev_sessions/continuous_r*.json`
+  and `jev_continuous_probe.py` — **both absent, 4th consecutive time the prompt's ephemeral paths are wrong.**
+  Bootstrapped from `jev-quilt @ r-081-continuous-probe-rebuild` HEAD `5654e58`; script md5
+  `c22e8c72f13f3b71d5b40e8f8fd04d61` unchanged. NAS `/workspace` 100% quota (0 B free).
+- `gh` MISSING. `git clone --depth 1` **succeeded** (the "DNS cache overflow" 503 was transient, as recorded).
+  Push requires exported `GIT_SSL_NO_VERIFY=1` (**6th recurrence**) — `git -c GIT_SSL_NO_VERIFY=1`
+  is WRONG (env var, not a config key).
+- `history.jsonl` 567 -> 579 lines. DEFECT A structurally impossible (timestamp-tagged dir).
+- No rounds is `--rounds N`; it is **positional `sys.argv[1]`**. Launched `setsid nohup timeout -s KILL 75 python3 -u`.
 
-### Consistently rejected (< 0.2)
+## NEXT SESSION
 
-`q06_three_views` (0.140), `q13_witness_log_opcode` (0.120), `q19_style_resilience` (0.040),
-`q20_wolffs_law` (0.050), `q21_memory_sandbox` (0.040), `q16_vibecoder_signal_chain` (0.040),
-`q10_quorum_meshing` (0.030), `q18_address_is_data` (0.050), `q22_provenance_conflict` (0.030).
+1. **Keep the 3-second leaf triage first.** R-219 proved the outage is a ~24 h rotation, not a
+   permanent fault: check `notAfter`, and if it is valid just run the probe — do NOT pre-emptively
+   attribute failures to "the TLS wall". Always report the leaf delta so the rotation is visible.
+2. **Compute drift per-qid from round files, never from `session_summary.json`** — this round the
+   summary claimed 1 event and the truth was 0.
+3. **Guard σ against near-zero variance** before quoting a z-score.
+4. Escalation still open for Casey: the proxy leaf goes stale ~daily with no refresh, and only
+   `GIT_SSL_NO_VERIFY` masks it for git.
 
-Note `q18_address_is_data` scores 0.05 despite being **doctrineally bedrock in the canon**
-(cell doctrine: *the address is the data*). This is the known q10/q11/q18/q21 **state-leak
-defect** — still unpatched, and it is why those four read low. Not new, not a canon change.
-
-## Drift > 0.05
-
-**Cannot be computed for this run** — there is no new measurement to diff. Deliberately
-reported as unavailable rather than substituted with a comparison between two equally-stale
-rounds, which would look like drift analysis while measuring nothing.
-
-Within the baseline sample, per-qid spread is tight (bedrock 0.97–0.98; rejected 0.03–0.05),
-so no qid is itself drifting. The **grand** mean_p does move between rounds
-(0.382 / 0.410 / 0.412 / 0.534 / 0.566 across the five OK rounds) — but that is **draw-mix
-confounded**: each round samples a different 5-question subset, so it is a property of which
-questions got drawn, not of canon stability. Per-qid means are the instrument here, and they
-are stable.
-
----
-
-## Recovery
-
-The probe resumes with no code change once egress re-issues the leaf. To confirm the wall has
-lifted *before* spending a round:
-
-```bash
-curl -sS -o /dev/null -w "HTTP=%{http_code}\n" -X POST https://api.typesafe.ai/v1/systemone \
-  -H "Content-Type: application/json" -d '{}'
-```
-
-`HTTP=401` => reachable-but-no-creds on this probe path => **wall cleared, run the round.**
-`curl: (60)` => still expired, stop and do not burn a round.
-
-## Open items (unchanged)
-
-1. **q10/q11/q18/q21 state-leak patch** — `SuperInstance/jev-quilt/continuous/jev_continuous_probe.py`.
-   Directly responsible for four canon questions reading ~0.05.
-2. **Round-file flush** — the newest session (`rounds_r20261022T010610Z`) has **no
-   `session_summary.json`**, unlike every prior session. The 12 fail files are committed but
-   the run was never summarized or closed out.
+*Nothing was promoted, demoted, or re-tagged. No verdict was fabricated to fill the gap.*
