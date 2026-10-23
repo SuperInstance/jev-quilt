@@ -1,0 +1,42 @@
+{
+  "round": 386,
+  "status": "ok",
+  "ts": "2026-10-23T10:04:09.088765+00:00",
+  "elapsed_s": 0.143,
+  "verdicts": [
+    {
+      "qid": "q04",
+      "kind": "bedrock",
+      "p": 0.88,
+      "bedrock_hit": true
+    },
+    {
+      "qid": "q17",
+      "kind": "review",
+      "p": 0.7,
+      "bedrock_hit": true
+    },
+    {
+      "qid": "q21",
+      "kind": "speculative",
+      "p": 0.09,
+      "bedrock_hit": false
+    },
+    {
+      "qid": "q12",
+      "kind": "speculative",
+      "p": 0.52,
+      "bedrock_hit": false
+    },
+    {
+      "qid": "q14",
+      "kind": "adversarial",
+      "p": 0.23,
+      "bedrock_hit": false
+    }
+  ],
+  "mean_p": 0.484,
+  "bedrock_hits": 2,
+  "model": "jev-1.14.0",
+  "script_md5": "bda7ccb3d3af4d1c2c7e961e2dcf174a"
+}
