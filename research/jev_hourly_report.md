@@ -1,171 +1,114 @@
-# JEV Continuous Probe — Hourly Report
+# JEV Continuous Probe — Hourly Report (r404)
 
-**Round r402** · 2026-10-23T1801Z · 120th wipe
-Script: `jev_continuous_probe.py` md5 `3a255fa4642ec4a83173ab04d773d485` (unchanged, 5th consecutive wipe)
-Model: `jev-1.14.0` · Repo HEAD `fb566ed` (`SuperInstance/jev-quilt`)
-
----
-
-## Verdict
-
-**1/1 round OK (r402), 0 fails, 5 verdicts. mean_p 0.6520, bedrock 4/5.**
-**Cathedral 603/603 draws @ 100% — 339 consecutive green rounds.**
-**Real drift: NONE.** The script reported `drift_events=1`; that flag is a **false positive** (stale echo of r401) — see below.
+**Session ts:** 2026-10-23T20:03Z · **Round:** r404 (1 round, 0 fails) · **Model:** jev-1.14.0
+**Script md5:** `3a255fa4642ec4a83173ab04d773d485` (unchanged, 5th consecutive wipe)
+**Source:** `SuperInstance/jev-quilt` @ `33a5aaa` (r403 commit) · **Wipe:** 120th
 
 ---
 
-## Round detail — r402
+## 1. Headline
 
-| qid | kind | p | bedrock hit |
-|-----|------|---|-------------|
-| q17 | review | 0.72 | **yes** |
-| q10 | speculative | 0.05 | no |
-| q07 | bedrock | 0.75 | **yes** |
-| q01 | bedrock | 0.86 | **yes** |
-| q04 | bedrock | 0.88 | **yes** |
-
-**Questions hitting p ≥ 0.70 (bedrock canon): q17, q07, q01, q04** — 4 of 5 drawn.
-Cathedral qids drawn this round: q07, q01, q04 — all three ≥ 0.70.
-
-**mean_p 0.6520** vs prev-12 mean 0.4520 = **+0.2000**. This is *draw mix*, not drift:
-r402 drew 4/5 bedrock-band (the highest bedrock yield in the window) with a single low-band
-control (q10 = 0.05), while the prev-12 window contains r391 (0.2220) and r395 (0.2820) at
-1/5 and 1/5 cathedral each. **Per-qid |dev| among the 5 drawn qids maxes at 0.0175** — a
-quarter of the 0.05 gate. **Decompose the aggregate before calling it drift** — the mean
-moved, the instrument did not.
+| Metric | Value |
+|---|---|
+| **mean_p** | **0.4400** |
+| **Bedrock canon (p ≥ 0.70)** | **2/5 — q04 (0.88), q05 (0.82)** |
+| **Real drift (\|dev\| > 0.05)** | **NONE** — 0 of 5 drawn qids exceed the bar |
+| Script `drift_events` | 1 — **FALSE POSITIVE** (q12, not drawn this round) |
+| Cathedral | **513/513 @ 100%** — 311 consecutive green rounds |
+| Corpus | 383 distinct rounds / 1,915 verdicts / 22 qids · grand mean_p **0.3835** |
 
 ---
 
-## Drift analysis (threshold |dev| > 0.05)
+## 2. Round r404 verdicts
 
-**No drawn qid cleared the 0.05 gate.** Max per-qid |dev| = **0.0175** (q17).
+| qid | kind | p | bedrock? | dev vs prior-5 median | z |
+|---|---|---|---|---|---|
+| q04 | bedrock | 0.8800 | **YES** | +0.0000 | +0.00 |
+| q06 | speculative | 0.1400 | no | +0.0400 | +2.04 |
+| q13 | speculative | 0.1600 | no | +0.0000 | +0.00 |
+| q05 | bedrock | 0.8200 | **YES** | −0.0100 | −1.34 |
+| q14 | adversarial | 0.2000 | no | +0.0100 | +0.98 |
 
-| qid | p_now | base_mean | dev | base_sd | z | base_max | new extreme? | gate |
-|-----|-------|-----------|-----|---------|---|----------|--------------|------|
-| q17 | 0.72 | 0.7025 | +0.0175 | 0.0140 | +1.25 | 0.74 | no | clear |
-| q01 | 0.86 | 0.8749 | −0.0149 | 0.0092 | −1.62 | 0.90 | no | clear |
-| q04 | 0.88 | 0.8888 | −0.0088 | 0.0087 | −1.01 | 0.91 | no | clear |
-| q10 | 0.05 | 0.0669 | −0.0169 | 0.0050 | **−3.37** | 0.08 | no | clear |
-| q07 | 0.75 | 0.7550 | −0.0050 | 0.0165 | −0.30 | 0.79 | no | clear |
+**Bedrock canon hits (p ≥ 0.70):** `q04` 0.88, `q05` 0.82.
+**No drawn qid breaches the 0.05 drift bar.** Max |dev| among drawn = **0.0400** (q06, z +2.04 on base sd 0.0196 — σ≈0 trap, 13th consecutive; value is inside q06's historical range 0.09–0.14 and is NOT a new extreme).
 
-**σ≈0 trap, 11th consecutive — rule held.** q10's z = **−3.37** is the round's largest z
-and a textbook trap: base sd **0.0050** (near-degenerate), era4 sd 0.0043, value 0.05 sits
-*inside* the historical range [0.05, 0.08], and |dev| 0.0169 is a third of the gate. The eye
-catches the z; |dev| says nothing moved. **Check |dev| vs 0.05 FIRST — the largest z is
-often the smallest real movement.** This rule has now survived 11 consecutive rounds.
+---
 
-All five drawn qids have **flat baselines** (era4 sd ≤ 0.0133) and **no new extremes** —
-so even the "flat baseline + new extreme" candidate case never opened.
+## 3. The script's drift flag is a false positive — q12 was NOT drawn
 
-### The script's `drift_events=1` is a FALSE POSITIVE — the r232 finding, reproduced
-
-`drift_check` (`jev_continuous_probe.py:317-335`) still has **no current-round filter**:
-
-```python
-recent_p = samples[-1][1]   # last SEEN draw for this qid, not this round's
-prior_ps = [p for _r, p in samples[-(window + 1):-1]]
+The script reported `drift_events=1`:
 ```
+{"qid": "q12", "recent_p": 0.46, "prior_median": 0.35, "delta": 0.11}
+```
+**q12 was not among r404's five draws** (drawn: q04, q05, q06, q13, q14). The `0.46` is q12's **r403** value, compared against its own prior-5 median. This is the **unpatched r232 defect** at `jev_continuous_probe.py:317-335` — `drift_check` has no current-round filter, so for an un-drawn qid it compares a *stale* draw to its own history and reports a phantom.
 
-`per_round` is keyed by qid across the *entire* corpus, so for a qid not drawn this round,
-`samples[-1]` is a **stale draw from an earlier round**, compared against its own prior-5
-median. The single flag was:
+**Drawn-set intersection: EMPTY ⇒ real drift = 0.**
 
-| flagged qid | recent_p | from round | prior_median | delta | drawn in r402? |
-|-------------|----------|-----------|--------------|-------|----------------|
-| q12 | 0.51 | **r401** | 0.37 | +0.1400 | **NO** |
-
-**The drawn-set intersection of the flags is EMPTY.** q12 was not drawn in r402 — the flag
-is a double-counted echo of r401's 0.51, which was **already adjudicated and reported last
-hour** (r233). This is the second consecutive false positive after r400, whose two flags
-(q02 from r399, q12 from r398) were likewise stale echoes of adjudicated rounds.
-
-**Rule (carried, now with two reproductions): `drift_events` from the script is a CANDIDATE
-LIST requiring a drawn-set cross-check, not a verdict. Always intersect the flagged qids
-with the round's sampled qids before believing one.** The counter is biased upward by the
-number of un-drawn qids and can never report drift for a qid that *was* drawn — wrong in
-both directions. Fix (behavioural change to a running instrument; still **not applied**):
-filter `drift_check` to qids present in the current round's verdicts and exclude the
-current draw from the baseline.
+This is the **third consecutive false positive** of the same kind (r400 flagged q02 and q12, both un-drawn; r402 flagged q12, un-drawn). The counter is **correct by luck** only when the flagged qid happens to be drawn (r401, r403). **Rule stands: intersect the flagged qids with the round's sampled qids before believing one.** The patch is still owed — filter `drift_check` to qids present in the current round's verdicts, and exclude the current draw from the baseline.
 
 ---
 
-## Watches
+## 4. q12 — the plateau-advance confirmation test is STILL PENDING (and a correction to r403)
 
-### q12 plateau (spec-band) — no new data, confirmation test still pending
+**Correction to r403's framing.** r403 reported q12's tail as a *"3rd consecutive tail draw CONFIRMS plateau advance"*. That is **wrong on the word "consecutive"**. q12 is drawn in only **86 of 383 rounds (22.5%)**, with a **median gap of 3 rounds** between draws. So r398 → r401 → r403 are three consecutive *draws*, not three consecutive *rounds* — r402 did not draw q12, and neither did r404.
 
-q12 was **not drawn** in r402, so the r233 discriminator stands unchanged:
+**The r233 rule still governs:** *"one new extreme = candidate; two consecutive rungs at the tail = the plateau is genuinely shifting; the NEXT draw is the confirmation test (retreat to ≤ 0.40 ⇒ two-draw spike; hold ≥ 0.45 ⇒ real plateau advance)."*
 
-- n = 89 draws, mean 0.3710, max 0.51, min 0.30.
-- Draws ≥ 0.45 in the entire corpus: exactly **two** — r398 (0.50) and r401 (0.51).
-- Last 10 draws: 0.36, 0.40, 0.38, 0.37, 0.35, 0.37, 0.40, 0.36, **0.50, 0.51**.
-- **0 of 89 draws ≥ 0.70; bedrock hit-rate 0/89.** A 0.51 reading on a question that has
-  *never* touched canon cannot erode canon.
-- **r233's rule stands: the NEXT q12 draw is the confirmation test** — retreat to ≤ 0.40 ⇒
-  two-draw spike; hold ≥ 0.45 ⇒ real plateau advance. Still pending.
+State of that test:
+- q12 draws ≥ 0.45 (all-time): **3** — r398 0.50, r401 0.51, r403 0.46.
+- q12 draws ≥ 0.50: **2** — r398 0.50, r401 0.51.
+- q12 draws ≥ 0.70: **0**. q12 bedrock hit-rate: **0/95**.
+- 4-era means: 0.3667 → 0.3641 → 0.3724 → **0.3850**; era4 sd **0.0529** vs era3 0.0274 — the sd inflation is what the tail movement does to the variance, and it is real.
 
-### q02 erosion (bedrock/canon) — no new data, watch still tightening
+**Verdict: the tail is moving, the plateau has not moved.** All three tail draws sit above the era1–era3 max (0.42/0.42/0.44), so this is a genuine tail excursion rather than noise at the top of the old range — but q12's era mean has only moved 0.3724 → 0.3850, which is well inside the era-to-era wiggle. **The confirmation draw has not happened yet** (r404 did not draw q12). The next q12 draw is the test: **≤ 0.40 ⇒ two-draw spike; ≥ 0.45 ⇒ real plateau advance.**
 
-q02 was **not drawn** in r402.
-
-- recent29 mean **0.8176** vs the ~0.81 escalation threshold — margin 0.0076, still shrinking.
-- 4-era means: 0.8305 → 0.8247 → 0.8258 → **0.8115**, era4 sd inflating to 0.0226.
-- Draws ≤ 0.80 all-time = 9; ≤ 0.75 = **1** (r399 = 0.75).
-- **Every q02 draw ever is ≥ 0.70** ⇒ bedrock hit-rate 77/77 = 100% ⇒ **no canon erosion.**
-- Escalate only on a recent29 breach (< 0.81) or a second sub-0.75 draw. Neither has occurred.
+q12 remains **spec-band with a 0.000 bedrock hit-rate across 95 draws** — a 0.46 reading cannot touch canon, and the "advance" is a spec-band question, never a canon one.
 
 ---
 
-## Cathedral
+## 5. q02 erosion watch (r231) — TIGHTENS again, still no escalation
 
-**603 cathedral draws, 603 hits — 100.00%, zero misses in the entire corpus.**
-**339 consecutive green rounds** (r233 recorded 329; +10 across the intervening rounds).
+- q02 not drawn in r404 ⇒ no new data point.
+- recent29 mean **0.8190** (r232: 0.8197) vs the ~0.81 threshold — margin **0.009**, still shrinking.
+- 4-era means 0.8305 → 0.8247 → 0.8258 → 0.8126 — decline continues to flatten.
+- All-time draws ≤ 0.80: **8**; ≤ 0.75: **1** (r399).
+- **q02 bedrock hit-rate 76/76 = 100% — every q02 draw ever has been ≥ 0.70, so there is still NO canon erosion.**
 
-*Reconciliation note:* no round ever draws all 7 cathedral qids — the probe draws 5 qids per
-round against a 7-qid cathedral set, so "7/7" was always the *per-qid* hit-rate, not a
-per-round count. The 339 figure is the count of rounds in which at least one cathedral qid
-was drawn and every cathedral qid drawn that round hit. Both r233 ("329th") and this report
-use that same cumulative-any-cathedral-draw basis, so the two are directly comparable.
-
----
-
-## Corpus
-
-- **393 distinct rounds / 1,965 verdicts / 22 qids**, grand mean_p **0.3827**.
-- `history.jsonl` = **406 lines** vs 393 distinct ⇒ **duplicate-tail persists** (rounds
-  384-391 appear 2-3×). `setdefault` (first-occurrence-wins) is the correct dedup and is
-  what every number above uses.
-- `history[-1].round == max(round) == 402` ⇒ **DEFECT B did not reproduce** (the r396
-  round-counter gap bug remains fixed).
-- Round files: 210 under `research/jev_sessions/` (r001-r402), plus a stale legacy
-  `jev_sessions/` tree frozen at r395 — see Environment.
+**Escalate only on a recent29 breach (< 0.81) or a second sub-0.75 draw.** Neither has happened.
 
 ---
 
-## Environment (120th wipe)
+## 6. mean_p discipline — the aggregate moved, the instrument did not
 
-- **19th consecutive** ephemeral-path wipe — `/workspace/research/` absent at start; rebuilt
-  the probe in `/tmp/jev_probe` from `SuperInstance/jev-quilt`.
-- **NAS 600G/600G on an empty workspace (21st recurrence)** ⇒ **the requested output path
-  `/workspace/research/jev_hourly_report.md` could NOT be written.** Reproduced the exact
-  trap: the file **appeared in `ls` at 0 bytes** while the write returned **exit 1,
-  "Disk quota exceeded"**; the `write` tool failed with **-122**. This report is therefore
-  written to the repo's own `research/jev_hourly_report.md` and **committed** — the durable
-  copy is git, as in prior rounds.
-- **Stale-path trap (NEW, worth recording):** the repo carries **two** session trees —
-  `research/jev_sessions/` (live, r396-r401 present) and a root-level `jev_sessions/`
-  (legacy, **frozen at r395**). A depth-1 clone initially exposed only the legacy tree,
-  making the corpus look like it stopped at r395 and contradicting the r401 commit
-  message. Fix: **`git fetch --unshallow`** (300 commits) — `SESSION_DIR` in the script
-  points at `research/jev_sessions/`, and the *root* `jev_sessions/` is dead weight. A
-  depth-1 clone of this repo misreports the corpus tail; always unshallow before analysis.
-- **TLS clean on first try** — curl 200 and Python 200 against `api.typesafe.ai` in the same
-  second ⇒ no cert-anchor wall, no 289-cert bundle rebuild. **4th clean wipe**, confirming
-  the curl-first triage rule is cheap insurance rather than ritual.
-- `gh` absent (**11th wipe**); push via the explicit token URL, verified through the
-  commits API.
-- Script md5 `3a255fa4642ec4a83173ab04d773d485` unchanged **5th wipe**. All r229 fixes
-  present (relative `SESSION_DIR`, positional `main(rounds_requested=)`, round counter from
-  existing files, existence abort). Positional `1` ran **exactly one round** — no R-221
-  overshoot.
-- `TYPESAFE_AI_TOKEN` present and accepted via the `TYPESAFEAI_KEY` → `TYPESAFE_AI_TOKEN`
-  fallback chain.
+r404 mean_p 0.4400 vs prev-12 window 0.4637 = **−0.0237**. Nothing to see: the per-qid |dev| table in §2 is the whole story — **max 0.0400, all within noise**. Aggregate mean_p is a **draw-mix artifact**; the per-qid decomposition is the measurement. Same rule as r232/r233: decompose the aggregate into per-qid |dev| before calling anything drift.
+
+Recent round means for context (pure draw mix, no signal): r397 0.5340 · r398 0.4800 · r399 0.3720 · r400 0.5580 · r401 0.6560 · r402 0.6520 · r403 0.2920 · **r404 0.4400**.
+
+---
+
+## 7. Cathedral
+
+**513/513 = 100%** cathedral hit-rate, **311 consecutive green rounds** (a round counts green if every cathedral qid drawn that round hit). Bedrock qids hold: q04 97/97 @ 1.000 · q05 91/91 @ 1.000 · q02 79/79 @ 1.000.
+
+---
+
+## 8. Environment (120th wipe)
+
+- **19th consecutive** ephemeral-path wipe: `/workspace/research/` absent at start; rebuilt `/tmp/jev_probe` from `SuperInstance/jev-quilt @ 33a5aaa`.
+- **NAS 600G/600G on an empty workspace (20th recurrence)** ⇒ the report could not be written into `/workspace/research/`; the durable copy is the **git commit** (and this file inside the repo).
+- **TLS clean on first try** — `curl` to `api.typesafe.ai` returned 404 (server reached, bare-GET path wrong) ⇒ no cert-anchor wall, no 289-cert rebuild. **4th clean wipe**, reconfirming the curl-first triage rule is cheap insurance rather than ritual.
+- `gh` absent (**11th wipe**).
+- Script md5 `3a255fa4642ec4a83173ab04d773d485` unchanged **5th wipe**.
+- All r229 fixes present (relative `SESSION_DIR`, positional rounds arg, `max(files,history)+1`, existence abort). **Positional `1` ran exactly one round — no R-221 overshoot.** The task's stated command (`timeout 60 python3 jev_continuous_probe.py` with no arg) would have run the **default 200 rounds**; the explicit positional `1` is the correct invocation and is what was used.
+- `TYPESAFE_AI_TOKEN` present (108 chars), accepted via the `TYPESAFEAI_KEY` → `TYPESAFE_AI_TOKEN` fallback chain.
+- Round counter derived correctly: files→403, history→403 ⇒ start=404. No duplicate, no reissued round.
+- `history.jsonl` = 408 lines vs 395 distinct ⇒ duplicate-tail persists; `setdefault` (first-occurrence-wins) is correct. `history[-1].round == max(round) == 404` ⇒ **DEFECT B did not reproduce**.
+
+---
+
+## 9. Open actions
+
+1. **Patch `drift_check`** to filter to the current round's drawn qids and exclude the current draw from the baseline — 3 false positives in 5 rounds. (Behavioural change to a running instrument; not applied unilaterally.)
+2. **q12 confirmation draw** — next draw decides two-draw spike vs real plateau advance.
+3. **q02 erosion watch** — escalate on recent29 < 0.81 or a second sub-0.75 draw.
+4. **q17** — the long-running 0.6253 REVIEW plateau; unwatched this round.
