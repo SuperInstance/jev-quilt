@@ -1,0 +1,89 @@
+{
+  "round_id": "r20261023T040256Z-102",
+  "ts": "2026-10-23T04:03:15+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q09_signal_chain_canon",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q16_vibecoder_signal_chain",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q07_11_opcodes",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q19_style_resilience",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q02_witness_log_is_prediction",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.227,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q09_signal_chain_canon",
+      "kind": "speculative",
+      "p": 0.2,
+      "raw": {
+        "type": "noul",
+        "noul": 0.2
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q16_vibecoder_signal_chain",
+      "kind": "speculative",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q07_11_opcodes",
+      "kind": "bedrock",
+      "p": 0.96,
+      "raw": {
+        "type": "noul",
+        "noul": 0.96
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q19_style_resilience",
+      "kind": "adversarial",
+      "p": 0.04,
+      "raw": {
+        "type": "noul",
+        "noul": 0.04
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "p": 0.97,
+      "raw": {
+        "type": "noul",
+        "noul": 0.97
+      }
+    }
+  ],
+  "mean_p": 0.442,
+  "n_ok": 5,
+  "session": "rounds_r20261023T040256Z"
+}

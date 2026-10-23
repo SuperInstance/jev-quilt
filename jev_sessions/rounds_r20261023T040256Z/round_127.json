@@ -1,0 +1,89 @@
+{
+  "round_id": "r20261023T040256Z-127",
+  "ts": "2026-10-23T04:03:19+00:00",
+  "endpoint": "https://api.typesafe.ai/v1/systemone",
+  "questions": [
+    {
+      "slot": "q1",
+      "qid": "q18_address_is_data",
+      "type": "noul"
+    },
+    {
+      "slot": "q2",
+      "qid": "q13_witness_log_opcode",
+      "type": "noul"
+    },
+    {
+      "slot": "q3",
+      "qid": "q08_polyformalism",
+      "type": "noul"
+    },
+    {
+      "slot": "q4",
+      "qid": "q02_witness_log_is_prediction",
+      "type": "noul"
+    },
+    {
+      "slot": "q5",
+      "qid": "q09_signal_chain_canon",
+      "type": "noul"
+    }
+  ],
+  "elapsed_s": 0.203,
+  "status": "ok",
+  "verdicts": [
+    {
+      "slot": "q1",
+      "qid": "q18_address_is_data",
+      "kind": "speculative",
+      "p": 0.05,
+      "raw": {
+        "type": "noul",
+        "noul": 0.05
+      }
+    },
+    {
+      "slot": "q2",
+      "qid": "q13_witness_log_opcode",
+      "kind": "review",
+      "p": 0.09,
+      "raw": {
+        "type": "noul",
+        "noul": 0.09
+      }
+    },
+    {
+      "slot": "q3",
+      "qid": "q08_polyformalism",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q4",
+      "qid": "q02_witness_log_is_prediction",
+      "kind": "bedrock",
+      "p": 0.98,
+      "raw": {
+        "type": "noul",
+        "noul": 0.98
+      }
+    },
+    {
+      "slot": "q5",
+      "qid": "q09_signal_chain_canon",
+      "kind": "speculative",
+      "p": 0.19,
+      "raw": {
+        "type": "noul",
+        "noul": 0.19
+      }
+    }
+  ],
+  "mean_p": 0.458,
+  "n_ok": 5,
+  "session": "rounds_r20261023T040256Z"
+}
