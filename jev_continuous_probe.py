@@ -27,6 +27,7 @@ import os
 import random
 import re
 import ssl
+import sys
 import time
 import urllib.request
 import urllib.error
@@ -46,7 +47,7 @@ if not API_KEY:
     raise SystemExit("FATAL: no JEV API key in TYPESAFEAI_KEY or TYPESAFE_AI_TOKEN")
 MODEL = "jev-latest"
 USER_AGENT = "jev-continuous-probe/1.0 (+Quilt)"
-SESSION_DIR = Path("/tmp/jev_probe/jev_sessions")
+SESSION_DIR = Path(__file__).resolve().parent / "research" / "jev_sessions"
 SESSION_DIR.mkdir(parents=True, exist_ok=True)
 HISTORY_PATH = SESSION_DIR / "history.jsonl"
 
@@ -336,18 +337,43 @@ def drift_check(history, window=5):
 # ============================================================================
 # MAIN
 # ============================================================================
-def main():
+def main(rounds_requested=None):
+    # DEFECT (r229): main() took no args and looped on wall-clock alone, so a
+    # positional "1" was silently ignored and a "one round" ask ran ~30.
     started = time.time()
     # Durable fix: derive the starting round from the highest EXISTING round
     # file, not from len(history). history.jsonl lives only on the NAS and has
     # been lost twice; when that happens the counter restarted at r001 and
     # shadowed every pre-wipe r001 forever.
+    # DEFECT A fix (r229): the round files are provably INCOMPLETE (the r001..r386
+    # series has a 180-round gap) while history.jsonl is append-only and is not.
+    # Deriving the counter from a directory listing reissued an already-recorded
+    # round (r384) and appended a duplicate record. Take the MAX of both sources,
+    # which is stable regardless of either one's gaps.
     _existing = [int(m.group(1)) for p in SESSION_DIR.glob("continuous_r*.json")
                  if (m := re.match(r"continuous_r(\d+)\.json$", p.name))]
-    round_idx = max(_existing, default=0) + 1
+    _from_files = max(_existing, default=0)
+    _from_history = 0
+    try:
+        for line in HISTORY_PATH.read_text().splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                _from_history = max(_from_history, int(json.loads(line).get("round", 0)))
+            except Exception:
+                continue
+    except FileNotFoundError:
+        pass
+    round_idx = max(_from_files, _from_history) + 1
+    print(f"round counter: files->{_from_files} history->{_from_history} start={round_idx}")
+    # Never overwrite or duplicate a round that is already recorded on disk.
+    if (SESSION_DIR / f"continuous_r{round_idx:03d}.json").exists():
+        raise SystemExit(f"ABORT: continuous_r{round_idx:03d}.json already exists")
     rounds = []
     fails = []
-    while time.time() - started < 55:  # 55s of 60s ceiling — leave 5s for shutdown
+    while (time.time() - started < 55 and  # 55s of 60s ceiling — leave 5s for shutdown
+           (rounds_requested is None or len(rounds) < rounds_requested)):
         r = run_round(round_idx)
         if r["status"] == "ok":
             rounds.append(r)
@@ -404,4 +430,5 @@ def main():
     print(f"saved: {out_path}")
 
 if __name__ == "__main__":
-    main()
+    _n = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else None
+    main(rounds_requested=_n)
