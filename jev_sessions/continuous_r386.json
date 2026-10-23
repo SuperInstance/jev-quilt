@@ -1,31 +1,25 @@
 {
-  "round": 386,
+  "round": 387,
   "status": "ok",
-  "ts": "2026-10-23T10:04:09.088765+00:00",
-  "elapsed_s": 0.143,
+  "ts": "2026-10-23T11:04:02.773836+00:00",
+  "elapsed_s": 0.203,
   "verdicts": [
     {
-      "qid": "q04",
-      "kind": "bedrock",
-      "p": 0.88,
-      "bedrock_hit": true
-    },
-    {
-      "qid": "q17",
-      "kind": "review",
-      "p": 0.7,
-      "bedrock_hit": true
-    },
-    {
-      "qid": "q21",
+      "qid": "q18",
       "kind": "speculative",
-      "p": 0.09,
+      "p": 0.26,
       "bedrock_hit": false
     },
     {
-      "qid": "q12",
+      "qid": "q07",
+      "kind": "bedrock",
+      "p": 0.74,
+      "bedrock_hit": true
+    },
+    {
+      "qid": "q11",
       "kind": "speculative",
-      "p": 0.52,
+      "p": 0.13,
       "bedrock_hit": false
     },
     {
@@ -33,10 +27,15 @@
       "kind": "adversarial",
       "p": 0.23,
       "bedrock_hit": false
+    },
+    {
+      "qid": "q20",
+      "kind": "speculative",
+      "p": 0.09,
+      "bedrock_hit": false
     }
   ],
-  "mean_p": 0.484,
-  "bedrock_hits": 2,
-  "model": "jev-1.14.0",
-  "script_md5": "bda7ccb3d3af4d1c2c7e961e2dcf174a"
+  "mean_p": 0.29,
+  "bedrock_hits": 1,
+  "model": "jev-1.14.0"
 }

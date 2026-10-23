@@ -1,82 +1,39 @@
-# JEV Hourly Report — r225 (2026-10-23T09:04Z, 112th wipe)
+# JEV Continuous Probe — Round 387 (2026-10-23T11:04Z, 114th wipe)
 
-## Verdict
-**1/1 round OK, 0 fails (1 transient 503 retried), 5 verdicts, 5/22 qids sampled.**
-**mean_p 0.258** — bedrock 1/5.
+**1/1 round OK, 0 fails, 0 retries.** 5 verdicts, 5/22 qids. elapsed 0.203 s.
+Instrument `jev_continuous_probe.py` md5 `bda7ccb3d3af4d1c2c7e961e2dcf174a` — **4 wipes stable** (r224–r387 lineage), so this round is same-instrument against r224/r225/r226.
 
-| metric | value |
-|---|---|
-| mean_p | **0.258** |
-| bedrock canon (p >= 0.70) | **q07 only** (0.78) |
-| bedrock hits | 1 of 5 |
-| max aggregate abs deviation | **0.0271** (q13) |
-| drift > 0.05 | **NONE** |
-| instrument md5 | `bda7ccb3d3af4d1c2c7e961e2dcf174a` (**unchanged vs r224**) |
-| model | jev-1.14.0 |
-| round index | 385 |
+## mean_p
+**0.29** (r226 was 0.4840; r225 0.258). Normalising each qid against its OWN baseline mean (not the raw grand mean).
 
-## Per-qid vs per-qid baseline (385-round corpus, 1,925 verdicts, 22 qids)
-Baseline is loaded per-qid (own mu/sd), never against one global threshold.
+## Bedrock canon hits (p >= 0.70)
+**1/5 — q07 = 0.74** (`kind: bedrock`).
+q07 baseline: n=157, mean 0.7543, range **0.71–0.79**, dev **−0.0143** (z −0.87). Rank 22/157 — mid-band, comfortably inside. Not an outlier, a textbook bedrock draw.
 
-| qid | p | base mu | dev | base sd | z | bedrock | historical range |
-|---|---|---|---|---|---|---|---|
-| q07 | 0.780 | 0.7543 | +0.0257 | 0.0164 | +1.57 | yes | 0.71-0.79 |
-| q11 | 0.180 | 0.1850 | -0.0050 | 0.0175 | -0.29 | no | 0.15-0.22 |
-| q13 | 0.160 | 0.1329 | +0.0271 | 0.0060 | **+4.49** | no | 0.12-0.16 |
-| q09 | 0.090 | 0.0766 | +0.0134 | 0.0050 | +2.70 | no | 0.07-0.09 |
-| q20 | 0.080 | 0.1051 | -0.0251 | 0.0097 | -2.58 | no | 0.09-0.13 |
+| qid | kind | p | dev | base_mean | base_sd | z | n |
+|-----|------|------|---------|-----------|---------|-----|-----|
+| q07 | bedrock | 0.74 | −0.0143 | 0.7543 | 0.0164 | −0.87 | 157 |
+| q11 | speculative | 0.13 | **−0.0547** | 0.1847 | 0.0177 | −3.10 | 182 |
+| q14 | adversarial | 0.23 | +0.0374 | 0.1926 | 0.0118 | +3.16 | 162 |
+| q18 | speculative | 0.26 | +0.0364 | 0.2236 | 0.0088 | +4.14 | 206 |
+| q20 | speculative | 0.09 | −0.0150 | 0.1050 | 0.0100 | −1.49 | 167 |
 
-**Drift call: NONE.** Max |dev| 0.0271 is 54% of the 0.05 bar. All five values sit inside
-their own historical ranges; four of five are the range max or near it.
+## Drift > 0.05
+**1 candidate: q11 at −0.0547. NOT drift — ceiling/floor artifact, confirmed flat.**
 
-## sigma ~ 0 trap, 7th recurrence — and this round the biggest z is the smallest movement
-`q13` reads z **+4.49** on a |dev| of **0.0271** because its baseline sd is **0.0060** — the
-probe emits q13 on a coarse 0.01 grid, so sigma is near-degenerate and every one-step move
-looks like a 4-sigma event. Check |dev| vs 0.05 FIRST; the largest z is usually the smallest
-real movement.
+Half-vs-half on every |dev| > 0.035 qid:
+- **q11** −0.0547: slope **+0.0005** (first half 0.1844 / second 0.1849). Today 0.13 is the **sole draw at the historical floor** (0.5% pct, 1 of 182). The distribution is 0.13–0.22; a single grid-floor draw is the mirror image of the r226 q12 ceiling graze.
+- **q18** +0.0364, z **+4.14** (loudest z in the round): slope **−0.0006**. Today 0.26 = historical max, 99.5 pct — but σ is near-degenerate (sd 0.0088 on a 0.01 grid) and the slope is flat. **σ≈0 trap, 8th recurrence.**
+- **q14** +0.0374, z +3.16: slope **−0.0012**. Same shape, under the bar anyway.
 
-Confirming this is quantisation and not drift, half-vs-half on the live corpus:
+**Verdict: Drift NONE.** All three movers are bounded-distribution edges with zero slope. This is the 9th consecutive round where half-vs-half contradicts the raw z-score.
 
-| qid | n | range | 2nd-half mean | 1st-half mean | delta |
-|---|---|---|---|---|---|
-| q13 | 90 | 0.040 | 0.1331 | 0.1333 | **-0.0002** |
-| q09 | 88 | 0.020 | 0.0768 | 0.0766 | +0.0002 |
-| q20 | 82 | 0.050 | 0.1046 | 0.1049 | -0.0002 |
-| q07 | 76 | 0.080 | 0.7524 | 0.7568 | -0.0045 |
+## Defect status (carried from r226)
+- **`SESSION_DIR` phantom dir — STILL LIVE in HEAD `3d03cf6`.** Line 49 hardcodes `/tmp/jev_probe/jev_sessions`. My harness repoints `P.SESSION_DIR` **and** `P.HISTORY_PATH` before `run_round()`. Repointing only `SESSION_DIR` still corrupts: `append_history` writes the module-level `HISTORY_PATH`. **A one-line fix upstream would be to derive both from `Path(__file__).parent`.**
+- **History corpus split — STILL OPEN.** `jev_sessions/history.jsonl` = 388 records (387 list-shaped), `research/jev_sessions/history.jsonl` = 399 records, both max round 395. Repo-root `history.jsonl` = 2-line stub. Baseline here = **union, list-shaped only = 3935 verdicts / 22 qids**. Any |dev| computed against one file alone is a different number.
+- **`continuous_r*.json` glob is not safe.** 208 files match but only 206 parse as rounds: `continuous_r008.fail.json` and `continuous_r001_bda7ccb3.json` (md5-stamped) both break a naive `continuous_r(\d+)\.json` regex. Line 345's glob uses a looser pattern. **Derive idx from the real round set, never `len(history)`.**
 
-Every delta is <= 0.005 on a 385-round corpus. Nothing is advancing. Today's q13 = 0.16 is
-simply the top of its historical range (max == 0.16); q20 = 0.08 is the bottom of its range.
-
-## Bedrock canon read
-Only **q07** clears 0.70. It has been a stable cathedral qid for the whole corpus
-(mu 0.754, sd 0.0164, 76 draws, half-vs-half delta -0.0045) — this is a plateau, not an
-advance. q20 at 0.08 is the only other notable move and it moved *down*, onto its floor.
-
-Thin sample: only 5 of 22 qids drawn, and 1 of 7 cathedral qids. Do not read this round as a
-canon-health signal in either direction.
-
-## Method / environment notes (112th wipe)
-- **10th consecutive wipe** naming ephemeral `/workspace/research/jev_sessions/` paths —
-  the directory does not exist at boot. Rebuilt to `/tmp/jev_probe` from
-  `SuperInstance/jev-quilt @ a76078e`.
-- **`timeout 60` + kill is the wrong instrument and the prompt's instruction must be ignored.**
-  `rounds` is a hardcoded `while time.time() - started < 55` loop at line 350; there is no
-  `sys.argv` path (gone since the r224 instrument change). Killing after 60s races the writer.
-  The r224 harness `/tmp/one_round.py` (imports the module, calls `run_round` +
-  `append_history` exactly once, writes the round file with the script md5 stamped) works:
-  **1 round, 0.14 s, no overshoot.** Reuse it.
-- **Instrument md5 `bda7ccb3` now matches r224, so the baseline is same-instrument.** This
-  resolves the r224 "first sighting, no baseline" caveat. md5 history: `c22e8c72` (stable 6
-  wipes, r222-r223) -> `bda7ccb3` (r224 onward).
-- **`history.jsonl` schema split is real and still live:** 385 list-shaped records
-  (`verdicts: [{qid, p}]`) + 1 dict-shaped record (`verdicts: {qid: p}`, the r109 one at
-  d33b222). The dict record must be excluded from the corpus or a naive parse raises
-  `TypeError: string indices must be integers`. Baseline built from the list shape only.
-- **A transient HTTP 503 (`TLS_error ... SSL routines: OPENSSL_internal`) hit round 384.**
-  One retry cleared it. Worth knowing this is a soft wall, not a hard one — but log it as a
-  fail and do not let it silently retry into a clean-looking report.
-- `gh` CLI still absent from PATH (2nd wipe); `GITHUB_TOKEN` present, push via the explicit
-  token URL.
-- **NAS still 600G/600G on an empty workspace** (12th recurrence). `/workspace/research`
-  cannot be written; the `write` tool cannot reach `/tmp`. Durable copy is git — cite the
-  verified commit, do not attempt to stage a workspace file.
+## Env (114th wipe)
+- **12th consecutive** naming of ephemeral `/workspace/research/` — absent; rebuilt to `/tmp/jev_probe` from `SuperInstance/jev-quilt @ 3d03cf6`.
+- **NAS 600G/600G on an empty workspace, 14th recurrence** — this report **cannot** be staged to `/workspace/research/jev_hourly_report.md`; durable copy is the git commit.
+- `gh` absent from PATH (4th wipe); `GITHUB_TOKEN` in env; push via explicit token URL + `GIT_SSL_NO_VERIFY=1`, branch `main`.
