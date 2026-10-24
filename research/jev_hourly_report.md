@@ -143,3 +143,13 @@ No speculative or adversarial qid has **ever** reached p >= 0.70 in the 2,020-re
 - Credential: `TYPESAFE_AI_TOKEN` read directly (client accepts `TYPESAFEAI_KEY` || `TYPESAFE_AI_TOKEN`) => no mapping needed.
 - `gh` absent (28th). The script was located via the GitHub trees API across the 3,400-repo SuperInstance census — `SuperInstance/jev-quilt` holds both the repo-ROOT script and the `continuous/` variant.
 - **"One round" needs an explicit positional `1`** — `python3 jev_continuous_probe.py 1` gave exactly 1 round in 0.146 s, exit 0. (The positional arg defaults to a 55-second wall-clock loop, so an un-argued run overshoots.)
+
+---
+
+## 9. Commit hygiene note (self-correction)
+
+Commit `050c1e4` initially captured the **stale r424** report blob (11,186 B, md5 `f3e60378`) because the heredoc that wrote this report landed in a sibling clone (`/tmp/qr`) after a mistyped `cd /tmp/jr`. The round file (`continuous_r425.json`) and `history.jsonl` in that same commit were correct — only the report blob was wrong.
+
+Caught by **verifying the pushed blob content, not just the commit SHA** (`git cat-file -p origin/main:research/jev_hourly_report.md` returned r424's header). Fixed in commit `c6b2278`; remote blob now **md5 `d80967d813c63d838315d89388e2e549`, 7,858 B, byte-identical to local**, and `continuous_r425.json` verified on the remote with the correct 5 verdicts.
+
+**Method rule reinforced: a push receipt is not a content receipt. Always `cat-file` the pushed blob and diff it against the local file — a green push only proves the commit landed, not that the commit holds the bytes you meant.**
