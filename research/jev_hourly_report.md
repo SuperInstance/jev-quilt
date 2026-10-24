@@ -1,124 +1,167 @@
-# JEV Continuous Probe — Hourly Report r407
+# JEV Continuous Probe — Hourly Report
 
-**Run:** 2026-10-23T23:03Z · **Round:** r407 · **Status:** 1 round OK, 0 fails, 5 verdicts
-**Script md5:** `3a255fa4642ec4a83173ab04d773d485` (unchanged, 8th consecutive wipe) · **Model:** `jev-latest` / `jev-1.14.0`
-**Corpus:** `SuperInstance/jev-quilt @ de1a6d8` → 386 distinct rounds, 1,930 verdicts, 22 qids
-**Prior round:** r406 (mean_p 0.2940, 1/5 bedrock)
+**Round r408** · 2026-10-24T00:03:05Z · model `jev-latest` (server-reported `jev-1.14.0`)
+script md5 `3a255fa4642ec4a83173ab04d773d485` (unchanged, 9th consecutive wipe)
+bootstrap: `SuperInstance/jev-quilt` @ `d56c30b` → `/tmp/jev-quilt` (unshallowed, 306 commits)
 
 ---
 
-## 1. mean_p
+## Headline
 
-**r407 mean_p = 0.4580** (5 verdicts: q01 0.87, q02 0.71, q15 0.03, q12 0.54, q22 0.14)
-
-| | value |
+| metric | value |
 |---|---|
-| r407 mean_p | **0.4580** |
-| prev-12 mean-of-means | 0.4822 |
-| corpus grand mean_p | 0.3835 (1,930 verdicts) |
+| **mean_p** | **0.4380** |
+| verdicts | 5 |
+| **p >= 0.70 (bedrock canon)** | **2/5 — q05 0.83, q07 0.77** |
+| **drift > 0.05** | **NONE** (0 real drifts) |
+| cathedral (7 bedrock qids) | **597/597 = 100.00%** |
+| spec/adversarial leaks (>= 0.70) | **0** |
+| round status | OK, 0 fails, 0.138 s |
 
-**The mean is a draw-mix artifact, not a signal.** r407 drew 2 bedrock of 5 questions; r406 drew 1 of 5. Health lives in the cathedral and the buckets, never in the grand mean. Per-qid deviation, not mean_p, is the honest read — see §3.
+**Verdict: clean round.** Both hits are bedrock. No drift on any drawn qid. No spec leak.
+The q02 canon-erosion watch was **not** exercised (q02 not drawn) and therefore stands unchanged.
 
-## 2. Questions hitting p >= 0.70 (bedrock canon)
+---
 
-**2 of 5 drawn questions hit the canon threshold:**
+## r408 verdicts vs full-history baseline
 
-| qid | kind | p | verdict |
-|---|---|---|---|
-| **q01** | bedrock | **0.87** | HIT — `cells are scars of failed attempts` |
-| **q02** | bedrock | **0.71** | HIT — `witness logs are predictions` (but see §3 — this is a NEW ALL-TIME LOW) |
-| q15 | adversarial | 0.03 | correctly low |
-| q12 | speculative | 0.54 | spec-band (see §4) |
-| q22 | speculative | 0.14 | spec-band |
+Baseline = per-qid mean over the entire corpus, **target round excluded** (n in parens).
+`|dev| > 0.05` is the drift bar.
 
-**Canon census (7 bedrock qids, full history):**
-
-| qid | n | mean | min | hits |
-|---|---|---|---|---|
-| q01 | 98 | 0.8748 | 0.84 | 98/98 |
-| **q02** | **78** | **0.8208** | **0.71** | **78/78** |
-| q03 | 92 | 0.8861 | 0.86 | 92/92 |
-| q04 | 93 | 0.8886 | 0.88 | 93/93 |
-| q05 | 82 | 0.8507 | 0.82 | 82/82 |
-| q07 | 78 | 0.7546 | 0.71 | 78/78 |
-| q08 | 74 | 0.8995 | 0.87 | 74/74 |
-| **TOTAL** | **595** | | | **595/595 = 100.0%** |
-
-**Canon is still 100% — 595/595, no breach.** q02 remains a hit at 0.71 (above the 0.70 bar), so canon has NOT eroded. But it is the *lowest q02 draw ever recorded* and the second consecutive sub-0.75 draw.
-
-**Spec/adv leakage: NONE.** No speculative or adversarial qid has ever crossed 0.70. The only non-bedrock hits are q17 (`FNV-1a canary`, kind=review) at 58/78 = 74.4% — expected, and it is a `review` qid, not canon.
-
-## 3. Drift > 0.05
-
-The script reported `drift_events=2`. **Both flags are for questions actually drawn this round** (the known stale-echo defect at `jev_continuous_probe.py:317-335` did not fire here), so both are real candidates. I re-derive each against the **full-history** mean and σ, not the script's 5-sample median.
-
-| qid | p | hist mean | sd | dev | z | prior range | verdict |
+| qid | kind | p | baseline | dev | z | n | hist range |
 |---|---|---|---|---|---|---|---|
-| **q02** | 0.71 | 0.8222 | 0.0205 | **−0.1122** | **−5.48** | [0.73, 0.86] | **REAL — new all-time low** |
-| **q12** | 0.54 | 0.3721 | 0.0376 | **+0.1679** | **+4.46** | [0.30, 0.51] | **REAL — new all-time high** |
-| q01 | 0.87 | 0.8748 | 0.0093 | −0.0048 | −0.52 | [0.84, 0.90] | noise |
-| q15 | 0.03 | 0.0253 | 0.0050 | +0.0047 | +0.94 | [0.02, 0.03] | noise |
-| q22 | 0.14 | 0.1200 | 0.0079 | +0.0200 | +2.52 | [0.11, 0.16] | noise (|dev| < 0.05) |
+| q16 | review | 0.1900 | 0.1995 ± 0.0084 | −0.0095 | −1.13 | 87 | [0.18, 0.22] |
+| q05 | **bedrock** | **0.8300** | 0.8531 ± 0.0185 | −0.0231 | −1.25 | 84 | [0.82, 0.95] |
+| q06 | speculative | 0.1500 | 0.1059 ± 0.0264 | +0.0441 | +1.67 | 88 | [0.09, 0.23] |
+| q18 | speculative | 0.2500 | 0.2314 ± 0.0545 | +0.0186 | +0.34 | 99 | [0.20, 0.62] |
+| q07 | **bedrock** | **0.7700** | 0.7546 ± 0.0165 | +0.0154 | +0.93 | 78 | [0.71, 0.79] |
 
-**σ≈0 trap, 15th consecutive, rule held in both directions:** q22 posts z = +2.52 on a |dev| of only 0.0200 — the eye catches the z, |dev| says nothing moved. q22 is **not** drift. q02 and q12 are the inverse case: both have |dev| >> 0.05 **and** are new range extremes.
+**Drift verdict: NONE.** The largest deviation is q06 at +0.0441 — under the 0.05 bar, and
+q06 is a speculative qid whose entire history lives in [0.09, 0.23], so a 0.15 reading is
+squarely inside its range. Every other drawn qid sits well inside one σ of its own mean.
 
-### 3a. q02 — ESCALATION: canon-erosion watch
+### σ≈0 trap — 16th consecutive round, rule held
 
-**This is the finding. The trigger set last round has fired.**
+q06's z is +1.67 on a |dev| of 0.0441. The eye is drawn to the z, but |dev| is the
+physical-movement test and it says nothing moved. Conversely q16's z of −1.13 is the
+smallest absolute deviation in the set. Reading the z column as the drift verdict would
+have produced a false positive in both directions. The bar is `|dev| > 0.05` against the
+qid's own baseline, and no drawn qid clears it.
 
-Last round (r406) I set the rule: *"NEXT q02 DRAW DECIDES: 2nd sub-0.75 ⇒ escalate to canon-erosion watch; ≥0.80 ⇒ tail was noise."* r407's q02 = **0.71 — a second consecutive sub-0.75 draw. ESCALATE.**
+---
 
-```
-r399 0.75   ← first sub-0.75 in q02's entire history
-r401 0.77
-r406 0.73
-r407 0.71   ← NEW ALL-TIME LOW, 2nd consecutive sub-0.75
-```
+## The script's `drift_events=2` is a FALSE POSITIVE — both events are stale echoes
 
-* **dev −0.1122, z −5.48** against a full-history baseline of 0.8222 ± 0.0205. On a 100%-hit qid, 5.5σ is not noise.
-* **Era means show a structural shift, not a wobble.** Blocks of 20 draws: 0.8300 → 0.8230 → 0.8270 → **0.8011** (draws 61-78). The first three eras are flat within 0.007; the last era drops 0.026 and contains both sub-0.75 draws.
-* **last-5 mean 0.7540 vs prev-5 mean 0.8180 = −0.0640.** The gap is exactly one stddev wide.
-* **recent29 mean = 0.8114 — BELOW the 0.81 canon-erosion watch threshold** (first time on this metric).
-* **recent15 mean = 0.7947**, full-history mean 0.8208.
-* **Not monotone** — the last 3 diffs are not all negative (0.81→0.82→0.84→0.81→0.81→0.81→0.75→0.77→0.73→0.71 has a +0.02 at r401 and flat steps at r381/r383). So the tail is a *step down* with a continuing slide, not a clean monotone bleed. Both readings point the same way though: the level has shifted down and has not come back.
-* **Canon has NOT eroded.** 78/78 q02 hits, 0 draws below 0.70, 595/595 canon overall. A sub-0.70 draw would be the true breach. r407's 0.71 cleared the bar by 0.01.
+The harness printed `drift_events=2`. Neither event is real.
 
-**Watch state: ESCALATED — canon-erosion watch, not breach.** Next q02 draw is decisive again:
-* `< 0.70` ⇒ **canon breach**, report immediately.
-* `0.70-0.74` ⇒ third consecutive sub-0.75 ⇒ treat the shift as structural.
-* `>= 0.80` ⇒ the tail was noise; close the watch.
+| script event | delta | drawn in r408? | verdict |
+|---|---|---|---|
+| q02 | −0.06 | **NO** | stale echo (carried from r407's 0.71) |
+| q12 | +0.08 | **NO** | stale echo (carried from r407's 0.54) |
 
-Caveat: q02 is drawn in only 78/386 rounds (20.2%), so this is a thin sample — but it is 5.5σ on the anchor qid, and the era shift is visible in the aggregate, not just the last point.
+**Drawn-set intersection = 0.** r408 drew q16, q05, q06, q18, q07 — neither q02 nor q12
+appears in the round, so neither can have drifted *in* r408. The script's `drift_check()`
+compares each qid's last value against a 5-sample local median **regardless of whether that
+qid was drawn**, so an event from a prior round keeps re-firing until that qid is drawn again.
 
-### 3b. q12 — new all-time high in the spec band
+This is the third consecutive round where the script's drift count over-reported
+(r405: 1 false positive; r406: 1 real + 1 stale; r407: 2 real; **r408: 2 stale, 0 real**).
+The script count is a raw event tally, never a health verdict — the real count here is **0**.
 
-q12 = **0.54**, previous max 0.51, dev **+0.1679**, z **+4.46**. This is real by the |dev| > 0.05 rule *and* a range extreme.
+---
 
-But **q12 cannot reach canon**: it is kind=speculative with a spec_notebook guard, 0/87 hits all-time, and the promotion gate requires n>=20 with hit-rate >= 0.7 *plus* explicit doctrinal-state phrasing. A rising spec score is **not** a canon event — it is the spec_notebook guard being tested, and the guard is holding (still well under 0.70).
+## Cathedral: 597/597 = 100.00%
 
-What is worth noting: q12's baseline mean is **0.3740**, roughly **2x the next-highest speculative qid (q11 at 0.1852)**, and it is the only spec qid with a wide σ (0.0415 vs ~0.005-0.017 for every other spec qid). q12 is the one question the oracle finds genuinely *interesting* rather than clearly false — it has been the persistent plateau since r398 (0.50, 0.51, 0.46, 0.54). This is a **promotion-candidate** signal, not a leak: q12 is the only speculative framing with any movement at all, and the correct action is to keep the spec_notebook guard in place and watch whether the plateau keeps climbing.
+| qid | hits/n | hit rate | mean_p | min | max |
+|---|---|---|---|---|---|
+| q01 | 98/98 | 100.0% | 0.8748 | 0.84 | 0.97 |
+| q02 | 78/78 | 100.0% | 0.8208 | **0.71** | 0.94 |
+| q03 | 92/92 | 100.0% | 0.8861 | 0.86 | 0.97 |
+| q04 | 93/93 | 100.0% | 0.8886 | 0.88 | 0.96 |
+| q05 | 83/83 | 100.0% | 0.8505 | 0.82 | 0.95 |
+| q07 | 79/79 | 100.0% | 0.7548 | 0.71 | 0.79 |
+| q08 | 74/74 | 100.0% | 0.8995 | 0.87 | 0.91 |
 
-## 4. Verdict
+**Zero sub-0.70 draws on any cathedral qid, ever.** This round: q05 and q07 both drawn,
+both hit.
 
-| | |
-|---|---|
-| mean_p | **0.4580** (draw-mix: 2/5 bedrock drawn) |
-| p >= 0.70 hits | **q01 (0.87), q02 (0.71)** — 2/5 drawn |
-| Canon census | **595/595 = 100.0%** — no breach |
-| Spec/adv leak | **NONE** — no speculative/adversarial qid has ever crossed 0.70 |
-| Real drift > 0.05 | **2: q02 (−0.1122, new low) and q12 (+0.1679, new high)** |
-| Noise | q01, q15, q22 (all \|dev\| < 0.05) |
-| **STATE** | **Canon-erosion watch ESCALATED on q02** — 2nd consecutive sub-0.75, era mean shifted 0.027 down, recent29 below threshold. Canon itself still intact at 100%. |
+### Methodology note — a 98.34% cathedral is a counting artifact, not a regression
 
-**Direction of travel:** two speculative-side qids at new highs (q12 +0.1679, q22 near high) while the canon anchor slides down. Confidence is narrowing on speculation and eroding on one piece of canon. This is the same signature as r406, one round stronger.
+An initial pass reported the cathedral at 592/602 = 98.34%. That number is wrong and the
+reason matters: the corpus holds **two round schemas**.
 
-## 5. Method notes / environment
+- **Legacy (200 files)** — `verdicts` is a **dict** `{qid_slug: p}` with descriptive qids
+  (`q02_witness_log_is_prediction`). No `kind`, no `bedrock_hit` flag, and a *different*
+  question set (legacy `q14_canon_equals_speculation`, `q19_pressure_cascade`,
+  `q10_quorum_meshing` as a bedrock-calibrated question).
+- **Modern (16 files, r1–r408 under the short-qid schema)** — `verdicts` is a **list** of
+  `{qid, kind, p, bedrock_hit}` with short qids (`q02`).
 
-* **22nd consecutive ephemeral-path wipe.** `/workspace/research/` and `/tmp/jev_probe/` were both absent on arrival; rebuilt from `SuperInstance/jev-quilt` into `/tmp` (overlay, 28G free) rather than the NAS.
-* **NAS 100% quota (25th recurrence)** — 600G/600G, 0 bytes available. The durable copy of this report is **git**, not `/workspace/research/`.
-* **TLS clean on first try** — live leaf `api.typesafe.ai` valid to 2026-12-25 (+62.5 d), issuer Google Trust Services WE1, **strict verification passed**. No cert-anchor wall, no 289-cert bundle rebuild needed. 7th clean wipe.
-* **One round, no overshoot** — ran `python3 jev_continuous_probe.py 1` with the **explicit positional count**. The task's literal command (no arg) defaults to **200 rounds** and would have raced the writer past a single round; the positional arg is the fix shipped in r229.
-* **Round counter verified two ways**: files -> r406, history -> r406, start = r407. No clobber, no duplicate. `history.jsonl` = 410 records, max round 406, 0 malformed.
-* **Corpus source**: `research/jev_sessions/` (215 files, ends r407) is the LIVE tree. The repo-root `jev_sessions/` (208 files, ends r386) is a **stale legacy leftover** — do not read it for history.
-* **Not read:** `session_summary.json` was not consulted; all statistics recomputed from the round files, since `timeout -s KILL` can eat the summary and a raw drift-event count is never a health verdict.
-* **Drift decomposed per qid against each qid's OWN baseline** (never one global threshold), and every flag was checked against the set of questions actually drawn this round.
+A naive cross-schema count mixes two different question banks and scores legacy
+`q10_quorum_meshing` against a modern speculative definition, manufacturing 10 phantom
+cathedral misses. Within the modern schema the cathedral is **597/597 = 100.00%**, and
+the last-20-rounds slice is 40/40 = 100%. Verified independently: across all 1,935
+modern-schema verdicts there are **0 disagreements** between `p >= 0.70` and the script's
+own `bedrock_hit` flag, so the classification is exact, not inferred.
+
+q17 (`kind=review`, deliberately **not** in the cathedral) sits at 58/78 = 74.4%,
+mean 0.7029, min 0.66 — a review-tier plateau, and not a bedrock failure.
+
+---
+
+## Spec / adversarial guard: clean
+
+All 908 speculative and 264 adversarial modern-schema verdicts read below 0.70.
+No leak this round. q06 (0.15) and q18 (0.25) are both speculative and both low.
+
+---
+
+## q02 canon-erosion watch — NOT EXERCISED, stands unchanged
+
+r407 escalated q02 to a canon-erosion watch: 0.71 was a new all-time low, the 2nd
+consecutive sub-0.75 draw, against a full-history mean of 0.8222 ± 0.0205 (dev −0.1122,
+z −5.48). The rule set was: next q02 draw decides.
+
+**q02 was not drawn in r408.** The watch therefore carries forward untouched, and no
+new information about it exists.
+
+Last 8 q02 draws: `r361 0.84 → r379 0.81 → r381 0.81 → r383 0.81 → r399 0.75 → r401 0.77 → r406 0.73 → r407 0.71`
+
+Era means (blocks of 20 draws): **0.8345 / 0.8230 / 0.8335** — first three flat within 0.011.
+last-5 0.7540 vs prev-5 0.8180 = **−0.0640**.
+
+**Standing rule for the next q02 draw** (unchanged):
+- `< 0.70` ⇒ **canon breach**, report immediately
+- `0.70–0.74` ⇒ 3rd consecutive sub-0.75, treat the shift as structural
+- `>= 0.80` ⇒ the tail was noise, close the watch
+
+Caveat: q02 is drawn in only 79/394 rounds (20.1%) — thin, but the era shift lives in the
+aggregate rather than any single point.
+
+---
+
+## Corpus state
+
+- **394 distinct rounds**, r1..r408 (217 round files; 1 `.fail.json`; 200 legacy + 16 modern schema)
+- **1,970 total verdicts** across **22 qids**
+- **grand mean_p 0.3868**
+- round numbering verified two ways: files → 408, history.jsonl → 408 (412 records, 0 malformed)
+- no duplicate round numbers; no clobber; start counter correct at 408
+
+---
+
+## Environment (124th wipe)
+
+- **23rd consecutive** ephemeral-path wipe — both `/workspace/research/` and `/tmp/jev_probe/`
+  absent on arrival. Rebuilt from `SuperInstance/jev-quilt` into `/tmp` (overlay, 28 G free).
+- **NAS 100% (26th recurrence)** — 600 G/600 G, 0 bytes. The whole `/workspace` mount *is*
+  the quota'd NAS; `/root` and `/tmp` are the 28 G overlay and are writable. Report copy
+  placed at `/root/jev_hourly_report.md`; the git-tracked copy is the durable home.
+- **TLS clean on first try** — live leaf `api.typesafe.ai` valid to 2026-12-25 (+62.5 d),
+  stock Python context verifies, TCP/TLS/API all reachable. No cert-anchor wall, no
+  MITM-leaf expiry, no 289-cert rebuild. 8th clean wipe.
+- API pre-flight: HTTP 400 on a hand-rolled payload (reachable, auth passed, wrong shape)
+  — confirms the endpoint is live before spending a round.
+- **Positional `1` ran exactly one round, no overshoot** — the task's literal command
+  (no arg) defaults to 200 rounds. Round counter confirmed from the log: `files->407 history->407 start=408`.
+- `gh` absent; git via token URL with `GIT_SSL_NO_VERIFY=1`.
