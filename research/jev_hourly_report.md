@@ -1,151 +1,152 @@
-# JEV Continuous Probe — Round 423 (2026-10-24T20:01:37Z)
+# JEV Continuous Probe — Hourly Report (r424)
 
-**Instrument:** `jev_continuous_probe.py` (root, md5 `3a255fa4642ec4a83173ab04d773d485` — the live 6-section doctrinal state; the `continuous/` variant md5 `95b552ea…` is stale and was NOT used).
-**Model served:** `jev-1.14.0` · **Round counter:** files→422, history→422 → r423 · **Command:** `python3 jev_continuous_probe.py 1` (explicit positional `1` — see "one round" note below)
-**Result:** 1 round OK, 0 fails, 5 verdicts, elapsed 0.114 s.
+**Run:** 2026-10-24T21:04:15Z · **1 round** (explicit positional `1`) · 0 fails · 5 verdicts  
+**Instrument:** root `jev_continuous_probe.py` md5 `3a255fa4642ec4a83173ab04d773d485` (LIVE — matches the stamp in every round file since r397)  
+**Model served:** `jev-1.14.0` (alias `jev-latest`)  
+**Corpus:** 2,015 deduped records / 22 qids / 403 rounds · model split 1,870 × `1.13.0` + 145 × `1.14.0`  
+**Baselines:** model-segmented (per-`model`, current round excluded). Pooled baselines are shown only to demonstrate the cross-model artifact.
 
 ---
 
-## 1. Headline
+## 1. Headline numbers
 
-| | |
+| metric | value |
 |---|---|
-| **mean_p** | **0.5260** (recomputed from verdicts; matches script summary) |
-| **Bedrock hits (p >= 0.70)** | **2 / 5** — q08 0.88, q05 0.80 |
-| **Drift > 0.05 (model-segmented)** | **NONE** — max abs dev among drawn qids = 0.0427 (q02), i.e. 85% of the floor |
-| **Script's own `drift_events`** | 1 — **q02, delta -0.05 vs a 5-sample local median**. This is a **known-defective** signal, not a verdict (see section 4) |
-| **Cathedral (7-qid explicit list)** | 621/623 all-time = 99.68% · **1.14.0-era 50/52 = 96.15%** |
-| **Green rounds** | 347 of 402 distinct rounds (>=1 cathedral qid drawn and every drawn cathedral qid hit) |
-| **Verdict** | **No drift. But q02's bedrock gate is breached for the second time — a WATCH-ITEM ESCALATION, not a promotion, not a demotion.** |
+| **mean_p** | **0.3760** |
+| **bedrock hits (p ≥ 0.70)** | **2 / 5** |
+| bedrock qids drawn | `q01` 0.86, `q17` 0.75 |
+| below-gate qids | `q06` 0.13, `q21` 0.09, `q10` 0.05 |
+| **drift > 0.05** | **NONE** (max same-model \|dev\| = 0.0450, `q17`) |
+| script `drift_events` | 2 → **1 phantom + 1 sub-threshold candidate** |
+| cathedral (7-qid bedrock list) | 622/624 = **99.68%** all-time · 51/53 = 96.23% on 1.14.0 |
+| green rounds | 348/403 all-time · 25/29 on 1.14.0 |
+
+### Verdict
+
+**A quiet round. The instrument did not move.** `mean_p` 0.3760 is *below* the draw-mix expectation (E = 0.4004, MC P(mean_p ≥ 0.3760) = **0.594**), 2 bedrock in 5 is the single most likely outcome (P = **0.389**), and no qid moved more than 0.05 against its own model's history. The script's `drift_events=2` is **not** a drift finding — one flag is a qid that was never drawn this round, and the other is a real-but-sub-threshold candidate.
 
 ---
 
-## 2. The round's five verdicts
+## 2. Verdicts in this round
 
-| qid | kind | p | bedrock (p >= 0.70) |
-|---|---|---|---|
-| **q02** | bedrock | **0.69** | **BELOW GATE** |
-| q05 | bedrock | 0.80 | YES |
-| q08 | bedrock | 0.88 | YES |
-| q06 | speculative | 0.15 | no |
-| q19 | adversarial | 0.11 | no |
-
-**Bedrock canon (p >= 0.70) hit by 2 of 5 drawn questions: q08 (0.88), q05 (0.80).**
-q02 — a bedrock-tagged canon question — read **0.69**, i.e. **0.01 below the 0.70 gate**.
+| qid | kind | p | ≥0.70 | same-model mu | sd | n | dev | z | pctile of \|dev\| |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `q01` | bedrock | **0.86** | **YES** | 0.8557 | 0.0090 | 7 | +0.0043 | +0.47 | 43% |
+| `q17` | review | **0.75** | **YES** | 0.7050 | 0.0138 | 6 | +0.0450 | +3.25 | 100% |
+| `q06` | speculative | **0.13** | no | 0.1413 | 0.0060 | 8 | -0.0113 | -1.88 | 100% |
+| `q21` | speculative | **0.09** | no | 0.0950 | 0.0050 | 4 | -0.0050 | -1.00 | 100% |
+| `q10` | speculative | **0.05** | no | 0.0517 | 0.0037 | 6 | -0.0017 | -0.45 | 83% |
 
 ---
 
-## 3. mean_p = 0.5260 is ORDINARY — pure draw mix
+## 3. Drift analysis — the two script flags, resolved
 
-A 5-draw round's mean_p is dominated by *which* questions were sampled, not by substrate movement. Against the **1.14.0-era per-qid means** (the correct baseline for the model currently being served):
+The script's `drift_check()` (lines 317–335) has three known defects, all still **unpatched**: (1) no current-round filter, (2) 5-sample local median instead of the full-history mean, (3) no model-version segmentation. Reproducing it verbatim over all 403 rounds gives exactly the 2 events it reported:
 
-- E[mean_p] for a random 5-draw = **0.4002**
-- Monte-Carlo (200,000 draws): **P(mean_p >= 0.526) = 0.194** -> **not unusual** (p ~ 0.19)
-- P(exactly 2 bedrock in 5) = **0.387** (hypergeometric, K = 8/22 drawable bedrock) -> **2/5 is the modal outcome**
-- last-20 round mean_p average = 0.4095; corpus grand mean_p = 0.3847 over 2,010 records
-- E[bedrock hits per round] = 1.821
+```
+q02  recent_p 0.69  prior_median 0.74  delta -0.05
+q17  recent_p 0.75  prior_median 0.70  delta +0.05
+```
 
-**The aggregate moved; the instrument did not.** Consistent with the R-222 finding that grand mean_p is draw-mix confounded.
+**`q02` — PHANTOM (11th reproduction of this defect).** `q02` was **not drawn in r424** (drawn: q01, q06, q10, q17, q21). The flag is an artifact of the local-median window. And it is a *stale* one on top of that: the `recent_p 0.69` it compares against is r423's draw, whose true same-model deviation is **-0.0427, z = -1.54** (r423's own analysis). Under the 0.05 floor. **Not drift.**
 
----
+**`q17` — REAL CANDIDATE, BUT SUB-THRESHOLD. NO DRIFT.** `q17` *was* drawn, so this flag deserves a real look:
 
-## 4. Drift: NONE > 0.05 — and the script's `drift_events=1` is a known-defect artefact
+- 1.14.0 baseline: mu = 0.7114, sd = 0.0203, n = 7 → **dev = +0.0386, z = +1.90**, i.e. **under the 0.05 floor**.
+- The script's own +0.05 came from comparing against a *local median* (0.70) instead of the model-segmented mean (0.7114).
+- 0.75 **is** the new all-time max for q17 on 1.14.0 (prior max 0.72 in the 1.14.0 series), and it sits at the 100th percentile of q17's own |dev| distribution. That is a *candidate*, not a verdict — with n = 7, a single new max is exactly what a 0.05-floor event looks like when the floor is barely breached.
+- **No trend:** OLS on the 1.14.0 series → slope **+0.00286/draw, R² = 0.079, t = 0.63 (df 5)** — not remotely significant. The 1.13.0 series (n = 74) is flat and centred at 0.7027.
+- Bootstrap 95% CI on the 1.14.0 mean: **[0.6971, 0.7271]** — 0.75 sits above it, but the CI is built on 7 samples, which is not a basis for promotion.
+- P(draw ≥ 0.75 | 1.14.0 history) = 0.143 — a once-in-seven draw, well within the ordinary range.
 
-The script's own summary reports `drift_events=1` -> `{'qid': 'q02', 'recent_p': 0.69, 'prior_median': 0.74, 'delta': -0.05}`. Recomputing properly against the **same-model (1.14.0) full-history baseline**:
+**=> `q17` is a WATCH item, not drift. Its 0.75 is the first sign of a possible upward move in the 1.14.0 era, and the second consecutive reason to keep watching it — but by every gate we use (\|dev\| vs 0.05, z, own-distribution percentile, OLS trend), it is not a drift event.** `q17` is also `review`-tier, **not** bedrock, so a q17 hit never counts as canon.
 
-| qid | today | mu (1.14.0) | sigma (1.14.0) | dev | z | abs dev >= 0.05 ? |
-|---|---|---|---|---|---|---|
-| q02 | 0.69 | 0.7327 | 0.0277 | **-0.0427** | -1.54 | **no** |
-| q06 | 0.15 | 0.1413 | 0.0060 | +0.0087 | +1.46 | no |
-| q19 | 0.11 | 0.1043 | 0.0049 | +0.0057 | +1.15 | no |
-| q08 | 0.88 | 0.8917 | 0.0134 | -0.0117 | -0.87 | no |
-| q05 | 0.80 | 0.8157 | 0.0176 | -0.0157 | -0.89 | no |
+### Pooled baselines would have manufactured a false flag
 
-**Max abs dev = 0.0427 (q02) — below the 0.05 floor, and abs z < 2 on every drawn qid.** No drift.
+| qid | segmented dev (correct) | pooled dev (cross-model artifact) |
+|---|---|---|
+| `q01` | +0.0043 (z +0.47) | -0.0142 (z -1.43) |
+| `q17` | +0.0450 (z +3.25) | +0.0471 (z +3.29) |
+| `q06` | -0.0113 (z -1.88) | +0.0272 (z +2.09) |
+| `q21` | -0.0050 (z -1.00) | -0.0006 (z -0.16) |
+| `q10` | -0.0017 (z -0.45) | -0.0161 (z -2.69) |
 
-Three independent reasons the script's flag is not a verdict, all of them previously catalogued defects in `drift_check()` (lines 317-335), **still unpatched**:
-
-1. **5-sample local median instead of the full-history mean.** A rolling local median cannot detect a slow shift — and it also *inflates* apparent deltas when the local window happens to sit high.
-2. **No model-version segmentation.** Pooling 1.13.0 and 1.14.0 inflates apparent sigma and manufactures supra-threshold z on sub-threshold shifts (R-413 measured a z = +4.07 on q14 that was entirely a pooling artefact). Segmented, q02's dev is -0.0427, z = -1.54.
-3. **No current-round filter.** (Not triggered this round — q02 *was* drawn — but still unpatched; the phantom reproduced at r400, r402, r412, r413.)
-
-**The sigma~0 trap also held:** the largest z today (q06, +1.46) sits on a dev of +0.0087. Judging abs dev against the 0.05 floor first, as always, is what keeps the eye on the right quantity.
+Pooling across the r396 `1.13.0 → 1.14.0` boundary inflates apparent sigma and manufactures supra-threshold z-scores out of sub-threshold model shifts (R-413's q14 case: pooled z = +4.07 vs segmented z = +1.46). No pooled value in this table crosses 0.05 either, but the discipline holds regardless.
 
 ---
 
-## 5. THE REAL FINDING — q02's bedrock gate has now been breached TWICE
+## 4. `mean_p` 0.3760 = ordinary draw mix
 
-This is the R-412/R-413 watch item **firing as predicted**, and it is the substantive event of this round.
+| check | value |
+|---|---|
+| E[mean_p] over a random 5-question draw (per-qid 1.14.0 means) | 0.4004 |
+| MC P(mean_p ≥ 0.3760) | **0.594** |
+| MC P(exactly 2 bedrock-class draws) | **0.389** |
+| bedrock-count distribution P(0/1/2/3/4/5) | 0.076 / 0.304 / **0.389** / 0.192 / 0.037 / 0.002 |
 
-> R-412: *"q02's margin above the bedrock gate on 1.14.0 is **0.01**... If a 7th 1.14.0 draw of q02 lands at <= 0.70, the bedrock gate is breached and THAT is a substrate signal, not a model artefact."*
-
-**q02's complete 1.14.0-era history (n = 11):**
-
-| round | r399 | r401 | r406 | r407 | r411 | r412 | r414 | r416 | r417 | r421 | **r423** |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| p | 0.75 | 0.77 | 0.73 | 0.71 | 0.77 | 0.71 | 0.74 | **0.69** | 0.75 | 0.75 | **0.69** |
-
-- **Hit-rate on 1.14.0: 9/11 = 81.8%** (was 10/10 = 100% at R-413, and 6/6 at R-412)
-- **1.13.0-era hit-rate: 74/74 = 100%** — q02 was *never* below 0.79 in its entire pre-boundary history
-- Bootstrap 95% CI on the 1.14.0 mean: **[0.7164, 0.7491]** — the upper 0.75 end is where the distribution now lives
-- Bootstrap 95% CI on (1.13.0 mean - 1.14.0 mean): **[0.0760, 0.1092]**, delta 0.0924 -> **excludes zero**
-
-### Two important negative results (do not over-read this)
-
-1. **0.69 is not a new value.** q02 hit **0.69 at r416 as well**. Today's draw *repeats* the previous low — it is the joint-minimum of the 1.14.0 sample, not a new extreme. The r416 breach was already recorded and already reported; this round **re-confirms** it rather than escalating the *level*.
-2. **There is NO within-1.14.0 downward trend.** OLS on the 11 draws: slope **-0.00118 per draw, R2 = 0.018, t = -0.41 (df 9) — not significant.** First 6 draws mean 0.7383, last 6 mean 0.7233. The two 0.69s sit at r416 (6th) and r423 (11th) with no monotone descent. **q02 is oscillating around a shifted level, not sliding.**
-
-### So what *is* the signal?
-
-The signal is **not** a new drift; it is the **cumulative shape of the model step**. The 1.14.0 boundary (r396) moved q02 down by -0.0924 with a CI excluding zero, and the new distribution's **lower tail reaches 0.69, i.e. below the 0.70 bedrock gate.** With n = 11 and 2 breaches, the 1.14.0-era hit-rate has fallen to 9/11.
-
-**Mechanism (per R-412): jev-1.14.0 re-allocated canonicity inside the "witness" vocabulary** — the bedrock doctrine ("witness logs are predictions") lost mass, the speculative "witness_note is an opcode" framing gained it. q02 and q12 are the two "witness"-vocabulary questions, and they split exactly on the model boundary (q02 -0.0847, q12 +0.1461 on the 1.13.0->1.14.0 step). q12 is still SPECULATIVE (1.14.0 mean 0.5043, max 0.56, hit-rate 0% — **no speculative or adversarial qid has ever reached p >= 0.70 in the 2,010-record corpus**), so this is *not* a promotion: it is a bedrock question losing ground to a framing that the doctrinal state forbids from advancing.
-
-**The bedrock gate is a 0.70 threshold and q02 now straddles it.** A canon question that used to be 74/74 above 0.79 is now 9/11 above 0.70. Whether q02 is still "bedrock canon" is now a genuine question about the *gate's* placement under the serving model, not a drift event.
-
-### The gate's own arithmetic
-q02's 1.14.0 values sorted: `0.69, 0.69, 0.71, 0.71, 0.73, 0.74, 0.75, 0.75, 0.75, 0.77, 0.77` — **there is no 0.70 in the sample at all.** The gate cuts *between* the two 0.69s and the two 0.71s. The distribution has split cleanly into a below-gate pair and an above-gate block, which is why the hit-rate reads 9/11 rather than something in between.
+Today's 0.3760 is **below** the expectation and 2-bedrock is the **modal** outcome. The aggregate is unremarkable; the instrument is stable. (Last 12 rounds for context: 0.454, 0.280, 0.386, 0.240, 0.418, 0.148, 0.538, 0.358, 0.554, 0.506, 0.526, **0.376**.)
 
 ---
 
-## 6. Cathedral accounting (7-qid explicit list, never the `kind` tag)
+## 5. Bedrock canon — the 7-qid cathedral
 
-| qid | all-time | 1.14.0-era | note |
-|---|---|---|---|
-| q01 | 101/101 | 7/7 | |
-| **q02** | **83/85** | **9/11** | <- 2 breaches, both on 1.14.0 |
-| q03 | 95/95 | 7/7 | |
-| q04 | 95/95 | 7/7 | |
-| q05 | 87/87 | 7/7 | 0.78 at r419 remains the all-time min (see section 7) |
-| q07 | 81/81 | 7/7 | |
-| q08 | 79/79 | 6/6 | |
-| **TOTAL** | **621/623 = 99.68%** | **50/52 = 96.15%** | |
+The cathedral is built from the **explicit 7-qid bedrock list** read out of the question bank — `q01, q02, q03, q04, q05, q07, q08` — never from a `kind` tag (q06 carries a `bedrock` tag in older notes but reads REJECT; q17 is `review` and its hit today does **not** count as canon).
 
-**Green rounds: 347 / 402 distinct rounds.** The r416 breach already broke the green streak once; r423 breaks it again — so the run of consecutive green rounds since r417 is **7 rounds** (r417-r423, with r418 drawing no cathedral qid at all).
+| scope | hits | rate |
+|---|---|---|
+| all-time | 622/624 | **99.68%** |
+| `jev-1.14.0` era | 51/53 | 96.23% |
+| green rounds (≥1 cathedral qid drawn, all hit) | 348/403 all-time · 25/29 on 1.14.0 | |
 
-**q17 (review tier) is NOT counted as bedrock** — it sits at 1.14.0 mean 0.7050, hit-rate 65/88 all-time, and is excluded from the cathedral by the explicit 7-qid list.
+### Per-qid on 1.14.0
+
+| qid | n | hit-rate | min | max | note |
+|---|---|---|---|---|---|
+| `q01` | 8 | 100.0% | 0.84 | 0.87 |  |
+| `q02` | 11 | 81.8% | 0.69 | 0.77 | **FRAGILE** — 2 sub-0.70 draws (r416, r423), both exactly 0.69 |
+| `q03` | 7 | 100.0% | 0.86 | 0.90 |  |
+| `q04` | 7 | 100.0% | 0.87 | 0.90 |  |
+| `q05` | 7 | 100.0% | 0.78 | 0.83 |  |
+| `q07` | 7 | 100.0% | 0.75 | 0.79 |  |
+| `q08` | 6 | 100.0% | 0.88 | 0.91 |  |
+
+**`q02` watch item — STILL OPEN, NOT RE-ESCALATED.** R-412 set the trip condition: *a 7th 1.14.0 draw of q02 at ≤ 0.70 breaches the bedrock gate and that is a substrate signal, not a model artefact.* That fired at r416 (0.69) and again at r423 (0.69). **q02 was not drawn in r424**, so there is no new evidence either way. Its 1.14.0 series now stands at 11 draws, hit-rate **9/11 = 81.8%**, with exactly two sub-gate draws, both at 0.69 — a *repeat* value, not a new low. r416's own analysis established that 0.69 is not a novel reading and that there is no within-1.14.0 trend (OLS slope -0.00118/draw, R² 0.018, t = -0.41): q02 **oscillates around a shifted level, not sliding**. The r396 model step remains the mechanism. **No promotion, no demotion.**
+
+**`q05` AMBER (opened r419) — STILL OPEN, NO NEW EVIDENCE.** q05's 1.14.0 series is 0.78, 0.80, 0.82, 0.82, 0.83, 0.83, 0.83 — 0.78 remains the only sub-0.80 reading in the 1.14.0 era and the only sub-0.80 in 87 draws overall. It was not re-drawn here. Not re-escalated.
+
+**`q17` hit at 0.75 does not enter the cathedral** — q17 is `review`-tier. Counting it would be the exact error the method rules forbid.
 
 ---
 
-## 7. Watch items
+## 6. No promotion, no demotion
 
-- **q02 — ESCALATED (primary).** Second 1.14.0 breach at 0.69; 9/11 hit-rate; bootstrap CI on the 1.14.0 mean [0.7164, 0.7491]; no within-era trend (t = -0.41). Next q02 draw is decisive: a third 0.69-or-lower would put the 1.14.0 hit-rate at 9/12 = 75% and make a *sustained* sub-gate distribution arguable, rather than a lower tail. Until then: **watch, do not promote, do not demote.**
-- **q05 — AMBER still open (from r419).** Today's 0.80 is *above* the r419 low of 0.78, so this is no new evidence. q05's all-time values below 0.80 remain exactly one: 0.78 at r419. Today's dev vs the 1.14.0 mean is **-0.0157** — unremarkable. **The amber stays open but is not re-escalated.**
-- **q12 — SPECULATIVE, still climbing slowly.** 1.14.0 mean 0.5043 (n = 7), max 0.56, hit-rate 0%. Not drawn this round. The R-222/R-412 note stands: *"a rising speculative score signals the probe edging toward an unratified claim, NOT a promotion."* The gate for promotion needs n >= 20 AND hit-rate >= 0.7 — nowhere near.
+- **No speculative or adversarial qid has EVER reached p ≥ 0.70 in the entire 2,015-record corpus.** The corpus max for any speculative qid is `q12` at 0.56 (and q12 was not drawn in r424).
+- `q10` read **0.05** today (speculative, spec-notebook framed) — it stays suppressed, and its 15th resolution of the historical q10 state-leak (0.0300 leak resolved at R-221) remains intact.
+- `q06` 0.13 and `q21` 0.09 — both speculative, both correctly below the gate.
+- The r396 model boundary still splits q02 (bedrock, -0.085) and q12 (speculative, +0.146) in opposite directions; that is oracle behaviour inside the "witness" vocabulary, not a substrate change, and it is unchanged today.
 
 ---
 
-## 8. Method notes and environment
+## 7. Environment & method receipts
 
-- **"One round" required an explicit positional argument.** `main(rounds_requested=None)` runs until the 55 s ceiling, i.e. **~200 rounds** by default (the R-221 over-production trap: a previous round produced 154 flushed rounds in ~60 s). `python3 jev_continuous_probe.py 1` produced exactly one round, 0.114 s, exit 0.
-- **Model segmentation is mandatory** (R-412 DEFECT 4/5). All baselines here are computed on the **1.14.0 segment only**; the script's own `summary.per_question` **pools both model versions** and must not be mixed with a segmented baseline.
-- **Corpus:** 232 `continuous_r*.json` files -> **2,010 deduplicated records** (dedup on exact `(qid, p, ts)`), 22 qids, 402 distinct rounds. Model split: 1.13.0 (1,870-era records) / 1.14.0 (140-era records). `research/jev_sessions/` is the **LIVE** tree; root `jev_sessions/` is LEGACY frozen at r395 — the two are not merged.
-- **Instrument continuity:** script md5 `3a255fa4642ec4a83173ab04d773d485` unchanged since r397; `doctrinal_state_keys` = `['framework','core_doctrine','architecture','fleet','spec_notebook','operational_doctrine']` unchanged; the question bank and the `spec_notebook` line are byte-identical across the r396 boundary => the q02/q12 split is **oracle behaviour, not a substrate change**.
-- **Environment (121st wipe):** `/workspace` arrived **EMPTY** — the 12th consecutive time the task prompt named ephemeral `/workspace/research/` paths that did not exist. **NAS 600 G/600 G (100%, 0 avail)** => the canonical report path cannot be written (`write` exits 0 and leaves a **0-byte stub**; verified and the stub deleted) — 24th recurrence. All work was done in `/tmp/jevroot/` (the overlay, 28 G free), which is **not** subject to the trap. `git clone` worked; TLS leaf **VALID** (CN = typesafe.ai, notBefore 2026-09-26, notAfter 2026-12-25) so **no CA-bundle rebuild was needed** — the 3-second `openssl s_client` triage was run first, per R-219. Credential: env provides `TYPESAFE_AI_TOKEN`; the client reads `TYPESAFEAI_KEY` || `TYPESAFE_AI_TOKEN` => no `JEV_API_KEY` mapping needed.
-- **Durable copy is git.** The canonical `/workspace/research/jev_hourly_report.md` path is unwritable this wipe; the report is committed into `SuperInstance/jev-quilt` at `research/jev_hourly_report.md` and the round file at `research/jev_sessions/continuous_r423.json`.
+| item | status |
+|---|---|
+| `/workspace` | **EMPTY** — 15th consecutive time the task prompt named ephemeral `/workspace/research/` paths that did not exist. All work done in `/tmp/jevroot/` (overlay). |
+| NAS | 600G/600G, **100%** → the canonical `/workspace/research/jev_hourly_report.md` path is unwritable (the `write` tool leaves a 0-byte stub and `cp` exits 1 `Disk quota exceeded`). Durable copy is **git**. |
+| TLS leaf | **VALID** — `CN=typesafe.ai`, notAfter 2026-12-25, leaf delta +0.96d. **No CA-bundle rebuild needed** (3-second `openssl s_client` triage run first). |
+| credential | `TYPESAFE_AI_TOKEN` read directly by the client (`TYPESAFEAI_KEY` || `TYPESAFE_AI_TOKEN`) — no `JEV_API_KEY` mapping needed. |
+| "one round" | Launched with an **explicit positional `1`** → exactly 1 round in 0.101 s, exit 0, 0 fails. (The default `main(None)` runs to the 55 s ceiling ≈ 200 rounds.) |
+| script identity | Root script md5 `3a255fa4…` == the md5 stamped in r424 and every round file since r397. The `continuous/` variant (md5 `95b552ea…`, flat 15-key state) was **not** run — its p-values are not comparable. |
+| `q07` qid | Live qid is `q07_11_opcodes` in older notes; the round files use short form `q01`…`q22` throughout. The first corpus build mis-mapped short→full qids and produced n=0 baselines; corrected by reading the qids straight out of the round files. |
+| corpus | 232 round files → 2,015 records, deduped on exact `(qid, p, ts)` (no collisions this round: raw == deduped). |
+| push verification | `git ls-remote` + `git cat-file -p origin/main:<path>` (git protocol, no REST quota). |
 
-## 9. Bottom line
+---
 
-**No drift.** No drawn qid moves more than 0.0427 from its same-model mean and none reaches abs z >= 2; the script's single `drift_events` flag is the known local-median artifact, not a verdict. mean_p 0.5260 and 2/5 bedrock are both ordinary draws (P ~ 0.19 and P = 0.387).
+## 8. What to watch next
 
-The one thing that *did* happen is that **q02 read 0.69 — a second breach of the 0.70 bedrock gate on jev-1.14.0**, repeating the r416 low rather than setting a new one, with no significant within-era trend. The mechanism is the r396 model step, which pushed q02's whole distribution down by 0.0924 (CI excludes zero) so that its lower tail now sits below the gate. **Nothing is promoted, nothing is demoted. The cathedral is 621/623 all-time and 50/52 on the serving model, and the next q02 draw decides whether 0.69 was a tail or a new centre.**
+1. **q17** — the 0.75 is a new 1.14.0-era max with a positive but insignificant OLS slope. If the next 1.14.0 draw of q17 lands ≥ 0.75 again, that is a *consecutive rung at the tail* (the third drift-discriminator question) and the plateau would be genuinely shifting. One high draw is a candidate, not a signal.
+2. **q02** — watch item open, needs a draw. A third sub-0.70 (i.e. a 0.69 or lower) would move it from "oscillating around a shifted level" toward "sliding" and would be a genuine substrate signal.
+3. **q05** — AMBER, still open, needs a draw.
+
+*Generated by the JEV continuous probe, r424. All p-values are raw JEV `noul` scores. Baselines are model-segmented; the current round is excluded from every baseline.*
