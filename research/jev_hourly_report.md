@@ -38,15 +38,23 @@ All five drawn qids are **speculative (4)** or **review (1)**. Per the promotion
 
 ### Drift check — model-segmented, drawn qids only
 
-| qid | p | seg μ (1.14.0) | dev | seg σ | z | verdict |
-|---|---|---|---|---|---|---|
-| q09 | 0.10 | 0.0777 | +0.0223 | 0.0071 | +3.13 | z-flag (|dev|<0.05, z>=2, pct 97.8%) |
-| q12 | 0.46 | 0.3795 | +0.0805 | 0.0493 | +1.63 | DRIFT-CANDIDATE (>0.05 floor) |
-| q16 | 0.20 | 0.1988 | +0.0012 | 0.0083 | +0.14 | clear (|dev|<0.05) |
-| q18 | 0.26 | 0.2255 | +0.0345 | 0.0108 | +3.21 | z-flag (|dev|<0.05, z>=2, pct 100.0%) |
-| q21 | 0.10 | 0.0906 | +0.0094 | 0.0040 | +2.34 | z-flag (|dev|<0.05, z>=2, pct 94.8%) |
+**Segmented on each qid's own `jev-1.14.0` segment (the verdict basis), with the pooled
+all-model baseline shown only as a contrast column.** The 1.14.0 segments are thin (n = 4–9 per
+qid) because the model boundary is only 38 rounds old, so the pooled column is retained to show
+exactly what the wrong baseline would have said.
 
-**No drift > 0.05.** All five sit inside the absolute floor on their own model segment.
+| qid | p | n (1.14.0) | μ₁₄ | dev₁₄ | σ₁₄ | z₁₄ | pooled dev | verdict |
+|---|---|---|---|---|---|---|---|---|
+| q09 | 0.10 | 4 | 0.1000 | **+0.0000** | 0.0100 | 0.00 | +0.0223 | **CLEAR** |
+| q12 | 0.46 | 9 | 0.4989 | **−0.0389** | 0.0325 | −1.20 | +0.0805 ⚠ | **CLEAR** (pooled would flag) |
+| q16 | 0.20 | 7 | 0.1914 | **+0.0086** | 0.0064 | +1.34 | +0.0012 | **CLEAR** |
+| q18 | 0.26 | 9 | 0.2478 | **+0.0122** | 0.0079 | +1.56 | +0.0345 | **CLEAR** |
+| q21 | 0.10 | 7 | 0.0929 | **+0.0071** | 0.0045 | +1.58 | +0.0094 | **CLEAR** |
+
+**No drift > 0.05.** All five sit inside the absolute floor on their own model segment, and
+every z₁₄ is below 2. Note that three qids carry large z on the *pooled* baseline (q09 +3.13,
+q18 +3.21, q21 +2.34) on |dev| of only 0.009–0.034 — the σ≈0 trap; the largest z is routinely
+the smallest real movement.
 
 **🔴 The POOLED baseline would have manufactured a flag — 4th reproduction.** Pooling across the r396 model boundary puts q12 at dev **+0.0805 (> 0.05)**, which reads as a headline-grade drift. Segmented on its own `jev-1.14.0` segment, q12 reads dev **−0.0389, |dev| < 0.05, 77.8th percentile of its own |dev| distribution, z = −1.20 — CLEAR**. The entire +0.0805 is the model step itself: q12's mean is 0.3671 on 1.13.0 (n=87) and 0.4989 on 1.14.0 (n=9) — a +0.13 jump at the boundary, not a substrate trend. **Always segment by model before computing dev; report both.**
 
@@ -95,19 +103,19 @@ The 1.14.0 distribution **straddles the 0.70 gate** (below-gate draws: 0.68, 0.6
 
 | round | model | mean_p | bedrock | qids |
 |---|---|---|---|---|
-| r422 | jev-1.14.0 | 0.5060 | 2/5 | |
-| r423 | jev-1.14.0 | 0.5260 | 2/5 | |
-| r424 | jev-1.14.0 | 0.3760 | 2/5 | |
-| r425 | jev-1.14.0 | 0.3560 | 1/5 | |
-| r426 | jev-1.14.0 | 0.4040 | 2/5 | |
-| r427 | jev-1.14.0 | 0.4200 | 2/5 | |
-| r428 | jev-1.14.0 | 0.3760 | 1/5 | |
-| r429 | jev-1.14.0 | 0.5400 | 3/5 | |
-| r430 | jev-1.14.0 | 0.2840 | 1/5 | |
-| r431 | jev-1.14.0 | 0.4920 | 2/5 | |
-| r432 | jev-1.14.0 | 0.1880 | 0/5 | |
-| r433 | jev-1.14.0 | 0.5060 | 3/5 | |
-| r434 | jev-1.14.0 | 0.2240 | 0/5 | |
+| r422 | jev-1.14.0 | 0.5060 | 2/5 | q01=0.85 q08=0.88 q09=0.09 q12=0.46 q18=0.25 |
+| r423 | jev-1.14.0 | 0.5260 | 2/5 | q02=0.69 q05=0.80 q06=0.15 q08=0.88 q19=0.11 |
+| r424 | jev-1.14.0 | 0.3760 | 2/5 | q01=0.86 q06=0.13 q10=0.05 q17=0.75 q21=0.09 |
+| r425 | jev-1.14.0 | 0.3560 | 1/5 | q02=0.68 q05=0.81 q09=0.11 q20=0.09 q21=0.09 |
+| r426 | jev-1.14.0 | 0.4040 | 2/5 | q04=0.87 q06=0.14 q07=0.76 q13=0.16 q21=0.09 |
+| r427 | jev-1.14.0 | 0.4200 | 2/5 | q01=0.85 q04=0.88 q11=0.12 q13=0.15 q19=0.10 |
+| r428 | jev-1.14.0 | 0.3760 | 1/5 | q02=0.72 q09=0.09 q13=0.16 q14=0.22 q17=0.69 |
+| r429 | jev-1.14.0 | 0.5400 | 3/5 | q03=0.88 q07=0.75 q08=0.88 q13=0.16 q15=0.03 |
+| r430 | jev-1.14.0 | 0.2840 | 1/5 | q07=0.78 q11=0.20 q16=0.18 q19=0.12 q22=0.14 |
+| r431 | jev-1.14.0 | 0.4920 | 2/5 | q01=0.84 q08=0.89 q10=0.05 q12=0.49 q16=0.19 |
+| r432 | jev-1.14.0 | 0.1880 | 0/5 | q10=0.05 q12=0.47 q14=0.25 q19=0.09 q20=0.08 |
+| r433 | jev-1.14.0 | 0.5060 | 3/5 | q03=0.89 q07=0.79 q15=0.03 q17=0.73 q20=0.09 |
+| r434 | jev-1.14.0 | 0.2240 | 0/5 | q09=0.10 q12=0.46 q16=0.20 q18=0.26 q21=0.10 |
 
 - **Last-12 (excl. today): μ = 0.4145, σ = 0.1024 → z = -1.86**
 - **MC (200k draws, 5 qids uniform from all 22, empirical per-qid p distribution): E[mean_p] = 0.3942, σ = 0.1374 → z = -1.24, P(mean_p ≤ 0.2240) = 8.59 %**
