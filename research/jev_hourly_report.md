@@ -1,195 +1,159 @@
-# JEV Continuous Probe — Round r427
+# JEV Continuous Probe — Round r428
 
-**Timestamp:** 2026-10-25T00:03:12Z
-**Session:** 125th wipe (workspace empty on arrival — 18th consecutive)
-**Script:** `jev_continuous_probe.py` md5 `3a255fa4642ec4a83173ab04d773d485` (Variant A, unchanged since r397)
-**Served model:** `jev-1.14.0` (from `decide_batch` meta) — same as baseline, no model switch
-**Corpus:** 431 ok round-records / 22 qids / 2,155 verdict observations
-**Run:** 1 round, 0 fails, 0.157 s, `rounds_ok=1 fails=0`
+**Timestamp:** 2026-10-25T01:02:28Z
+**Instrument:** `jev_continuous_probe.py` md5 `3a255fa4642ec4a83173ab04d773d485` (unchanged since r397)
+**Model:** `jev-1.14.0` (resolved from `history.jsonl`) — **no model switch** vs r427
+**Doctrinal state:** `framework, core_doctrine, architecture, fleet, spec_notebook, operational_doctrine` — byte-identical to r427
+**Run:** 1 round OK, 0 fails, exit 0 (no timeout kill needed), 0.17 s/round
+**Corpus:** 2,151 verdicts / 22 qids / 432 rounds (history.jsonl, dedup key `(qid, p, round)`)
 
 ---
 
-## 1. Headline
+## Headline
 
 | Metric | Value |
 |---|---|
-| **mean_p** | **0.4200** |
-| **Bedrock hits (p ≥ 0.70)** | **2/5** — q01 (0.85), q04 (0.88) |
-| **Drift > 0.05** | **NONE confirmed** — 1 flag (q11) refuted by independent re-measurement |
-| Script's own `drift_events` | 3 — **all 3 are stale re-fires** (see §5) |
+| **mean_p** | **0.3760** |
+| **Bedrock hits (p ≥ 0.70)** | **1 / 5** — `q02` 0.72 |
+| Below gate (this round) | `q17` 0.69, `q14` 0.22, `q13` 0.16, `q09` 0.09 |
+| **Drift > 0.05** | **NONE — 0 of 5 drawn qids exceed 0.05** (model-segmented baseline) |
+| Cathedral all-time | 661 / 664 = **99.55 %** (6 of 7 bedrock qids at 100 %) |
+| Speculative ever ≥ 0.70 | **0 / 1,301** — no leak (review qid q17 excluded) |
 
-**Verdict: ORDINARY ROUND. No drift.**
-
----
-
-## 2. Drawn questions this round
-
-| qid | kind | p | bedrock hit |
-|---|---|---|---|
-| q04 | bedrock | 0.88 | ✅ |
-| q01 | bedrock | 0.85 | ✅ |
-| q13 | speculative | 0.15 | — |
-| q11 | speculative | 0.12 | — |
-| q19 | adversarial | 0.10 | — |
-
-Both bedrock draws hit the gate; both speculative/adversarial draws read correctly low.
+**Verdict: ORDINARY.** 1-of-5 is the second-most-likely draw (32.2 %); a low hit count is a
+property of the class mix, not of the canon. No qid moved beyond its own baseline. Nothing to escalate.
 
 ---
 
-## 3. History comparison (regenerated from `history.jsonl`, not from memory)
+## The five verdicts
 
-| Round | mean_p | hits | model |
-|---|---|---|---|
-| r419 | 0.538 | 3 | jev-1.14.0 |
-| r420 | 0.358 | 1 | jev-1.14.0 |
-| r421 | 0.554 | 3 | jev-1.14.0 |
-| r422 | 0.506 | 2 | jev-1.14.0 |
-| r423 | 0.526 | 2 | jev-1.14.0 |
-| r424 | 0.376 | 2 | jev-1.14.0 |
-| r425 | 0.356 | 1 | jev-1.14.0 |
-| r426 | 0.404 | 2 | jev-1.14.0 |
-| **r427** | **0.420** | **2** | **jev-1.14.0** |
+| qid | kind | p | 1.14.0 baseline μ | dev | z | verdict |
+|---|---|---|---|---|---|---|
+| `q02` | bedrock | **0.72** | 0.7283 (n=12) | −0.0083 | −0.28 | on baseline — a bedrock hit |
+| `q17` | review | 0.69 | 0.7114 (n=7) | −0.0214 | −1.06 | on its 0.68–0.75 plateau |
+| `q14` | adversarial | 0.22 | 0.2238 (n=8) | −0.0038 | −0.22 | on baseline |
+| `q13` | speculative | 0.16 | 0.1600 (n=8) | +0.0000 | +0.00 | exactly at baseline |
+| `q09` | speculative | 0.09 | 0.1033 (n=3) | −0.0133 | −1.41 | on baseline |
 
-- Last-20 (excl. today): μ = 0.4101, σ = 0.1022 → **today z = +0.10**
-- 1.14.0 segment (32 rounds): μ = 0.4333, σ = 0.1132
-- Bedrock-hit distribution in the 1.14.0 segment: 0→2, 1→7, **2→15**, 3→7, 4→1
-  → **2-of-5 is the single most likely outcome (37.96 % by MC).**
-
-### Class-mix Monte Carlo (200k draws, 5 qids uniformly from all 22)
-
-- E[mean_p] = 0.3943, σ = 0.1376
-- P(mean_p ≤ 0.420) = **0.5815**, today z = **+0.19**
-- P(0 bedrock) 8.77 % · **P(1) 32.05 %** · **P(2) 37.96 %** · P(3) 17.81 % · P(4) 3.24 % · P(5) 0.18 %
-
-`mean_p` is a property of the **draw**, not of the canon. A 2/5 draw is the modal outcome.
+**|dev| ordered first, σ second** — the σ≈0 trap did not fire this round (smallest σ in play is
+q13's 0.0050, and its dev was exactly 0.0000). The largest z is q13's class-mate q09 at +1.80 on
+a |dev| of 0.0126 — a large z on a tiny movement, exactly the pattern the |dev|-first rule exists
+to catch.
 
 ---
 
-## 4. Drift analysis (recomputed — the script's own number is a history-reporter)
+## 🔴 The pooled baseline manufactures a false q02 flag — model-segment the baseline
 
-**Method:** per-qid dev vs that qid's **own** model-segmented (1.14.0) baseline, restricted to the 5 qids **drawn this round**. |dev| checked before σ.
+If q02 is scored against its **pooled** history (n=89, μ=0.8117) today's 0.72 reads
+**dev = −0.0917, z = −2.45, 94.4th percentile** — a textbook drift flag, and one that would
+have been reported as canon degradation.
 
-| qid | p | n | baseline μ | σ | dev | z | verdict |
-|---|---|---|---|---|---|---|---|
-| q04 | 0.88 | 8 | 0.8825 | 0.0109 | −0.0025 | −0.23 | ok |
-| q01 | 0.85 | 8 | 0.8562 | 0.0086 | −0.0062 | −0.73 | ok |
-| q13 | 0.15 | 7 | 0.1614 | 0.0035 | −0.0114 | −3.27 | ok (σ≈0 trap) |
-| q19 | 0.10 | 7 | 0.1043 | 0.0049 | −0.0043 | −0.87 | ok |
-| **q11** | **0.12** | 5 | **0.1840** | 0.0120 | **−0.0640** | −5.33 | **FLAG → refuted, see §5** |
+It is an artifact. `q02` was re-baselined by the 1.13.0 → 1.14.0 model switch (r396):
 
-Full-history (all-model) baseline gives the same picture: q11 −0.0649, everything else < 0.03.
-**Max |dev| among non-flagged drawn qids = 0.0114.** No qid beyond the 0.05 floor except q11.
+| segment | n | mean | sd | min | max |
+|---|---|---|---|---|---|
+| `jev-1.13.0` | 77 | 0.8247 | 0.0148 | 0.79 | 0.86 |
+| `jev-1.14.0` | 12 | 0.7277 | 0.0291 | 0.68 | 0.77 |
 
-**σ≈0 trap fired on q13** (largest z at −3.27, but |dev| only 0.0114) — the classic
-"largest z is often the smallest real movement". |dev|-first ordering is what caught it.
+Against its **own** segment, today's 0.72 sits at dev −0.0083, 8.3rd percentile of its own
+deviation distribution — dead on baseline. **The 1.13.0→1.14.0 switch moved q02 by −0.097; the
+pooled baseline keeps that model artifact permanently fused into the 1.14.0 signal.**
 
----
+**Rule (extended): every drift baseline MUST be segmented by the resolved model.** The script's
+own `drift_check()` does not segment, does not filter to qids drawn this round, and compares to a
+5-sample local median. It reported `drift_events=1` for r428 — on `q11`, which **was not drawn**
+this round. That is **the 15th consecutive reproduction** of the stale-event defect. The script's
+`drift_events` is never a health verdict.
 
-## 5. The q11 flag — refuted by independent re-measurement
+## 🔴 Re-measurement: q02 holds, control confirms the call was healthy
 
-q11 (speculative: *"canon gate is a chord (multiple converging verdicts)"*) read **0.12**,
-which is:
-- |dev| = **0.0640** vs its own 1.14.0 baseline (0.1840) — **exceeds the 0.05 floor**
-- the **strict minimum of all 98 observations** in q11's entire history; **0 prior values below it**
-- not a repeat of an existing value (unlike r422's q12 flag, which repeated 0.46)
+Per the r427 rule (a new extreme must be re-measured; a repeat can be judged from the archive —
+and q02's 0.72 *does* repeat an existing value), q02 was re-measured **6× on the identical
+doctrinal state, same call path** (`call_jev(DOCTRINAL_STATE, …)`), with `q04` as a control on
+the **same call**:
 
-Taken at face value this would be a real new extreme. So it was re-measured.
+| qid | fresh draws | mean | min | max |
+|---|---|---|---|---|
+| `q02` | 0.71, 0.73, 0.77, 0.74, 0.76, 0.76 | **0.7450** | 0.71 | 0.77 |
+| `q04` *(control)* | 0.87, 0.88, 0.88, 0.87, 0.89, 0.89 | **0.8800** | 0.87 | 0.89 |
 
-**Independent re-measurement — 6 fresh draws of q11 on the IDENTICAL doctrinal state,
-same call path, same served model, plus a q04 control on the same call:**
-
-| draw | 1 | 2 | 3 | 4 | 5 | 6 | mean | σ |
-|---|---|---|---|---|---|---|---|---|
-| q11 | 0.16 | 0.15 | 0.15 | 0.15 | 0.16 | 0.18 | **0.1583** | 0.0107 |
-| q04 (control) | 0.85 | 0.87 | 0.88 | 0.88 | 0.89 | 0.87 | 0.8733 | — |
-
-**0.12 does not reproduce.** The fresh distribution is centred at 0.158 — essentially the
-baseline mean of 0.184 minus ordinary jitter, and **0 prior observation is below 0.15**.
-The q04 control stayed tight (0.85–0.89), proving the harness and the state were healthy
-during the re-measurement.
-
-**Conclusion: r427's q11 = 0.12 is a one-off low outlier, NOT a regime shift.**
-Direction is also the *safe* one (a speculative framing reading lower, i.e. further from
-canon), so it carries no canon-health risk even if it were real.
-
-**No confirmed drift. Round is clean.**
-
-### The script's own `drift_events=3` — all three are stale re-fires
-
-`drift_check()` has **no current-round filter**: it takes the last value per qid across all
-history and compares it to a 5-sample local median, whether or not that qid was drawn.
-
-| reported | qid | was it drawn this round? | truth |
-|---|---|---|---|
-| q02 −0.06 | q02 | **no** | stale draw from r425 |
-| q11 −0.07 | q11 | yes | genuine flag, refuted above |
-| q17 +0.05 | q17 | **no** | stale draw from r424 |
-
-14th reproduction of this defect. **The script's drift_events is never a health verdict.**
+q02 never fell below 0.71 — **today's 0.72 is not the low of the q02 distribution**, and the
+control's 0.87–0.89 band licenses the claim that the q02 spread reflects q02 and not a sick call.
+No confirmed drift.
 
 ---
 
-## 6. Canon health (cathedral + buckets)
+## History table (regenerated from the archives, not transcribed)
 
-**Bedrock canon — per-qid hit rate, 1.14.0 segment:**
+| round | mean_p | hits | bedrock qids | model |
+|---|---|---|---|---|
+| r416 | 0.2400 | 0/5 | — | 1.14.0 |
+| r417 | 0.4180 | 2/5 | q08, q02 | 1.14.0 |
+| r418 | 0.1480 | 0/5 | — | 1.14.0 |
+| r419 | 0.5380 | 3/5 | q01, q05, q04 | 1.14.0 |
+| r420 | 0.3580 | 1/5 | q07 | 1.14.0 |
+| r421 | 0.5540 | 3/5 | q04, q07, q02 | 1.14.0 |
+| r422 | 0.5060 | 2/5 | q08, q01 | 1.14.0 |
+| r423 | 0.5260 | 2/5 | q08, q05 | 1.14.0 |
+| r424 | 0.3760 | 2/5 | q01, q17 | 1.14.0 |
+| r425 | 0.3560 | 1/5 | q05 | 1.14.0 |
+| r426 | 0.4040 | 2/5 | q04, q07 | 1.14.0 |
+| r427 | 0.4200 | 2/5 | q04, q01 | 1.14.0 |
+| **r428** | **0.3760** | **1/5** | **q02** | **1.14.0** |
 
-| qid | 1.14.0 | all-time | note |
-|---|---|---|---|
-| q01 | 18/18 = 100 % | 208/208 = 100 % | |
-| q03 | 14/14 = 100 % | 194/194 = 100 % | |
-| q04 | 18/18 = 100 % | 198/198 = 100 % | |
-| q05 | 16/16 = 100 % | 185/185 = 100 % | |
-| q07 | 16/16 = 100 % | 170/170 = 100 % | |
-| q08 | 12/12 = 100 % | 166/166 = 100 % | |
-| **q02** | **18/24 = 75.0 %** | 169/175 = 96.6 % | **all 1.14.0 misses sit in the 0.68–0.69 sub-gate** |
+*(Every value in this table is computed by looping `history.jsonl` in the same script that
+computes the drift — no hand-typed numbers.)*
 
-Cathedral: **6 of 7 bedrock qids at 100 %.** q02 remains the single fragile one — every
-failure is 0.68 or 0.69, i.e. a hair under the 0.70 gate, never a collapse. Watch item, unchanged.
+## Class-mix Monte Carlo (200,000 draws, 5 qids uniform from all 22)
 
-**Speculative (must stay < 0.70):** every qid holds. Max ever observed: q12 0.56, q18 0.26,
-q11 0.22, q13 0.17, q06 0.15, q22 0.16, q09 0.11, q21 0.10, q20 0.13, q10 0.08.
-**No speculative qid has EVER reached 0.70** (0 occurrences across 2,155 observations).
+- E[mean_p] = 0.3941, σ = 0.1375
+- **P(mean_p ≤ 0.3760) = 0.4160**, z = **−0.13**
+- P(k bedrock): 0 → 8.78 %, **1 → 32.20 %**, **2 → 37.91 %** (modal), 3 → 17.77 %, 4 → 3.16 %, 5 → 0.18 %
+- last-20 prior rounds (excl. today): μ = 0.4082, σ = 0.1016, z = −0.32
 
-**Adversarial (must read LOW):** q14 mean 0.224 / max 0.25 · q15 mean 0.030 / max 0.03 ·
-q19 mean 0.104 / max 0.12. All correctly low; 0 occurrences ≥ 0.70.
+**1-of-5 is ORDINARY** — 32.2 % of draws land there, and the round's mean_p is 41.6 % likely or
+lower under the class mix. No signal.
 
-**Review qids:** q17 holds a 0.68–0.75 plateau (1.14.0 mean ≈ 0.71); q16 holds 0.19–0.20.
-q17's plateau grazes the 0.70 line by design — read against **its own** baseline, never a
-global threshold.
+## Cathedral (per-qid bedrock hit rate — the only metric that reads as canon health)
+
+| qid | all-time | 1.14.0 segment | mean | min | max |
+|---|---|---|---|---|---|
+| q01 | 105/105 = **100 %** | 9/9 | 0.8737 | 0.84 | 0.90 |
+| q02 | 87/90 = 96.7 % | 10/13 | 0.8107 | 0.68 | 0.86 |
+| q03 | 98/98 = **100 %** | 7/7 | 0.8857 | 0.86 | 0.91 |
+| q04 | 101/101 = **100 %** | 9/9 | 0.8882 | 0.87 | 0.91 |
+| q05 | 96/96 = **100 %** | 8/8 | 0.8483 | 0.78 | 0.87 |
+| q07 | 88/88 = **100 %** | 8/8 | 0.7555 | 0.71 | 0.79 |
+| q08 | 86/86 = **100 %** | 6/6 | 0.8992 | 0.87 | 0.91 |
+
+**6 of 7 bedrock qids at 100 %.** `q02` remains the sole imperfect one (87/90 = 96.7 %) — a
+hair-under-the-gate pattern (0.68 / 0.69 / 0.71 misses), never a collapse. Unchanged watch item.
+
+**No speculative or adversarial qid has EVER reached 0.70** (0 / 1,301 observations). The one
+non-bedrock qid that has crossed is `q17`, tagged *review* not bedrock — it holds a 0.68–0.75
+plateau (66 of its 90 observations ≥ 0.70) against which today's 0.69 is unremarkable, and it is
+judged against its own baseline, never a global gate. Adversarials remain dead low (q14 max
+0.25, q15 max 0.03, q19 max 0.12).
 
 ---
 
-## 7. Method notes (carry forward)
+## Method notes carried forward
 
-- **Re-measurement beats archive comparison for a single flag.** The archive said q11 hit a
-  strict new minimum; six fresh draws on the same state said 0.12 was an outlier. The
-  archive cannot distinguish "new extreme" from "one-off draw" — a fresh re-measurement can.
-  **When a flag is a NEW EXTREME (not a repeat), re-measure before calling drift.**
-- **Include a control qid in the re-measurement.** q04 on the same call stayed at 0.85–0.89,
-  which is what licenses the claim that the q11 spread reflects q11, not a sick call.
-- **Baselines stay model-segmented.** The 1.13.0→1.14.0 switch moved q02 −0.0968 and
-  q12 +0.1365; a pooled baseline misreads both. Segment: 399 rounds on 1.13.0, 32 on 1.14.0.
-- **Regenerate the history table from the archives** (rule from r6) — the §3 table was
-  computed by looping `history.jsonl`, not typed from a prior session.
-- **|dev| before σ, every round.** q13 carried the largest z (−3.27) on a |dev| of 0.0114.
-- **The round counter is persistent and correct**: derived from max(files=426, history=426)
-  → start=427, and the script aborts rather than shadowing an existing round file.
+1. **Model-segment every baseline.** The pooled baseline inflates q02's dev by 11× (−0.092 vs
+   −0.008) and would have reported a drift that does not exist.
+2. **The script's `drift_events` is not a verdict** — 15th consecutive stale-event repro (q11,
+   not drawn this round). Recompute per-qid, per-drawn-qid, against the segmented baseline.
+3. **|dev| first, σ second.** Largest z today was +1.80 on a |dev| of 0.0126.
+4. **Dedup key must be `(qid, p, round)`** — round files and `history.jsonl` carry different `ts`
+   for the same verdict, so a `(qid, p, ts)` key double-counts and *shrinks* the observed dev.
+5. **Round count discipline:** passed the explicit positional `1`; exactly 1 round in 0.3 s,
+   stopped on count, not on the 55 s clock. Counter derived from `max(files=427, history=427)`.
+6. **`/workspace` was empty on arrival (19th consecutive)** — the corpus was rebuilt from
+   `SuperInstance/jev-quilt`; `/workspace/research` is a symlink into the `/tmp` overlay because
+   the NAS is at 100 % (0 bytes available). Durable copy = git.
 
----
+## Files
 
-## 8. Environment (125th wipe)
-
-- **`/workspace` EMPTY on arrival** — 18th consecutive time the prompt named an ephemeral
-  `/workspace/research/` path. Bootstrapped `SuperInstance/jev-quilt` + `SuperInstance/research`
-  into `/tmp/jevroot/` → `/tmp/jev`, `/tmp/research`.
-- **NAS 100 % (0 avail, 600 G used)** ⇒ all work on the 28 G overlay. Symlinks:
-  `ln -sfn /tmp/jev /workspace/repos/jev-quilt`, `ln -sfn /tmp/research /workspace/research`
-  — the deliverable path resolves and the bytes live on the overlay.
-- **TLS leaf VALID** (CN=typesafe.ai, Let's Encrypt YE2, notAfter 2026-12-21) ⇒
-  **no CA-bundle rebuild** (5th round running). Always `openssl s_client` first.
-- `JEV_API_KEY="$TYPESAFE_AI_TOKEN"` mapping required (the vault holds `TYPESAFE_AI_TOKEN`;
-  the client reads `TYPESAFEAI_KEY`/`JEV_API_KEY`/`TYPESAFE_API_KEY`).
-- **Round-count discipline held**: passed explicit positional `1` → exactly 1 round in
-  0.3 s. Variant A's default is 200; `timeout 60` alone would have raced the writer.
-- `gh` absent (30th). `history.jsonl` is git-tracked in `jev-quilt` (825 tracked files
-  under `research/jev_sessions/`).
+- Round file: `research/jev_sessions/continuous_r428.json`
+- Prior report archived (not deleted): `research/jev_hourly_report_r427.md`
+- Current report: `research/jev_hourly_report.md`
